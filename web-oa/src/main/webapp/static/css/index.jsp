@@ -43,7 +43,6 @@
 </shiro:authenticated>
 
 <shiro:notAuthenticated>
-    <link rel="stylesheet" type="text/css" href="static/css/dmaku2.css" />
     <header id="header">
         <a href="javascript:;" class="logo"></a>
     </header>
