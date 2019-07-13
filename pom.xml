@@ -21,6 +21,9 @@
         <module>server-common</module>
         <module>test-consumer</module>
         <module>util</module>
+        <module>center-oa</module>
+        <module>center-admin</module>
+        <module>center-mall</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
