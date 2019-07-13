@@ -7,13 +7,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class CommonAction {
     @RequestMapping("/login")
     public String login() {
-        return "login" ;
+        return "index" ;
     }
-    @RequestMapping("/pages/welcome")
+    @RequestMapping("/pages/index")
     public String welcome() {
         return "index" ;
     }
-    @RequestMapping("/logoutInfo.action")
+    @RequestMapping("/logoutInfo")
     public String logoutInfo() {
         return "logout_info" ;
     }

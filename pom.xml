@@ -17,7 +17,6 @@
         <module>authentication</module>
         <module>authorization</module>
         <module>client</module>
-        <module>oauth</module>
         <module>server-common</module>
         <module>test-consumer</module>
         <module>util</module>

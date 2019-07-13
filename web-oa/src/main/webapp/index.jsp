@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 
 <html lang="en">
 <head>
-    <jsp:include page="/pages/plugins/include_basepath.jsp"/>
-    <jsp:include page="/pages/plugins/include_meta.jsp"/>
 </head>
 <body class="sticky-header">
 <%!
-    public static final String SHOW_USER_URL = "pages/back/admin//user/show/" ;
+    public static final String SHOW_USER_URL = "pages/back/admin/user/show/" ;
+    private static final String INDEX_URL = "pages/index.action";
 %>
+<shiro:authenticated>
 <section>
     <jsp:include page="/pages/plugins/include_menuitem.jsp"/>
     <!-- main content start-->
@@ -39,6 +40,23 @@
     </div>
     <!-- main content end-->
 </section>
+</shiro:authenticated>
+
+<shiro:notAuthenticated>
+    <link rel="stylesheet" type="text/css" href="static/css/dmaku2.css" />
+    <header id="header">
+        <a href="javascript:;" class="logo"></a>
+    </header>
+    <section id="main">
+        <h1>未登录</h1>
+        <form action="<%=INDEX_URL%>" accept-charset="utf-8" data-view="loginView">
+            <div class="clearfix btn_login" data-propertyname="submit" data-controltype="Botton">
+                <input type="submit" value="登录">
+            </div>
+            <input type="hidden" value = "" id = "isVisiable_request_form_verifyCode" />
+        </form>
+    </section>
+</shiro:notAuthenticated>
 <jsp:include page="/pages/plugins/include_foot.jsp"/>
 </body>
 </html>
