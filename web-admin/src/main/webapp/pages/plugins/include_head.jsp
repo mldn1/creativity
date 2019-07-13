@@ -31,7 +31,6 @@ td {
 	overflow: hidden;
 }
 </style></head>
-<shiro:hasRole name="member">
 <body role="document">
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container-fluid">
@@ -128,4 +127,3 @@ $('#myModal').modal({
 })
 </script>
 </body></html>
-</shiro:hasRole>
