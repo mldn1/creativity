@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title></title>
+    <jsp:include page="/pages/plugins/include_basepath.jsp"/>
+    <jsp:include page="/pages/plugins/include_meta.jsp"/>
+</head>
+<body class="sticky-header">
+<section> <jsp:include page="/pages/plugins/include_menuitem.jsp"/>
+  <!-- main content start-->
+  <div class="main-content" >
+    <!-- header section start-->
+    <div class="header-section">
+      <!--toggle button start-->
+      <a class="toggle-btn"><i class="fa fa-bars"></i></a> <jsp:include page="/pages/plugins/include_userinfo.jsp"/> </div>
+    <!-- header section end-->
+    <!-- page heading start-->
+    <div class="page-heading">
+      <h3> 组织管理     <jsp:include page="/pages/plugins/include_nav.jsp"/></h3>
+      <ul class="breadcrumb pull-left">
+        <li> <a href="/user/show/{{.LoginUserid}}"></a> </li>
+        <li> <a href="pages/back/admin/groups/index.jsp">组管理</a> </li>
+        <li class="active"> 组权限 </li>
+      </ul>
+    </div>
+    <!-- page heading end-->
+    <!--body wrapper start-->
+    <div class="wrapper">
+      <div class="row">
+        <div class="col-lg-12">
+          <section class="panel">
+            <header class="panel-heading"> </header>
+            <div class="panel-body">
+              <form class="form-horizontal adminex-form" id="group-form">
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label"><span>*</span>需求名称</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="name" value="" class="form-control" placeholder="请输入组名称">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label"><span>*</span>描述</label>
+                  <div class="col-sm-10">
+                    <textarea name="summary" placeholder="请填写描述" style="height:300px;" class="form-control"></textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-lg-2 col-sm-2 control-label"></label>
+                  <div class="col-lg-10">
+                    <input type="hidden" name="id" id="groupid" value="{{.group.Id}}">
+                    <button type="submit" class="btn btn-primary">提交保存</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+    <!--body wrapper end-->
+    <!--footer section start-->    <jsp:include page="/pages/plugins/include_footinfo.jsp"/>
+    <!--footer section end-->
+  </div>
+  <!-- main content end-->
+</section>
+<jsp:include page="/pages/plugins/include_foot.jsp"/>
+</body>
+</html>
