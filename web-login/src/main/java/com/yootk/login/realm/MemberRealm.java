@@ -1,5 +1,6 @@
 package com.yootk.login.realm;
 
+import com.yootk.dubbo.vo.Emp;
 import com.yootk.dubbo.vo.Member;
 import com.yootk.login.service.IOAuthService;
 import org.apache.shiro.authc.*;
@@ -17,15 +18,16 @@ public class MemberRealm extends AuthorizingRealm {
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
         System.err.println("【1】｛MemberRealm｝============== 用户认证处理 ==============");
-        String mid = (String) token.getPrincipal() ;
-        Member member = this.oauthService.getMember(mid) ; // 根据mid查询用户信息
-        if (member == null) {   // 用户信息不存在
-            throw new UnknownAccountException(mid + "账户信息不存在！") ;
+        String phone = (String) token.getPrincipal() ;
+        System.err.println("电话号码是"+phone);
+        Emp emp = this.oauthService.getEmp(phone) ; // 根据mid查询用户信息
+        if (emp == null) {   // 用户信息不存在
+            throw new UnknownAccountException(phone + "账户信息不存在！") ;
         }
-        if (member.getLocked().equals(1)) { // 用户锁定了
-            throw new LockedAccountException(mid + "账户已经被锁定！");
+        if (emp.getState().equals(1)) { // 用户锁定了
+            throw new LockedAccountException(phone + "账户已经被锁定！");
         }
-        return new SimpleAuthenticationInfo(token.getPrincipal(),member.getPassword(),this.getName());
+        return new SimpleAuthenticationInfo(token.getPrincipal(),emp.getPassword(),this.getName());
     }
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {

@@ -1,4 +1,5 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
+<%@ page pageEncoding="UTF-8" import="java.util.*" %>
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,7 +31,7 @@ td {
 	overflow: hidden;
 }
 </style></head>
-
+<shiro:hasRole name="member">
 <body role="document">
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container-fluid">
@@ -107,7 +108,7 @@ td {
                 <li id="EditPwd"><a href="pages/front/manage/password.jsp">密码修改</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="pages/front/manage/quit.jsp">登出</a></li>
+        <li><a href="/logout.shiro">登出</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="pages/front/manage/quit.jsp">登录</a></li>
@@ -127,3 +128,4 @@ $('#myModal').modal({
 })
 </script>
 </body></html>
+</shiro:hasRole>

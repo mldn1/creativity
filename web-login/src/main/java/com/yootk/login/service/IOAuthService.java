@@ -2,6 +2,7 @@ package com.yootk.login.service;
 
 
 import com.yootk.dubbo.vo.Client;
+import com.yootk.dubbo.vo.Emp;
 import com.yootk.dubbo.vo.Member;
 
 public interface IOAuthService {
@@ -10,6 +11,6 @@ public interface IOAuthService {
      * @param mid 要获取的用户id
      * @return 用户的完整的信息
      */
-    public Member getMember(String mid);
+    public Emp getEmp(String mid);
     public Client get(String mid);
 }
