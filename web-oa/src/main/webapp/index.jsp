@@ -4,6 +4,10 @@
 
 <html lang="en">
 <head>
+    <jsp:include page="/pages/plugins/include_basepath.jsp"/>
+    <jsp:include page="/pages/plugins/include_meta.jsp"/>
+</head>
+<head>
 </head>
 <body class="sticky-header">
 <%!

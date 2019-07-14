@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -38,7 +39,9 @@
         <li> <a href="pages/back/admin/projects/">项目管理</a> </li>
         <li class="active"> 项目 </li>
       </ul>
+         <shiro:hasPermission name="oaprogrammer: publish">
       <div class="pull-right"><a href="pages/back/admin/projects/project-add.jsp" class="btn btn-success">+新项目</a></div>
+         </shiro:hasPermission>
     </div>
     
     
