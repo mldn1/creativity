@@ -239,6 +239,13 @@
             <groupId>javax.servlet.jsp</groupId>
             <artifactId>javax.servlet.jsp-api</artifactId>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.taglibs/taglibs-standard-impl -->
+        <dependency>
+            <groupId>org.apache.taglibs</groupId>
+            <artifactId>taglibs-standard-impl</artifactId>
+            <version>1.2.5</version>
+        </dependency>
+
         <!-- Spring依赖包结束-->
         <!-- Junit测试依赖 -->
         <dependency>

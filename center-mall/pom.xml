@@ -10,6 +10,20 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>center-mall</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>dubbo</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.yootk</groupId>
+            <artifactId>api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+        </dependency>
+    </dependencies>
 
 
 </project>
