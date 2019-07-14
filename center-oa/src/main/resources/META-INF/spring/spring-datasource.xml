@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init">
+        <property name="driverClassName" value="${db.druid.driverClassName}"/>
+        <property name="url" value="${db.druid.url}"/>
+        <property name="username" value="${db.druid.username}"/>
+        <property name="password" value="${db.druid.password}"/>
+        <property name="maxActive" value="${db.druid.maxActive}"/> <!-- 最大连接数 -->
+        <property name="minIdle" value="${db.druid.minIdle}"/> <!-- 初始化连接数 -->
+        <property name="initialSize" value="${db.druid.initialSize}"/> <!-- 最小维持连接数 -->
+        <property name="maxWait" value="${db.druid.maxWait}"/>  <!-- 最大等待时间，毫秒 -->
+        <property name="timeBetweenEvictionRunsMillis" value="${db.druid.timeBetweenEvictionRunsMillis}"/>
+        <property name="minEvictableIdleTimeMillis" value="${db.druid.minEvictableIdleTimeMillis}"/>
+        <property name="validationQuery" value="${db.druid.validationQuery}"/>
+        <property name="testWhileIdle" value="${db.druid.testWhileIdle}"/>
+        <property name="testOnBorrow" value="${db.druid.testOnBorrow}"/>
+        <property name="testOnReturn" value="${db.druid.testOnReturn}"/>
+        <property name="poolPreparedStatements" value="${db.druid.poolPreparedStatements}"/>
+        <property name="maxPoolPreparedStatementPerConnectionSize"
+                  value="${db.druid.maxPoolPreparedStatementPerConnectionSize}"/>
+        <property name="filters" value="${db.druid.filters}"/>
+    </bean>
+</beans>

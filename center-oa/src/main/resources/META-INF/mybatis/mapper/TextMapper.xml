@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yootk.oa.dao.TextMapper">
+  <resultMap id="BaseResultMap" type="com.yootk.oa.vo.Text">
+    <id column="textid" jdbcType="BIGINT" property="textid" />
+    <result column="proid" jdbcType="BIGINT" property="proid" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="keyword" jdbcType="VARCHAR" property="keyword" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="founder" jdbcType="BIGINT" property="founder" />
+    <result column="createdate" jdbcType="TIMESTAMP" property="createdate" />
+    <result column="link" jdbcType="VARCHAR" property="link" />
+    <result column="content" jdbcType="TEXT" property="content" />
+    <result column="appendix" jdbcType="VARCHAR" property="appendix" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    textid, proid, title, keyword, type, founder, createdate, link, content, appendix
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from text
+    where textid = #{textid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from text
+    where textid = #{textid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yootk.oa.vo.Text">
+    insert into text (textid, proid, title, 
+      keyword, type, founder, 
+      createdate, link, content, 
+      appendix)
+    values (#{textid,jdbcType=BIGINT}, #{proid,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, 
+      #{keyword,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, #{founder,jdbcType=BIGINT}, 
+      #{createdate,jdbcType=TIMESTAMP}, #{link,jdbcType=VARCHAR}, #{content,jdbcType=TEXT}, 
+      #{appendix,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yootk.oa.vo.Text">
+    insert into text
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="textid != null">
+        textid,
+      </if>
+      <if test="proid != null">
+        proid,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="keyword != null">
+        keyword,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="founder != null">
+        founder,
+      </if>
+      <if test="createdate != null">
+        createdate,
+      </if>
+      <if test="link != null">
+        link,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="appendix != null">
+        appendix,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="textid != null">
+        #{textid,jdbcType=BIGINT},
+      </if>
+      <if test="proid != null">
+        #{proid,jdbcType=BIGINT},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="keyword != null">
+        #{keyword,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="founder != null">
+        #{founder,jdbcType=BIGINT},
+      </if>
+      <if test="createdate != null">
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="link != null">
+        #{link,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=TEXT},
+      </if>
+      <if test="appendix != null">
+        #{appendix,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yootk.oa.vo.Text">
+    update text
+    <set>
+      <if test="proid != null">
+        proid = #{proid,jdbcType=BIGINT},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="keyword != null">
+        keyword = #{keyword,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="founder != null">
+        founder = #{founder,jdbcType=BIGINT},
+      </if>
+      <if test="createdate != null">
+        createdate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="link != null">
+        link = #{link,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=TEXT},
+      </if>
+      <if test="appendix != null">
+        appendix = #{appendix,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where textid = #{textid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yootk.oa.vo.Text">
+    update text
+    set proid = #{proid,jdbcType=BIGINT},
+      title = #{title,jdbcType=VARCHAR},
+      keyword = #{keyword,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      founder = #{founder,jdbcType=BIGINT},
+      createdate = #{createdate,jdbcType=TIMESTAMP},
+      link = #{link,jdbcType=VARCHAR},
+      content = #{content,jdbcType=TEXT},
+      appendix = #{appendix,jdbcType=VARCHAR}
+    where textid = #{textid,jdbcType=BIGINT}
+  </update>
+</mapper>

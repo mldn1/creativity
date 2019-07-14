@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yootk.oa.dao.TaskMapper">
+  <resultMap id="BaseResultMap" type="com.yootk.oa.vo.Task">
+    <id column="taskid" jdbcType="BIGINT" property="taskid" />
+    <result column="rid" jdbcType="BIGINT" property="rid" />
+    <result column="founder" jdbcType="BIGINT" property="founder" />
+    <result column="assigned" jdbcType="BIGINT" property="assigned" />
+    <result column="finisher" jdbcType="BIGINT" property="finisher" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="description" jdbcType="TEXT" property="description" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="note" jdbcType="TEXT" property="note" />
+    <result column="period" jdbcType="INTEGER" property="period" />
+    <result column="workhours" jdbcType="INTEGER" property="workhours" />
+    <result column="startdate" jdbcType="TIMESTAMP" property="startdate" />
+    <result column="enddate" jdbcType="TIMESTAMP" property="enddate" />
+    <result column="send" jdbcType="BIGINT" property="send" />
+    <result column="appendix" jdbcType="VARCHAR" property="appendix" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    taskid, rid, founder, assigned, finisher, title, description, type, note, period, 
+    workhours, startdate, enddate, send, appendix, state
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from task
+    where taskid = #{taskid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from task
+    where taskid = #{taskid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yootk.oa.vo.Task">
+    insert into task (taskid, rid, founder, 
+      assigned, finisher, title, 
+      description, type, note, 
+      period, workhours, startdate, 
+      enddate, send, appendix, 
+      state)
+    values (#{taskid,jdbcType=BIGINT}, #{rid,jdbcType=BIGINT}, #{founder,jdbcType=BIGINT}, 
+      #{assigned,jdbcType=BIGINT}, #{finisher,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, 
+      #{description,jdbcType=TEXT}, #{type,jdbcType=INTEGER}, #{note,jdbcType=TEXT}, 
+      #{period,jdbcType=INTEGER}, #{workhours,jdbcType=INTEGER}, #{startdate,jdbcType=TIMESTAMP}, 
+      #{enddate,jdbcType=TIMESTAMP}, #{send,jdbcType=BIGINT}, #{appendix,jdbcType=VARCHAR}, 
+      #{state,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yootk.oa.vo.Task">
+    insert into task
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="taskid != null">
+        taskid,
+      </if>
+      <if test="rid != null">
+        rid,
+      </if>
+      <if test="founder != null">
+        founder,
+      </if>
+      <if test="assigned != null">
+        assigned,
+      </if>
+      <if test="finisher != null">
+        finisher,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="note != null">
+        note,
+      </if>
+      <if test="period != null">
+        period,
+      </if>
+      <if test="workhours != null">
+        workhours,
+      </if>
+      <if test="startdate != null">
+        startdate,
+      </if>
+      <if test="enddate != null">
+        enddate,
+      </if>
+      <if test="send != null">
+        send,
+      </if>
+      <if test="appendix != null">
+        appendix,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="taskid != null">
+        #{taskid,jdbcType=BIGINT},
+      </if>
+      <if test="rid != null">
+        #{rid,jdbcType=BIGINT},
+      </if>
+      <if test="founder != null">
+        #{founder,jdbcType=BIGINT},
+      </if>
+      <if test="assigned != null">
+        #{assigned,jdbcType=BIGINT},
+      </if>
+      <if test="finisher != null">
+        #{finisher,jdbcType=BIGINT},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=TEXT},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=TEXT},
+      </if>
+      <if test="period != null">
+        #{period,jdbcType=INTEGER},
+      </if>
+      <if test="workhours != null">
+        #{workhours,jdbcType=INTEGER},
+      </if>
+      <if test="startdate != null">
+        #{startdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="enddate != null">
+        #{enddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="send != null">
+        #{send,jdbcType=BIGINT},
+      </if>
+      <if test="appendix != null">
+        #{appendix,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yootk.oa.vo.Task">
+    update task
+    <set>
+      <if test="rid != null">
+        rid = #{rid,jdbcType=BIGINT},
+      </if>
+      <if test="founder != null">
+        founder = #{founder,jdbcType=BIGINT},
+      </if>
+      <if test="assigned != null">
+        assigned = #{assigned,jdbcType=BIGINT},
+      </if>
+      <if test="finisher != null">
+        finisher = #{finisher,jdbcType=BIGINT},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=TEXT},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="note != null">
+        note = #{note,jdbcType=TEXT},
+      </if>
+      <if test="period != null">
+        period = #{period,jdbcType=INTEGER},
+      </if>
+      <if test="workhours != null">
+        workhours = #{workhours,jdbcType=INTEGER},
+      </if>
+      <if test="startdate != null">
+        startdate = #{startdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="enddate != null">
+        enddate = #{enddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="send != null">
+        send = #{send,jdbcType=BIGINT},
+      </if>
+      <if test="appendix != null">
+        appendix = #{appendix,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=INTEGER},
+      </if>
+    </set>
+    where taskid = #{taskid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yootk.oa.vo.Task">
+    update task
+    set rid = #{rid,jdbcType=BIGINT},
+      founder = #{founder,jdbcType=BIGINT},
+      assigned = #{assigned,jdbcType=BIGINT},
+      finisher = #{finisher,jdbcType=BIGINT},
+      title = #{title,jdbcType=VARCHAR},
+      description = #{description,jdbcType=TEXT},
+      type = #{type,jdbcType=INTEGER},
+      note = #{note,jdbcType=TEXT},
+      period = #{period,jdbcType=INTEGER},
+      workhours = #{workhours,jdbcType=INTEGER},
+      startdate = #{startdate,jdbcType=TIMESTAMP},
+      enddate = #{enddate,jdbcType=TIMESTAMP},
+      send = #{send,jdbcType=BIGINT},
+      appendix = #{appendix,jdbcType=VARCHAR},
+      state = #{state,jdbcType=INTEGER}
+    where taskid = #{taskid,jdbcType=BIGINT}
+  </update>
+</mapper>
