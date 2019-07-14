@@ -57,7 +57,7 @@
                             <li><a href="pages/front/sale/express_list.jsp">物流管理</a></li>
                             </shiro:hasPermission>
                             <shiro:hasPermission name="mallmarket:service">
-                            <li><a href="pages/front/sale/chat_list.jsp">客服问题记录</a></li>
+                            <li><a href="pages/front/sale/chat_list.action">客服问题记录</a></li>
                             </shiro:hasPermission>
                             <li><a href="pages/front/sale/FAQ_list.jsp">FAQ</a></li>
                         </ul>
@@ -108,10 +108,10 @@
                             <shiro:hasPermission name="malloperation:article">
                             <li><a href="pages/front/operate/article_list.jsp">文章管理</a></li>
                             </shiro:hasPermission>
-                            <shiro:hasPermission name="">
+                            <shiro:hasPermission name="malloperation:activity">
                             <li><a href="pages/front/operate/activities_list.jsp">活动管理</a></li>
                             </shiro:hasPermission>
-                            <shiro:hasPermission name="malloperation:activity">
+                            <shiro:hasPermission name="malloperation:ad">
                             <li><a href="pages/front/operate/ad_list.jsp">广告管理</a></li>
                             </shiro:hasPermission>
                             <shiro:hasPermission name="malloperation:comment">
