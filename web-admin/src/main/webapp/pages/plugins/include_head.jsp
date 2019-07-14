@@ -107,10 +107,7 @@ td {
                 <li id="EditPwd"><a href="pages/front/manage/password.jsp">密码修改</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="/logout.shiro">登出</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="pages/front/manage/quit.jsp">登录</a></li>
+        <li><a href="/admin/logout.shiro">登出</a></li>
       </ul>
     </div>
   </div>

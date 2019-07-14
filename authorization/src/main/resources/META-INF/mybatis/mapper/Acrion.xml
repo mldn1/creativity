@@ -9,7 +9,7 @@
     <select id="findAllByMember" parameterType="java.lang.String" resultType="java.lang.String">
         <include refid="selectBase"/>
         <where>
-            rid IN (SELECT rid FROM member_role WHERE mid=#{mid})
+            rid IN (SELECT rid FROM emp_role WHERE phone=#{phone})
         </where>
     </select>
 </mapper>

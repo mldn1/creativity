@@ -30,7 +30,7 @@
         <property name="kickoutCacheName" value="kickoutCache"/>
         <property name="cacheManager" ref="cacheManager"/>
         <property name="kickoutUrl" value="/kickout.jsp"/>
-        <property name="max" value="1"/>
+        <property name="max" value="10"/>
         <property name="kickoutAttributeName" value="kickout"/>
     </bean>
     <bean id="oauthFilter" class="com.yootk.admin.filter.authc.OAuthAuthenticatingFilter">

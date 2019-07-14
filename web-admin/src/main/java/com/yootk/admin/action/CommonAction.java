@@ -15,7 +15,7 @@ public class CommonAction {
     }
     @RequestMapping("/logoutInfo")
     public String logoutInfo() {
-        return "logout_info" ;
+        return "logout_info";
     }
     @RequestMapping("/pages/failure")
     public String failure() {
