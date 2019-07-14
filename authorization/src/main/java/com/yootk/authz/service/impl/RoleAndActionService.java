@@ -16,10 +16,10 @@ public class RoleAndActionService implements IRoleAndActionService {
     @Autowired
     private IActionDAO actionDAO;
     @Override
-    public Map<String, Object> get(String mid) {
+    public Map<String, Object> get(String phone) {
         Map<String ,Object> result = new HashMap<>();
-        result.put("allRoles",this.roleDAO.findAllByMember(mid));
-        result.put("allActions",this.actionDAO.findAllByMember(mid));
+        result.put("allRoles",this.roleDAO.findAllByMember(phone));
+        result.put("allActions",this.actionDAO.findAllByMember(phone));
         return result;
     }
 }

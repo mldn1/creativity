@@ -4,12 +4,12 @@
 <!-- 定义所有的SQL语句的映射， 对于本实体而言相关的所有的SQL代码都在此定义 -->
 <mapper namespace="com.yootk.authz.dao.IRoleDAO">   <!-- SSM整合的时候，这个命名空间异常重要 -->
     <sql id="selectBase">
-         SELECT rid FROM member_role
+         SELECT rid FROM emp_role
     </sql>
     <select id="findAllByMember" parameterType="java.lang.String" resultType="java.lang.String">
         <include refid="selectBase"/>
         <where>
-            mid=#{mid}
+            phone=#{phone}
         </where>
     </select>
 </mapper>
