@@ -1,6 +1,6 @@
 package com.yootk.oa.dao;
 
-import com.yootk.dubbo.vo.Overtime;
+import com.yootk.oa.vo.Overtime;
 
 public interface OvertimeMapper {
     int deleteByPrimaryKey(Long otid);

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yootk.oa.dao.ApplyStateMapper">
-  <resultMap id="BaseResultMap" type="com.yootk.dubbo.vo.ApplyState">
+  <resultMap id="BaseResultMap" type="com.yootk.oa.vo.ApplyState">
     <id column="asid" jdbcType="BIGINT" property="asid" />
     <result column="state" jdbcType="INTEGER" property="state" />
   </resultMap>

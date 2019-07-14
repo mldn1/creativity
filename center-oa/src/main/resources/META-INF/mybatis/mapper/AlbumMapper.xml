@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yootk.oa.dao.AlbumMapper">
-  <resultMap id="BaseResultMap" type="com.yootk.dubbo.vo.Album">
+  <resultMap id="BaseResultMap" type="com.yootk.oa.vo.Album">
     <id column="albid" jdbcType="BIGINT" property="albid" />
     <result column="eid" jdbcType="BIGINT" property="eid" />
     <result column="picture" jdbcType="VARCHAR" property="picture" />

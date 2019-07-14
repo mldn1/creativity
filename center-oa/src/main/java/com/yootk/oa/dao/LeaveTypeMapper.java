@@ -1,6 +1,6 @@
 package com.yootk.oa.dao;
 
-import com.yootk.dubbo.vo.LeaveType;
+import com.yootk.oa.vo.LeaveType;
 
 public interface LeaveTypeMapper {
     int deleteByPrimaryKey(Long ltid);

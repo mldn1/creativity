@@ -1,6 +1,6 @@
 package com.yootk.oa.dao;
 
-import com.yootk.dubbo.vo.Supplies;
+import com.yootk.oa.vo.Supplies;
 
 public interface SuppliesMapper {
     int deleteByPrimaryKey(Long supid);

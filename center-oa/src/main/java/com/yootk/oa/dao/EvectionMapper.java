@@ -1,6 +1,6 @@
 package com.yootk.oa.dao;
 
-import com.yootk.dubbo.vo.Evection;
+import com.yootk.oa.vo.Evection;
 
 public interface EvectionMapper {
     int deleteByPrimaryKey(Long eveid);

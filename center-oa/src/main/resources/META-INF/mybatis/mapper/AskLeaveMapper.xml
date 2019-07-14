@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yootk.oa.dao.AskLeaveMapper">
-  <resultMap id="BaseResultMap" type="com.yootk.dubbo.vo.AskLeave">
+  <resultMap id="BaseResultMap" type="com.yootk.oa.vo.AskLeave">
     <id column="alid" jdbcType="BIGINT" property="alid" />
     <result column="eid" jdbcType="BIGINT" property="eid" />
     <result column="type" jdbcType="INTEGER" property="type" />

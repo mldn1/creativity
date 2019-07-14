@@ -1,6 +1,6 @@
 package com.yootk.oa.dao;
 
-import com.yootk.dubbo.vo.Album;
+import com.yootk.oa.vo.Album;
 
 public interface AlbumMapper {
     int deleteByPrimaryKey(Long albid);

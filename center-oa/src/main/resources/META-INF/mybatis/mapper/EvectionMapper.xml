@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yootk.oa.dao.EvectionMapper">
-  <resultMap id="BaseResultMap" type="com.yootk.dubbo.vo.Evection">
+  <resultMap id="BaseResultMap" type="com.yootk.oa.vo.Evection">
     <id column="eveid" jdbcType="BIGINT" property="eveid" />
     <result column="eid" jdbcType="BIGINT" property="eid" />
     <result column="aim" jdbcType="VARCHAR" property="aim" />

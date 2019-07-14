@@ -11,7 +11,7 @@
     <jsp:forward page="<%=INDEX_URL%>"/>
 </shiro:authenticated>
 <shiro:notAuthenticated>
-    <link rel="stylesheet" type="text/css" href="assets/css/dmaku2.css"/>
+    <link rel="stylesheet" type="text/css" href="mvccss/dmaku2.css"/>
     <header id="header">
         <a href="javascript:;" class="logo"></a>
     </header>

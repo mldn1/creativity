@@ -1,6 +1,6 @@
 package com.yootk.oa.dao;
 
-import com.yootk.dubbo.vo.Task;
+import com.yootk.oa.vo.Task;
 
 public interface TaskMapper {
     int deleteByPrimaryKey(Long taskid);

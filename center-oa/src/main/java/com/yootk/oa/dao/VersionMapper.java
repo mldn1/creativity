@@ -1,6 +1,6 @@
 package com.yootk.oa.dao;
 
-import com.yootk.dubbo.vo.Version;
+import com.yootk.oa.vo.Version;
 
 public interface VersionMapper {
     int deleteByPrimaryKey(Long verid);

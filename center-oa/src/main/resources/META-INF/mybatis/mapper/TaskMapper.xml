@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yootk.oa.dao.TaskMapper">
-  <resultMap id="BaseResultMap" type="com.yootk.dubbo.vo.Task">
+  <resultMap id="BaseResultMap" type="com.yootk.oa.vo.Task">
     <id column="taskid" jdbcType="BIGINT" property="taskid" />
     <result column="rid" jdbcType="BIGINT" property="rid" />
     <result column="founder" jdbcType="BIGINT" property="founder" />

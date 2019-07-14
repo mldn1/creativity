@@ -1,6 +1,6 @@
 package com.yootk.oa.dao;
 
-import com.yootk.dubbo.vo.Reimbursement;
+import com.yootk.oa.vo.Reimbursement;
 
 public interface ReimbursementMapper {
     int deleteByPrimaryKey(Long reiid);
