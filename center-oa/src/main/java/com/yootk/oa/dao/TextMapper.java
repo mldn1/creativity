@@ -1,6 +1,6 @@
 package com.yootk.oa.dao;
 
-import com.yootk.oa.vo.Text;
+import com.yootk.dubbo.vo.Text;
 
 public interface TextMapper {
     int deleteByPrimaryKey(Long textid);

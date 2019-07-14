@@ -1,6 +1,6 @@
 package com.yootk.oa.dao;
 
-import com.yootk.oa.vo.BugState;
+import com.yootk.dubbo.vo.BugState;
 
 public interface BugStateMapper {
     int deleteByPrimaryKey(Integer bsid);

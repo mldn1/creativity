@@ -1,6 +1,6 @@
 package com.yootk.oa.dao;
 
-import com.yootk.oa.vo.AskLeave;
+import com.yootk.dubbo.vo.AskLeave;
 
 public interface AskLeaveMapper {
     int deleteByPrimaryKey(Long alid);
