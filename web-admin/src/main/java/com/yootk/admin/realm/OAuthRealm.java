@@ -71,9 +71,7 @@ public class OAuthRealm extends AuthorizingRealm {
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         System.err.println("【2】｛MemberRealm｝************** 用户授权处理 **************");
-        System.err.println("map======================："+(String) principals.getPrimaryPrincipal());
         Map<String, Set<String>> map = this.memberPrivilegeService.getByMember((String) principals.getPrimaryPrincipal());
-        System.err.println("map======================："+map);
         // 将所有获取的授权信息保存在AuthorizationInfo类的实例之中
         SimpleAuthorizationInfo authz = new SimpleAuthorizationInfo() ; // 返回的授权信息
         authz.setRoles(map.get("allRoles"));
