@@ -19,7 +19,6 @@ public class MemberRealm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
         System.err.println("【1】｛MemberRealm｝============== 用户认证处理 ==============");
         String phone = (String) token.getPrincipal() ;
-        System.err.println("电话号码是"+phone);
         Emp emp = this.oauthService.getEmp(phone) ; // 根据mid查询用户信息
         if (emp == null) {   // 用户信息不存在
             throw new UnknownAccountException(phone + "账户信息不存在！") ;

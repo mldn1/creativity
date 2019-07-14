@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yootk.dubbo.dao.ReimbursementMapper">
+  <resultMap id="BaseResultMap" type="com.yootk.dubbo.vo.Reimbursement">
+    <id column="reiid" jdbcType="BIGINT" property="reiid" />
+    <result column="eid" jdbcType="BIGINT" property="eid" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="money" jdbcType="DOUBLE" property="money" />
+    <result column="details" jdbcType="TEXT" property="details" />
+    <result column="picture" jdbcType="VARCHAR" property="picture" />
+    <result column="approver" jdbcType="BIGINT" property="approver" />
+    <result column="note" jdbcType="TEXT" property="note" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+    <result column="result" jdbcType="INTEGER" property="result" />
+    <result column="progress" jdbcType="INTEGER" property="progress" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    reiid, eid, type, money, details, picture, approver, note, state, result, progress
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from reimbursement
+    where reiid = #{reiid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from reimbursement
+    where reiid = #{reiid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yootk.dubbo.vo.Reimbursement">
+    insert into reimbursement (reiid, eid, type, 
+      money, details, picture, 
+      approver, note, state, 
+      result, progress)
+    values (#{reiid,jdbcType=BIGINT}, #{eid,jdbcType=BIGINT}, #{type,jdbcType=VARCHAR}, 
+      #{money,jdbcType=DOUBLE}, #{details,jdbcType=TEXT}, #{picture,jdbcType=VARCHAR}, 
+      #{approver,jdbcType=BIGINT}, #{note,jdbcType=TEXT}, #{state,jdbcType=INTEGER}, 
+      #{result,jdbcType=INTEGER}, #{progress,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yootk.dubbo.vo.Reimbursement">
+    insert into reimbursement
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="reiid != null">
+        reiid,
+      </if>
+      <if test="eid != null">
+        eid,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="money != null">
+        money,
+      </if>
+      <if test="details != null">
+        details,
+      </if>
+      <if test="picture != null">
+        picture,
+      </if>
+      <if test="approver != null">
+        approver,
+      </if>
+      <if test="note != null">
+        note,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="result != null">
+        result,
+      </if>
+      <if test="progress != null">
+        progress,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="reiid != null">
+        #{reiid,jdbcType=BIGINT},
+      </if>
+      <if test="eid != null">
+        #{eid,jdbcType=BIGINT},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null">
+        #{money,jdbcType=DOUBLE},
+      </if>
+      <if test="details != null">
+        #{details,jdbcType=TEXT},
+      </if>
+      <if test="picture != null">
+        #{picture,jdbcType=VARCHAR},
+      </if>
+      <if test="approver != null">
+        #{approver,jdbcType=BIGINT},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=TEXT},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="result != null">
+        #{result,jdbcType=INTEGER},
+      </if>
+      <if test="progress != null">
+        #{progress,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yootk.dubbo.vo.Reimbursement">
+    update reimbursement
+    <set>
+      <if test="eid != null">
+        eid = #{eid,jdbcType=BIGINT},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null">
+        money = #{money,jdbcType=DOUBLE},
+      </if>
+      <if test="details != null">
+        details = #{details,jdbcType=TEXT},
+      </if>
+      <if test="picture != null">
+        picture = #{picture,jdbcType=VARCHAR},
+      </if>
+      <if test="approver != null">
+        approver = #{approver,jdbcType=BIGINT},
+      </if>
+      <if test="note != null">
+        note = #{note,jdbcType=TEXT},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="result != null">
+        result = #{result,jdbcType=INTEGER},
+      </if>
+      <if test="progress != null">
+        progress = #{progress,jdbcType=INTEGER},
+      </if>
+    </set>
+    where reiid = #{reiid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yootk.dubbo.vo.Reimbursement">
+    update reimbursement
+    set eid = #{eid,jdbcType=BIGINT},
+      type = #{type,jdbcType=VARCHAR},
+      money = #{money,jdbcType=DOUBLE},
+      details = #{details,jdbcType=TEXT},
+      picture = #{picture,jdbcType=VARCHAR},
+      approver = #{approver,jdbcType=BIGINT},
+      note = #{note,jdbcType=TEXT},
+      state = #{state,jdbcType=INTEGER},
+      result = #{result,jdbcType=INTEGER},
+      progress = #{progress,jdbcType=INTEGER}
+    where reiid = #{reiid,jdbcType=BIGINT}
+  </update>
+</mapper>

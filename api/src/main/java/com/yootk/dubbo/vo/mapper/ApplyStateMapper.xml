@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yootk.dubbo.dao.ApplyStateMapper">
+  <resultMap id="BaseResultMap" type="com.yootk.dubbo.vo.ApplyState">
+    <id column="asid" jdbcType="BIGINT" property="asid" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    asid, state
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from apply_state
+    where asid = #{asid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from apply_state
+    where asid = #{asid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yootk.dubbo.vo.ApplyState">
+    insert into apply_state (asid, state)
+    values (#{asid,jdbcType=BIGINT}, #{state,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yootk.dubbo.vo.ApplyState">
+    insert into apply_state
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="asid != null">
+        asid,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="asid != null">
+        #{asid,jdbcType=BIGINT},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yootk.dubbo.vo.ApplyState">
+    update apply_state
+    <set>
+      <if test="state != null">
+        state = #{state,jdbcType=INTEGER},
+      </if>
+    </set>
+    where asid = #{asid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yootk.dubbo.vo.ApplyState">
+    update apply_state
+    set state = #{state,jdbcType=INTEGER}
+    where asid = #{asid,jdbcType=BIGINT}
+  </update>
+</mapper>

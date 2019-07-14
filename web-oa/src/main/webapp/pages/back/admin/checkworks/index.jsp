@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -37,7 +38,9 @@
         <li> <a href="/checkwork/manage">考勤管理</a> </li>
         <li class="active"> 考勤 </li>
       </ul>
+      <shiro:hasPermission name="oaattendance:all">
       <div class="pull-right"><a href="pages/back/admin/checkworks/all.jsp" class="btn btn-success">全部员工考勤</a></div>
+      </shiro:hasPermission>
     </div>
     <div class="clearfix"></div>
     <!-- page heading end-->

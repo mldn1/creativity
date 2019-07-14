@@ -8,10 +8,10 @@
     private static final String INDEX_URL = "pages/index.action";
 %>
 <shiro:authenticated>
-<jsp:forward page="<%=INDEX_URL%>"/>
+    <jsp:forward page="<%=INDEX_URL%>"/>
 </shiro:authenticated>
 <shiro:notAuthenticated>
-    <link rel="stylesheet" type="text/css" href="assets/css/dmaku2.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/dmaku2.css"/>
     <header id="header">
         <a href="javascript:;" class="logo"></a>
     </header>
@@ -21,7 +21,7 @@
             <div class="clearfix btn_login" data-propertyname="submit" data-controltype="Botton">
                 <input type="submit" value="登录">
             </div>
-            <input type="hidden" value = "" id = "isVisiable_request_form_verifyCode" />
+            <input type="hidden" value="" id="isVisiable_request_form_verifyCode"/>
         </form>
     </section>
 </shiro:notAuthenticated>

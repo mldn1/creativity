@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yootk.dubbo.dao.ResumeMapper">
+  <resultMap id="BaseResultMap" type="com.yootk.dubbo.vo.Resume">
+    <id column="resid" jdbcType="BIGINT" property="resid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="sex" jdbcType="INTEGER" property="sex" />
+    <result column="phone" jdbcType="INTEGER" property="phone" />
+    <result column="birthday" jdbcType="DATE" property="birthday" />
+    <result column="eduid" jdbcType="INTEGER" property="eduid" />
+    <result column="wyid" jdbcType="INTEGER" property="wyid" />
+    <result column="note" jdbcType="TEXT" property="note" />
+    <result column="appendix" jdbcType="VARCHAR" property="appendix" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+    <result column="eid" jdbcType="BIGINT" property="eid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    resid, name, sex, phone, birthday, eduid, wyid, note, appendix, state, eid
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from resume
+    where resid = #{resid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from resume
+    where resid = #{resid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yootk.dubbo.vo.Resume">
+    insert into resume (resid, name, sex, 
+      phone, birthday, eduid, 
+      wyid, note, appendix, 
+      state, eid)
+    values (#{resid,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, 
+      #{phone,jdbcType=INTEGER}, #{birthday,jdbcType=DATE}, #{eduid,jdbcType=INTEGER}, 
+      #{wyid,jdbcType=INTEGER}, #{note,jdbcType=TEXT}, #{appendix,jdbcType=VARCHAR}, 
+      #{state,jdbcType=INTEGER}, #{eid,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yootk.dubbo.vo.Resume">
+    insert into resume
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="resid != null">
+        resid,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="eduid != null">
+        eduid,
+      </if>
+      <if test="wyid != null">
+        wyid,
+      </if>
+      <if test="note != null">
+        note,
+      </if>
+      <if test="appendix != null">
+        appendix,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="eid != null">
+        eid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="resid != null">
+        #{resid,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=INTEGER},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=DATE},
+      </if>
+      <if test="eduid != null">
+        #{eduid,jdbcType=INTEGER},
+      </if>
+      <if test="wyid != null">
+        #{wyid,jdbcType=INTEGER},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=TEXT},
+      </if>
+      <if test="appendix != null">
+        #{appendix,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="eid != null">
+        #{eid,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yootk.dubbo.vo.Resume">
+    update resume
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=INTEGER},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=DATE},
+      </if>
+      <if test="eduid != null">
+        eduid = #{eduid,jdbcType=INTEGER},
+      </if>
+      <if test="wyid != null">
+        wyid = #{wyid,jdbcType=INTEGER},
+      </if>
+      <if test="note != null">
+        note = #{note,jdbcType=TEXT},
+      </if>
+      <if test="appendix != null">
+        appendix = #{appendix,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="eid != null">
+        eid = #{eid,jdbcType=BIGINT},
+      </if>
+    </set>
+    where resid = #{resid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yootk.dubbo.vo.Resume">
+    update resume
+    set name = #{name,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=INTEGER},
+      phone = #{phone,jdbcType=INTEGER},
+      birthday = #{birthday,jdbcType=DATE},
+      eduid = #{eduid,jdbcType=INTEGER},
+      wyid = #{wyid,jdbcType=INTEGER},
+      note = #{note,jdbcType=TEXT},
+      appendix = #{appendix,jdbcType=VARCHAR},
+      state = #{state,jdbcType=INTEGER},
+      eid = #{eid,jdbcType=BIGINT}
+    where resid = #{resid,jdbcType=BIGINT}
+  </update>
+</mapper>

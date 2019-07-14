@@ -16,9 +16,9 @@ public class MemberPrivilegeServiceImpl implements IMemberPrivilegeService {
     private IRoleAndActionService roleAndActionService ;
 
     @Override
-    public Map<String, Set<String>> getByMember(String mid) {
+    public Map<String, Set<String>> getByMember(String phone) {
         Map<String,Set<String>> result = new HashMap<>() ;
-        Map<String,Object> data = this.roleAndActionService.get(mid) ;
+        Map<String,Object> data = this.roleAndActionService.get(phone) ;
         result.put("allRoles",(Set<String>)data.get("allRoles")) ;
         result.put("allActions",(Set<String>)data.get("allActions")) ;
         return result;

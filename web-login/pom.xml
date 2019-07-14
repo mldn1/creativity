@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>oauth</artifactId>
+    <artifactId>web-login</artifactId>
     <packaging>war</packaging>
 
     <name>oauth Maven Webapp</name>
@@ -304,6 +304,6 @@
     </dependencies>
 
     <build>
-        <finalName>oauth</finalName>
+        <finalName>web-login</finalName>
     </build>
 </project>
