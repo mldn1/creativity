@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yootk.dubbo.dao.AlbumMapper">
+  <resultMap id="BaseResultMap" type="com.yootk.dubbo.vo.Album">
+    <id column="albid" jdbcType="BIGINT" property="albid" />
+    <result column="eid" jdbcType="BIGINT" property="eid" />
+    <result column="picture" jdbcType="VARCHAR" property="picture" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    albid, eid, picture
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from album
+    where albid = #{albid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from album
+    where albid = #{albid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yootk.dubbo.vo.Album">
+    insert into album (albid, eid, picture
+      )
+    values (#{albid,jdbcType=BIGINT}, #{eid,jdbcType=BIGINT}, #{picture,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yootk.dubbo.vo.Album">
+    insert into album
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="albid != null">
+        albid,
+      </if>
+      <if test="eid != null">
+        eid,
+      </if>
+      <if test="picture != null">
+        picture,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="albid != null">
+        #{albid,jdbcType=BIGINT},
+      </if>
+      <if test="eid != null">
+        #{eid,jdbcType=BIGINT},
+      </if>
+      <if test="picture != null">
+        #{picture,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yootk.dubbo.vo.Album">
+    update album
+    <set>
+      <if test="eid != null">
+        eid = #{eid,jdbcType=BIGINT},
+      </if>
+      <if test="picture != null">
+        picture = #{picture,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where albid = #{albid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yootk.dubbo.vo.Album">
+    update album
+    set eid = #{eid,jdbcType=BIGINT},
+      picture = #{picture,jdbcType=VARCHAR}
+    where albid = #{albid,jdbcType=BIGINT}
+  </update>
+</mapper>
