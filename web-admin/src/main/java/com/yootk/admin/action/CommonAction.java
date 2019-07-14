@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class CommonAction {
     @RequestMapping("/login")
     public String login() {
-        return "login" ;
+        return "index" ;
     }
     @RequestMapping("/pages/index")
     public String welcome() {
