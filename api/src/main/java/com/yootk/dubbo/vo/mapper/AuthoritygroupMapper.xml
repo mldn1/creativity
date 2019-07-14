@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yootk.dubbo.dao.AuthoritygroupMapper">
+  <resultMap id="BaseResultMap" type="com.yootk.dubbo.vo.Authoritygroup">
+    <id column="authoid" jdbcType="BIGINT" property="authoid" />
+    <result column="gid" jdbcType="BIGINT" property="gid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    authoid, gid
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from authority_group
+    where authoid = #{authoid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from authority_group
+    where authoid = #{authoid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yootk.dubbo.vo.Authoritygroup">
+    insert into authority_group (authoid, gid)
+    values (#{authoid,jdbcType=BIGINT}, #{gid,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yootk.dubbo.vo.Authoritygroup">
+    insert into authority_group
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="authoid != null">
+        authoid,
+      </if>
+      <if test="gid != null">
+        gid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="authoid != null">
+        #{authoid,jdbcType=BIGINT},
+      </if>
+      <if test="gid != null">
+        #{gid,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yootk.dubbo.vo.Authoritygroup">
+    update authority_group
+    <set>
+      <if test="gid != null">
+        gid = #{gid,jdbcType=BIGINT},
+      </if>
+    </set>
+    where authoid = #{authoid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yootk.dubbo.vo.Authoritygroup">
+    update authority_group
+    set gid = #{gid,jdbcType=BIGINT}
+    where authoid = #{authoid,jdbcType=BIGINT}
+  </update>
+</mapper>
