@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yootk.dubbo.dao.TeamMapper">
+  <resultMap id="BaseResultMap" type="com.yootk.dubbo.vo.Team">
+    <id column="tid" jdbcType="BIGINT" property="tid" />
+    <result column="proid" jdbcType="BIGINT" property="proid" />
+    <result column="eid" jdbcType="BIGINT" property="eid" />
+    <result column="joindate" jdbcType="TIMESTAMP" property="joindate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    tid, proid, eid, joindate
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from team
+    where tid = #{tid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from team
+    where tid = #{tid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yootk.dubbo.vo.Team">
+    insert into team (tid, proid, eid, 
+      joindate)
+    values (#{tid,jdbcType=BIGINT}, #{proid,jdbcType=BIGINT}, #{eid,jdbcType=BIGINT}, 
+      #{joindate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yootk.dubbo.vo.Team">
+    insert into team
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tid != null">
+        tid,
+      </if>
+      <if test="proid != null">
+        proid,
+      </if>
+      <if test="eid != null">
+        eid,
+      </if>
+      <if test="joindate != null">
+        joindate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tid != null">
+        #{tid,jdbcType=BIGINT},
+      </if>
+      <if test="proid != null">
+        #{proid,jdbcType=BIGINT},
+      </if>
+      <if test="eid != null">
+        #{eid,jdbcType=BIGINT},
+      </if>
+      <if test="joindate != null">
+        #{joindate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yootk.dubbo.vo.Team">
+    update team
+    <set>
+      <if test="proid != null">
+        proid = #{proid,jdbcType=BIGINT},
+      </if>
+      <if test="eid != null">
+        eid = #{eid,jdbcType=BIGINT},
+      </if>
+      <if test="joindate != null">
+        joindate = #{joindate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where tid = #{tid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yootk.dubbo.vo.Team">
+    update team
+    set proid = #{proid,jdbcType=BIGINT},
+      eid = #{eid,jdbcType=BIGINT},
+      joindate = #{joindate,jdbcType=TIMESTAMP}
+    where tid = #{tid,jdbcType=BIGINT}
+  </update>
+</mapper>
