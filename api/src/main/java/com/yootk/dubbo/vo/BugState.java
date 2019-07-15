@@ -1,6 +1,8 @@
 package com.yootk.dubbo.vo;
 
-public class BugState {
+import java.io.Serializable;
+
+public class BugState implements Serializable {
     private Integer bsid;
 
     private String title;

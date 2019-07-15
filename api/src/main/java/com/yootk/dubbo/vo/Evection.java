@@ -1,8 +1,9 @@
 package com.yootk.dubbo.vo;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Evection {
+public class Evection implements Serializable {
     private Long eveid;
 
     private Long eid;

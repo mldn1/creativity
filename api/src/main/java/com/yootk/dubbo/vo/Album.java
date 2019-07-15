@@ -1,6 +1,8 @@
 package com.yootk.dubbo.vo;
 
-public class Album {
+import java.io.Serializable;
+
+public class Album implements Serializable {
     private Long albid;
 
     private Long eid;

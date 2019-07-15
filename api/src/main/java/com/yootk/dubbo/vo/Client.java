@@ -2,7 +2,7 @@ package com.yootk.dubbo.vo;
 
 import java.io.Serializable;
 
-public class Client implements Serializable {
+public class Client implements Serializable{
     private String clientId;
     private String clientSecret;
 
