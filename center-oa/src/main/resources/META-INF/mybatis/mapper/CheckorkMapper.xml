@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yootk.oa.dao.CheckorkMapper">
-  <resultMap id="BaseResultMap" type="com.yootk.dubbo.vo.Checkork">
+  <resultMap id="BaseResultMap" type="Checkork"><!--com.yootk.dubbo.vo.-->
     <id column="coid" jdbcType="BIGINT" property="coid" />
     <result column="eid" jdbcType="BIGINT" property="eid" />
     <result column="datetime" jdbcType="TIMESTAMP" property="datetime" />
@@ -30,13 +30,13 @@
     delete from checkork
     where coid = #{coid,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.yootk.oa.vo.Checkork">
+  <insert id="insert" parameterType="Checkork">
     insert into checkork (coid, eid, datetime, 
       state, ip)
     values (#{coid,jdbcType=BIGINT}, #{eid,jdbcType=BIGINT}, #{datetime,jdbcType=TIMESTAMP}, 
       #{state,jdbcType=INTEGER}, #{ip,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.yootk.oa.vo.Checkork">
+  <insert id="insertSelective" parameterType="Checkork">
     insert into checkork
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="coid != null">
@@ -73,7 +73,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yootk.oa.vo.Checkork">
+  <update id="updateByPrimaryKeySelective" parameterType="Checkork">
     update checkork
     <set>
       <if test="eid != null">
@@ -91,7 +91,7 @@
     </set>
     where coid = #{coid,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yootk.oa.vo.Checkork">
+  <update id="updateByPrimaryKey" parameterType="Checkork">
     update checkork
     set eid = #{eid,jdbcType=BIGINT},
       datetime = #{datetime,jdbcType=TIMESTAMP},

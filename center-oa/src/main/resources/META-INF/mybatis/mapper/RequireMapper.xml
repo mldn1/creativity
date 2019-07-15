@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yootk.oa.dao.RequireMapper">
-  <resultMap id="BaseResultMap" type="com.yootk.dubbo.vo.Require">
+  <resultMap id="BaseResultMap" type="Require">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="proid" jdbcType="BIGINT" property="proid" />
     <result column="origin" jdbcType="INTEGER" property="origin" />
@@ -33,7 +33,7 @@
     delete from require
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.yootk.dubbo.vo.Require">
+  <insert id="insert" parameterType="Require">
     insert into require (id, proid, origin, 
       grade, title, founder, 
       assigned, workhours, createdate, 
@@ -47,7 +47,7 @@
       #{standard,jdbcType=TEXT}, #{appendix,jdbcType=VARCHAR}, #{did,jdbcType=BIGINT}, 
       #{type,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.yootk.dubbo.vo.Require">
+  <insert id="insertSelective" parameterType="Require">
     insert into require
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -150,7 +150,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yootk.dubbo.vo.Require">
+  <update id="updateByPrimaryKeySelective" parameterType="Require">
     update require
     <set>
       <if test="proid != null">
@@ -201,7 +201,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yootk.dubbo.vo.Require">
+  <update id="updateByPrimaryKey" parameterType="Require">
     update require
     set proid = #{proid,jdbcType=BIGINT},
       origin = #{origin,jdbcType=INTEGER},

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yootk.oa.dao.WorkYearsMapper">
-  <resultMap id="BaseResultMap" type="com.yootk.dubbo.vo.WorkYears">
+  <resultMap id="BaseResultMap" type="WorkYears">
     <id column="wyid" jdbcType="BIGINT" property="wyid" />
     <result column="title" jdbcType="VARCHAR" property="title" />
   </resultMap>
@@ -18,11 +18,11 @@
     delete from work_years
     where wyid = #{wyid,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.yootk.oa.vo.WorkYears">
+  <insert id="insert" parameterType="WorkYears">
     insert into work_years (wyid, title)
     values (#{wyid,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.yootk.oa.vo.WorkYears">
+  <insert id="insertSelective" parameterType="WorkYears">
     insert into work_years
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="wyid != null">
@@ -41,7 +41,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yootk.oa.vo.WorkYears">
+  <update id="updateByPrimaryKeySelective" parameterType="WorkYears">
     update work_years
     <set>
       <if test="title != null">
@@ -50,7 +50,7 @@
     </set>
     where wyid = #{wyid,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yootk.oa.vo.WorkYears">
+  <update id="updateByPrimaryKey" parameterType="WorkYears">
     update work_years
     set title = #{title,jdbcType=VARCHAR}
     where wyid = #{wyid,jdbcType=BIGINT}

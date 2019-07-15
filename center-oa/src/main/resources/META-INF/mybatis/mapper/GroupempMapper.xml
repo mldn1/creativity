@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yootk.oa.dao.GroupempMapper">
-  <resultMap id="BaseResultMap" type="com.yootk.dubbo.vo.Groupemp">
+  <resultMap id="BaseResultMap" type="Groupemp">
     <id column="gid" jdbcType="BIGINT" property="gid" />
     <result column="eid" jdbcType="BIGINT" property="eid" />
   </resultMap>
@@ -18,11 +18,11 @@
     delete from group-emp
     where gid = #{gid,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.yootk.dubbo.vo.Groupemp">
+  <insert id="insert" parameterType="Groupemp">
     insert into group-emp (gid, eid)
     values (#{gid,jdbcType=BIGINT}, #{eid,jdbcType=BIGINT})
   </insert>
-  <insert id="insertSelective" parameterType="com.yootk.dubbo.vo.Groupemp">
+  <insert id="insertSelective" parameterType="Groupemp">
     insert into group-emp
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="gid != null">
@@ -41,7 +41,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yootk.dubbo.vo.Groupemp">
+  <update id="updateByPrimaryKeySelective" parameterType="Groupemp">
     update group-emp
     <set>
       <if test="eid != null">
@@ -50,7 +50,7 @@
     </set>
     where gid = #{gid,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yootk.dubbo.vo.Groupemp">
+  <update id="updateByPrimaryKey" parameterType="Groupemp">
     update group-emp
     set eid = #{eid,jdbcType=BIGINT}
     where gid = #{gid,jdbcType=BIGINT}

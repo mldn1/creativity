@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yootk.oa.dao.BugMapper">
-  <resultMap id="BaseResultMap" type="com.yootk.dubbo.vo.Bug">
+  <resultMap id="BaseResultMap" type="Bug">
     <id column="bugid" jdbcType="BIGINT" property="bugid" />
     <result column="rid" jdbcType="BIGINT" property="rid" />
     <result column="tid" jdbcType="BIGINT" property="tid" />
@@ -32,7 +32,7 @@
     delete from bug
     where bugid = #{bugid,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.yootk.oa.vo.Bug">
+  <insert id="insert" parameterType="Bug">
     insert into bug (bugid, rid, tid, 
       title, period, createdate, 
       state, founder, assigned, 
@@ -46,7 +46,7 @@
       #{description,jdbcType=TEXT}, #{system,jdbcType=VARCHAR}, #{browser,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.yootk.oa.vo.Bug">
+  <insert id="insertSelective" parameterType="Bug">
     insert into bug
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="bugid != null">
@@ -143,7 +143,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yootk.oa.vo.Bug">
+  <update id="updateByPrimaryKeySelective" parameterType="Bug">
     update bug
     <set>
       <if test="rid != null">
@@ -191,7 +191,7 @@
     </set>
     where bugid = #{bugid,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yootk.oa.vo.Bug">
+  <update id="updateByPrimaryKey" parameterType="Bug">
     update bug
     set rid = #{rid,jdbcType=BIGINT},
       tid = #{tid,jdbcType=BIGINT},

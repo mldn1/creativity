@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yootk.oa.dao.TripMapper">
-  <resultMap id="BaseResultMap" type="com.yootk.dubbo.vo.Trip">
+  <resultMap id="BaseResultMap" type="Trip">
     <id column="tripid" jdbcType="BIGINT" property="tripid" />
     <result column="eid" jdbcType="BIGINT" property="eid" />
     <result column="aim" jdbcType="VARCHAR" property="aim" />
@@ -30,7 +30,7 @@
     delete from trip
     where tripid = #{tripid,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.yootk.oa.vo.Trip">
+  <insert id="insert" parameterType="Trip">
     insert into trip (tripid, eid, aim, 
       startdate, endtime, time, 
       reason, picture, approver, 
@@ -42,7 +42,7 @@
       #{note,jdbcType=TEXT}, #{state,jdbcType=INTEGER}, #{result,jdbcType=INTEGER}, #{progress,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.yootk.oa.vo.Trip">
+  <insert id="insertSelective" parameterType="Trip">
     insert into trip
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="tripid != null">
@@ -127,7 +127,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yootk.oa.vo.Trip">
+  <update id="updateByPrimaryKeySelective" parameterType="Trip">
     update trip
     <set>
       <if test="eid != null">
@@ -169,7 +169,7 @@
     </set>
     where tripid = #{tripid,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yootk.oa.vo.Trip">
+  <update id="updateByPrimaryKey" parameterType="Trip">
     update trip
     set eid = #{eid,jdbcType=BIGINT},
       aim = #{aim,jdbcType=VARCHAR},
