@@ -2,6 +2,9 @@ package com.yootk.oa.dao;
 
 import com.yootk.dubbo.vo.Project;
 
+import java.util.List;
+import java.util.Map;
+
 public interface ProjectMapper {
     int deleteByPrimaryKey(Long proid);
 
@@ -14,4 +17,8 @@ public interface ProjectMapper {
     int updateByPrimaryKeySelective(Project record);
 
     int updateByPrimaryKey(Project record);
+
+    List<Project> findSplit(Map<String, Object> params);
+
+    int getAllRecorders(Map<String, Object> params);
 }
