@@ -1,8 +1,9 @@
 package com.yootk.dubbo.vo;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Overtime {
+public class Overtime implements Serializable {
     private Long otid;
 
     private Long eid;

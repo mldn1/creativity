@@ -1,6 +1,8 @@
 package com.yootk.dubbo.vo;
 
-public class ApprovalResult {
+import java.io.Serializable;
+
+public class ApprovalResult implements Serializable {
     private Long arid;
 
     private Integer result;

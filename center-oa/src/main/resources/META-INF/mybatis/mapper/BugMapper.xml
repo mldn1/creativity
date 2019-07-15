@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yootk.oa.dao.BugMapper">
+  <resultMap id="BaseResultMap" type="com.yootk.dubbo.vo.Bug">
+    <id column="bugid" jdbcType="BIGINT" property="bugid" />
+    <result column="rid" jdbcType="BIGINT" property="rid" />
+    <result column="tid" jdbcType="BIGINT" property="tid" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="period" jdbcType="INTEGER" property="period" />
+    <result column="createdate" jdbcType="TIMESTAMP" property="createdate" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+    <result column="founder" jdbcType="BIGINT" property="founder" />
+    <result column="assigned" jdbcType="BIGINT" property="assigned" />
+    <result column="send" jdbcType="BIGINT" property="send" />
+    <result column="completor" jdbcType="BIGINT" property="completor" />
+    <result column="resolvdate" jdbcType="TIMESTAMP" property="resolvdate" />
+    <result column="description" jdbcType="TEXT" property="description" />
+    <result column="system" jdbcType="VARCHAR" property="system" />
+    <result column="browser" jdbcType="VARCHAR" property="browser" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    bugid, rid, tid, title, period, createdate, state, founder, assigned, send, completor, 
+    resolvdate, description, system, browser
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from bug
+    where bugid = #{bugid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from bug
+    where bugid = #{bugid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yootk.oa.vo.Bug">
+    insert into bug (bugid, rid, tid, 
+      title, period, createdate, 
+      state, founder, assigned, 
+      send, completor, resolvdate, 
+      description, system, browser
+      )
+    values (#{bugid,jdbcType=BIGINT}, #{rid,jdbcType=BIGINT}, #{tid,jdbcType=BIGINT}, 
+      #{title,jdbcType=VARCHAR}, #{period,jdbcType=INTEGER}, #{createdate,jdbcType=TIMESTAMP}, 
+      #{state,jdbcType=INTEGER}, #{founder,jdbcType=BIGINT}, #{assigned,jdbcType=BIGINT}, 
+      #{send,jdbcType=BIGINT}, #{completor,jdbcType=BIGINT}, #{resolvdate,jdbcType=TIMESTAMP}, 
+      #{description,jdbcType=TEXT}, #{system,jdbcType=VARCHAR}, #{browser,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yootk.oa.vo.Bug">
+    insert into bug
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="bugid != null">
+        bugid,
+      </if>
+      <if test="rid != null">
+        rid,
+      </if>
+      <if test="tid != null">
+        tid,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="period != null">
+        period,
+      </if>
+      <if test="createdate != null">
+        createdate,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="founder != null">
+        founder,
+      </if>
+      <if test="assigned != null">
+        assigned,
+      </if>
+      <if test="send != null">
+        send,
+      </if>
+      <if test="completor != null">
+        completor,
+      </if>
+      <if test="resolvdate != null">
+        resolvdate,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="system != null">
+        system,
+      </if>
+      <if test="browser != null">
+        browser,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="bugid != null">
+        #{bugid,jdbcType=BIGINT},
+      </if>
+      <if test="rid != null">
+        #{rid,jdbcType=BIGINT},
+      </if>
+      <if test="tid != null">
+        #{tid,jdbcType=BIGINT},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="period != null">
+        #{period,jdbcType=INTEGER},
+      </if>
+      <if test="createdate != null">
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="founder != null">
+        #{founder,jdbcType=BIGINT},
+      </if>
+      <if test="assigned != null">
+        #{assigned,jdbcType=BIGINT},
+      </if>
+      <if test="send != null">
+        #{send,jdbcType=BIGINT},
+      </if>
+      <if test="completor != null">
+        #{completor,jdbcType=BIGINT},
+      </if>
+      <if test="resolvdate != null">
+        #{resolvdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=TEXT},
+      </if>
+      <if test="system != null">
+        #{system,jdbcType=VARCHAR},
+      </if>
+      <if test="browser != null">
+        #{browser,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yootk.oa.vo.Bug">
+    update bug
+    <set>
+      <if test="rid != null">
+        rid = #{rid,jdbcType=BIGINT},
+      </if>
+      <if test="tid != null">
+        tid = #{tid,jdbcType=BIGINT},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="period != null">
+        period = #{period,jdbcType=INTEGER},
+      </if>
+      <if test="createdate != null">
+        createdate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="founder != null">
+        founder = #{founder,jdbcType=BIGINT},
+      </if>
+      <if test="assigned != null">
+        assigned = #{assigned,jdbcType=BIGINT},
+      </if>
+      <if test="send != null">
+        send = #{send,jdbcType=BIGINT},
+      </if>
+      <if test="completor != null">
+        completor = #{completor,jdbcType=BIGINT},
+      </if>
+      <if test="resolvdate != null">
+        resolvdate = #{resolvdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=TEXT},
+      </if>
+      <if test="system != null">
+        system = #{system,jdbcType=VARCHAR},
+      </if>
+      <if test="browser != null">
+        browser = #{browser,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where bugid = #{bugid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yootk.oa.vo.Bug">
+    update bug
+    set rid = #{rid,jdbcType=BIGINT},
+      tid = #{tid,jdbcType=BIGINT},
+      title = #{title,jdbcType=VARCHAR},
+      period = #{period,jdbcType=INTEGER},
+      createdate = #{createdate,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=INTEGER},
+      founder = #{founder,jdbcType=BIGINT},
+      assigned = #{assigned,jdbcType=BIGINT},
+      send = #{send,jdbcType=BIGINT},
+      completor = #{completor,jdbcType=BIGINT},
+      resolvdate = #{resolvdate,jdbcType=TIMESTAMP},
+      description = #{description,jdbcType=TEXT},
+      system = #{system,jdbcType=VARCHAR},
+      browser = #{browser,jdbcType=VARCHAR}
+    where bugid = #{bugid,jdbcType=BIGINT}
+  </update>
+</mapper>

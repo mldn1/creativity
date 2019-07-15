@@ -1,6 +1,8 @@
 package com.yootk.dubbo.vo;
 
-public class Projectstate {
+import java.io.Serializable;
+
+public class Projectstate implements Serializable {
     private Long id;
 
     private String title;

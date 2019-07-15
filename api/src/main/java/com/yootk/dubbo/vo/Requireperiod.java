@@ -1,6 +1,8 @@
 package com.yootk.dubbo.vo;
 
-public class Requireperiod {
+import java.io.Serializable;
+
+public class Requireperiod implements Serializable {
     private Long id;
 
     private String title;

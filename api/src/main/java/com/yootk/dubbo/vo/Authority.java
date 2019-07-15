@@ -1,6 +1,8 @@
 package com.yootk.dubbo.vo;
 
-public class Authority {
+import java.io.Serializable;
+
+public class Authority implements Serializable {
     private Long authoid;
 
     private String title;

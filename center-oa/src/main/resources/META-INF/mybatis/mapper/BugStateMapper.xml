@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yootk.oa.dao.BugStateMapper">
+  <resultMap id="BaseResultMap" type="com.yootk.dubbo.vo.BugState">
+    <id column="bsid" jdbcType="INTEGER" property="bsid" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    bsid, title
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from bug_state
+    where bsid = #{bsid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from bug_state
+    where bsid = #{bsid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yootk.oa.vo.BugState">
+    insert into bug_state (bsid, title)
+    values (#{bsid,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yootk.oa.vo.BugState">
+    insert into bug_state
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="bsid != null">
+        bsid,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="bsid != null">
+        #{bsid,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yootk.oa.vo.BugState">
+    update bug_state
+    <set>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where bsid = #{bsid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yootk.oa.vo.BugState">
+    update bug_state
+    set title = #{title,jdbcType=VARCHAR}
+    where bsid = #{bsid,jdbcType=INTEGER}
+  </update>
+</mapper>

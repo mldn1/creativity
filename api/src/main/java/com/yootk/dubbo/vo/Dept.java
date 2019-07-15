@@ -1,6 +1,8 @@
 package com.yootk.dubbo.vo;
 
-public class Dept {
+import java.io.Serializable;
+
+public class Dept implements Serializable {
     private Long deptno;
 
     private String dname;

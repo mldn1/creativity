@@ -317,6 +317,6 @@
     </dependencies>
 
     <build>
-        <finalName>login</finalName>
+        <finalName>web-oa</finalName>
     </build>
 </project>

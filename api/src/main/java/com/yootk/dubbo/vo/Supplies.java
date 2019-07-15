@@ -1,6 +1,8 @@
 package com.yootk.dubbo.vo;
 
-public class Supplies {
+import java.io.Serializable;
+
+public class Supplies implements Serializable {
     private Long supid;
 
     private Long eid;

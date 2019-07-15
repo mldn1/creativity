@@ -1,6 +1,8 @@
 package com.yootk.dubbo.vo;
 
-public class Authoritygroup {
+import java.io.Serializable;
+
+public class Authoritygroup implements Serializable {
     private Long authoid;
 
     private Long gid;

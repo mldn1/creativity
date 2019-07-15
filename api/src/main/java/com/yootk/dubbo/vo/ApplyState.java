@@ -1,6 +1,8 @@
 package com.yootk.dubbo.vo;
 
-public class ApplyState {
+import java.io.Serializable;
+
+public class ApplyState implements Serializable {
     private Long asid;
 
     private Integer state;

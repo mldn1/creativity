@@ -1,6 +1,8 @@
 package com.yootk.dubbo.vo;
 
-public class Job {
+import java.io.Serializable;
+
+public class Job implements Serializable {
     private Long jid;
 
     private String job;
