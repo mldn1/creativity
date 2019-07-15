@@ -21,6 +21,7 @@ public class MemberPrivilegeServiceImpl implements IMemberPrivilegeService {
         Map<String,Object> data = this.roleAndActionService.get(mid) ;
         result.put("allRoles",(Set<String>)data.get("allRoles")) ;
         result.put("allActions",(Set<String>)data.get("allActions")) ;
+
         return result;
     }
 }
