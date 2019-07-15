@@ -1,8 +1,8 @@
 package com.yootk.admin.action;
 
-import com.yootk.util.action.AbstractAction;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 
 @Controller
 public class CommonAction {

@@ -6,7 +6,8 @@
         <artifactId>creativity</artifactId>
         <groupId>com.yootk</groupId>
         <version>1.0</version>
-    </parent>    <modelVersion>4.0.0</modelVersion>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
 
     <artifactId>center-oa</artifactId>
 
@@ -37,5 +38,6 @@
             <groupId>org.apache.curator</groupId>
             <artifactId>curator-framework</artifactId>
         </dependency>
+    </dependencies>
 
 </project>

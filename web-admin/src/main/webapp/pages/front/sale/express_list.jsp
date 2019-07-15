@@ -1,10 +1,10 @@
 <%@ page pageEncoding="UTF-8" %>
 <html>
 <head>
-    <jsp:include page="/WEB-INF/pages/plugins/include_basepath.jsp"/>
-    <jsp:include page="/WEB-INF/pages/plugins/include_head.jsp"/>
-<title>物流管理列表</title>
+    <jsp:include page="/pages/plugins/include_basepath.jsp"/>
+    <jsp:include page="/pages/plugins/include_head.jsp"/>
 </head>
+<title>物流管理列表</title>
 <body role="document">
 
 <div id="mainDiv">
