@@ -1,6 +1,8 @@
 package com.yootk.dubbo.vo;
 
-public class Requirestate {
+import java.io.Serializable;
+
+public class Requirestate implements Serializable {
     private Long id;
 
     private String title;

@@ -1,8 +1,9 @@
 package com.yootk.dubbo.vo;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Require {
+public class Require implements Serializable {
     private Long id;
 
     private Long proid;
