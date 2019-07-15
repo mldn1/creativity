@@ -1,8 +1,8 @@
 <%@ page pageEncoding="UTF-8" %>
 <html>
 <head>
-    <jsp:include page="/pages/plugins/include_basepath.jsp"/>
-    <jsp:include page="/pages/plugins/include_head.jsp"/>
+    <jsp:include page="/WEB-INF/pages/plugins/include_basepath.jsp"/>
+    <jsp:include page="/WEB-INF/pages/plugins/include_head.jsp"/>
 <title>物流管理列表</title>
 </head>
 <body role="document">

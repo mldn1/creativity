@@ -1,5 +1,6 @@
 package com.yootk.admin.action;
 
+import com.yootk.util.action.AbstractAction;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -15,7 +16,7 @@ public class CommonAction {
     }
     @RequestMapping("/logoutInfo")
     public String logoutInfo() {
-        return "logout_info";
+        return "logout_info" ;
     }
     @RequestMapping("/pages/failure")
     public String failure() {

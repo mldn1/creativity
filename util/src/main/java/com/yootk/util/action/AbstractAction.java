@@ -1,5 +1,6 @@
 package com.yootk.util.action;
 
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.web.bind.WebDataBinder;
@@ -26,6 +27,13 @@ public class AbstractAction {
     @Autowired
     private MessageSource messageSource ;
 
+    /**
+     * 获取当前用户登录使用的Id
+     * @return id
+     */
+    public String getEmpId(){
+        return (String) SecurityUtils.getSubject().getPrincipal();
+    }
     public String getUploadDir() {
         return "/upload/" ;
     }

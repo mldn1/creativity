@@ -46,6 +46,7 @@
                                 <input type="password" name="form-password" placeholder="请输入密码"
                                        class="form-password form-control" id="form-password">
                             </div>
+                            <input type="hidden" name="rememberme" id="rememberme" value="false">
                             <button type="submit" class="btn">登录</button>
                         </form>
                     </div>
