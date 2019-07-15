@@ -67,7 +67,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                    
+
 
                     <tr>
                       <td>2019-1-1</td>
@@ -75,13 +75,13 @@
                       <td>迟到</td>
                       <td>111.111.111.1</td>
                     </tr>
-                    
+
                     <tr>
                       <td colspan="4">无记录可看</td>
                     </tr>
-                    
+
                     </tbody>
-                    
+
                   </table>
                    <jsp:include page="/pages/plugins/split_page_bar_plugin.jsp"/> </div>
               </div>
@@ -129,45 +129,45 @@ $(function(){
 		html += '<option value="{{.year}}-'+addZero(i)+'">{{.year}}年'+addZero(i)+'月</option>';
 	}
 	$('#ym').html(html);
-	
+
 	$('#ym').on('change', function(){
 		window.location.href='/checkwork/manage?date='+$(this).val();
 	});
-	$('#ym option').each(function(i){	  
+	$('#ym option').each(function(i){
 		if ({{.condArr.date}} == $(this).attr('value')) {
 			$(this).attr('selected', true);
 		}
-	});	
-	
+	});
+
 	//考勤
 	$.ajax({
    		success:function(result, status, xhr){
 	        var originalDate = new Date(xhr.getResponseHeader("Date"));
-	        var date = originalDate// + (3600000 * 8);     
+	        var date = originalDate// + (3600000 * 8);
 			callbackTime(date)
     	}
-	});	
+	});
 	var srv_nowtime;
 	function callbackTime(req){
-	    srv_nowtime = new Date(req).getTime();	
+	    srv_nowtime = new Date(req).getTime();
 	    showTime();
 	    window.setInterval(showTime, 1000);
-	}  
+	}
 	function showTime(){
 	    srv_nowtime += 1000;
-	    var nowtime = new Date(srv_nowtime);		
-	    $('#js-clock span').text(addZero(nowtime.getHours())+":"+addZero(nowtime.getMinutes())+":"+addZero(nowtime.getSeconds()));       
+	    var nowtime = new Date(srv_nowtime);
+	    $('#js-clock span').text(addZero(nowtime.getHours())+":"+addZero(nowtime.getMinutes())+":"+addZero(nowtime.getSeconds()));
 	}
-		
+
 	$('#js-clock').on('click', function(){
 		var that = $(this);
 		var time = that.find('span').text();
 		$.post('/checkwork/ajax/clock', { clock: time },function(data){
 			dialogInfo(data.message);
-			setTimeout(function(){ $('#dialogInfo').modal('hide'); }, 2000);			
+			setTimeout(function(){ $('#dialogInfo').modal('hide'); }, 2000);
 		},'json');
 	});
-	
+
 })
 </script>
 </body>

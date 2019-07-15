@@ -2,6 +2,7 @@ package com.yootk.oa.dao;
 
 import com.yootk.dubbo.vo.Checkork;
 
+import java.util.List;
 import java.util.Map;
 
 public interface CheckorkMapper {
@@ -23,5 +24,5 @@ public interface CheckorkMapper {
      * @return 返回权限表的对象
      * @throws Exception 抛出异常
      */
-    public Checkork findSplitByEid(Map<String,Object> map) throws Exception;
+    public List<Checkork> findSplitByEid(Map<String,Object> map) throws Exception;
 }

@@ -1,7 +1,7 @@
 package com.yootk.admin.realm;
 
+import com.alibaba.dubbo.config.annotation.Reference;
 import com.yootk.admin.filter.token.OAuthToken;
-import com.yootk.admin.service.IMemberPrivilegeService;
 import org.apache.oltu.oauth2.client.OAuthClient;
 import org.apache.oltu.oauth2.client.URLConnectionClient;
 import org.apache.oltu.oauth2.client.request.OAuthBearerClientRequest;
@@ -15,14 +15,13 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Map;
 import java.util.Set;
 
 // 此处不使用扫描配置，通过bean配置文件的模式来完成
 public class OAuthRealm extends AuthorizingRealm {
-    @Autowired
+    @Reference
     private IMemberPrivilegeService memberPrivilegeService ;
     private String clientId ; // 客户端id
     private String clientSecret ; // 客户端密码

@@ -1,6 +1,9 @@
-package com.yootk.dubbo.service;
+package com.yootk.dubbo.service.oa.checkork;
 
 import com.yootk.dubbo.vo.Checkork;
+
+import java.util.List;
+
 public interface ICheckorkService {
 
         /**
@@ -8,8 +11,9 @@ public interface ICheckorkService {
          * @param eid 用户id
          * @param currentPage 当前页
          * @param lineSize 每页存放的长度
-         * @return 返回Checkork（考勤表）对象
+         * @return 返回Checkork（考勤表）的list集合
          * @throws Exception 抛出异常
          */
-        public Checkork list(Long eid, Long currentPage, Integer lineSize) throws Exception ;
+        public List<Checkork> list(Long eid, Long currentPage, Integer lineSize) throws Exception ;
 }
+
