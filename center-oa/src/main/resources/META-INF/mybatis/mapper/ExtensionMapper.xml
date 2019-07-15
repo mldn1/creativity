@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yootk.oa.dao.ExtensionMapper">
-  <resultMap id="BaseResultMap" type="com.yootk.dubbo.vo.Extension">
+  <resultMap id="BaseResultMap" type="Extension">
     <id column="extid" jdbcType="BIGINT" property="extid" />
     <result column="channelid" jdbcType="INTEGER" property="channelid" />
     <result column="plane" jdbcType="VARCHAR" property="plane" />
@@ -26,7 +26,7 @@
     delete from extension
     where extid = #{extid,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.yootk.dubbo.vo.Extension">
+  <insert id="insert" parameterType="Extension">
     insert into extension (extid, channelid, plane, 
       unit, keyword, code, link, 
       state, count, eid)
@@ -34,7 +34,7 @@
       #{unit,jdbcType=VARCHAR}, #{keyword,jdbcType=VARCHAR}, #{code,jdbcType=TEXT}, #{link,jdbcType=VARCHAR}, 
       #{state,jdbcType=BIGINT}, #{count,jdbcType=INTEGER}, #{eid,jdbcType=BIGINT})
   </insert>
-  <insert id="insertSelective" parameterType="com.yootk.dubbo.vo.Extension">
+  <insert id="insertSelective" parameterType="Extension">
     insert into extension
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="extid != null">
@@ -101,7 +101,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yootk.dubbo.vo.Extension">
+  <update id="updateByPrimaryKeySelective" parameterType="Extension">
     update extension
     <set>
       <if test="channelid != null">
@@ -134,7 +134,7 @@
     </set>
     where extid = #{extid,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yootk.dubbo.vo.Extension">
+  <update id="updateByPrimaryKey" parameterType="Extension">
     update extension
     set channelid = #{channelid,jdbcType=INTEGER},
       plane = #{plane,jdbcType=VARCHAR},

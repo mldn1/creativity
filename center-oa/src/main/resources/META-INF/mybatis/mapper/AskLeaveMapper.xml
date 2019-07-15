@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yootk.oa.dao.AskLeaveMapper">
-  <resultMap id="BaseResultMap" type="com.yootk.dubbo.vo.AskLeave">
+  <resultMap id="BaseResultMap" type="AskLeave">
     <id column="alid" jdbcType="BIGINT" property="alid" />
     <result column="eid" jdbcType="BIGINT" property="eid" />
     <result column="type" jdbcType="INTEGER" property="type" />
@@ -29,7 +29,7 @@
     delete from ask_leave
     where alid = #{alid,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.yootk.oa.vo.AskLeave">
+  <insert id="insert" parameterType="AskLeave">
     insert into ask_leave (alid, eid, type, 
       startdate, enddate, reason, 
       picture, approver, note, 
@@ -41,7 +41,7 @@
       #{state,jdbcType=INTEGER}, #{result,jdbcType=INTEGER}, #{progress,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.yootk.oa.vo.AskLeave">
+  <insert id="insertSelective" parameterType="AskLeave">
     insert into ask_leave
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="alid != null">
@@ -120,7 +120,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yootk.oa.vo.AskLeave">
+  <update id="updateByPrimaryKeySelective" parameterType="AskLeave">
     update ask_leave
     <set>
       <if test="eid != null">
@@ -159,7 +159,7 @@
     </set>
     where alid = #{alid,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yootk.oa.vo.AskLeave">
+  <update id="updateByPrimaryKey" parameterType="AskLeave">
     update ask_leave
     set eid = #{eid,jdbcType=BIGINT},
       type = #{type,jdbcType=INTEGER},

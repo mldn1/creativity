@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yootk.oa.dao.EducationMapper">
-  <resultMap id="BaseResultMap" type="com.yootk.dubbo.vo.Education">
+  <resultMap id="BaseResultMap" type="Education">
     <id column="eduid" jdbcType="BIGINT" property="eduid" />
     <result column="title" jdbcType="VARCHAR" property="title" />
   </resultMap>
@@ -18,11 +18,11 @@
     delete from education
     where eduid = #{eduid,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.yootk.oa.vo.Education">
+  <insert id="insert" parameterType="Education">
     insert into education (eduid, title)
     values (#{eduid,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.yootk.oa.vo.Education">
+  <insert id="insertSelective" parameterType="Education">
     insert into education
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="eduid != null">
@@ -41,7 +41,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yootk.oa.vo.Education">
+  <update id="updateByPrimaryKeySelective" parameterType="Education">
     update education
     <set>
       <if test="title != null">
@@ -50,7 +50,7 @@
     </set>
     where eduid = #{eduid,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yootk.oa.vo.Education">
+  <update id="updateByPrimaryKey" parameterType="Education">
     update education
     set title = #{title,jdbcType=VARCHAR}
     where eduid = #{eduid,jdbcType=BIGINT}

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yootk.oa.dao.EvectionMapper">
-  <resultMap id="BaseResultMap" type="com.yootk.dubbo.vo.Evection">
+  <resultMap id="BaseResultMap" type="Evection">
     <id column="eveid" jdbcType="BIGINT" property="eveid" />
     <result column="eid" jdbcType="BIGINT" property="eid" />
     <result column="aim" jdbcType="VARCHAR" property="aim" />
@@ -30,7 +30,7 @@
     delete from evection
     where eveid = #{eveid,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.yootk.oa.vo.Evection">
+  <insert id="insert" parameterType="Evection">
     insert into evection (eveid, eid, aim, 
       startdate, endtime, days, 
       reason, picture, approver, 
@@ -42,7 +42,7 @@
       #{note,jdbcType=TEXT}, #{state,jdbcType=INTEGER}, #{result,jdbcType=INTEGER}, #{progress,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.yootk.oa.vo.Evection">
+  <insert id="insertSelective" parameterType="Evection">
     insert into evection
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="eveid != null">
@@ -127,7 +127,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yootk.oa.vo.Evection">
+  <update id="updateByPrimaryKeySelective" parameterType="Evection">
     update evection
     <set>
       <if test="eid != null">
@@ -169,7 +169,7 @@
     </set>
     where eveid = #{eveid,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yootk.oa.vo.Evection">
+  <update id="updateByPrimaryKey" parameterType="Evection">
     update evection
     set eid = #{eid,jdbcType=BIGINT},
       aim = #{aim,jdbcType=VARCHAR},

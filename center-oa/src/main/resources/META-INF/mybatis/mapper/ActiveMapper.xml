@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yootk.oa.dao.ActiveMapper">
-  <resultMap id="BaseResultMap" type="com.yootk.dubbo.vo.Active">
+  <resultMap id="BaseResultMap" type="Active">
     <id column="aid" jdbcType="BIGINT" property="aid" />
     <result column="title" jdbcType="VARCHAR" property="title" />
     <result column="description" jdbcType="VARCHAR" property="description" />
@@ -31,7 +31,7 @@
     delete from active
     where aid = #{aid,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.yootk.dubbo.vo.Active">
+  <insert id="insert" parameterType="Active">
     insert into active (aid, title, description, 
       context, type, mgrade, 
       count, startdate, enddate, 
@@ -43,7 +43,7 @@
       #{gid,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER}, #{createdate,jdbcType=TIMESTAMP}, 
       #{editdate,jdbcType=TIMESTAMP}, #{eid,jdbcType=BIGINT})
   </insert>
-  <insert id="insertSelective" parameterType="com.yootk.dubbo.vo.Active">
+  <insert id="insertSelective" parameterType="Active">
     insert into active
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="aid != null">
@@ -134,7 +134,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yootk.dubbo.vo.Active">
+  <update id="updateByPrimaryKeySelective" parameterType="Active">
     update active
     <set>
       <if test="title != null">
@@ -179,7 +179,7 @@
     </set>
     where aid = #{aid,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yootk.dubbo.vo.Active">
+  <update id="updateByPrimaryKey" parameterType="Active">
     update active
     set title = #{title,jdbcType=VARCHAR},
       description = #{description,jdbcType=VARCHAR},
