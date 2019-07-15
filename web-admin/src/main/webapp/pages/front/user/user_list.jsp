@@ -3,8 +3,7 @@
 <head>
     <jsp:include page="/pages/plugins/include_basepath.jsp"/>
     <jsp:include page="/pages/plugins/include_head.jsp"/>
-</head>
-<body role="document">
+</head>le="document">
 
 <div id="mainDiv">
   <div style="width: 98%; margin-left:auto; margin-right:auto; text-align:left;">

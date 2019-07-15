@@ -1,4 +1,4 @@
-package com.yootk.authz.main;
+package com.yootk.oa.main;
 
 import com.alibaba.dubbo.container.Main;
 

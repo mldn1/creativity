@@ -3,6 +3,7 @@ package com.yootk.login.service.impl;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.yootk.dubbo.service.IClientService;
 import com.yootk.dubbo.service.IEmpService;
+import com.yootk.dubbo.service.IMemberService;
 import com.yootk.dubbo.vo.Client;
 import com.yootk.dubbo.vo.Emp;
 import com.yootk.dubbo.vo.Member;
@@ -17,8 +18,8 @@ public class OAuthServiceImpl implements IOAuthService {
     private IEmpService empService;
 
     @Override
-    public Emp getEmp(String phone) {
-        return this.empService.get(phone);
+    public Emp getEmp(String mid) {
+        return this.empService.get(mid);
     }
     @Override
     public Client get(String mid) {

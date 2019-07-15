@@ -3,8 +3,8 @@
 <head>
     <jsp:include page="/pages/plugins/include_basepath.jsp"/>
     <jsp:include page="/pages/plugins/include_head.jsp"/>
-<title>物流管理列表</title>
 </head>
+<title>物流管理列表</title>
 <body role="document">
 
 <div id="mainDiv">
