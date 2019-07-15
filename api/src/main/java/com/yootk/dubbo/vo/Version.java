@@ -1,8 +1,9 @@
 package com.yootk.dubbo.vo;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Version {
+public class Version implements Serializable {
     private Long verid;
 
     private Long proid;

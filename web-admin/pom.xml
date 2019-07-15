@@ -12,7 +12,7 @@
     <artifactId>web-admin</artifactId>
     <packaging>war</packaging>
 
-    <name>web-mall Maven Webapp</name>
+    <name>web-admin Maven Webapp</name>
     <url>http://www.example.com</url>
 
     <dependencies>
@@ -229,7 +229,7 @@
         <!-- WEB依赖 -->
         <dependency>
             <groupId>javax.servlet.jsp.jstl</groupId>
-            <artifactId>jstl</artifactId>
+            <artifactId>jstl-api</artifactId>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>

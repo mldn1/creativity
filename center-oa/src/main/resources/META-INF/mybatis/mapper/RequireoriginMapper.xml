@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yootk.oa.dao.RequireoriginMapper">
-  <resultMap id="BaseResultMap" type="com.yootk.dubbo.vo.Requireorigin">
+  <resultMap id="BaseResultMap" type="Requireorigin">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="title" jdbcType="VARCHAR" property="title" />
   </resultMap>
@@ -18,11 +18,11 @@
     delete from require_origin
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.yootk.dubbo.vo.Requireorigin">
+  <insert id="insert" parameterType="Requireorigin">
     insert into require_origin (id, title)
     values (#{id,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.yootk.dubbo.vo.Requireorigin">
+  <insert id="insertSelective" parameterType="Requireorigin">
     insert into require_origin
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -41,7 +41,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yootk.dubbo.vo.Requireorigin">
+  <update id="updateByPrimaryKeySelective" parameterType="Requireorigin">
     update require_origin
     <set>
       <if test="title != null">
@@ -50,7 +50,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yootk.dubbo.vo.Requireorigin">
+  <update id="updateByPrimaryKey" parameterType="Requireorigin">
     update require_origin
     set title = #{title,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}

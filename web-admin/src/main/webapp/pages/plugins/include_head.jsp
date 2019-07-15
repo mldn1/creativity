@@ -108,7 +108,7 @@
                             <shiro:hasPermission name="malloperation:article">
                             <li><a href="pages/front/operate/article_list.jsp">文章管理</a></li>
                             </shiro:hasPermission>
-                            <shiro:hasPermission name="">
+                            <shiro:hasPermission name="malloperation:activity">
                             <li><a href="pages/front/operate/activities_list.jsp">活动管理</a></li>
                             </shiro:hasPermission>
                             <shiro:hasPermission name="malloperation:activity">

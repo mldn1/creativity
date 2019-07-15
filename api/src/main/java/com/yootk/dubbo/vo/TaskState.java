@@ -1,6 +1,8 @@
 package com.yootk.dubbo.vo;
 
-public class TaskState {
+import java.io.Serializable;
+
+public class TaskState implements Serializable {
     private Integer tsid;
 
     private String title;

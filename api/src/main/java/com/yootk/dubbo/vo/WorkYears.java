@@ -1,6 +1,8 @@
 package com.yootk.dubbo.vo;
 
-public class WorkYears {
+import java.io.Serializable;
+
+public class WorkYears implements Serializable {
     private Long wyid;
 
     private String title;

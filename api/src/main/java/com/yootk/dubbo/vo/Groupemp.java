@@ -1,6 +1,8 @@
 package com.yootk.dubbo.vo;
 
-public class Groupemp {
+import java.io.Serializable;
+
+public class Groupemp implements Serializable {
     private Long gid;
 
     private Long eid;

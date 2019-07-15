@@ -11,6 +11,15 @@
   <sql id="Base_Column_List">
     coid, eid, datetime, state, ip
   </sql>
+  <select id="findSplitByEid" parameterType="java.util.Map" resultType="Checkork">
+    select coid,eid,datetime,state,ip from checkork
+    <where>
+      <if test="eid!=null">
+        eid=#{eid}
+      </if>
+    </where>
+    limit #{start},#{end}
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

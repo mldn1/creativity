@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yootk.oa.dao.VersionMapper">
-  <resultMap id="BaseResultMap" type="com.yootk.dubbo.vo.Version">
+  <resultMap id="BaseResultMap" type="Version">
     <id column="verid" jdbcType="BIGINT" property="verid" />
     <result column="proid" jdbcType="BIGINT" property="proid" />
     <result column="founder" jdbcType="BIGINT" property="founder" />
@@ -27,7 +27,7 @@
     delete from version
     where verid = #{verid,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.yootk.oa.vo.Version">
+  <insert id="insert" parameterType="Version">
     insert into version (verid, proid, founder, 
       version, packagedate, createdate, 
       source, download, distribution, 
@@ -37,7 +37,7 @@
       #{source,jdbcType=VARCHAR}, #{download,jdbcType=VARCHAR}, #{distribution,jdbcType=VARCHAR}, 
       #{description,jdbcType=TEXT})
   </insert>
-  <insert id="insertSelective" parameterType="com.yootk.oa.vo.Version">
+  <insert id="insertSelective" parameterType="Version">
     insert into version
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="verid != null">
@@ -104,7 +104,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yootk.oa.vo.Version">
+  <update id="updateByPrimaryKeySelective" parameterType="Version">
     update version
     <set>
       <if test="proid != null">
@@ -137,7 +137,7 @@
     </set>
     where verid = #{verid,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yootk.oa.vo.Version">
+  <update id="updateByPrimaryKey" parameterType="Version">
     update version
     set proid = #{proid,jdbcType=BIGINT},
       founder = #{founder,jdbcType=BIGINT},

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yootk.oa.dao.JobMapper">
-  <resultMap id="BaseResultMap" type="com.yootk.dubbo.vo.Job">
+  <resultMap id="BaseResultMap" type="Job">
     <id column="jid" jdbcType="BIGINT" property="jid" />
     <result column="job" jdbcType="VARCHAR" property="job" />
     <result column="description" jdbcType="VARCHAR" property="description" />
@@ -20,13 +20,13 @@
     delete from job
     where jid = #{jid,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.yootk.dubbo.vo.Job">
+  <insert id="insert" parameterType="Job">
     insert into job (jid, job, description, 
       state)
     values (#{jid,jdbcType=BIGINT}, #{job,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
       #{state,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.yootk.dubbo.vo.Job">
+  <insert id="insertSelective" parameterType="Job">
     insert into job
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="jid != null">
@@ -57,7 +57,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yootk.dubbo.vo.Job">
+  <update id="updateByPrimaryKeySelective" parameterType="Job">
     update job
     <set>
       <if test="job != null">
@@ -72,7 +72,7 @@
     </set>
     where jid = #{jid,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yootk.dubbo.vo.Job">
+  <update id="updateByPrimaryKey" parameterType="Job">
     update job
     set job = #{job,jdbcType=VARCHAR},
       description = #{description,jdbcType=VARCHAR},

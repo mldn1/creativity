@@ -38,7 +38,7 @@
         <!-- 定义所有使用的开发包的版本 -->
         <!-- Dubbo与Zookeeper依赖版本 -->
         <dubbo.version>2.5.10</dubbo.version>
-        <zookeeper.version>3.5.5</zookeeper.version>
+        <zookeeper.version>3.4.14</zookeeper.version>
         <netty.version>4.1.36.Final</netty.version>
         <jms-api.version>2.0.1</jms-api.version>
         <fastjson.version>1.2.58</fastjson.version>
@@ -401,7 +401,7 @@
             <!-- WEB依赖 -->
             <dependency>
                 <groupId>javax.servlet.jsp.jstl</groupId>
-                <artifactId>jstl</artifactId>
+                <artifactId>jstl-api</artifactId>
                 <version>${jstl.version}</version>
             </dependency>
             <dependency>

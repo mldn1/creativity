@@ -1,6 +1,8 @@
 package com.yootk.dubbo.vo;
 
-public class Newstype {
+import java.io.Serializable;
+
+public class Newstype implements Serializable {
     private Long id;
 
     private String title;

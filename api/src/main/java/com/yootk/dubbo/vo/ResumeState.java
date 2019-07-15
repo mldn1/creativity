@@ -1,6 +1,8 @@
 package com.yootk.dubbo.vo;
 
-public class ResumeState {
+import java.io.Serializable;
+
+public class ResumeState implements Serializable {
     private Long rsid;
 
     private String title;

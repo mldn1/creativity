@@ -229,7 +229,7 @@
         <!-- WEB依赖 -->
         <dependency>
             <groupId>javax.servlet.jsp.jstl</groupId>
-            <artifactId>jstl</artifactId>
+            <artifactId>jstl-api</artifactId>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
