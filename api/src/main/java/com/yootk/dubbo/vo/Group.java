@@ -1,6 +1,8 @@
 package com.yootk.dubbo.vo;
 
-public class Group {
+import java.io.Serializable;
+
+public class Group implements Serializable {
     private Long gid;
 
     private String title;

@@ -1,6 +1,8 @@
 package com.yootk.dubbo.vo;
 
-public class Activetype {
+import java.io.Serializable;
+
+public class Activetype implements Serializable {
     private Long id;
 
     private String title;

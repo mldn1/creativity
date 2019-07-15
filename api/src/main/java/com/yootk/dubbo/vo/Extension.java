@@ -1,6 +1,8 @@
 package com.yootk.dubbo.vo;
 
-public class Extension {
+import java.io.Serializable;
+
+public class Extension implements Serializable {
     private Long extid;
 
     private Integer channelid;

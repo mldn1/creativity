@@ -1,8 +1,9 @@
 package com.yootk.dubbo.vo;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Checkork {
+public class Checkork implements Serializable {
     private Long coid;
 
     private Long eid;

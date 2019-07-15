@@ -1,6 +1,8 @@
 package com.yootk.dubbo.vo;
 
-public class LeaveType {
+import java.io.Serializable;
+
+public class LeaveType implements Serializable {
     private Long ltid;
 
     private String title;
