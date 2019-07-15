@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yootk.oa.dao.ReimbursementMapper">
-  <resultMap id="BaseResultMap" type="com.yootk.dubbo.vo.Reimbursement">
+  <resultMap id="BaseResultMap" type="Reimbursement">
     <id column="reiid" jdbcType="BIGINT" property="reiid" />
     <result column="eid" jdbcType="BIGINT" property="eid" />
     <result column="type" jdbcType="VARCHAR" property="type" />
@@ -27,7 +27,7 @@
     delete from reimbursement
     where reiid = #{reiid,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.yootk.oa.vo.Reimbursement">
+  <insert id="insert" parameterType="Reimbursement">
     insert into reimbursement (reiid, eid, type, 
       money, details, picture, 
       approver, note, state, 
@@ -37,7 +37,7 @@
       #{approver,jdbcType=BIGINT}, #{note,jdbcType=TEXT}, #{state,jdbcType=INTEGER}, 
       #{result,jdbcType=INTEGER}, #{progress,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.yootk.oa.vo.Reimbursement">
+  <insert id="insertSelective" parameterType="Reimbursement">
     insert into reimbursement
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="reiid != null">
@@ -110,7 +110,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yootk.oa.vo.Reimbursement">
+  <update id="updateByPrimaryKeySelective" parameterType="Reimbursement">
     update reimbursement
     <set>
       <if test="eid != null">
@@ -146,7 +146,7 @@
     </set>
     where reiid = #{reiid,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yootk.oa.vo.Reimbursement">
+  <update id="updateByPrimaryKey" parameterType="Reimbursement">
     update reimbursement
     set eid = #{eid,jdbcType=BIGINT},
       type = #{type,jdbcType=VARCHAR},

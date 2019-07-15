@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yootk.oa.dao.ProjectMapper">
-  <resultMap id="BaseResultMap" type="com.yootk.dubbo.vo.Project">
+  <resultMap id="BaseResultMap" type="Project">
     <id column="proid" jdbcType="BIGINT" property="proid" />
     <result column="title" jdbcType="VARCHAR" property="title" />
     <result column="alias" jdbcType="VARCHAR" property="alias" />
@@ -29,7 +29,7 @@
     delete from project
     where proid = #{proid,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.yootk.dubbo.vo.Project">
+  <insert id="insert" parameterType="Project">
     insert into project (proid, title, alias, 
       founder, head, pl, tl, 
       startdate, enddate, description, 
@@ -39,7 +39,7 @@
       #{startdate,jdbcType=TIMESTAMP}, #{enddate,jdbcType=TIMESTAMP}, #{description,jdbcType=TEXT}, 
       #{state,jdbcType=INTEGER}, #{workinghours,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.yootk.dubbo.vo.Project">
+  <insert id="insertSelective" parameterType="Project">
     insert into project
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="proid != null">
@@ -118,7 +118,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yootk.dubbo.vo.Project">
+  <update id="updateByPrimaryKeySelective" parameterType="Project">
     update project
     <set>
       <if test="title != null">
@@ -157,7 +157,7 @@
     </set>
     where proid = #{proid,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yootk.dubbo.vo.Project">
+  <update id="updateByPrimaryKey" parameterType="Project">
     update project
     set title = #{title,jdbcType=VARCHAR},
       alias = #{alias,jdbcType=VARCHAR},

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yootk.oa.dao.OvertimeMapper">
-  <resultMap id="BaseResultMap" type="com.yootk.dubbo.vo.Overtime">
+  <resultMap id="BaseResultMap" type="Overtime">
     <id column="otid" jdbcType="BIGINT" property="otid" />
     <result column="eid" jdbcType="BIGINT" property="eid" />
     <result column="startdate" jdbcType="TIMESTAMP" property="startdate" />
@@ -30,7 +30,7 @@
     delete from overtime
     where otid = #{otid,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.yootk.oa.vo.Overtime">
+  <insert id="insert" parameterType="Overtime">
     insert into overtime (otid, eid, startdate, 
       enddate, time, method, 
       islegalholiday, reason, approver, 
@@ -42,7 +42,7 @@
       #{note,jdbcType=TEXT}, #{state,jdbcType=INTEGER}, #{result,jdbcType=INTEGER}, #{progress,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.yootk.oa.vo.Overtime">
+  <insert id="insertSelective" parameterType="Overtime">
     insert into overtime
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="otid != null">
@@ -127,7 +127,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yootk.oa.vo.Overtime">
+  <update id="updateByPrimaryKeySelective" parameterType="Overtime">
     update overtime
     <set>
       <if test="eid != null">
@@ -169,7 +169,7 @@
     </set>
     where otid = #{otid,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yootk.oa.vo.Overtime">
+  <update id="updateByPrimaryKey" parameterType="Overtime">
     update overtime
     set eid = #{eid,jdbcType=BIGINT},
       startdate = #{startdate,jdbcType=TIMESTAMP},

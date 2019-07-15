@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yootk.oa.dao.NewsMapper">
-  <resultMap id="BaseResultMap" type="com.yootk.dubbo.vo.News">
+  <resultMap id="BaseResultMap" type="News">
     <id column="nid" jdbcType="BIGINT" property="nid" />
     <result column="title" jdbcType="VARCHAR" property="title" />
     <result column="shorttitle" jdbcType="VARCHAR" property="shorttitle" />
@@ -30,7 +30,7 @@
     delete from news
     where nid = #{nid,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.yootk.dubbo.vo.News">
+  <insert id="insert" parameterType="News">
     insert into news (nid, title, shorttitle, 
       overview, context, type, 
       position, state, sort, 
@@ -42,7 +42,7 @@
       #{createdate,jdbcType=TIMESTAMP}, #{editdate,jdbcType=TIMESTAMP}, #{count,jdbcType=BIGINT}, 
       #{eid,jdbcType=BIGINT})
   </insert>
-  <insert id="insertSelective" parameterType="com.yootk.dubbo.vo.News">
+  <insert id="insertSelective" parameterType="News">
     insert into news
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="nid != null">
@@ -127,7 +127,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yootk.dubbo.vo.News">
+  <update id="updateByPrimaryKeySelective" parameterType="News">
     update news
     <set>
       <if test="title != null">
@@ -169,7 +169,7 @@
     </set>
     where nid = #{nid,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yootk.dubbo.vo.News">
+  <update id="updateByPrimaryKey" parameterType="News">
     update news
     set title = #{title,jdbcType=VARCHAR},
       shorttitle = #{shorttitle,jdbcType=VARCHAR},
