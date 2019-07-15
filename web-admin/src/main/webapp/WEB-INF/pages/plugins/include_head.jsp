@@ -84,7 +84,7 @@
                                                            data-toggle="dropdown">产品管理<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                             <shiro:hasPermission name="mallproduct:classify">
-                            <li><a href="pages/front/product/class_list.jsp">分类管理</a></li>
+                            <li><a href="pages/front/product/class_list.action">分类管理</a></li>
                             </shiro:hasPermission>
                             <shiro:hasPermission name="mallproduct:gallery">
                             <li><a href="pages/front/product/pic_list.jsp">产品图库管理</a></li>

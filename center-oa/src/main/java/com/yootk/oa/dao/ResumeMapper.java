@@ -1,6 +1,6 @@
 package com.yootk.oa.dao;
 
-import com.yootk.oa.vo.Resume;
+import com.yootk.dubbo.vo.Resume;
 
 public interface ResumeMapper {
     int deleteByPrimaryKey(Long resid);

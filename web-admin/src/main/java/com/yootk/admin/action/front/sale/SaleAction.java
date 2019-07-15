@@ -1,4 +1,4 @@
-package com.yootk.admin.action;
+package com.yootk.admin.action.front.sale;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

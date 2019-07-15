@@ -1,6 +1,6 @@
 package com.yootk.oa.dao;
 
-import com.yootk.oa.vo.Bug;
+import com.yootk.dubbo.vo.Bug;
 
 public interface BugMapper {
     int deleteByPrimaryKey(Long bugid);

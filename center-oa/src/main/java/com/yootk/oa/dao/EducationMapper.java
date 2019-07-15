@@ -1,6 +1,6 @@
 package com.yootk.oa.dao;
 
-import com.yootk.oa.vo.Education;
+import com.yootk.dubbo.vo.Education;
 
 public interface EducationMapper {
     int deleteByPrimaryKey(Long eduid);

@@ -122,5 +122,4 @@
             <artifactId>server-common</artifactId>
         </dependency>
     </dependencies>
-
 </project>

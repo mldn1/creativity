@@ -1,8 +1,8 @@
-package com.yootk.authz.main;
+package com.yootk.admin.main;
 
 import com.alibaba.dubbo.container.Main;
 
-public class StartAuthorizationService {
+public class StartAdminService {
     public static void main(String[] args) {
         Main.main(args);
     }
