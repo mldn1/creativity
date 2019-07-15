@@ -1,8 +1,8 @@
-package com.yootk.admin.vo;
+package com.yootk.dubbo.vo;
 
 import java.io.Serializable;
 
-public class Catogery implements Serializable {
+public class Category implements Serializable {
     private Long cid ;  //分类id，自增
     private String title ;  //分类名
     private Integer grade ;//分类级别
@@ -14,7 +14,7 @@ public class Catogery implements Serializable {
     private Integer state;//分类状态，0打开，1关闭
     private Long eid;//操作员工eid
 
-    public Catogery() {}
+    public Category() {}
 
     @Override
     public String toString() {

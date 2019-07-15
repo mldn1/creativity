@@ -1,8 +1,10 @@
 <%@ page pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <jsp:include page="/WEB-INF/pages/plugins/include_basepath.jsp"/>
     <jsp:include page="/WEB-INF/pages/plugins/include_head.jsp"/>
+    <script type="text/javascript" src="/WEB-INF/js/pages/front/product/class_list.js"></script>
 </head>
 <body role="document">
 
@@ -16,10 +18,9 @@
       <tr>
         <td><div id="tree">
          <ul>
-		 <li>瓷器</li>
-		 	 <li>文具</li>
-			 <li>服装</li>
-			<li>帽子</li>
+             <c:forEach items="${firstCategory}" var="category">
+		        <li>${category.title}</li>
+             </c:forEach>
 		 </ul>
         </div></td>
       </tr>
@@ -35,13 +36,4 @@
 </div>
 </div>
 </body>
-<script>
-$(function(){
-	$('#Commodity').addClass('active');
-});
-$('#myModal').modal({
-	backdrop: "static",
-	show: false
-})
-</script>
 </html>
