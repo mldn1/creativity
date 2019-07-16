@@ -15,7 +15,7 @@
     <!-- 定义Dubbo服务的提供者的相关处理配置，配置要使用的名称以及发布的端口 -->
     <dubbo:protocol name="dubbo" port="${dubbo.protocol.port}" />
     <dubbo:provider timeout="${dubbo.provider.timeout}" dispatcher="message" threadpool="fixed" threads="4"/>
-    <dubbo:annotation package="com.yootk.authz.service.impl"/>  <!-- 扫描路径 -->
+    <dubbo:annotation package="com.yootk.mall.service.impl"/>  <!-- 扫描路径 -->
     <!-- 将远程接口的实现子类配置到服务之中，这一个是关键的步骤 -->
     <!--<dubbo:provider timeout="${dubbo.provider.timeout}"
                     dispatcher="message" threadpool="fixed" threads="8" token="true"/>-->
