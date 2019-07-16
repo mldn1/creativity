@@ -1,17 +1,21 @@
 package com.yootk.admin.action.organization;
 
+import com.alibaba.fastjson.JSONObject;
 import com.yootk.admin.service.organization.IGroupClientService;
+import com.yootk.dubbo.vo.Group;
 import com.yootk.util.action.AbstractAction;
 import com.yootk.util.split.SplitPageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Map;
 
 @Controller
 @RequestMapping("/pages/back/admin/groups/*")
+@ResponseBody
 public class GroupAction extends AbstractAction {
 
     @Autowired
@@ -26,6 +30,16 @@ public class GroupAction extends AbstractAction {
         System.out.println(map);
         mav.addAllObjects(map);
         return mav;
+    }
+
+    @RequestMapping("group_add")
+    public Object add(Group group) {
+        return this.groupClientService.addGroup(group);
+    }
+
+    @RequestMapping("group_delete")
+    public Object delete(long gid) {
+        return this.groupClientService.deleteGroup(gid);
     }
 
 }
