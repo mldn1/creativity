@@ -93,7 +93,7 @@
                             <li><a href="pages/front/product/group_list.jsp">产品组管理</a></li>
                             </shiro:hasPermission>
                             <shiro:hasPermission name="mallproduct:product">
-                            <li><a href="pages/front/product/product_list.jsp">产品管理</a></li>
+                            <li><a href="pages/front/product/product_list.action">产品管理</a></li>
                             </shiro:hasPermission>
                             <shiro:hasPermission name="mallproduct:product">
                             <li><a href="pages/front/product/stock_list.jsp">产品渠道库存管理</a></li>

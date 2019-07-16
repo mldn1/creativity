@@ -5,5 +5,5 @@ import com.yootk.dubbo.vo.Category;
 import java.util.List;
 
 public interface ICategoryService {
-    public List<Category> getOneGradeCatogery(Integer grade) ; //查询所有一级分类
+    public List<Category> listByGrade(Integer grade) ; //查询所有一级分类
 }

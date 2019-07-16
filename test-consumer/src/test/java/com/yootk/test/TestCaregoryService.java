@@ -14,6 +14,6 @@ public class TestCaregoryService {
     private ICategoryService clientService;
     @Test
     public void testGet() {
-        System.out.println(this.clientService.getOneGradeCatogery(1));
+        System.err.println(this.clientService.listByGrade(1));
     }
 }

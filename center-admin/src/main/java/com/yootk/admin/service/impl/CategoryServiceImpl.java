@@ -16,7 +16,7 @@ public class CategoryServiceImpl implements ICategoryService {
     @Autowired
     private ICategoryDAO categoryDAO ;
     @Override
-    public List<Category> getOneGradeCatogery(Integer grade) {
+    public List<Category> listByGrade(Integer grade) {
         List<Category> list = new ArrayList<>() ;
         System.out.println(categoryDAO);
         list = categoryDAO.findByGrade(grade) ;
