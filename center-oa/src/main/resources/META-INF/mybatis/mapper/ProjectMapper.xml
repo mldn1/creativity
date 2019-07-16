@@ -177,22 +177,20 @@
         select
         <include refid="Base_Column_List"/>
         from project
+        where founder=#{founder}
         <if test="column != null and keyWord != null">
-            <where>
-                ${column} like #{keyWord}
-            </where>
+            and ${column} like #{keyWord}
         </if>
         <if test="start != null and lineSize != null">
             limit #{start}, #{lineSize}
         </if>
     </select>
 
-    <select id="getAllRecorders" resultType="long" parameterType="map">
+    <select id="getAllRecorders" resultType="java.lang.Long" parameterType="Map">
         select count(*) from project
+        where founder=#{founder}
         <if test="column != null and keyword != null">
-            <where>
-                ${column} like #{keyword}
-            </where>
+            and ${column} like #{keyword}
         </if>
     </select>
 </mapper>
