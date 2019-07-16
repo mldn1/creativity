@@ -8,6 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 @Controller
 public class CommonAction extends AbstractAction {
     @Autowired
@@ -22,6 +25,19 @@ public class CommonAction extends AbstractAction {
     public String welcome() {
         Emp emp = this.empPrivilegeService.getEmp(super.getEmpId());
         super.getSession().setAttribute("emp",emp);
+
+        //登录时将登录时间设置到数据库
+        String ip = super.getRequest().getHeader("x-forwarded-for");
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+            ip = getRequest().getHeader("Proxy-Client-IP");
+        }
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+            ip = getRequest().getHeader("WL-Proxy-Client-IP");
+        }
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+            ip = getRequest().getRemoteAddr();
+        }
+        this.empPrivilegeService.setDateAndIp(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()),ip,super.getEmpId());
         return "index";
     }
 

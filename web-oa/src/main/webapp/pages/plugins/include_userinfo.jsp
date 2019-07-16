@@ -40,7 +40,7 @@
             </div>
         </li>
 
-        <li><img id="imagepath" src="${emp.photo}" alt=""/>
+        <li><img id="imagepath" src="${emp.photo}" alt="" width="48"/>
             <a href="javascript:;" class="btn btn-default dropdown-toggle" data-toggle="dropdown">${emp.name}
                 <span class="caret"></span></a>
             <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
