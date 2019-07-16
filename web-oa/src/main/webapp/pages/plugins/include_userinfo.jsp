@@ -40,10 +40,9 @@
             </div>
         </li>
 
-        <li><img src="static/img/avatar-mini.jpg" alt=""/> <a href="javascript:;"
-                                                                    class="btn btn-default dropdown-toggle"
-                                                                    data-toggle="dropdown"> 测试用户 <span
-                class="caret"></span> </a>
+        <li><img id="imagepath" src="${emp.photo}" alt=""/>
+            <a href="javascript:;" class="btn btn-default dropdown-toggle" data-toggle="dropdown">${emp.name}
+                <span class="caret"></span></a>
             <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
                 <li><a href="<%=PROFILE_URL%>"><i class="fa fa-user"></i> 个人主页</a></li>
                 <li><a href="<%=PROFILE_FORM_URL%>"><i class="fa fa-cog"></i> 基本资料</a></li>

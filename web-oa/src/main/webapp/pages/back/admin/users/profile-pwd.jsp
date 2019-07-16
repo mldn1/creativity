@@ -51,6 +51,8 @@
                   </div>
                 </div>
               </form>
+              <h2>${error}</h2>
+              <h2>${result}</h2>
             </div>
           </section>
         </div>
