@@ -15,9 +15,9 @@
     <update id="updateByPassword">
         UPDATE emp
         <set>
-            password=#{arg0,password}
+            password=#{arg0}
             <where>
-                phone=#{arg1,phone}
+                phone=#{arg1}
             </where>
         </set>
     </update>
