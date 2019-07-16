@@ -10,7 +10,10 @@ import org.apache.oltu.oauth2.client.response.OAuthJSONAccessTokenResponse;
 import org.apache.oltu.oauth2.client.response.OAuthResourceResponse;
 import org.apache.oltu.oauth2.common.OAuth;
 import org.apache.oltu.oauth2.common.message.types.GrantType;
-import org.apache.shiro.authc.*;
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.AuthenticationInfo;
+import org.apache.shiro.authc.AuthenticationToken;
+import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
@@ -71,6 +74,7 @@ public class OAuthRealm extends AuthorizingRealm {
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         System.err.println("【2】｛MemberRealm｝************** 用户授权处理 **************");
         Map<String, Set<String>> map = this.memberPrivilegeService.getByMember((String) principals.getPrimaryPrincipal());
+
         // 将所有获取的授权信息保存在AuthorizationInfo类的实例之中
         SimpleAuthorizationInfo authz = new SimpleAuthorizationInfo() ; // 返回的授权信息
         authz.setRoles(map.get("allRoles"));

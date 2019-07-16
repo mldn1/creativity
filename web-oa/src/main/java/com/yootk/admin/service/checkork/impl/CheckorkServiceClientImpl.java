@@ -12,7 +12,6 @@ public class CheckorkServiceClientImpl implements ICheckorkServiceClient {
 
     @Override
     public ICheckorkService getICheckorkService() {
-        System.out.println(checkorkService);
         return this.checkorkService;
     }
 }

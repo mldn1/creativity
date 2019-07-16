@@ -58,7 +58,7 @@ public class SplitPageUtil {
 
     public Integer getLineSize() {
         if (this.lineSize == null) {
-            return 2 ;
+            return 5 ;
         }
         return lineSize;
     }

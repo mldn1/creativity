@@ -1,8 +1,8 @@
 package com.yootk.dubbo.service.oa.checkork;
 
-import com.yootk.dubbo.vo.Checkork;
 
-import java.util.List;
+import java.util.Date;
+import java.util.Map;
 
 public interface ICheckorkService {
 
@@ -12,8 +12,18 @@ public interface ICheckorkService {
          * @param currentPage 当前页
          * @param lineSize 每页存放的长度
          * @return 返回Checkork（考勤表）的list集合
-         * @throws Exception 抛出异常
          */
-        public List<Checkork> list(Long eid, Long currentPage, Integer lineSize) throws Exception ;
+        public Map<String,Object> list(Long eid, Long currentPage, Integer lineSize, String column, String keyword) ;
+
+        /**
+         * 打卡
+         * @param eid 用户id
+         * @param datetime 打卡时间
+         * @param state 考勤状态（1,2,3,4）
+         * @param ip 用户打卡电脑的ip地址
+         * @return 返回打卡成功或失败
+         */
+        public boolean doCreate(Long eid, Date datetime, Integer state, String ip);
+
 }
 

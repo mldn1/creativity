@@ -20,6 +20,17 @@
     </where>
     limit #{start},#{end}
   </select>
+  <select id="getAllRecorders" resultType="long" parameterType="map">
+    select count(*) from `checkork`
+    <if test="column != null and keyword != null">
+      <where>
+      <if test="eid!=null">
+        eid=#{eid}
+      </if>
+        and ${column} like #{keyword}
+      </where>
+    </if>
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
@@ -31,9 +42,9 @@
     where coid = #{coid,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="Checkork">
-    insert into checkork (coid, eid, datetime, 
+    insert into checkork (eid, datetime,
       state, ip)
-    values (#{coid,jdbcType=BIGINT}, #{eid,jdbcType=BIGINT}, #{datetime,jdbcType=TIMESTAMP}, 
+    values ( #{eid,jdbcType=BIGINT}, #{datetime,jdbcType=TIMESTAMP},
       #{state,jdbcType=INTEGER}, #{ip,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="Checkork">

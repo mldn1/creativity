@@ -105,7 +105,7 @@
           <div class="panel">
             <div class="panel-body">
               <div class="blog-post">
-                <div class="text-center"> <a href="javascript:;" id="js-clock" class="btn btn-info">打卡<br/>
+                <div class="text-center"> <a href="pages/back/admin/checkworks/checkork_add.action" id="js-clock" class="btn btn-info">打卡<br/>
                   <span></span></a> </div>
               </div>
             </div>
@@ -175,10 +175,10 @@ $(function(){
 	$('#js-clock').on('click', function(){
 		var that = $(this);
 		var time = that.find('span').text();
-		$.post('/checkwork/ajax/clock', { clock: time },function(data){
+		$.post('pages/back/admin/checkworks/checkork_add.action', { clock: time },function(data){
 			dialogInfo(data.message);
 			setTimeout(function(){ $('#dialogInfo').modal('hide'); }, 2000);
-		},'json');
+		},'text');
 	});
 
 })

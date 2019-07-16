@@ -104,4 +104,16 @@ public class AbstractAction {
             }
         });
     }
+    /**
+     * 实现信息输出
+     * @param obj 要输出的信息内容
+     */
+    public  void print(Object obj) {
+        try {
+            this.getRequest().setCharacterEncoding("UTF-8");
+            this.getResponse().setCharacterEncoding("UTF-8");
+            this.getResponse().getWriter().println(obj);
+        } catch (IOException e) {
+        }
+    }
 }
