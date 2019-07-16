@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -60,25 +61,37 @@
                   <table class="table table-bordered table-striped table-condensed" border="1">
                     <thead>
                       <tr>
-                        <th>日期</th>
-                        <th>打卡</th>
+                        <th>打卡日期</th>
                         <th>状态</th>
                         <th>IP</th>
                       </tr>
                     </thead>
                     <tbody>
-
-
+                    <c:if test="${allCheckorks==null}">
+                      <tr>
+                        <td colspan="4">无记录可看</td>
+                      </tr>
+                    </c:if>
+                    <c:forEach items="${allCheckorks}" var="checkork">
                     <tr>
-                      <td>2019-1-1</td>
-                      <td>10:00</td>
-                      <td>迟到</td>
-                      <td>111.111.111.1</td>
+                      <td>${checkork.datetime}</td>
+                      <c:if test="${checkork.state==1}">
+                        <td>正常</td>
+                      </c:if>
+                      <c:if test="${checkork.state==2}">
+                        <td>迟到</td>
+                      </c:if>
+                      <c:if test="${checkork.state==3}">
+                        <td>早退</td>
+                      </c:if>
+                      <c:if test="${checkork.state==4}">
+                        <td>加班</td>
+                      </c:if>
+                      <td>${checkork.ip}</td>
                     </tr>
+                    </c:forEach>
 
-                    <tr>
-                      <td colspan="4">无记录可看</td>
-                    </tr>
+
 
                     </tbody>
 
