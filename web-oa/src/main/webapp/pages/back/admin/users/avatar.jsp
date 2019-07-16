@@ -33,9 +33,9 @@
           <section class="panel">
             <header class="panel-heading"> 设置头像 </header>
             <div class="panel-body">
-              <form class="form-horizontal adminex-form" id="avatar-form">
+              <form action="pages/back/admin/users/avatar_pre.action" class="form-horizontal adminex-form" id="avatar-form" enctype="multipart/form-data">
                 <div class="col-md-9">
-                  <div style="height:500px;"><img id="image" src="{{getAvatarSource .LoginAvatar}}" /></div>
+                  <div style="height:500px;"><img id="image" name="image" src="" /></div>
                 </div>
 				<div class="col-md-3">
                 <div class="btn-group">
@@ -56,6 +56,7 @@
                 <input type="hidden" class="form-control" id="dataScaleY" name="dataScaleY" placeholder="scaleY">
              </div>
 			 </form>
+              <h2>${reslut}</h2>
             </div>
           </section>
         </div>
