@@ -14,8 +14,6 @@ import java.util.Date;
 @Controller
 public class CommonAction extends AbstractAction {
     @Autowired
-    private IEmpAllPrivilegeService empAllPrivilegeService;
-    @Autowired
     private IEmpPrivilegeService empPrivilegeService;
 
     @RequestMapping("/login")
@@ -25,7 +23,7 @@ public class CommonAction extends AbstractAction {
 
     @RequestMapping("/pages/index")
     public String welcome() {
-        Emp emp = this.empAllPrivilegeService.getEmp(super.getEmpId());
+        Emp emp = this.empPrivilegeService.getByPhone(super.getEmpId());
         super.getSession().setAttribute("emp",emp);
         //登录时将登录时间设置到数据库
         String ip = super.getRequest().getHeader("x-forwarded-for");

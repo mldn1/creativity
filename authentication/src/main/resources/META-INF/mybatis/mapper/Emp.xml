@@ -4,7 +4,7 @@
 <!-- 定义所有的SQL语句的映射， 对于本实体而言相关的所有的SQL代码都在此定义 -->
 <mapper namespace="com.yootk.authc.dao.IEmpDAO">   <!-- SSM整合的时候，这个命名空间异常重要 -->
     <sql id="selectBase">
-         SELECT eid,name,phone,password,state,ip FROM emp
+         SELECT eid,name,sex,email,birthday,phone,deptno,job,password,wchet,qq,tele,address,contacts,contactscall,state,count,ip,lastrecord,photo FROM emp
     </sql>
     <select id="findById" parameterType="java.lang.String" resultType="com.yootk.dubbo.vo.Emp">
         <include refid="selectBase"/>
@@ -12,7 +12,7 @@
             phone=#{phone} AND state=0
         </where>
     </select>
-    <update id="updateDateAndIp" parameterType="java.util.List">
+    <update id="updateDateAndIp">
         UPDATE emp
         <set>
             lastrecord=#{arg0},ip=#{arg1}

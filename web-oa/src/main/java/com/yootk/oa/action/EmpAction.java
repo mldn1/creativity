@@ -11,14 +11,14 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/pages/back/admin/users/*")
 public class EmpAction extends AbstractAction {
     @Autowired
-    private IEmpAllPrivilegeService empPrivilegeService;
+    private IEmpAllPrivilegeService empAllPrivilegeService;
     @RequestMapping("password")
     public ModelAndView EmpPassword(String oldpwd,String newpwd,String confpwd){
         ModelAndView mav = new ModelAndView("back/admin/users/profile-pwd");
         if (!newpwd.equals(confpwd)){
             mav.addObject("result","两次输入的密码不一致！请重新输入");
         }else {
-            if (this.empPrivilegeService.setPassword(newpwd,oldpwd,super.getEmpId())){
+            if (this.empAllPrivilegeService.setPassword(newpwd,oldpwd,super.getEmpId())){
                 mav.addObject("result","密码修改成功");
             }else {
                 mav.addObject("result","密码修改失败请重试");

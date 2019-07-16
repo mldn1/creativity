@@ -11,10 +11,9 @@ public class EmpServiceImpl implements IEmpService {
     @Autowired
     private IEmpDAO empDAO ;
     @Override
-    public Emp get(String mid) {
-        return this.empDAO.findById(mid);
+    public Emp get(String phone) {
+        return this.empDAO.findById(phone);
     }
-
     @Override
     public boolean updateDateAndIp(String lastrecord, String ip, String phone) {
         return this.empDAO.updateDateAndIp(lastrecord,ip,phone)>0;

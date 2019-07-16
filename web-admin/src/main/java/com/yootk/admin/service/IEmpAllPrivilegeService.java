@@ -9,7 +9,6 @@ public interface IEmpAllPrivilegeService {
      * @param phone 用户的手机号为登录用户名
      * @return 登录成功返回Vo类，登录失败，返回NULL
      */
-    public Emp getEmp(String phone);
     public boolean setPassword(String new_password,String old_password,String phone);
 
 }

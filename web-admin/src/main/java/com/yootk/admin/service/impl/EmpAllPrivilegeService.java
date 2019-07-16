@@ -11,11 +11,6 @@ public class EmpAllPrivilegeService implements IEmpAllPrivilegeService {
     @Reference
     private IEmpAllService empAllService;
     @Override
-    public Emp getEmp(String phone) {
-        return this.empAllService.getEmp(phone);
-    }
-
-    @Override
     public boolean setPassword(String new_password, String old_password, String phone) {
         return this.empAllService.updatePassword(new_password,old_password,phone);
     }

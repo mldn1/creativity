@@ -2,6 +2,7 @@ package com.yootk.admin.action;
 
 import com.yootk.admin.service.IEmpAllPrivilegeService;
 import com.yootk.admin.service.IEmpPrivilegeService;
+import com.yootk.dubbo.vo.Emp;
 import com.yootk.util.action.AbstractAction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

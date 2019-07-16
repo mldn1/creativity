@@ -11,10 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class OaEmpAllServiceImpl implements IEmpAllService {
     @Autowired
     private IEmpDAO empDAO;
-    @Override
-    public Emp getEmp(String phone) {
-        return this.empDAO.findByPhone(phone);
-    }
 
     @Override
     public boolean updatePassword(String new_password, String old_password, String phone) {
