@@ -12,4 +12,9 @@ public class EmpAllPrivilegeServiceImpl implements IEmpAllPrivilegeService {
     public boolean setPassword(String new_password,String old_password,String phone){
         return this.empAllService.updatePassword(new_password,old_password,phone);
     }
+
+    @Override
+    public boolean setPhoto(String photo,String phone) {
+        return this.empAllService.updatePhoto(photo,phone);
+    }
 }

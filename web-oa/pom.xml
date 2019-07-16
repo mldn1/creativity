@@ -16,6 +16,7 @@
     <url>http://www.example.com</url>
 
     <dependencies>
+
         <!--mybatis逆向工程依赖包-->
         <dependency>
             <groupId>org.mybatis.generator</groupId>

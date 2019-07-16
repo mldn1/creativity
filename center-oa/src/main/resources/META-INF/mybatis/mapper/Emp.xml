@@ -21,4 +21,13 @@
             </where>
         </set>
     </update>
+    <update id="updatePhoto">
+        UPDATE emp
+        <set>
+            photo=#{arg0}
+            <where>
+                phone=#{arg1}
+            </where>
+        </set>
+    </update>
 </mapper>

@@ -2,6 +2,8 @@ package com.yootk.oa.dao;
 
 import com.yootk.dubbo.vo.Emp;
 
+import java.util.Map;
+
 public interface IEmpDAO {
     /**
      * 根据手机号查询雇员的详细信息
@@ -16,4 +18,6 @@ public interface IEmpDAO {
      * @return
      */
     public int updateByPassword(String password,String phone);
+
+    public int updatePhoto(String photo,String phone);
 }

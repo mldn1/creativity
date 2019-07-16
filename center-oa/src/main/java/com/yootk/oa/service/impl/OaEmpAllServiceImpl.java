@@ -7,6 +7,9 @@ import com.yootk.oa.dao.IEmpDAO;
 import com.yootk.util.encrypt.EncryptUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Service
 public class OaEmpAllServiceImpl implements IEmpAllService {
     @Autowired
@@ -19,5 +22,10 @@ public class OaEmpAllServiceImpl implements IEmpAllService {
             return this.empDAO.updateByPassword(EncryptUtil.encode(new_password),phone)>0;
         }
         return false;
+    }
+
+    @Override
+    public boolean updatePhoto(String photo,String phone) {
+        return this.empDAO.updatePhoto(photo,phone)>0;
     }
 }
