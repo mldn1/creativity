@@ -16,6 +16,7 @@
     <url>http://www.example.com</url>
 
     <dependencies>
+
         <!--mybatis逆向工程依赖包-->
         <dependency>
             <groupId>org.mybatis.generator</groupId>
@@ -241,6 +242,10 @@
         <dependency>
             <groupId>javax.servlet.jsp.jstl</groupId>
             <artifactId>jstl-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet.jsp.jstl</groupId>
+            <artifactId>jstl</artifactId>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>

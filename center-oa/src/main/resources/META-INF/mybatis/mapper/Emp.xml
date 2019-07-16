@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 定义所有的SQL语句的映射， 对于本实体而言相关的所有的SQL代码都在此定义 -->
+<mapper namespace="com.yootk.oa.dao.IEmpDAO">   <!-- SSM整合的时候，这个命名空间异常重要 -->
+    <sql id="selectBase">
+         SELECT eid,name,sex,email,birthday,phone,deptno,job,password,wchet,qq,tele,address,contacts,contactscall,state,count,ip,lastrecord,photo FROM emp
+    </sql>
+    <select id="findByPhone" parameterType="java.lang.String" resultType="com.yootk.dubbo.vo.Emp">
+        <include refid="selectBase"/>
+        <where>
+            phone=#{phone} AND state=0
+        </where>
+    </select>
+    <update id="updateByPassword">
+        UPDATE emp
+        <set>
+            password=#{arg0}
+            <where>
+                phone=#{arg1}
+            </where>
+        </set>
+    </update>
+    <update id="updatePhoto">
+        UPDATE emp
+        <set>
+            photo=#{arg0}
+            <where>
+                phone=#{arg1}
+            </where>
+        </set>
+    </update>
+</mapper>

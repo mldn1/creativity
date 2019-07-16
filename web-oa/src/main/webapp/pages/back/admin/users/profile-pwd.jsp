@@ -24,7 +24,7 @@
           <section class="panel">
              <header class="panel-heading"> 修改密码 </header>
             <div class="panel-body">
-              <form class="form-horizontal adminex-form" id="userprofilepwd-form">
+              <form action="pages/back/admin/users/password.action" class="form-horizontal adminex-form" id="userprofilepwd-form">
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">旧密码</label>
                   <div class="col-sm-10">
@@ -51,6 +51,7 @@
                   </div>
                 </div>
               </form>
+              <h2>${result}</h2>
             </div>
           </section>
         </div>

@@ -19,8 +19,8 @@
 %>
 <div class="left-side sticky-left-side">
     <!--logo and iconic logo start-->
-    <div class="logo"><a href="/"><img src="static/img/logo-left.png" alt="管理系统"></a></div>
-    <div class="logo-icon text-center"><a href="/"><img src="static/img/logo_icon.png" style="width:40px;"
+    <div class="logo"><a href="/"><img src="${emp.photo}" alt="管理系统"></a></div>
+    <div class="logo-icon text-center"><a href="/"><img src="${emp.photo}" style="width:40px;"
                                                         alt="管理系统"></a></div>
     <!--logo and iconic logo end-->
     <div class="left-side-inner">
@@ -28,7 +28,7 @@
         <div class="visible-xs hidden-sm hidden-md hidden-lg">
             <div class="media logged-user"><img alt=" " src=" " class="media-object">
                 <div class="media-body">
-                    <h4><a href="/user/show/">用户1</a></h4>
+                    <h4><a href="/user/show/">${emp.name}</a></h4>
                     <span>系统</span></div>
             </div>
             <h5 class="left-nav-title">控制台</h5>
