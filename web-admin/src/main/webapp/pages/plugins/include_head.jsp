@@ -191,10 +191,10 @@
                 <shiro:hasRole name="mallsupperadmin">
                 <li id="adminuser"><a href="pages/front/manage/manage_list.jsp">管理员管理</a></li>
                 </shiro:hasRole>
-                <li id="EditPwd"><a href="pages/front/manage/password.jsp">密码修改</a></li>
+                <li id="EditPwd"><a href="pages/front/manage/password.action">密码修改</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/admin/logout.shiro">登出</a></li>
+                <li><a href="logout.shiro">登出</a></li>
             </ul>
         </div>
     </div>

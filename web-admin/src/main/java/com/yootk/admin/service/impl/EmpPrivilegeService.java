@@ -1,12 +1,12 @@
-package com.yootk.oa.service.impl;
+package com.yootk.admin.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.yootk.admin.service.IEmpPrivilegeService;
 import com.yootk.dubbo.service.IEmpService;
-import com.yootk.oa.service.IEmpPrivilegeService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class EmpPrivilegeServiceImpl implements IEmpPrivilegeService {
+public class EmpPrivilegeService implements IEmpPrivilegeService {
     @Reference
     private IEmpService empService;
     @Override

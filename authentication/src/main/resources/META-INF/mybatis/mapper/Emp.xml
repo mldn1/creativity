@@ -9,7 +9,16 @@
     <select id="findById" parameterType="java.lang.String" resultType="com.yootk.dubbo.vo.Emp">
         <include refid="selectBase"/>
         <where>
-            phone=#{phone}
+            phone=#{phone} AND state=0
         </where>
     </select>
+    <update id="updateDateAndIp" parameterType="java.util.List">
+        UPDATE emp
+        <set>
+            lastrecord=#{arg0},ip=#{arg1}
+            <where>
+                phone=#{arg2}
+            </where>
+        </set>
+    </update>
 </mapper>

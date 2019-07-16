@@ -1,6 +1,6 @@
 package com.yootk.oa.action;
 
-import com.yootk.oa.service.IEmpPrivilegeService;
+import com.yootk.oa.service.IEmpAllPrivilegeService;
 import com.yootk.util.action.AbstractAction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,7 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/pages/back/admin/users/*")
 public class EmpAction extends AbstractAction {
     @Autowired
-    private IEmpPrivilegeService empPrivilegeService;
+    private IEmpAllPrivilegeService empPrivilegeService;
     @RequestMapping("password")
     public ModelAndView EmpPassword(String oldpwd,String newpwd,String confpwd){
         ModelAndView mav = new ModelAndView("back/admin/users/profile-pwd");

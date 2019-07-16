@@ -8,7 +8,7 @@ import com.yootk.util.encrypt.EncryptUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @Service
-public class EmpAllServiceImpl implements IEmpAllService {
+public class OaEmpAllServiceImpl implements IEmpAllService {
     @Autowired
     private IEmpDAO empDAO;
     @Override

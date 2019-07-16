@@ -1,7 +1,7 @@
 package com.yootk.test;
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.yootk.dubbo.service.IClientService;
+import com.yootk.dubbo.service.IEmpAllService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -11,9 +11,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(SpringJUnit4ClassRunner.class)
 public class TestClientService {
     @Reference
-    private IClientService clientService;
+    private IEmpAllService empAllService;
     @Test
     public void testGet() {
-        System.out.println(this.clientService.get("client000111"));
+        System.out.println(this.empAllService.getEmp("12345654321"));
     }
 }
