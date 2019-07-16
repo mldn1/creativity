@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
@@ -50,28 +51,47 @@
                   </tr>
                 </thead>
                 <tbody>
-                
+                    <c:forEach items="${allGroups}" var="group">
+                        <tr>
+                            <td>&nbsp;${group.title} </td>
+                            <td class="hidden-phone hidden-xs">&nbsp;${group.description}</td>
+                            <td><div class="btn-group">
+                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 操作<span class="caret"></span> </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="pages/back/admin/groups/group-permission.jsp">权限</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="pages/back/admin/groups/user.jsp">成员</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="pages/back/admin/groups/user-form.jsp">编辑</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="javascript:;" class="js-group-delete" data-op="delete" data-id="">删除</a></li>
+                                </ul>
+                            </div></td>
+                        </tr>
+                    </c:forEach>
       
-                <tr>
-                  <td>&nbsp; </td>
-                  <td class="hidden-phone hidden-xs">&nbsp;</td>
-                  <td><div class="btn-group">
-                      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 操作<span class="caret"></span> </button>
-                      <ul class="dropdown-menu">
-                        <li><a href="pages/back/admin/groups/group-permission.jsp">权限</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="pages/back/admin/groups/user.jsp">成员</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="pages/back/admin/groups/user-form.jsp">编辑</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="javascript:;" class="js-group-delete" data-op="delete" data-id="">删除</a></li>
-                      </ul>
-                    </div></td>
-                </tr>
+<%--                <tr>--%>
+<%--                  <td>&nbsp; </td>--%>
+<%--                  <td class="hidden-phone hidden-xs">&nbsp;</td>--%>
+<%--                  <td><div class="btn-group">--%>
+<%--                      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 操作<span class="caret"></span> </button>--%>
+<%--                      <ul class="dropdown-menu">--%>
+<%--                        <li><a href="pages/back/admin/groups/group-permission.jsp">权限</a></li>--%>
+<%--                        <li role="separator" class="divider"></li>--%>
+<%--                        <li><a href="pages/back/admin/groups/user.jsp">成员</a></li>--%>
+<%--                        <li role="separator" class="divider"></li>--%>
+<%--                        <li><a href="pages/back/admin/groups/user-form.jsp">编辑</a></li>--%>
+<%--                        <li role="separator" class="divider"></li>--%>
+<%--                        <li><a href="javascript:;" class="js-group-delete" data-op="delete" data-id="">删除</a></li>--%>
+<%--                      </ul>--%>
+<%--                    </div></td>--%>
+<%--                </tr>--%>
                 
-                <tr>
-                  <td colspan="7">你还没有添加组</td>
-                </tr>
+                <c:if test="${allGroups == null}">
+                    <tr>
+                        <td colspan="7">你还没有添加组</td>
+                    </tr>
+                </c:if>
                 
                 </tbody>
                 
