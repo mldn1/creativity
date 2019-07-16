@@ -12,7 +12,8 @@
     public static final String KNOWLEDGES_URL = "pages/back/admin/knowledges/index.jsp";
     public static final String ALBUMS_URL = "pages/back/admin/albums/index.jsp";
     public static final String RESUMES_URL = "pages/back/admin/resumes/index.jsp";
-    public static final String ORGANIZATION_URL = "pages/back/admin/groups/index.jsp";
+//    public static final String ORGANIZATION_URL = "pages/back/admin/groups/index.jsp";
+    public static final String ORGANIZATION_URL = "pages/back/admin/groups/group_list.action";
     public static final String SHOW_USER_URL = "pages/back/admin//user/show/";
     public static final String LOGOUT_URL = "logout";
 %>
