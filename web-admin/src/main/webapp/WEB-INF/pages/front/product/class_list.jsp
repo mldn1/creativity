@@ -4,7 +4,6 @@
 <head>
     <jsp:include page="/WEB-INF/pages/plugins/include_basepath.jsp"/>
     <jsp:include page="/WEB-INF/pages/plugins/include_head.jsp"/>
-    <script type="text/javascript" src="/WEB-INF/js/pages/front/product/class_list.js"></script>
 </head>
 <body role="document">
 
@@ -18,15 +17,27 @@
       <tr>
         <td><div id="tree">
          <ul>
-             <c:forEach items="${firstCategory}" var="category">
-		        <li>${category.title}</li>
+             <c:forEach items="${allCategoryAccordingToParent}" var="parent">
+                 <li><a href="pages/front/product/class_edit_pre.action?cid=${parent.key.cid}">${parent.key.title}</a></li>
+                 <table style="margin-bottom:25px;margin-left: 40px">
+                    　　  <%int i = 1;%>
+                    <c:forEach items="${parent.value}" var="son">
+                        　　<% if (i % 2 == 1) {%>
+                        　　<tr>
+                        　　<%}%>
+                        <td width="120" height="30" align="center"><a  href="pages/front/product/class_edit_pre.action?cid=${son.cid}">${son.title}</a></td>
+                        　　<% if (i % 2 == 0) {%>
+                        　　</tr>
+                        　　<% }i++; %>
+                    </c:forEach>
+                </table>
              </c:forEach>
 		 </ul>
         </div></td>
       </tr>
     </tbody>
     <tr>
-      <td align="center" valign="middle" > <a href="pages/front/product/class_add.jsp" class="btn btn-primary">添加分类</a></td>
+      <td align="center" valign="middle" > <a href="pages/front/product/class_add_pre.action" class="btn btn-primary">添加分类</a></td>
     </tr>
   </table>
 </form>
@@ -36,4 +47,5 @@
 </div>
 </div>
 </body>
+<script type="text/javascript" src="/WEB-INF/js/pages/front/product/class_list.js"></script>
 </html>

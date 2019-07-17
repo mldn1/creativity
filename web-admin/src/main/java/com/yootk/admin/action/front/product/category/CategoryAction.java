@@ -1,23 +1,81 @@
 package com.yootk.admin.action.front.product.category;
 
-import com.alibaba.dubbo.config.annotation.Reference;
 import com.yootk.dubbo.service.ICategoryService;
 import com.yootk.dubbo.vo.Category;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Controller // 创建一个控制器
 @RequestMapping("/pages/front/product/*")
 public class CategoryAction {
-    @Reference
+    @Autowired
     ICategoryService categoryService ;
     @RequestMapping("class_list")
-    public ModelAndView categoryList() {
+    public ModelAndView listCategory() {
         ModelAndView mav = new ModelAndView("front/product/class_list") ;
+        mav.addObject("allCategoryAccordingToParent",this.categoryService.listAccordingToParent()) ;
         return mav ;
+    }
+    @RequestMapping("class_add_pre")
+    public ModelAndView preAddCategory(){
+        ModelAndView mav = new ModelAndView("front/product/class_add") ;
+        mav.addObject("categorys",this.categoryService.listByGrade(1)) ;
+        mav.addObject("id",this.categoryService.preAdd()) ;
+        return mav ;
+    }
+    @RequestMapping("class_add_do")
+    public ModelAndView addCategory(Category category){
+        category.setCid(null);
+        Integer grade = category.getGrade() ;
+        Long pcid = 0L ;
+        if (grade == 0){
+            category.setGrade(0);
+        }else{
+            category.setGrade(1);
+            pcid = (long)grade;
+        }
+        if (this.categoryService.add(category,pcid)){
+            return this.listCategory() ;
+        }else{
+            return this.preAddCategory() ;
+        }
+    }
+
+    @RequestMapping("class_edit_pre")
+    public ModelAndView preEdit(Long cid){
+        ModelAndView mav = new ModelAndView("front/product/class_edit") ;
+        mav.addObject("categorys",this.categoryService.listByGrade(1)) ;
+        mav.addObject("thisCategory",this.categoryService.getCategory(cid)) ;
+        mav.addObject("parent",this.categoryService.getParent(cid).getCid()) ;
+        return mav ;
+    }
+
+    @RequestMapping("class_edit_do")
+    public ModelAndView edit(Category category){
+        ModelAndView mav = new ModelAndView("front/product/class_edit") ;
+        Integer grade = category.getGrade() ;
+        Long pcid = 0L ;
+        if (grade == 0){
+            category.setGrade(0);
+        }else{
+            category.setGrade(1);
+            pcid = (long)grade;
+        }
+        if (this.categoryService.edit(category,pcid)){
+            return this.listCategory() ;
+        }else{
+            return this.preEdit(category.getCid()) ;
+        }
+    }
+
+    @RequestMapping("class_delete_do")
+    public  ModelAndView delete(Long cid){
+        if (this.categoryService.delete(cid)){
+            return this.listCategory() ;
+        }else{
+            return this.preEdit(cid) ;
+        }
     }
 }

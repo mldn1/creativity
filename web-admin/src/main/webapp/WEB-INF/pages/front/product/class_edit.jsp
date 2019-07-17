@@ -10,8 +10,8 @@
 <div id="mainDiv">
     <div style="width: 98%; margin-left:auto; margin-right:auto; text-align:left;">
 
-        <form action="pages/front/product/class_add_do.action" method="post" name="viewAdd"
-              id="viewAdd">
+        <form action="pages/front/product/class_edit_do.action" method="post" name="viewEdit"
+              id="viewEdit">
             <table width="98%" class="table table-striped table-hover table-bordered">
                 <thead>
                 <tr>
@@ -22,7 +22,7 @@
                 <tr>
                     <td>id</td>
                     <td>
-                        <div class="col-sm-5"><input name="id" type="text" id="id" size="50" value="${id}"
+                        <div class="col-sm-5"><input name="id" type="text" id="id" size="50" value="${thisCategory.cid}"
                                                      class="form-control" readonly/>
                         </div>
                     </td>
@@ -31,10 +31,9 @@
                     <td>分类级别</td>
                     <td>
                         <div id="pid_div" class="col-sm-3"><select name="grade" id="grade" class="form-control">
-                            <option value="">请选择</option>
                             <option value="0">一级类</option>
                             <c:forEach items="${categorys}" var="category">
-                                <option value="${category.cid}">${category.title}</option>
+                                <option value="${category.cid}" ${parent==category.cid?"selected":""}>${category.title}</option>
                             </c:forEach>
                         </select></div>
                     </td>
@@ -42,7 +41,7 @@
                 <tr>
                     <td>分类名称</td>
                     <td>
-                        <div class="col-sm-5"><input name="title" type="text" id="title" size="50" value=""
+                        <div class="col-sm-5"><input name="title" type="text" id="title" size="50" value="${thisCategory.title}"
                                                      class="form-control" required="required"/>
                         </div>
                     </td>
@@ -51,7 +50,7 @@
                     <td>分类ICON</td>
                     <td>
                         <div class="col-sm-5">
-                            <textarea class="form-control" rows="3" id="icon" name="icon"></textarea>
+                            <textarea class="form-control" rows="3" id="icon" name="icon">${thisCategory.icon}</textarea>
                         </div>
 
                     </td>
@@ -59,7 +58,7 @@
                 <tr>
                     <td>分类排序</td>
                     <td>
-                        <div class="col-sm-5"><input name="sort" type="text" id="sort" size="50" value="99"
+                        <div class="col-sm-5"><input name="sort" type="text" id="sort" size="50" value="${thisCategory.sort}"
                                                      class="form-control"/>
                         </div>
                         注：数字越小越靠前
@@ -68,7 +67,7 @@
                 <tr>
                     <td>站点显示title</td>
                     <td>
-                        <div class="col-sm-5"><input name="stitle" type="text" id="stitle" size="50" value=""
+                        <div class="col-sm-5"><input name="stitle" type="text" id="stitle" size="50" value="${thisCategory.stitle}"
                                                      class="form-control"/>
                         </div>
                     </td>
@@ -77,14 +76,14 @@
                     <td>站点显示description</td>
                     <td>
                         <div class="col-sm-5"><input name="sdescription" type="text" id="sdescription" size="50"
-                                                     value="" class="form-control"/>
+                                                     value="${thisCategory.sdescription}" class="form-control"/>
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td>站点显示keywords</td>
                     <td>
-                        <div class="col-sm-5"><input name="skeywords" type="text" id="skeywords" size="50" value=""
+                        <div class="col-sm-5"><input name="skeywords" type="text" id="skeywords" size="50" value="${thisCategory.skeyword}"
                                                      class="form-control"/>
                         </div>
                     </td>
@@ -93,10 +92,9 @@
                     <td>分类状态</td>
                     <td>
                         <div id="state_div" class="col-sm-3"><select name="state" id="state" class="form-control">
-                            <option value="">请选择</option>
-                            <option value="0">打开</option>
-                            <option value="1">关闭</option>
-                            <option value="2">推荐</option>
+                            <option value="0" ${0==category.state?"selected":""}>打开</option>
+                            <option value="1" ${1==category.state?"selected":""}>关闭</option>
+                            <option value="2" ${2==category.state?"selected":""}>推荐</option>
                         </select></div>
                     </td>
                 </tr>
@@ -111,6 +109,10 @@
                         <input type="button" name="Submit" id="Submit" value="返回" onClick="javascript:history.back();"
                                class="btn btn-default"/>
 
+                        <a href="pages/front/product/class_delete_do.action?cid=${thisCategory.cid}">
+                            <input name="delete" id="delete" value="删除" onClick="javascript:confirm('确认删除！');"
+                                   class="btn btn-danger"/></a>
+                    </td>
                 </tr>
                 </tbody>
             </table>
@@ -120,5 +122,5 @@
     </div>
 </div>
 </body>
-<script type="text/javascript" src="/WEB-INF/js/pages/front/product/class_add.js"></script>
+<script type="text/javascript" src="/WEB-INF/js/pages/front/product/class_edit.js"></script>
 </html>

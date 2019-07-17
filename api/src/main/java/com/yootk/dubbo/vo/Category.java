@@ -1,6 +1,7 @@
 package com.yootk.dubbo.vo;
 
 import java.io.Serializable;
+import java.util.Iterator;
 
 public class Category implements Serializable {
     private Long cid ;  //分类id，自增
