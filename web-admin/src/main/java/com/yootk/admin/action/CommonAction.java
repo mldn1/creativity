@@ -4,6 +4,7 @@ import com.yootk.admin.service.IEmpAllPrivilegeService;
 import com.yootk.admin.service.IEmpPrivilegeService;
 import com.yootk.dubbo.vo.Emp;
 import com.yootk.util.action.AbstractAction;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,10 +17,6 @@ import java.util.Date;
 public class CommonAction extends AbstractAction {
     @Autowired
     private IEmpPrivilegeService empPrivilegeService;
-    @RequestMapping("/login")
-    public String login() {
-        return "index" ;
-    }
     @RequestMapping("/pages/index")
     public String welcome() {
         String ip = super.getRequest().getHeader("x-forwarded-for");
@@ -43,4 +40,5 @@ public class CommonAction extends AbstractAction {
     public String failure() {
         return "failure" ;
     }
+
 }
