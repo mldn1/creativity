@@ -1,29 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yootk.oa.dao.RequireMapper">
-  <resultMap id="BaseResultMap" type="Require">
-    <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="proid" jdbcType="BIGINT" property="proid" />
-    <result column="origin" jdbcType="INTEGER" property="origin" />
-    <result column="grade" jdbcType="INTEGER" property="grade" />
-    <result column="title" jdbcType="VARCHAR" property="title" />
-    <result column="founder" jdbcType="BIGINT" property="founder" />
-    <result column="assigned" jdbcType="BIGINT" property="assigned" />
-    <result column="workhours" jdbcType="INTEGER" property="workhours" />
-    <result column="createdate" jdbcType="TIMESTAMP" property="createdate" />
-    <result column="state" jdbcType="INTEGER" property="state" />
-    <result column="period" jdbcType="INTEGER" property="period" />
-    <result column="description" jdbcType="TEXT" property="description" />
-    <result column="standard" jdbcType="TEXT" property="standard" />
-    <result column="appendix" jdbcType="VARCHAR" property="appendix" />
-    <result column="did" jdbcType="BIGINT" property="did" />
-    <result column="type" jdbcType="INTEGER" property="type" />
-  </resultMap>
   <sql id="Base_Column_List">
     id, proid, origin, grade, title, founder, assigned, workhours, createdate, state, 
     period, description, standard, appendix, did, type
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultType="Require">
     select 
     <include refid="Base_Column_List" />
     from require
@@ -43,8 +25,8 @@
     values (#{id,jdbcType=BIGINT}, #{proid,jdbcType=BIGINT}, #{origin,jdbcType=INTEGER}, 
       #{grade,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{founder,jdbcType=BIGINT}, 
       #{assigned,jdbcType=BIGINT}, #{workhours,jdbcType=INTEGER}, #{createdate,jdbcType=TIMESTAMP}, 
-      #{state,jdbcType=INTEGER}, #{period,jdbcType=INTEGER}, #{description,jdbcType=TEXT}, 
-      #{standard,jdbcType=TEXT}, #{appendix,jdbcType=VARCHAR}, #{did,jdbcType=BIGINT}, 
+      #{state,jdbcType=INTEGER}, #{period,jdbcType=INTEGER}, #{description}, 
+      #{standard}, #{appendix,jdbcType=VARCHAR}, #{did,jdbcType=BIGINT}, 
       #{type,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="Require">
@@ -134,10 +116,10 @@
         #{period,jdbcType=INTEGER},
       </if>
       <if test="description != null">
-        #{description,jdbcType=TEXT},
+        #{description},
       </if>
       <if test="standard != null">
-        #{standard,jdbcType=TEXT},
+        #{standard},
       </if>
       <if test="appendix != null">
         #{appendix,jdbcType=VARCHAR},
@@ -184,10 +166,10 @@
         period = #{period,jdbcType=INTEGER},
       </if>
       <if test="description != null">
-        description = #{description,jdbcType=TEXT},
+        description = #{description},
       </if>
       <if test="standard != null">
-        standard = #{standard,jdbcType=TEXT},
+        standard = #{standard},
       </if>
       <if test="appendix != null">
         appendix = #{appendix,jdbcType=VARCHAR},
@@ -213,8 +195,8 @@
       createdate = #{createdate,jdbcType=TIMESTAMP},
       state = #{state,jdbcType=INTEGER},
       period = #{period,jdbcType=INTEGER},
-      description = #{description,jdbcType=TEXT},
-      standard = #{standard,jdbcType=TEXT},
+      description = #{description},
+      standard = #{standard},
       appendix = #{appendix,jdbcType=VARCHAR},
       did = #{did,jdbcType=BIGINT},
       type = #{type,jdbcType=INTEGER}

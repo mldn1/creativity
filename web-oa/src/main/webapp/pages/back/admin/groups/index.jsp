@@ -29,7 +29,8 @@
       <h3> 组织管理     <jsp:include page="/pages/plugins/include_nav.jsp"/></h3>
       <ul class="breadcrumb pull-left">
         <li> <a href="/user/show/{{.LoginUserid}}"></a> </li>
-        <li> <a href="pages/back/admin/groups/index.jsp">组管理</a> </li>
+<%--        <li> <a href="pages/back/admin/groups/index.jsp">组管理</a> </li>--%>
+        <li> <a href="pages/back/admin/groups/group_list.action">组管理</a> </li>
         <li class="active"> 组权限 </li>
       </ul>
       <div class="pull-right"> <a href="pages/back/admin/groups/form.jsp" class="btn btn-success">+新增组</a> </div>
@@ -40,7 +41,7 @@
       <div class="row">
         <div class="col-sm-12">
           <section class="panel">
-            <header class="panel-heading"> 组管理 / 总数：</header>
+            <header class="panel-heading"> 组管理 / 总数：${allRecorders}</header>
             <div class="panel-body">
               <table class="table table-bordered table-striped table-condensed">
                 <thead>
@@ -64,7 +65,7 @@
                                     <li role="separator" class="divider"></li>
                                     <li><a href="pages/back/admin/groups/user-form.jsp">编辑</a></li>
                                     <li role="separator" class="divider"></li>
-                                    <li><a href="javascript:;" class="js-group-delete" data-op="delete" data-id="">删除</a></li>
+                                    <li><a href="javascript:;" class="js-group-delete" data-op="delete" data-id="${group.gid}">删除</a></li>
                                 </ul>
                             </div></td>
                         </tr>
@@ -109,4 +110,27 @@
 </section>
 <jsp:include page="/pages/plugins/include_foot.jsp"/>
 </body>
+
+<script>
+    $(function(){
+        $("a[data-id]").each(function(){
+            $(this).on("click",function(){
+                gid = $(this).attr("data-id")
+                console.log(gid) ;
+                $.getJSON("pages/back/admin/groups/group_delete.action", {"gid":gid}, function (data) {
+                    console.log("我被调用了**************")
+                    if (data==(true)) {
+                        $("footer").append("组删除成功，5秒后自动刷新页面");
+                        setTimeout(window.location.reload(),5);
+                    }else {
+                        $("footer").append("组删除失败！");
+                    }
+
+                });
+            }) ;
+        }) ;
+    })
+
+</script>
+
 </html>

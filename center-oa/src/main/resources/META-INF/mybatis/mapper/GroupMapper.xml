@@ -41,18 +41,21 @@
     from group
     where gid = #{gid,jdbcType=BIGINT}
   </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from group
+    delete from `group`
     where gid = #{gid,jdbcType=BIGINT}
   </delete>
+
   <insert id="insert" parameterType="com.yootk.dubbo.vo.Group">
     insert into group (gid, title, description
       )
     values (#{gid,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.yootk.dubbo.vo.Group">
-    insert into group
+
+  <insert id="doCreate" parameterType="com.yootk.dubbo.vo.Group">
+    insert into `group`
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="gid != null">
         gid,

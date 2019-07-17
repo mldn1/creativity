@@ -1,26 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yootk.oa.dao.NewsMapper">
-  <resultMap id="BaseResultMap" type="News">
-    <id column="nid" jdbcType="BIGINT" property="nid" />
-    <result column="title" jdbcType="VARCHAR" property="title" />
-    <result column="shorttitle" jdbcType="VARCHAR" property="shorttitle" />
-    <result column="overview" jdbcType="VARCHAR" property="overview" />
-    <result column="context" jdbcType="TEXT" property="context" />
-    <result column="type" jdbcType="INTEGER" property="type" />
-    <result column="position" jdbcType="INTEGER" property="position" />
-    <result column="state" jdbcType="INTEGER" property="state" />
-    <result column="sort" jdbcType="INTEGER" property="sort" />
-    <result column="createdate" jdbcType="TIMESTAMP" property="createdate" />
-    <result column="editdate" jdbcType="TIMESTAMP" property="editdate" />
-    <result column="count" jdbcType="BIGINT" property="count" />
-    <result column="eid" jdbcType="BIGINT" property="eid" />
-  </resultMap>
   <sql id="Base_Column_List">
     nid, title, shorttitle, overview, context, type, position, state, sort, createdate, 
     editdate, count, eid
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultType="News">
     select 
     <include refid="Base_Column_List" />
     from news
@@ -37,7 +22,7 @@
       createdate, editdate, count, 
       eid)
     values (#{nid,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, #{shorttitle,jdbcType=VARCHAR}, 
-      #{overview,jdbcType=VARCHAR}, #{context,jdbcType=TEXT}, #{type,jdbcType=INTEGER}, 
+      #{overview,jdbcType=VARCHAR}, #{context}, #{type,jdbcType=INTEGER}, 
       #{position,jdbcType=INTEGER}, #{state,jdbcType=INTEGER}, #{sort,jdbcType=INTEGER}, 
       #{createdate,jdbcType=TIMESTAMP}, #{editdate,jdbcType=TIMESTAMP}, #{count,jdbcType=BIGINT}, 
       #{eid,jdbcType=BIGINT})
@@ -99,7 +84,7 @@
         #{overview,jdbcType=VARCHAR},
       </if>
       <if test="context != null">
-        #{context,jdbcType=TEXT},
+        #{context},
       </if>
       <if test="type != null">
         #{type,jdbcType=INTEGER},
@@ -140,7 +125,7 @@
         overview = #{overview,jdbcType=VARCHAR},
       </if>
       <if test="context != null">
-        context = #{context,jdbcType=TEXT},
+        context = #{context},
       </if>
       <if test="type != null">
         type = #{type,jdbcType=INTEGER},
@@ -174,7 +159,7 @@
     set title = #{title,jdbcType=VARCHAR},
       shorttitle = #{shorttitle,jdbcType=VARCHAR},
       overview = #{overview,jdbcType=VARCHAR},
-      context = #{context,jdbcType=TEXT},
+      context = #{context},
       type = #{type,jdbcType=INTEGER},
       position = #{position,jdbcType=INTEGER},
       state = #{state,jdbcType=INTEGER},

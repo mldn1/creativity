@@ -24,7 +24,7 @@
           <section class="panel">
              <header class="panel-heading"> 基本资料 </header>
             <div class="panel-body">
-              <form class="form-horizontal adminex-form" id="userprofile-form">
+              <form action="" class="form-horizontal adminex-form" id="userprofile-form">
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">姓名</label>
                   <div class="col-sm-10">
@@ -35,10 +35,10 @@
                   <label class="col-sm-2 col-sm-2 control-label">性别</label>
                   <div class="col-sm-10">
                     <label class="radio-inline">
-                    <input type="radio" name="sex" value="1" {{if eq 1 .pro.Sex}}checked>
+                    <input type="radio" name="sex" value="1">
                     男 </label>
                     <label class="radio-inline">
-                    <input type="radio" name="sex" value="2" {{if eq 2 .pro.Sex}}checked>
+                    <input type="radio" name="sex" value="2">
                     女 </label>
                   </div>
                 </div>

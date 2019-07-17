@@ -23,30 +23,14 @@ public class Emp implements Serializable {
     private Integer count;
     private String ip;
     private Date lastrecord;
+    private String photo;
 
-    @Override
-    public String toString() {
-        return "Emp{" +
-                "eid=" + eid +
-                ", name='" + name + '\'' +
-                ", sex='" + sex + '\'' +
-                ", email='" + email + '\'' +
-                ", birthday=" + birthday +
-                ", phone='" + phone + '\'' +
-                ", deptno=" + deptno +
-                ", job='" + job + '\'' +
-                ", password='" + password + '\'' +
-                ", wchet='" + wchet + '\'' +
-                ", qq='" + qq + '\'' +
-                ", tele='" + tele + '\'' +
-                ", address='" + address + '\'' +
-                ", contacts='" + contacts + '\'' +
-                ", contactscall='" + contactscall + '\'' +
-                ", state=" + state +
-                ", count=" + count +
-                ", ip='" + ip + '\'' +
-                ", lastrecord=" + lastrecord +
-                '}';
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
     public Long getEid() {
@@ -199,5 +183,31 @@ public class Emp implements Serializable {
 
     public void setLastrecord(Date lastrecord) {
         this.lastrecord = lastrecord;
+    }
+
+    @Override
+    public String toString() {
+        return "Emp{" +
+                "eid=" + eid +
+                ", name='" + name + '\'' +
+                ", sex='" + sex + '\'' +
+                ", email='" + email + '\'' +
+                ", birthday=" + birthday +
+                ", phone='" + phone + '\'' +
+                ", deptno=" + deptno +
+                ", job='" + job + '\'' +
+                ", password='" + password + '\'' +
+                ", wchet='" + wchet + '\'' +
+                ", qq='" + qq + '\'' +
+                ", tele='" + tele + '\'' +
+                ", address='" + address + '\'' +
+                ", contacts='" + contacts + '\'' +
+                ", contactscall='" + contactscall + '\'' +
+                ", state=" + state +
+                ", count=" + count +
+                ", ip='" + ip + '\'' +
+                ", lastrecord=" + lastrecord +
+                ", photo='" + photo + '\'' +
+                '}';
     }
 }
