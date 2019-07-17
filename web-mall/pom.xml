@@ -228,6 +228,10 @@
         </dependency>
         <!-- WEB依赖 -->
         <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+        </dependency>
+        <dependency>
             <groupId>javax.servlet.jsp.jstl</groupId>
             <artifactId>jstl-api</artifactId>
         </dependency>
@@ -300,6 +304,12 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.yootk</groupId>
+            <artifactId>center-mall</artifactId>
+            <version>1.0</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>

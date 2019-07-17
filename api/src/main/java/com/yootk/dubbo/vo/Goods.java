@@ -1,8 +1,9 @@
-package com.yootk.dubbo.vo.mall;
+package com.yootk.dubbo.vo;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Goods {
+public class Goods implements Serializable {
     private Long id;
     private String gid;
     private String title;
@@ -23,7 +24,16 @@ public class Goods {
     private Double saleprice;
     private String pack;
     private Long suppiler;
-    private Integer limit;
+    private Integer singlesize;
+
+    public Integer getSinglesize() {
+        return singlesize;
+    }
+
+    public void setSinglesize(Integer singlesize) {
+        this.singlesize = singlesize;
+    }
+
     private String iscg;
     private Integer stateid;
     private Integer showstate;
@@ -198,14 +208,6 @@ public class Goods {
         this.suppiler = suppiler;
     }
 
-    public Integer getLimit() {
-        return limit;
-    }
-
-    public void setLimit(Integer limit) {
-        this.limit = limit;
-    }
-
     public String getIscg() {
         return iscg;
     }
@@ -317,7 +319,7 @@ public class Goods {
                 ", saleprice=" + saleprice +
                 ", pack='" + pack + '\'' +
                 ", suppiler=" + suppiler +
-                ", limit=" + limit +
+                ", singlesize=" + singlesize +
                 ", iscg='" + iscg + '\'' +
                 ", stateid=" + stateid +
                 ", showstate=" + showstate +
