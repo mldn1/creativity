@@ -3,11 +3,12 @@ package com.yootk.mall.service.impl;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.yootk.dubbo.service.mall.IGoodsService;
 import com.yootk.dubbo.vo.mall.Goods;
+import com.yootk.mall.service.IGoodsTransferService;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class GoodsServiceImpl implements IGoodsService {
+public class GoodsTransferServiceImpl implements IGoodsTransferService {
     @Reference
     private IGoodsService goodsService;
 
