@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yootk.oa.dao.AskLeaveMapper">
-  <resultMap id="BaseResultMap" type="AskLeave">
-    <id column="alid" jdbcType="BIGINT" property="alid" />
-    <result column="eid" jdbcType="BIGINT" property="eid" />
-    <result column="type" jdbcType="INTEGER" property="type" />
-    <result column="startdate" jdbcType="TIMESTAMP" property="startdate" />
-    <result column="enddate" jdbcType="TIMESTAMP" property="enddate" />
-    <result column="reason" jdbcType="TEXT" property="reason" />
-    <result column="picture" jdbcType="VARCHAR" property="picture" />
-    <result column="approver" jdbcType="BIGINT" property="approver" />
-    <result column="note" jdbcType="TEXT" property="note" />
-    <result column="state" jdbcType="INTEGER" property="state" />
-    <result column="result" jdbcType="INTEGER" property="result" />
-    <result column="progress" jdbcType="INTEGER" property="progress" />
-  </resultMap>
+<!--  <resultMap id="BaseResultMap" type="AskLeave">-->
+<!--    <id column="alid" jdbcType="BIGINT" property="alid" />-->
+<!--    <result column="eid" jdbcType="BIGINT" property="eid" />-->
+<!--    <result column="type" jdbcType="INTEGER" property="type" />-->
+<!--    <result column="startdate" jdbcType="TIMESTAMP" property="startdate" />-->
+<!--    <result column="enddate" jdbcType="TIMESTAMP" property="enddate" />-->
+<!--    <result column="reason" jdbcType="TEXT" property="reason" />-->
+<!--    <result column="picture" jdbcType="VARCHAR" property="picture" />-->
+<!--    <result column="approver" jdbcType="BIGINT" property="approver" />-->
+<!--    <result column="note" jdbcType="TEXT" property="note" />-->
+<!--    <result column="state" jdbcType="INTEGER" property="state" />-->
+<!--    <result column="result" jdbcType="INTEGER" property="result" />-->
+<!--    <result column="progress" jdbcType="INTEGER" property="progress" />-->
+<!--  </resultMap>-->
   <sql id="Base_Column_List">
     alid, eid, type, startdate, enddate, reason, picture, approver, note, state, result, 
     progress
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultType="AskLeave">
     select 
     <include refid="Base_Column_List" />
     from ask_leave
@@ -36,8 +36,8 @@
       state, result, progress
       )
     values (#{alid,jdbcType=BIGINT}, #{eid,jdbcType=BIGINT}, #{type,jdbcType=INTEGER}, 
-      #{startdate,jdbcType=TIMESTAMP}, #{enddate,jdbcType=TIMESTAMP}, #{reason,jdbcType=TEXT}, 
-      #{picture,jdbcType=VARCHAR}, #{approver,jdbcType=BIGINT}, #{note,jdbcType=TEXT}, 
+      #{startdate,jdbcType=TIMESTAMP}, #{enddate,jdbcType=TIMESTAMP}, #{reason}, 
+      #{picture,jdbcType=VARCHAR}, #{approver,jdbcType=BIGINT}, #{note}, 
       #{state,jdbcType=INTEGER}, #{result,jdbcType=INTEGER}, #{progress,jdbcType=INTEGER}
       )
   </insert>
@@ -98,7 +98,7 @@
         #{enddate,jdbcType=TIMESTAMP},
       </if>
       <if test="reason != null">
-        #{reason,jdbcType=TEXT},
+        #{reason},
       </if>
       <if test="picture != null">
         #{picture,jdbcType=VARCHAR},
@@ -107,7 +107,7 @@
         #{approver,jdbcType=BIGINT},
       </if>
       <if test="note != null">
-        #{note,jdbcType=TEXT},
+        #{note},
       </if>
       <if test="state != null">
         #{state,jdbcType=INTEGER},
@@ -136,7 +136,7 @@
         enddate = #{enddate,jdbcType=TIMESTAMP},
       </if>
       <if test="reason != null">
-        reason = #{reason,jdbcType=TEXT},
+        reason = #{reason},
       </if>
       <if test="picture != null">
         picture = #{picture,jdbcType=VARCHAR},
@@ -145,7 +145,7 @@
         approver = #{approver,jdbcType=BIGINT},
       </if>
       <if test="note != null">
-        note = #{note,jdbcType=TEXT},
+        note = #{note},
       </if>
       <if test="state != null">
         state = #{state,jdbcType=INTEGER},
@@ -165,10 +165,10 @@
       type = #{type,jdbcType=INTEGER},
       startdate = #{startdate,jdbcType=TIMESTAMP},
       enddate = #{enddate,jdbcType=TIMESTAMP},
-      reason = #{reason,jdbcType=TEXT},
+      reason = #{reason},
       picture = #{picture,jdbcType=VARCHAR},
       approver = #{approver,jdbcType=BIGINT},
-      note = #{note,jdbcType=TEXT},
+      note = #{note},
       state = #{state,jdbcType=INTEGER},
       result = #{result,jdbcType=INTEGER},
       progress = #{progress,jdbcType=INTEGER}

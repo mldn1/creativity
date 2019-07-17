@@ -1,7 +1,7 @@
-package com.yootk.admin.service.projects.impl;
+package com.yootk.oa.service.projects.impl;
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.yootk.admin.service.projects.IProjectsClientService;
+import com.yootk.oa.service.projects.IProjectsClientService;
 import com.yootk.dubbo.service.oa.projects.IProjectService;
 import com.yootk.dubbo.vo.Project;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,7 @@ import java.util.Map;
  */
 @Service
 public class ProjectsClientServiceImpl implements IProjectsClientService {
-    @Reference
+    @Reference(check = false)
     private IProjectService projectService;
 
     @Override

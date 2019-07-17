@@ -5,7 +5,7 @@
 
 <configuration>
     <typeAliases>   <!-- 扫描指定包下的类，类名称就是别名 -->
-        <package name="com.yootk.dubbo.vo"/>
+        <package name="com.yootk.dubbo.vo.mall"/>
     </typeAliases>
 </configuration>
 

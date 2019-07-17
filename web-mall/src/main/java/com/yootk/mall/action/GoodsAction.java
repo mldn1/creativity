@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/pages/front/")
+@RequestMapping("/pages/front/order/")
 public class GoodsAction {
 
-    @GetMapping("goods/shop_details")
+    @GetMapping("shop_details")
     public ModelAndView goodsAction() {
         ModelAndView mav = new ModelAndView("front/goods/shop_details");
         return mav;
