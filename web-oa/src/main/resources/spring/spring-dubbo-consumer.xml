@@ -13,5 +13,5 @@
     <dubbo:registry protocol="zookeeper" address="${dubbo.registry.address}"
                     timeout="${dubbo.provider.timeout}"/>
     <!-- 此时一定要写上Dubbo远程业务接口的注入开发包名称 -->
-    <dubbo:annotation package="com.yootk.admin.service"/>
+    <dubbo:annotation package="com.yootk.oa.service"/>
 </beans>

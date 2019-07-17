@@ -1,23 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yootk.oa.dao.VersionMapper">
-  <resultMap id="BaseResultMap" type="Version">
-    <id column="verid" jdbcType="BIGINT" property="verid" />
-    <result column="proid" jdbcType="BIGINT" property="proid" />
-    <result column="founder" jdbcType="BIGINT" property="founder" />
-    <result column="version" jdbcType="VARCHAR" property="version" />
-    <result column="packagedate" jdbcType="TIMESTAMP" property="packagedate" />
-    <result column="createdate" jdbcType="TIMESTAMP" property="createdate" />
-    <result column="source" jdbcType="VARCHAR" property="source" />
-    <result column="download" jdbcType="VARCHAR" property="download" />
-    <result column="distribution" jdbcType="VARCHAR" property="distribution" />
-    <result column="description" jdbcType="TEXT" property="description" />
-  </resultMap>
   <sql id="Base_Column_List">
     verid, proid, founder, version, packagedate, createdate, source, download, distribution, 
     description
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultType="Version">
     select 
     <include refid="Base_Column_List" />
     from version
@@ -35,7 +23,7 @@
     values (#{verid,jdbcType=BIGINT}, #{proid,jdbcType=BIGINT}, #{founder,jdbcType=BIGINT}, 
       #{version,jdbcType=VARCHAR}, #{packagedate,jdbcType=TIMESTAMP}, #{createdate,jdbcType=TIMESTAMP}, 
       #{source,jdbcType=VARCHAR}, #{download,jdbcType=VARCHAR}, #{distribution,jdbcType=VARCHAR}, 
-      #{description,jdbcType=TEXT})
+      #{description})
   </insert>
   <insert id="insertSelective" parameterType="Version">
     insert into version
@@ -100,7 +88,7 @@
         #{distribution,jdbcType=VARCHAR},
       </if>
       <if test="description != null">
-        #{description,jdbcType=TEXT},
+        #{description},
       </if>
     </trim>
   </insert>
@@ -132,7 +120,7 @@
         distribution = #{distribution,jdbcType=VARCHAR},
       </if>
       <if test="description != null">
-        description = #{description,jdbcType=TEXT},
+        description = #{description},
       </if>
     </set>
     where verid = #{verid,jdbcType=BIGINT}
@@ -147,7 +135,7 @@
       source = #{source,jdbcType=VARCHAR},
       download = #{download,jdbcType=VARCHAR},
       distribution = #{distribution,jdbcType=VARCHAR},
-      description = #{description,jdbcType=TEXT}
+      description = #{description}
     where verid = #{verid,jdbcType=BIGINT}
   </update>
 </mapper>

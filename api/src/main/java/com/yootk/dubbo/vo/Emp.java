@@ -184,4 +184,30 @@ public class Emp implements Serializable {
     public void setLastrecord(Date lastrecord) {
         this.lastrecord = lastrecord;
     }
+
+    @Override
+    public String toString() {
+        return "Emp{" +
+                "eid=" + eid +
+                ", name='" + name + '\'' +
+                ", sex='" + sex + '\'' +
+                ", email='" + email + '\'' +
+                ", birthday=" + birthday +
+                ", phone='" + phone + '\'' +
+                ", deptno=" + deptno +
+                ", job='" + job + '\'' +
+                ", password='" + password + '\'' +
+                ", wchet='" + wchet + '\'' +
+                ", qq='" + qq + '\'' +
+                ", tele='" + tele + '\'' +
+                ", address='" + address + '\'' +
+                ", contacts='" + contacts + '\'' +
+                ", contactscall='" + contactscall + '\'' +
+                ", state=" + state +
+                ", count=" + count +
+                ", ip='" + ip + '\'' +
+                ", lastrecord=" + lastrecord +
+                ", photo='" + photo + '\'' +
+                '}';
+    }
 }

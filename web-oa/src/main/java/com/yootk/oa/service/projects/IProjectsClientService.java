@@ -1,4 +1,4 @@
-package com.yootk.admin.service.projects;
+package com.yootk.oa.service.projects;
 
 import com.yootk.dubbo.vo.Project;
 

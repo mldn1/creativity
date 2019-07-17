@@ -1,22 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yootk.oa.dao.ExtensionMapper">
-  <resultMap id="BaseResultMap" type="Extension">
-    <id column="extid" jdbcType="BIGINT" property="extid" />
-    <result column="channelid" jdbcType="INTEGER" property="channelid" />
-    <result column="plane" jdbcType="VARCHAR" property="plane" />
-    <result column="unit" jdbcType="VARCHAR" property="unit" />
-    <result column="keyword" jdbcType="VARCHAR" property="keyword" />
-    <result column="code" jdbcType="TEXT" property="code" />
-    <result column="link" jdbcType="VARCHAR" property="link" />
-    <result column="state" jdbcType="BIGINT" property="state" />
-    <result column="count" jdbcType="INTEGER" property="count" />
-    <result column="eid" jdbcType="BIGINT" property="eid" />
-  </resultMap>
+
   <sql id="Base_Column_List">
     extid, channelid, plane, unit, keyword, code, link, state, count, eid
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultType="Extension">
     select 
     <include refid="Base_Column_List" />
     from extension
@@ -31,7 +20,7 @@
       unit, keyword, code, link, 
       state, count, eid)
     values (#{extid,jdbcType=BIGINT}, #{channelid,jdbcType=INTEGER}, #{plane,jdbcType=VARCHAR}, 
-      #{unit,jdbcType=VARCHAR}, #{keyword,jdbcType=VARCHAR}, #{code,jdbcType=TEXT}, #{link,jdbcType=VARCHAR}, 
+      #{unit,jdbcType=VARCHAR}, #{keyword,jdbcType=VARCHAR}, #{code}, #{link,jdbcType=VARCHAR}, 
       #{state,jdbcType=BIGINT}, #{count,jdbcType=INTEGER}, #{eid,jdbcType=BIGINT})
   </insert>
   <insert id="insertSelective" parameterType="Extension">
@@ -85,7 +74,7 @@
         #{keyword,jdbcType=VARCHAR},
       </if>
       <if test="code != null">
-        #{code,jdbcType=TEXT},
+        #{code},
       </if>
       <if test="link != null">
         #{link,jdbcType=VARCHAR},
@@ -117,7 +106,7 @@
         keyword = #{keyword,jdbcType=VARCHAR},
       </if>
       <if test="code != null">
-        code = #{code,jdbcType=TEXT},
+        code = #{code},
       </if>
       <if test="link != null">
         link = #{link,jdbcType=VARCHAR},
@@ -140,7 +129,7 @@
       plane = #{plane,jdbcType=VARCHAR},
       unit = #{unit,jdbcType=VARCHAR},
       keyword = #{keyword,jdbcType=VARCHAR},
-      code = #{code,jdbcType=TEXT},
+      code = #{code},
       link = #{link,jdbcType=VARCHAR},
       state = #{state,jdbcType=BIGINT},
       count = #{count,jdbcType=INTEGER},

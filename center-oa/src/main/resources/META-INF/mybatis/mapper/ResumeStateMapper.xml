@@ -18,11 +18,11 @@
     delete from resume_state
     where rsid = #{rsid,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.yootk.oa.vo.ResumeState">
+  <insert id="insert" parameterType="ResumeState">
     insert into resume_state (rsid, title)
     values (#{rsid,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.yootk.oa.vo.ResumeState">
+  <insert id="insertSelective" parameterType="ResumeState">
     insert into resume_state
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="rsid != null">
@@ -41,7 +41,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yootk.oa.vo.ResumeState">
+  <update id="updateByPrimaryKeySelective" parameterType="ResumeState">
     update resume_state
     <set>
       <if test="title != null">
@@ -50,7 +50,7 @@
     </set>
     where rsid = #{rsid,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yootk.oa.vo.ResumeState">
+  <update id="updateByPrimaryKey" parameterType="ResumeState">
     update resume_state
     set title = #{title,jdbcType=VARCHAR}
     where rsid = #{rsid,jdbcType=BIGINT}

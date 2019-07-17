@@ -1,7 +1,7 @@
 <%@ page pageEncoding="UTF-8"%>
 <!DOCTYPE html> 
 <head>
-<jsp:include page="/pages/plugins/include_basepath.jsp"/>
+<jsp:include page="/WEB-INF/pages/plugins/include_basepath.jsp"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="description" content="" />
