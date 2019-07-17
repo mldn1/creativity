@@ -12,11 +12,13 @@
     </shiro:authenticated>
 </head>
 <body>
+<br><br><br><h2>${result}</h2>
 <shiro:lacksRole name="malladmin">
     <h1>您当前没有进入商场后台管理的权限!</h1>
 </shiro:lacksRole>
 <shiro:notAuthenticated>
     <h1>还未登录！请先登录</h1>
 </shiro:notAuthenticated>
+
 </body>
 </html>

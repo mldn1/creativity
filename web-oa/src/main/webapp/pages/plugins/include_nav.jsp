@@ -3,6 +3,7 @@
 <a href="pages/back/admin/users/department.jsp">部门</a>
 <a href="pages/back/admin/users/position.jsp">职称</a>
 <a href="pages/back/admin/users/notice.jsp">公告</a>
-<a href="pages/back/admin/groups/index.jsp">组</a>
+<%--<a href="pages/back/admin/groups/index.jsp">组</a>--%>
+<a href="pages/back/admin/groups/group_list.action">组</a>
 <a href="pages/back/admin/groups/permission.jsp">权限</a>
 </span>

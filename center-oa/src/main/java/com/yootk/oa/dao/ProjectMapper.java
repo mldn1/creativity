@@ -20,5 +20,5 @@ public interface ProjectMapper {
 
     List<Project> findSplit(Map<String, Object> params);
 
-    int getAllRecorders(Map<String, Object> params);
+    Long getAllRecorders(Map<String, Object> params);
 }

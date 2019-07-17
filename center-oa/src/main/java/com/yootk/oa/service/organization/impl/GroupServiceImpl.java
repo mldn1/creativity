@@ -2,6 +2,7 @@ package com.yootk.oa.service.organization.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
 import com.yootk.dubbo.service.oa.organization.IGroupService;
+import com.yootk.dubbo.vo.Group;
 import com.yootk.oa.dao.GroupMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -25,5 +26,15 @@ public class GroupServiceImpl implements IGroupService {
         result.put("allGroups", this.groupMapper.findSplit(params));
         result.put("allRecorders", this.groupMapper.getAllRecorders(params));
         return result;
+    }
+
+    @Override
+    public boolean add(Group group) {
+        return this.groupMapper.doCreate(group);
+    }
+
+    @Override
+    public boolean delete(long gid) {
+        return this.groupMapper.deleteByPrimaryKey(gid) == 1;
     }
 }

@@ -21,4 +21,6 @@ public interface GroupMapper {
     List<Group> findSplit(Map<String, Object> params);
 
     Long getAllRecorders(Map<String, Object> params);
+
+    boolean doCreate(Group group) ;
 }
