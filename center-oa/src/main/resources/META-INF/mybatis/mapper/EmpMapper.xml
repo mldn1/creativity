@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yootk.oa.dao.IEmpDAO">
+<mapper namespace="com.yootk.oa.dao.EmpMapper">
     <select id="getEidByPhone" parameterType="java.lang.Long" resultType="java.lang.String">
         select eid from emp
         <where>
             phone=#{phone}
         </where>
+    </select>
+    <select id="getAllEmp" resultType="Emp">
+      select eid,username,name from emp
     </select>
 </mapper>

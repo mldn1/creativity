@@ -1,5 +1,7 @@
 package com.yootk.util.action;
 
+import com.yootk.util.upload.token.UploadToken;
+import com.yootk.util.upload.util.FileUpload;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -37,9 +39,10 @@ public class AbstractAction {
     public String getUploadDir() {
         return "/upload/" ;
     }
-    public String upload(MultipartFile file) {  // 进行上传的控制
+    public String[] upload(MultipartFile file) {  // 进行上传的控制
+        String fileExt = file.getContentType().substring(file.getContentType().lastIndexOf("/") + 1) ;
         String fileName = UUID.randomUUID() + "." + file.getContentType().substring(file.getContentType().lastIndexOf("/") + 1) ;
-        String filePath = this.getApplication().getRealPath(this.getUploadDir()) + fileName ;
+        String filePath = this.getApplication().getRealPath(this.getUploadDir()) + UUID.randomUUID() + "." + fileName ;
         OutputStream output = null ;
         try {
             File saveFile = new File(filePath) ;
@@ -53,6 +56,14 @@ public class AbstractAction {
             while((temp = inputStream.read(data)) != -1) {
                 output.write(data, 0, temp);
             }
+            FileUpload fileUpload = new FileUpload(saveFile,fileExt);
+            new File(filePath).delete();
+            try {
+                return fileUpload.Upload();
+            } catch (Exception e) {
+                e.printStackTrace();
+                return null;
+            }
         } catch (Exception e) {
             return null ;
         } finally {
@@ -64,7 +75,6 @@ public class AbstractAction {
                 }
             }
         }
-        return fileName ;
     }
     /**
      * 通过资源文件读取相应的key对应的数据内容

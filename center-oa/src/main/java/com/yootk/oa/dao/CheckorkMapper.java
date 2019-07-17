@@ -22,7 +22,6 @@ public interface CheckorkMapper {
      * 根据用户eid查找到所有的考勤记录
      * @param map 封装好eid，currentpage，linesize
      * @return 返回权限表的对象
-     * @throws Exception 抛出异常
      */
     public List<Checkork> findSplitByEid(Map<String,Object> map) ;
 

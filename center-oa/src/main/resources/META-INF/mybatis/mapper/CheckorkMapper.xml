@@ -14,15 +14,18 @@
   <select id="findSplitByEid" parameterType="java.util.Map" resultType="Checkork">
     select coid,eid,datetime,state,ip from checkork
     <where>
-      <if test="eid!=null">
+      <if test="eid != null">
         eid=#{eid}
+      </if>
+      <if test="keyword != null and keyword != ''">
+      and ${column} like #{keyword}
       </if>
     </where>
     limit #{start},#{end}
   </select>
   <select id="getAllRecorders" resultType="long" parameterType="map">
     select count(*) from `checkork`
-    <if test="column != null and keyword != null">
+    <if test="column != null and keyword != null and column != '' and keyword !=''">
       <where>
       <if test="eid!=null">
         eid=#{eid}

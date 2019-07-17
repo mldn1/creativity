@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -41,27 +42,27 @@
                   <ul class="p-info">
                     <li>
                       <div class="title">姓名</div>
-                      <div class="desk"></div>
+                      <div class="desk">${emp.name}</div>
                     </li>
                     <li>
                       <div class="title">性别</div>
-                      <div class="desk">{男女</div>
+                      <div class="desk">${emp.sex}</div>
                     </li>
                     <li>
                       <div class="title">生日</div>
-                      <div class="desk"></div>
+                      <div class="desk"><fmt:formatDate value="${emp.birthday}" pattern="yyyy-MM-dd"/></div>
                     </li>
                     <li>
                       <div class="title">电话</div>
-                      <div class="desk"></div>
+                      <div class="desk">${emp.phone}</div>
                     </li>
                     <li>
                       <div class="title">部门</div>
-                      <div class="desk"></div>
+                      <div class="desk">${emp.deptno}</div>
                     </li>
                     <li>
                       <div class="title">职称</div>
-                      <div class="desk"></div>
+                      <div class="desk">${emp.job}</div>
                     </li>
                   </ul>
                 </div>

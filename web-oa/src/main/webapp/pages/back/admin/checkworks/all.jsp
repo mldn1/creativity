@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
@@ -33,7 +34,7 @@
         <li> <a href="pages/back/admin/checkworks/index.jsp">考勤管理</a> </li>
         <li class="active"> 考勤 </li>
       </ul>
-      <div class="pull-right"><a href="index.jsp" class="btn btn-success">我的考勤</a></div>
+      <div class="pull-right"><a href="/pages/back/admin/checkworks/checkork_list.action" class="btn btn-success">我的考勤</a></div>
     </div>
     <div class="clearfix"></div>
     <!-- page heading end-->
@@ -55,11 +56,26 @@
                       <tr>
                         <th>姓名</th>
                         <th>打卡时间</th>
-                        <th>日期</th>
                         <th>IP</th>
                       </tr>
                     </thead>
                     <tbody>
+                    <c:if test="${allCheckorks==null}">
+                      <tr>
+                        <td colspan="4">无记录可看</td>
+                      </tr>
+                    </c:if>
+                    <c:forEach items="${allCheckorks}" var="checkork">
+                      <tr>
+                        <c:forEach items="${allEmp}" var="emp">
+                          <%--<c:if test="emp.eid==checkork.eid">--%>
+                            <td>${emp[checkork.eid]}</td>
+                          <%--</c:if>--%>
+                        </c:forEach>
+                        <td>${checkork.datetime}</td>
+                        <td>${checkork.ip}</td>
+                      </tr>
+                    </c:forEach>
                     
               
                     <tr>
@@ -69,9 +85,9 @@
                       <td>&nbsp;</td>
                     </tr>
                     
-                    <tr>
-                      <td colspan="4">无记录可看</td>
-                    </tr>
+                    <%--<tr>--%>
+                      <%--<td colspan="4">无记录可看</td>--%>
+                    <%--</tr>--%>
                     
                     </tbody>
                     
