@@ -1,23 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yootk.oa.dao.ResumeMapper">
-  <resultMap id="BaseResultMap" type="Resume">
-    <id column="resid" jdbcType="BIGINT" property="resid" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="sex" jdbcType="INTEGER" property="sex" />
-    <result column="phone" jdbcType="INTEGER" property="phone" />
-    <result column="birthday" jdbcType="DATE" property="birthday" />
-    <result column="eduid" jdbcType="INTEGER" property="eduid" />
-    <result column="wyid" jdbcType="INTEGER" property="wyid" />
-    <result column="note" jdbcType="TEXT" property="note" />
-    <result column="appendix" jdbcType="VARCHAR" property="appendix" />
-    <result column="state" jdbcType="INTEGER" property="state" />
-    <result column="eid" jdbcType="BIGINT" property="eid" />
-  </resultMap>
+
   <sql id="Base_Column_List">
     resid, name, sex, phone, birthday, eduid, wyid, note, appendix, state, eid
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultType="Resume">
     select 
     <include refid="Base_Column_List" />
     from resume
@@ -27,17 +15,17 @@
     delete from resume
     where resid = #{resid,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.yootk.oa.vo.Resume">
+  <insert id="insert" parameterType="Resume">
     insert into resume (resid, name, sex, 
       phone, birthday, eduid, 
       wyid, note, appendix, 
       state, eid)
     values (#{resid,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, 
       #{phone,jdbcType=INTEGER}, #{birthday,jdbcType=DATE}, #{eduid,jdbcType=INTEGER}, 
-      #{wyid,jdbcType=INTEGER}, #{note,jdbcType=TEXT}, #{appendix,jdbcType=VARCHAR}, 
+      #{wyid,jdbcType=INTEGER}, #{note}, #{appendix,jdbcType=VARCHAR}, 
       #{state,jdbcType=INTEGER}, #{eid,jdbcType=BIGINT})
   </insert>
-  <insert id="insertSelective" parameterType="com.yootk.oa.vo.Resume">
+  <insert id="insertSelective" parameterType="Resume">
     insert into resume
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="resid != null">
@@ -97,7 +85,7 @@
         #{wyid,jdbcType=INTEGER},
       </if>
       <if test="note != null">
-        #{note,jdbcType=TEXT},
+        #{note},
       </if>
       <if test="appendix != null">
         #{appendix,jdbcType=VARCHAR},
@@ -110,7 +98,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yootk.oa.vo.Resume">
+  <update id="updateByPrimaryKeySelective" parameterType="Resume">
     update resume
     <set>
       <if test="name != null">
@@ -132,7 +120,7 @@
         wyid = #{wyid,jdbcType=INTEGER},
       </if>
       <if test="note != null">
-        note = #{note,jdbcType=TEXT},
+        note = #{note},
       </if>
       <if test="appendix != null">
         appendix = #{appendix,jdbcType=VARCHAR},
@@ -146,7 +134,7 @@
     </set>
     where resid = #{resid,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yootk.oa.vo.Resume">
+  <update id="updateByPrimaryKey" parameterType="Resume">
     update resume
     set name = #{name,jdbcType=VARCHAR},
       sex = #{sex,jdbcType=INTEGER},
@@ -154,7 +142,7 @@
       birthday = #{birthday,jdbcType=DATE},
       eduid = #{eduid,jdbcType=INTEGER},
       wyid = #{wyid,jdbcType=INTEGER},
-      note = #{note,jdbcType=TEXT},
+      note = #{note},
       appendix = #{appendix,jdbcType=VARCHAR},
       state = #{state,jdbcType=INTEGER},
       eid = #{eid,jdbcType=BIGINT}

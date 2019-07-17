@@ -1,29 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yootk.oa.dao.TaskMapper">
-  <resultMap id="BaseResultMap" type="Task">
-    <id column="taskid" jdbcType="BIGINT" property="taskid" />
-    <result column="rid" jdbcType="BIGINT" property="rid" />
-    <result column="founder" jdbcType="BIGINT" property="founder" />
-    <result column="assigned" jdbcType="BIGINT" property="assigned" />
-    <result column="finisher" jdbcType="BIGINT" property="finisher" />
-    <result column="title" jdbcType="VARCHAR" property="title" />
-    <result column="description" jdbcType="TEXT" property="description" />
-    <result column="type" jdbcType="INTEGER" property="type" />
-    <result column="note" jdbcType="TEXT" property="note" />
-    <result column="period" jdbcType="INTEGER" property="period" />
-    <result column="workhours" jdbcType="INTEGER" property="workhours" />
-    <result column="startdate" jdbcType="TIMESTAMP" property="startdate" />
-    <result column="enddate" jdbcType="TIMESTAMP" property="enddate" />
-    <result column="send" jdbcType="BIGINT" property="send" />
-    <result column="appendix" jdbcType="VARCHAR" property="appendix" />
-    <result column="state" jdbcType="INTEGER" property="state" />
-  </resultMap>
   <sql id="Base_Column_List">
     taskid, rid, founder, assigned, finisher, title, description, type, note, period, 
     workhours, startdate, enddate, send, appendix, state
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultType="Task">
     select 
     <include refid="Base_Column_List" />
     from task
@@ -33,7 +15,7 @@
     delete from task
     where taskid = #{taskid,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.yootk.oa.vo.Task">
+  <insert id="insert" parameterType="Task">
     insert into task (taskid, rid, founder, 
       assigned, finisher, title, 
       description, type, note, 
@@ -42,12 +24,12 @@
       state)
     values (#{taskid,jdbcType=BIGINT}, #{rid,jdbcType=BIGINT}, #{founder,jdbcType=BIGINT}, 
       #{assigned,jdbcType=BIGINT}, #{finisher,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, 
-      #{description,jdbcType=TEXT}, #{type,jdbcType=INTEGER}, #{note,jdbcType=TEXT}, 
+      #{description}, #{type,jdbcType=INTEGER}, #{note}, 
       #{period,jdbcType=INTEGER}, #{workhours,jdbcType=INTEGER}, #{startdate,jdbcType=TIMESTAMP}, 
       #{enddate,jdbcType=TIMESTAMP}, #{send,jdbcType=BIGINT}, #{appendix,jdbcType=VARCHAR}, 
       #{state,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.yootk.oa.vo.Task">
+  <insert id="insertSelective" parameterType="Task">
     insert into task
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="taskid != null">
@@ -119,13 +101,13 @@
         #{title,jdbcType=VARCHAR},
       </if>
       <if test="description != null">
-        #{description,jdbcType=TEXT},
+        #{description},
       </if>
       <if test="type != null">
         #{type,jdbcType=INTEGER},
       </if>
       <if test="note != null">
-        #{note,jdbcType=TEXT},
+        #{note},
       </if>
       <if test="period != null">
         #{period,jdbcType=INTEGER},
@@ -150,7 +132,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yootk.oa.vo.Task">
+  <update id="updateByPrimaryKeySelective" parameterType="Task">
     update task
     <set>
       <if test="rid != null">
@@ -169,13 +151,13 @@
         title = #{title,jdbcType=VARCHAR},
       </if>
       <if test="description != null">
-        description = #{description,jdbcType=TEXT},
+        description = #{description},
       </if>
       <if test="type != null">
         type = #{type,jdbcType=INTEGER},
       </if>
       <if test="note != null">
-        note = #{note,jdbcType=TEXT},
+        note = #{note},
       </if>
       <if test="period != null">
         period = #{period,jdbcType=INTEGER},
@@ -201,16 +183,16 @@
     </set>
     where taskid = #{taskid,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yootk.oa.vo.Task">
+  <update id="updateByPrimaryKey" parameterType="Task">
     update task
     set rid = #{rid,jdbcType=BIGINT},
       founder = #{founder,jdbcType=BIGINT},
       assigned = #{assigned,jdbcType=BIGINT},
       finisher = #{finisher,jdbcType=BIGINT},
       title = #{title,jdbcType=VARCHAR},
-      description = #{description,jdbcType=TEXT},
+      description = #{description},
       type = #{type,jdbcType=INTEGER},
-      note = #{note,jdbcType=TEXT},
+      note = #{note},
       period = #{period,jdbcType=INTEGER},
       workhours = #{workhours,jdbcType=INTEGER},
       startdate = #{startdate,jdbcType=TIMESTAMP},

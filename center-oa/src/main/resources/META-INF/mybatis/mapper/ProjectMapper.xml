@@ -1,25 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yootk.oa.dao.ProjectMapper">
-    <resultMap id="BaseResultMap" type="Project">
-        <id column="proid" jdbcType="BIGINT" property="proid"/>
-        <result column="title" jdbcType="VARCHAR" property="title"/>
-        <result column="alias" jdbcType="VARCHAR" property="alias"/>
-        <result column="founder" jdbcType="BIGINT" property="founder"/>
-        <result column="head" jdbcType="BIGINT" property="head"/>
-        <result column="pl" jdbcType="BIGINT" property="pl"/>
-        <result column="tl" jdbcType="BIGINT" property="tl"/>
-        <result column="startdate" jdbcType="TIMESTAMP" property="startdate"/>
-        <result column="enddate" jdbcType="TIMESTAMP" property="enddate"/>
-        <result column="description" jdbcType="TEXT" property="description"/>
-        <result column="state" jdbcType="INTEGER" property="state"/>
-        <result column="workinghours" jdbcType="INTEGER" property="workinghours"/>
-    </resultMap>
     <sql id="Base_Column_List">
     proid, title, alias, founder, head, pl, tl, startdate, enddate, description, state, 
     workinghours
   </sql>
-    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultType="Project">
         select
         <include refid="Base_Column_List"/>
         from project
@@ -36,7 +22,7 @@
       state, workinghours)
     values (#{proid,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, #{alias,jdbcType=VARCHAR}, 
       #{founder,jdbcType=BIGINT}, #{head,jdbcType=BIGINT}, #{pl,jdbcType=BIGINT}, #{tl,jdbcType=BIGINT}, 
-      #{startdate,jdbcType=TIMESTAMP}, #{enddate,jdbcType=TIMESTAMP}, #{description,jdbcType=TEXT}, 
+      #{startdate,jdbcType=TIMESTAMP}, #{enddate,jdbcType=TIMESTAMP}, #{description}, 
       #{state,jdbcType=INTEGER}, #{workinghours,jdbcType=INTEGER})
   </insert>
     <insert id="insertSelective" parameterType="Project">
@@ -108,7 +94,7 @@
                 #{enddate,jdbcType=TIMESTAMP},
             </if>
             <if test="description != null">
-                #{description,jdbcType=TEXT},
+                #{description},
             </if>
             <if test="state != null">
                 #{state,jdbcType=INTEGER},
@@ -146,7 +132,7 @@
                 enddate = #{enddate,jdbcType=TIMESTAMP},
             </if>
             <if test="description != null">
-                description = #{description,jdbcType=TEXT},
+                description = #{description},
             </if>
             <if test="state != null">
                 state = #{state,jdbcType=INTEGER},
@@ -167,7 +153,7 @@
         tl = #{tl,jdbcType=BIGINT},
         startdate = #{startdate,jdbcType=TIMESTAMP},
         enddate = #{enddate,jdbcType=TIMESTAMP},
-        description = #{description,jdbcType=TEXT},
+        description = #{description},
         state = #{state,jdbcType=INTEGER},
         workinghours = #{workinghours,jdbcType=INTEGER}
         where proid = #{proid,jdbcType=BIGINT}
