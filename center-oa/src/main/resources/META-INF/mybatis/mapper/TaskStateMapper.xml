@@ -18,11 +18,11 @@
     delete from task_state
     where tsid = #{tsid,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.yootk.oa.vo.TaskState">
+  <insert id="insert" parameterType="TaskState">
     insert into task_state (tsid, title)
     values (#{tsid,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.yootk.oa.vo.TaskState">
+  <insert id="insertSelective" parameterType="TaskState">
     insert into task_state
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="tsid != null">
@@ -41,7 +41,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yootk.oa.vo.TaskState">
+  <update id="updateByPrimaryKeySelective" parameterType="TaskState">
     update task_state
     <set>
       <if test="title != null">
@@ -50,7 +50,7 @@
     </set>
     where tsid = #{tsid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yootk.oa.vo.TaskState">
+  <update id="updateByPrimaryKey" parameterType="TaskState">
     update task_state
     set title = #{title,jdbcType=VARCHAR}
     where tsid = #{tsid,jdbcType=INTEGER}
