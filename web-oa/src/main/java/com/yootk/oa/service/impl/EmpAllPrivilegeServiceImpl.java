@@ -2,6 +2,7 @@ package com.yootk.oa.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.yootk.dubbo.service.IEmpAllService;
+import com.yootk.dubbo.vo.Emp;
 import com.yootk.oa.service.IEmpAllPrivilegeService;
 import org.springframework.stereotype.Service;
 
@@ -16,5 +17,10 @@ public class EmpAllPrivilegeServiceImpl implements IEmpAllPrivilegeService {
     @Override
     public boolean setPhoto(String photo,String phone) {
         return this.empAllService.updatePhoto(photo,phone);
+    }
+
+    @Override
+    public boolean upadteEmp(Emp emp) {
+        return this.empAllService.upadteEmp(emp);
     }
 }

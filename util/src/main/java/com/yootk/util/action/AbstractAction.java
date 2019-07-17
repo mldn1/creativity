@@ -57,7 +57,6 @@ public class AbstractAction {
                 output.write(data, 0, temp);
             }
             FileUpload fileUpload = new FileUpload(saveFile,fileExt);
-            new File(filePath).delete();
             try {
                 return fileUpload.Upload();
             } catch (Exception e) {

@@ -56,7 +56,6 @@
                 <input type="hidden" class="form-control" id="dataScaleY" name="dataScaleY" placeholder="scaleY">
              </div>
 			 </form>
-              <h2>${reslut}</h2>
             </div>
           </section>
         </div>
