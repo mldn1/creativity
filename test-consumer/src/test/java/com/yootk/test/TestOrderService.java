@@ -17,6 +17,6 @@ public class TestOrderService {
 
     @Test
     public void testGet() throws Exception{
-        System.err.println(this.orderService.List("20190320120604afd78900").get("order"));
+        //System.err.println(this.orderService.List("20190320120604afd78900").get("order"));
     }
 }
