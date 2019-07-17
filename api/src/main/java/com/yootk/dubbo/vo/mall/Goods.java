@@ -1,4 +1,4 @@
-package com.yootk.dubbo.vo;
+package com.yootk.dubbo.vo.mall;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -15,10 +15,10 @@ public class Goods implements Serializable {
     private String size;
     private String material;
     private String purpose;
+    private String description;
     private String showpicture;
     private String picture;
     private String focuspicture;
-    private String description;
     private String details;
     private Double originprice;
     private Double saleprice;

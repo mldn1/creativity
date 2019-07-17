@@ -5,7 +5,7 @@
 <mapper namespace="com.yootk.mall.dao.IGoodsDAO">
     <sql id="Base_Column_List">
     SELECT gid, id, title, shortname, link, deduction, standard, color, size, material, purpose,
-    description, originprice, saleprice, pack, supplier, singlesize, iscg, stateid, showstate,
+    description, showpicture, picture, focuspicture, details, originprice, saleprice, pack, supplier, singlesize, iscg, stateid, showstate,
     weight, sort, site, click, sales, createdate, editdate, eid FROM goods
    </sql>
     <select id="findShow" resultType="Goods">

@@ -1,6 +1,6 @@
 package com.yootk.mall.dao;
 
-import com.yootk.dubbo.vo.Goods;
+import com.yootk.dubbo.vo.mall.Goods;
 
 import java.util.List;
 
