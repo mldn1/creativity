@@ -39,12 +39,6 @@ window.onresize = function(){
             <div style="margin-right:4%;"><a href="javascript:;" class="gw_ShopB">编辑</a></div>
         </header>
 			<div class="gouConter">
-				<!-- 购物车无内容时 显示 -->				
-				<div class="gouConterText" style="display: none;">
-					<img src="assets/images/images/GL_icon_45.png">
-                    <p>您的购物袋还是空的呢...<br>去挑点儿什么吧！</p>
-					<div class="gouBtn">新品推荐</div>
-				</div>
 				<!-- 购物车内容列表 -->
 				<div class="gouLisBox">
 					<div class="gouListFor clearfix">
@@ -55,8 +49,8 @@ window.onresize = function(){
 						</div>
 						<div class="gouListcon"><img src="assets/images/GL_img_14.jpg"></div>
 						<div class="gouListRight">
-							<h3>秋硕飘香茶盘</h3>
-							<p>红色</p>
+							<h3>秋硕飘香茶盘1</h3>
+							<p>红色1</p>
 							<div class="gouJian">
 								<ul class="clearfix">
 									<li><span class="gouNum" data-num="1380">1380</span><span>元</span></li>
