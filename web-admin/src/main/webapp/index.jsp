@@ -5,7 +5,7 @@
 </head>
 <body>
 <%!
-    private static final String INDEX_URL = "pages/index.action";
+    private static final String INDEX_URL = "pages/login.action";
 %>
 <shiro:authenticated>
     <jsp:forward page="<%=INDEX_URL%>"/>
