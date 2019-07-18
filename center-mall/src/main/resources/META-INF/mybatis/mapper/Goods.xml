@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yootk.mall.dao.IGoodsDAO">
+    <sql id="Base_Column_List">
+    SELECT gid, id, title, shortname, link, deduction, standard, color, size, material, purpose,
+    description, showpicture, picture, focuspicture, details, originprice, saleprice, pack, supplier, singlesize, iscg, stateid, showstate,
+    weight, sort, site, click, sales, createdate, editdate, eid FROM goods
+   </sql>
+    <select id="findShow" resultType="Goods">
+        <include refid="Base_Column_List" />
+        order by createdate desc limit 0,4;
+    </select>
+</mapper>

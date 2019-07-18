@@ -14,4 +14,5 @@ public class GoodsAction {
         ModelAndView mav = new ModelAndView("front/goods/shop_details");
         return mav;
     }
+
 }

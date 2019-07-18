@@ -10,8 +10,8 @@
 	<title>购物车</title>
 	<meta name="description" content="页面简述" />
 	<meta name="keywords" content="关键词" />
-	<link href="assets/css/style.css" rel="stylesheet" type="text/css">
-	<link href="assets/css/mystyle.css" rel="stylesheet" type="text/css">
+	<link href="css/style.css" rel="stylesheet" type="text/css">
+	<link href="css/mystyle.css" rel="stylesheet" type="text/css">
     <script>
 function htmlFontSize(){
     var clientWidth = document.documentElement ? document.documentElement.clientWidth : document.body.clientWidth;
@@ -34,23 +34,29 @@ window.onresize = function(){
 <body>
 <div class="gouBox">
 			<header class="login_Head">
-            <div class="sp_Return"><a href="pages/front/main/index.jsp"><img src="assets/images/GL_icon_18.png" border="0"></a></div>
+            <div class="sp_Return"><a href="front/main/index.action"><img src="images/GL_icon_18.png" border="0"></a></div>
             <div class="gw_Shop"><span>购物车</span></div>
             <div style="margin-right:4%;"><a href="javascript:;" class="gw_ShopB">编辑</a></div>
         </header>
 			<div class="gouConter">
+				<!-- 购物车无内容时 显示 -->				
+				<div class="gouConterText" style="display: none;">
+					<img src="images/GL_icon_45.png">
+                    <p>您的购物袋还是空的呢...<br>去挑点儿什么吧！</p>
+					<div class="gouBtn">新品推荐</div>
+				</div>
 				<!-- 购物车内容列表 -->
 				<div class="gouLisBox">
 					<div class="gouListFor clearfix">
 						<div class="gouListLeft">
 							<div class="el-checkbox">
-								<a href="javascript:;" class="checkbox"><img src="assets/images/GL_icon_42.png"></a>
+								<a href="javascript:;" class="checkbox"><img src="images/GL_icon_42.png"></a>
 							</div>
 						</div>
-						<div class="gouListcon"><img src="assets/images/GL_img_14.jpg"></div>
+						<div class="gouListcon"><img src="images/GL_img_14.jpg"></div>
 						<div class="gouListRight">
-							<h3>秋硕飘香茶盘1</h3>
-							<p>红色1</p>
+							<h3>秋硕飘香茶盘</h3>
+							<p>红色</p>
 							<div class="gouJian">
 								<ul class="clearfix">
 									<li><span class="gouNum" data-num="1380">1380</span><span>元</span></li>
@@ -62,10 +68,10 @@ window.onresize = function(){
 					<div class="gouListFor clearfix">
 						<div class="gouListLeft">
 							<div class="el-checkbox">
-								<a href="javascript:;" class="checkbox"><img src="assets/images/GL_icon_42.png"></a>
+								<a href="javascript:;" class="checkbox"><img src="images/GL_icon_42.png"></a>
 							</div>
 						</div>
-						<div class="gouListcon"><img src="assets/images/GL_img_14.jpg"></div>
+						<div class="gouListcon"><img src="images/GL_img_14.jpg"></div>
 						<div class="gouListRight">
 							<h3>秋硕飘香茶盘</h3>
 							<p>红色</p>
@@ -85,7 +91,7 @@ window.onresize = function(){
                 <div class="lose_Text">
                     <ul>
                         <li>
-                            <div class="lose_Img"><img src="assets/images/GL_img_14.jpg"></div>
+                            <div class="lose_Img"><img src="images/GL_img_14.jpg"></div>
                             <div class="lose_h2">
                                 <h2>缠枝莲缠枝莲缠枝莲缠枝莲缠枝莲缠莲缠</h2>
                                 <p>红色</p>
@@ -93,7 +99,7 @@ window.onresize = function(){
                             </div>
                         </li>
                         <li>
-                            <div class="lose_Img"><img src="assets/images/GL_img_14.jpg"></div>
+                            <div class="lose_Img"><img src="images/GL_img_14.jpg"></div>
                             <div class="lose_h2">
                                 <h2>缠枝莲缠枝莲缠枝莲缠枝莲缠枝莲缠莲缠</h2>
                                 <p>红色</p>
@@ -109,28 +115,28 @@ window.onresize = function(){
 				<div class="dropMore mar_Bottom"><div class="dropLeft"></div><div class="dropload-refresh like_Cai">猜你喜欢</div><div class="dropRight"></div></div>
 				<div class="gouLikeShop">
 					  <div class="gouLikeShopText">
-						<img src="assets/images/GL_img_14.jpg">
+						<img src="images/GL_img_14.jpg">
 						<div class="like_Text">
                                 <p class="listName">文创出品,官方认证.....</p>
                                 <p><i><span class="Daole">399</span><span>元/套</span></i></p>
                         </div>
 						</div>
 						<div class="gouLikeShopText">
-							<img src="assets/images/GL_img_14.jpg">
+							<img src="images/GL_img_14.jpg">
 							<div class="like_Text">
                                 <p class="listName">文创出品,官方认证.....</p>
                                 <p><i><span class="Daole">399</span><span>元/套</span></i></p>
                             </div>
 						</div>
 						<div class="gouLikeShopText">
-							<img src="assets/images/GL_img_14.jpg">
+							<img src="images/GL_img_14.jpg">
 							<div class="like_Text">
                                 <p class="listName">文创出品,官方认证.....</p>
                                 <p><i><span class="Daole">399</span><span>元/套</span></i></p>
                             </div>
 						</div>
 						<div class="gouLikeShopText">
-							<img src="assets/images/GL_img_14.jpg">
+							<img src="images/GL_img_14.jpg">
                             <div class="like_Text">
                                 <p class="listName">文创出品,官方认证.....</p>
                                 <p><i><span class="Daole">399</span><span>元/套</span></i></p>
@@ -144,8 +150,8 @@ window.onresize = function(){
 			<div class="fiexBootm">
 				<div class="fiexBox">
 					<ul class="clearfix1 choose">
-						<li><a href="javascript:;" class="quanxuan"><img src="assets/images/GL_icon_42.png"/><b>全部选择</b></a></li>
-						<li class="gl_Del"><span class="hejiNum">总计:0</span><a class="jiesuan" href="pages/front/cart/shopping_cart_1.jsp">下单</a></li>
+						<li><a href="javascript:;" class="quanxuan"><img src="images/GL_icon_42.png"/><b>全部选择</b></a></li>
+						<li class="gl_Del"><span class="hejiNum">总计:0</span><a class="jiesuan" href="pages/front/cart/shopping_cart_1.action">下单</a></li>
 					</ul>
 				</div>
 			</div>
@@ -173,8 +179,8 @@ window.onresize = function(){
                 <input class="confirm_Btn" type="button" value="继续" name="" onClick="delDiv('MyDiv3','fade')">
             </div>
         </div>
-		<script src="assets/js/jquery-1.11.0.min.js"></script>
-		<script src="assets/js/gouwuche.js"></script>
+		<script src="js/jquery-1.11.0.min.js"></script>
+		<script src="js/gouwuche.js"></script>
         <script type="text/javascript">
 		/弹出隐藏层
 		function ShowDiv(show_div,bg_div){

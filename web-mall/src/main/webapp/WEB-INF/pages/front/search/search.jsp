@@ -13,8 +13,8 @@
 	<title>搜索（首页头）</title>
 	<meta name="description" content="页面简述" />
 	<meta name="keywords" content="关键词" />
-	<link href="assets/css/style.css" rel="stylesheet" type="text/css">
-	<link href="assets/css/mystyle.css" rel="stylesheet" type="text/css">
+	<link href="css/style.css" rel="stylesheet" type="text/css">
+	<link href="css/mystyle.css" rel="stylesheet" type="text/css">
     <script>
 function htmlFontSize(){
     var clientWidth = document.documentElement ? document.documentElement.clientWidth : document.body.clientWidth;
@@ -38,18 +38,18 @@ window.onresize = function(){
 <body class="sTop1">
     <div class="search_Hot">
     	<h2>热门搜索</h2>
-        <a href="pages/front/search/search_end.jsp" class="text_Red">铜器馆</a>
-        <a href="pages/front/search/search_end.jsp" class="text_Red">丝绸</a>
-        <a href="pages/front/search/search_end.jsp" class="text_Red">珠光宝气方巾</a>
-        <a href="pages/front/search/search_end.jsp" class="text_Red">福至杯</a>
-        <a href="pages/front/search/search_end.jsp">逐鹿顺意</a>
-        <a href="pages/front/search/search_end.jsp">送礼首选</a>
-        <a href="pages/front/search/search_end.jsp">文创出品</a>
-        <a href="pages/front/search/search_end.jsp">福禄盖碗</a>
-        <a href="pages/front/search/search_end.jsp">前程似锦领带</a>        	
+        <a href="pages/front/search/search_end.action" class="text_Red">铜器馆</a>
+        <a href="pages/front/search/search_end.action" class="text_Red">丝绸</a>
+        <a href="pages/front/search/search_end.action" class="text_Red">珠光宝气方巾</a>
+        <a href="pages/front/search/search_end.action" class="text_Red">福至杯</a>
+        <a href="pages/front/search/search_end.action">逐鹿顺意</a>
+        <a href="pages/front/search/search_end.action">送礼首选</a>
+        <a href="pages/front/search/search_end.action">文创出品</a>
+        <a href="pages/front/search/search_end.action">福禄盖碗</a>
+        <a href="pages/front/search/search_end.action">前程似锦领带</a>
     </div>
     <div class="search_History">
-    	<h2><span>历史搜索</span><a class="add_Del clearList" href="javascript:;"><img src="assets/images/GL_icon_29.png"></a></h2>
+    	<h2><span>历史搜索</span><a class="add_Del clearList" href="javascript:;"><img src="images/GL_icon_29.png"></a></h2>
         <a href="#">铜器馆</a>
         <a href="#">丝绸</a>
         <a href="#">珠光宝气方巾</a>
@@ -73,7 +73,7 @@ window.onresize = function(){
 			</div>
 		</div>
 	</div>
-    <script src="assets/js/jquery-1.11.0.min.js"></script>
+    <script src="js/jquery-1.11.0.min.js"></script>
 <script>
     	// 确认删除
 	var $this  //获取被删除的元素
