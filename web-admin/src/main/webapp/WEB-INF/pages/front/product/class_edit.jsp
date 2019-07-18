@@ -22,7 +22,7 @@
                 <tr>
                     <td>id</td>
                     <td>
-                        <div class="col-sm-5"><input name="id" type="text" id="id" size="50" value="${thisCategory.cid}"
+                        <div class="col-sm-5"><input name="cid" type="text" id="cid" size="50" value="${thisCategory.cid}"
                                                      class="form-control" readonly/>
                         </div>
                     </td>
@@ -31,9 +31,9 @@
                     <td>分类级别</td>
                     <td>
                         <div id="pid_div" class="col-sm-3"><select name="grade" id="grade" class="form-control">
-                            <option value="0">一级类</option>
+                            <option value="0" ${thisCategory.grade==1?"selected":""}>一级类</option>
                             <c:forEach items="${categorys}" var="category">
-                                <option value="${category.cid}" ${parent==category.cid?"selected":""}>${category.title}</option>
+                                <option value="${category.cid}" ${thisCategory.grade!=1&&category.cid==pcid?"selected":""}>${category.title}</option>
                             </c:forEach>
                         </select></div>
                     </td>

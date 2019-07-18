@@ -64,20 +64,26 @@ public class CategoryServiceImpl implements ICategoryService {
 
     @Override
     public Category getParent(Long scid) {
-        Long cid = this.categoryDAO.findParentId(scid) ;
-        return this.categoryDAO.findById(cid);
+        Long pcid = 0L ;
+        pcid = this.categoryDAO.findParentId(scid) ;
+        if (pcid == null||pcid==0){
+            return null ;
+        }
+        return this.categoryDAO.findById(pcid);
     }
 
     @Override
     public Boolean edit(Category category, Long pcid) {
-        if (this.categoryDAO.findByTitle(category.getTitle()) != null){
+        Category c = this.categoryDAO.findByTitle(category.getTitle()) ;
+        if (c != null && c.getCid() != category.getCid()){
             return false ;
         }
         if (this.categoryDAO.doEdit(category) > 0){
+            this.categoryDAO.doDeleteRelationship(category.getCid()) ;
             if (pcid != 0L) {
-                return this.categoryDAO.doEditRelationship(category.getCid(), pcid) > 0 ;
+                return this.categoryDAO.doCreateRelationship(category.getCid(), pcid) > 0 ;
             }else{
-                return this.categoryDAO.doDeleteRelationship(category.getCid()) > 0 ;
+                return true ;
             }
         }
         return false ;

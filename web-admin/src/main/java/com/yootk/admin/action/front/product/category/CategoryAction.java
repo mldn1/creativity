@@ -31,9 +31,9 @@ public class CategoryAction {
         Integer grade = category.getGrade() ;
         Long pcid = 0L ;
         if (grade == 0){
-            category.setGrade(0);
-        }else{
             category.setGrade(1);
+        }else{
+            category.setGrade(2);
             pcid = (long)grade;
         }
         if (this.categoryService.add(category,pcid)){
@@ -48,23 +48,28 @@ public class CategoryAction {
         ModelAndView mav = new ModelAndView("front/product/class_edit") ;
         mav.addObject("categorys",this.categoryService.listByGrade(1)) ;
         mav.addObject("thisCategory",this.categoryService.getCategory(cid)) ;
-        mav.addObject("parent",this.categoryService.getParent(cid).getCid()) ;
+        Long pcid = 0L ;
+        Category parent = this.categoryService.getParent(cid) ;
+        if ( parent != null){
+            pcid = parent.getCid() ;
+        }
+        mav.addObject("pcid",pcid) ;
         return mav ;
     }
 
     @RequestMapping("class_edit_do")
     public ModelAndView edit(Category category){
-        ModelAndView mav = new ModelAndView("front/product/class_edit") ;
-        Integer grade = category.getGrade() ;
+        ModelAndView mav = new ModelAndView() ;
         Long pcid = 0L ;
+        Integer grade = category.getGrade() ;
         if (grade == 0){
-            category.setGrade(0);
-        }else{
             category.setGrade(1);
+        }else{
+            category.setGrade(2);
             pcid = (long)grade;
         }
         if (this.categoryService.edit(category,pcid)){
-            return this.listCategory() ;
+            return this.listCategory();
         }else{
             return this.preEdit(category.getCid()) ;
         }
