@@ -23,6 +23,7 @@
         <module>center-oa</module>
         <module>center-admin</module>
         <module>center-mall</module>
+        <module>logsbook</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -83,6 +84,7 @@
         <commons-pool2.version>2.6.2</commons-pool2.version>
         <!-- FastFDS组件包版本 -->
         <version.fastdfs>1.27</version.fastdfs>
+        <version.spring-rabbit>2.1.7.RELEASE</version.spring-rabbit>
         <!-- 公共包版本 -->
         <sso.version>1.0</sso.version>
     </properties>
@@ -104,7 +106,14 @@
                 <artifactId>util</artifactId>
                 <version>${sso.version}</version>
             </dependency>
-            <!-- 公共包 -->
+           <!-- 公共包 -->
+            <!-- RabbitMQ组件包 -->
+            <dependency>
+                <groupId>org.springframework.amqp</groupId>
+                <artifactId>spring-rabbit</artifactId>
+                <version>${version.spring-rabbit}</version>
+            </dependency>
+
             <!-- FastFDS组件包 -->
             <dependency>
                 <groupId>cn.bestwu</groupId>

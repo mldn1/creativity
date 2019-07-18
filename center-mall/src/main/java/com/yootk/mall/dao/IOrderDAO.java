@@ -1,6 +1,6 @@
 package com.yootk.mall.dao;
 
-import com.yootk.dubbo.vo.mall.Orders;
+import com.yootk.dubbo.vo.Orders;
 
 import java.util.List;
 import java.util.Map;

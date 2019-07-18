@@ -12,7 +12,7 @@
 <body class="sticky-header">
 <%!
     public static final String SHOW_USER_URL = "pages/back/admin/user/show/" ;
-    private static final String INDEX_URL = "pages/index.action";
+    private static final String INDEX_URL = "pages/login.action";
 %>
 <shiro:authenticated>
 <section>

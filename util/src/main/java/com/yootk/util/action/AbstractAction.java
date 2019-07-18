@@ -1,6 +1,7 @@
 package com.yootk.util.action;
 
 import com.yootk.util.upload.token.UploadToken;
+import com.yootk.util.upload.util.FastDFSFile;
 import com.yootk.util.upload.util.FileUpload;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,38 +42,13 @@ public class AbstractAction {
     }
     public String[] upload(MultipartFile file) {  // 进行上传的控制
         String fileExt = file.getContentType().substring(file.getContentType().lastIndexOf("/") + 1) ;
-        String fileName = UUID.randomUUID() + "." + file.getContentType().substring(file.getContentType().lastIndexOf("/") + 1) ;
-        String filePath = this.getApplication().getRealPath(this.getUploadDir()) + UUID.randomUUID() + "." + fileName ;
-        OutputStream output = null ;
         try {
-            File saveFile = new File(filePath) ;
-            if (!saveFile.getParentFile().exists()) {
-                saveFile.getParentFile().mkdirs() ;
-            }
-            output = new FileOutputStream(saveFile);
-            byte [] data = new byte[1024] ;
-            int temp = 0 ;
-            InputStream inputStream = file.getInputStream() ;
-            while((temp = inputStream.read(data)) != -1) {
-                output.write(data, 0, temp);
-            }
-            FileUpload fileUpload = new FileUpload(saveFile,fileExt);
-            try {
-                return fileUpload.Upload();
-            } catch (Exception e) {
-                e.printStackTrace();
-                return null;
-            }
+            FastDFSFile fastDFSFile = new FastDFSFile(file.getBytes(),file.getOriginalFilename(),file.getSize());
+            String[] upload = FileUpload.Upload(fastDFSFile, fileExt);
+            return upload;
         } catch (Exception e) {
-            return null ;
-        } finally {
-            if (output != null) {
-                try {
-                    output.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
+            e.printStackTrace();
+            return null;
         }
     }
     /**

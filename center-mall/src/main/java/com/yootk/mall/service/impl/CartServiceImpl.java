@@ -1,7 +1,7 @@
 package com.yootk.mall.service.impl;
 
 import com.yootk.dubbo.service.mall.ICartService;
-import com.yootk.dubbo.vo.mall.Cart;
+import com.yootk.dubbo.vo.Cart;
 
 import java.util.Map;
 

@@ -1,7 +1,7 @@
 package com.yootk.mall.service.impl;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.yootk.dubbo.service.mall.IOrderService;
-import com.yootk.dubbo.vo.mall.Orders;
+import com.yootk.dubbo.vo.Orders;
 import com.yootk.mall.service.IOrderTransferService;
 import org.springframework.stereotype.Service;
 
