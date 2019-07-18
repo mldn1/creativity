@@ -3,7 +3,7 @@ package com.yootk.dubbo.vo.mall;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Goods implements Serializable {
+public class Good implements Serializable {
     private Long id;
     private String gid;
     private String title;
@@ -46,7 +46,7 @@ public class Goods implements Serializable {
     private Date editdate;
     private Long eid;
 
-    public Goods() {}
+    public Good() {}
 
     public Long getId() {
         return id;
@@ -298,7 +298,7 @@ public class Goods implements Serializable {
 
     @Override
     public String toString() {
-        return "Goods{" +
+        return "Good{" +
                 "id=" + id +
                 ", gid='" + gid + '\'' +
                 ", title='" + title + '\'' +

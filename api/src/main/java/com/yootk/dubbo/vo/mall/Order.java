@@ -2,7 +2,7 @@ package com.yootk.dubbo.vo.mall;
 
 import java.io.Serializable;
 
-public class Orders  implements Serializable {
+public class Order  implements Serializable {
     public String oid ;
     public String mid ;
     public String address ;

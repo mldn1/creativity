@@ -1,9 +1,9 @@
 package com.yootk.mall.service;
 
-import com.yootk.dubbo.vo.mall.Goods;
+import com.yootk.dubbo.vo.mall.Good;
 
 import java.util.List;
 
 public interface IGoodsTransferService {
-    List<Goods> findShowGoods();
+    List<Good> findShowGoods();
 }

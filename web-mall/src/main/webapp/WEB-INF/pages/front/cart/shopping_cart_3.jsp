@@ -13,8 +13,8 @@
 	<title>下单成功（没有头只有脚）</title>
 	<meta name="description" content="页面简述" />
 	<meta name="keywords" content="关键词" />
-	<link href="assets/css/style.css" rel="stylesheet" type="text/css">
-	<link href="assets/css/mystyle.css" rel="stylesheet" type="text/css">
+	<link href="css/style.css" rel="stylesheet" type="text/css">
+	<link href="css/mystyle.css" rel="stylesheet" type="text/css">
     <script>
 function htmlFontSize(){
     var clientWidth = document.documentElement ? document.documentElement.clientWidth : document.body.clientWidth;
@@ -40,8 +40,8 @@ window.onresize = function(){
 	<h2>下单成功</h2>
     <p>感谢您光临文创文创馆</p>
     <div class="success_Btn">
-    	<input type="button" value="查看我的订单" name="" onClick="window.open('pages/front/order/order_details.jsp','_self');">
-        <input type="button" value="继续逛逛" name="" onClick="window.open('pages/front/main/index.jsp','_self');">
+    	<input type="button" value="查看我的订单" name="" onClick="window.open('pages/front/order/order_details.action','_self');">
+        <input type="button" value="继续逛逛" name="" onClick="window.open('pages/front/main/index.main','_self');">
     </div>
 </div>
 <div class="pay_Details">
