@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 定义所有的SQL语句的映射， 对于本实体而言相关的所有的SQL代码都在此定义 -->
+<mapper namespace="com.yootk.admin.dao.IGoodsDAO">   <!-- SSM整合的时候，这个命名空间异常重要 -->
+    <sql id="selectBase">
+         SELECT id,gid,title,shortname,link,deduction,standard,color,size,material,purpose,showpicture,focuspicture,
+         description,details,originprice,saleprice,pack,supplier,singlesize,iscg,stateid,showstate,weight,sort,site,click,sales,createdate,editdate,eid from goods
+    </sql>
+    <select id="findSplit" parameterType="java.util.Map" resultType="Goods">
+        <include refid="selectBase"/>
+        <if test="column != null and keyword != null and column != &quot;&quot; and keyword != &quot;&quot;">
+            WHERE ${column} LIKE #{keyword}
+        </if>
+        LIMIT #{start},#{linesize};
+    </select>
+    <select id="getAllCount" parameterType="java.util.Map" resultType="java.lang.Long">
+        SELECT COUNT(*) FROM goods
+        <if test="column != null and keyword != null and column != &quot;&quot; and keyword != &quot;&quot;">
+            WHERE ${column} LIKE #{keyword}
+        </if>
+    </select>
+
+</mapper>

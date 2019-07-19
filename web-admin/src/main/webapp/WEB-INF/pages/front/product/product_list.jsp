@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page pageEncoding="UTF-8" %>
 <html>
 <head>
@@ -36,18 +37,13 @@
           <td style="text-align:left; vertical-align:bottom;"><div class="form-group">
               <label class="col-lg-2" for="state">状态：</label>
               <div class="col-lg-7">
-                <div id="state_div" class="col-sm-3"><select name="state" id="state" class="form-control" >
-<option value="">请选择</option>
-<option value="0">下架</option>
-<option value="1">上架</option>
-<option value="7">热销</option>
-<option value="8">推荐</option>
-<option value="9">置顶</option>
-<option value="21">预售</option>
-<option value="22">秒杀</option>
-<option value="31">草稿</option>
-<option value="41">已售空</option>
-</select></div>
+                <div id="state_div" class="col-sm-3">
+                    <select name="state" id="state" class="form-control" >
+                        <option value="">请选择</option>
+                        <c:forEach items="${allGoods_state}" var="goods_state">
+                            <option value="${goods_state.id}">${goods_state.title}</option>
+                        </c:forEach>
+                    </select></div>
 
               </div>
             </div></td>
@@ -56,30 +52,13 @@
           <td style="text-align:left; vertical-align:bottom;"><div class="form-group">
               <label class="col-lg-2" for="cls">分类：</label>
               <div class="col-lg-7">
-                <div id="cls_div" class="col-sm-3"><select name="cls" id="cls" class="form-control" >
-<option value="">请选择</option>
-<option value="28">综合</option>
-<option value="7">茶具</option>
-<option value="13">茶碟</option>
-<option value="14">其他</option>
-<option value="26">枕套</option>
-<option value="23">纸巾盒及糖果盒</option>
-<option value="24">其他</option>
-<option value="25">包包</option>
-<option value="15">化妆包</option>
-<option value="11">丝巾</option>
-<option value="16">拉杆箱</option>
-<option value="19">综合</option>
-<option value="8">雨伞</option>
-<option value="10">茶具</option>
-<option value="12">木艺</option>
-<option value="18">车挂</option>
-<option value="30">综合</option>
-<option value="21">雨伞</option>
-<option value="22">皮具</option>
-<option value="27">纯真皮</option>
-</select></div>
-
+                <div id="cls_div" class="col-sm-3">
+                    <select name="cls" id="cls" class="form-control" >
+                        <option value="">请选择</option>
+                        <c:forEach items="${allCategory}" var="category">
+                            <option value="${category.cid}">${category.title}</option>
+                        </c:forEach>
+                </select></div>
               </div>
             </div></td>
         </tr>      <tr>
@@ -141,11 +120,10 @@
       </tr>
           </tbody>
     <tr>
-      <td colspan="13" align="center" valign="middle"><span class="">首页</span>&nbsp;<span class="">上一页</span>[<span class="">1</span>]
-[<a  href="#">2</a>]
-[<a  href="#">3</a>]
-[<a  href="#">4</a>]
-<a  href="#">下一页</a>&nbsp;<a  href="#">尾页</a>&nbsp;转到第&nbsp;<select name="PB_Page_Select" onChange="window.location.href='/manage.jsp?action=main&exec=Commodity_commoditys&page='+this.options[this.selectedIndex].value"><option value="1" selected>1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select>&nbsp;页&nbsp;共5页&nbsp;99条&nbsp;&nbsp;&nbsp;
+      <td colspan="13" align="center" valign="middle">&nbsp;
+          <div id="splitBarDiv" style="float:right">
+              <jsp:include page="/WEB-INF/pages/plugins/split_page_bar_plugin.jsp"/>
+          </div>&nbsp;共5页&nbsp;99条&nbsp;&nbsp;&nbsp;
 <a href="pages/front/product/product_add.jsp"  class="btn btn-primary">添加商品</a></td>
     </tr>
   </table>

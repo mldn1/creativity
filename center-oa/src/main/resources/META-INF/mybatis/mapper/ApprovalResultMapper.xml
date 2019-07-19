@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yootk.oa.dao.ApprovalResultMapper">
-  <resultMap id="BaseResultMap" type="com.yootk.oa.vo.ApprovalResult">
+  <resultMap id="BaseResultMap" type="com.yootk.dubbo.vo.ApprovalResult">
     <id column="arid" jdbcType="BIGINT" property="arid" />
     <result column="result" jdbcType="INTEGER" property="result" />
   </resultMap>

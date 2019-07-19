@@ -1,6 +1,5 @@
 package com.yootk.admin.dao;
 
-import com.yootk.dubbo.vo.Orders;
 import com.yootk.dubbo.vo.Orders_address;
 
 import java.util.List;

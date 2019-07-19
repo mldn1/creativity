@@ -11,10 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.Map;
-import java.util.regex.Pattern;
 
 @Controller // 创建一个控制器
 @RequestMapping("/pages/front/sale/*")

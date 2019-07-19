@@ -19,4 +19,6 @@
     <!-- 将远程接口的实现子类配置到服务之中，这一个是关键的步骤 -->
     <!--<dubbo:provider timeout="${dubbo.provider.timeout}"
                     dispatcher="message" threadpool="fixed" threads="8" token="true"/>-->
+
+
 </beans>

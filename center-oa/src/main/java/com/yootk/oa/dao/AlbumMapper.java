@@ -1,6 +1,5 @@
 package com.yootk.oa.dao;
 
-
 import com.yootk.dubbo.vo.Album;
 
 public interface AlbumMapper {
