@@ -19,6 +19,5 @@ public class TestMemberService {
         Member member = new Member() ;
         member.setMid("2001");
         member.setPassword("hello");
-        System.out.println(this.memberService.login(member));
     }
 }

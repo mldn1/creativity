@@ -10,5 +10,6 @@ public interface IMemberService {
      * @return 登录成功返回Vo类，登录失败，返回NULL
      */
     public Member login(String phone);
-    public Member get(String mid);
+    public boolean createMember(String phone,String password);
+    public boolean getPhone(String phone);
 }

@@ -49,7 +49,7 @@ window.onresize = function(){
 </div>
 <div class="L_Btn">
 	<input type="button" value="手机登录" class="login_Btn" onclick="window.location.href='login.action'">
-	<input type="button" value="快捷注册" class="register_Btn" onclick="window.location.href='../register/register-1.jsp'">
+	<input type="button" value="快捷注册" class="register_Btn" onclick="window.location.href='/pages/front/register/register_1.action'">
 </div>
 <div class="login_Other">
 	<div class="dropMore mar_Bottom"><div class="dropLeft"></div><div class="dropload-refresh">其他登录方式</div><div class="dropRight"></div></div>

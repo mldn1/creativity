@@ -11,7 +11,6 @@ public class CommonAction {
     }
     @RequestMapping("login_pswd")
     public String  login_pswd(String username,String password){
-        System.err.println("用户名："+username+"、密码："+password);
         return "front/login/login-3" ;
     }
     @RequestMapping("/pages/welcome")

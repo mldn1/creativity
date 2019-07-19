@@ -13,4 +13,14 @@ public class MemberMallServiceImpl implements IMemberMallService {
     public Member login(String phone){
         return this.memberService.login(phone);
     }
+
+    @Override
+    public boolean CreateMember(String phone, String password) {
+        return this.memberService.createMember(phone,password);
+    }
+
+    @Override
+    public boolean getPhone(String phone) {
+        return this.memberService.getPhone(phone);
+    }
 }

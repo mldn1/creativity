@@ -12,4 +12,13 @@
             phone=#{phone} AND state=0
         </where>
     </select>
+    <insert id="doCreateMmeber" parameterType="Map">
+        INSERT INTO member (phone,password) VALUES (#{phone},#{password})
+    </insert>
+    <select id="findPhone" parameterType="java.lang.String" resultType="java.lang.String">
+        SELECT phone FROM member
+        <where>
+            phone=#{phone}
+        </where>
+    </select>
 </mapper>
