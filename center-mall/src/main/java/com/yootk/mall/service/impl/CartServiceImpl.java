@@ -24,9 +24,12 @@ public class CartServiceImpl implements ICartService {
     public boolean add(String module, String userId, String goodsId, Integer num) throws Exception {
         Map<String,String> map = new HashMap<>() ;
         //1、获取当前用户
-        String HashKey = module + "-" + userId ; //模块+用户名称+商品ID
+        String HashKey = module + "-" + userId ; //模块+用户名称
         //3、获取商品ID，商品、数量
         Good goods = goodDAO.findById(goodsId) ;
+        System.err.println("----------------------");
+        System.out.println(goods);
+        System.err.println("----------------------");
         //4、向Redis里面 添加HSet数据，Key =模块 + 用户名   value=
         map.put("goodsId",goodsId) ;
         map.put("goodsName",goods.getTitle()) ;
@@ -67,11 +70,15 @@ public class CartServiceImpl implements ICartService {
         Set<Map.Entry<Object,Object>> set = (Set<Map.Entry<Object,Object>> )(map.entrySet()) ;
         Iterator<Map.Entry<Object,Object>> iter = set.iterator() ;
         Map<String,String> temp = null ;
+        int price= 0 ;
+        int priceTotal= 0 ;
         while (iter.hasNext()) {
             Map.Entry<Object,Object> entry =  iter.next() ;
             temp  =(Map<String,String>)entry.getValue() ;
-            System.err.println(this.goodDAO.findById(temp.get("goodsId")).getSales().toString());
-            temp.put("price",this.goodDAO.findById(temp.get("goodsId")).getSales().toString()) ;
+            price = this.goodDAO.findById(temp.get("goodsId")).getSales() ;
+            priceTotal = price * Integer.valueOf(temp.get("count")) ;
+            temp.put("price",String.valueOf(price)) ;
+            temp.put("priceTotal",String.valueOf(priceTotal)) ;
             list.add(temp) ;
         }
 
@@ -94,17 +101,26 @@ public class CartServiceImpl implements ICartService {
     @Override
     public boolean edit(String module, String userId, String goodsId, Integer num, String type) throws Exception {
 
+
         //编辑商品数量
         String hashKey = module+ "-" + userId  ; //模块+用户名称
         Object obj = this.stringRedisTemplate.opsForHash().get(hashKey,goodsId) ;
+        System.err.println("3、----------------------");
+        System.out.println(obj);
         Integer oldVal = Integer.valueOf(((Map<String,String>)obj).get("count")) ;
-        String result = null ;
-        if (type.equals("one")){
-            result = String.valueOf(oldVal+ num );
-        }else{
-            result = String.valueOf(num );
-        }
+        System.err.println(oldVal);
+        String result =  result = String.valueOf(num ); ;
+//        if (type.equals("one")){
+//            result = String.valueOf(oldVal+ num );
+//        }else{
+//            result = String.valueOf(num );
+//        }
         ((Map<String,String>)obj).put("count",result );
+
+        System.out.println(goodsId);
+        System.out.println(result);
+        System.out.println(obj);
+        System.err.println("========================");
         this.stringRedisTemplate.opsForHash().put(hashKey,goodsId,obj);
         return true;
     }

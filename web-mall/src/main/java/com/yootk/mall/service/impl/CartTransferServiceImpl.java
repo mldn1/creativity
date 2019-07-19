@@ -15,23 +15,41 @@ import java.util.Map;
 public class CartTransferServiceImpl implements ICartTransferService {
     @Reference
     private ICartService cartService ;
-
     /**
      * 整合购物车数据相关表，将整合之后的数据以Map的形式反馈给前台
      *涉及的表有：订单表、商品表、用户表、库存表
      * @return
      */
     @Override
-    public Map<String, Object> handleCart() {
-        List<Order>  ordersList = new ArrayList<>() ;
-        Map<Object,Object> map = null ;
+    public List<Object>  handleCartList() {
+        List<Object>  ordersList = new ArrayList<>() ;
         try {
-            //map = this.cartService.list("cart","admin") ;
-            this.cartService.get("cart","admin","1001") ;
-            //System.out.println(map);
+            ordersList = this.cartService.list("cart","admin") ;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
+        return ordersList;
+    }
+
+    @Override
+    public boolean handleGoodsNumAdjust(String goodsId,String num) {
+        try {
+            System.err.println("2、handleCartAdjust==============");
+            this.cartService.edit("cart","admin",goodsId,Integer.valueOf(num),"") ;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false ;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean handleGoodsRemove(String goodsId) {
+        try {
+            return   this.cartService.removeByIds(goodsId);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false ;
+        }
     }
 }

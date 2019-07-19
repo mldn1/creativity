@@ -5,6 +5,7 @@ import com.yootk.mall.service.ICartTransferService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -17,10 +18,20 @@ public class CartAction {
     public ModelAndView shoppingCar() throws Exception {
         ModelAndView mav = new ModelAndView() ;
         mav.setViewName("front/cart/shopping_cart");
-        cartTransferService.handleCart();
+        System.err.println(this.cartTransferService.handleCartList()) ;
+        mav.addObject("allCarts",this.cartTransferService.handleCartList()) ;
         return mav ;
     }
-
+    @ResponseBody
+    @RequestMapping("jiajian")
+    public void jiajian(String goodsId,String num) throws Exception {
+        this.cartTransferService.handleGoodsNumAdjust(goodsId,num) ;
+    }
+    @ResponseBody
+    @RequestMapping("goodsRemove")
+    public boolean goodsRemove(String goodsId) throws Exception {
+       return this.cartTransferService.handleGoodsRemove(goodsId);
+    }
     @RequestMapping("shopping_cart_1")
     public ModelAndView shoppingCar1() throws Exception {   //下单页面
         ModelAndView mav = new ModelAndView() ;

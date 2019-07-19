@@ -58,12 +58,14 @@ $(function(){
 		jiajian($(this),-1);
 	})
 	function jiajian(obj,numT){
+		var goodsId = obj.parent().parent().find('.gouNum').attr('goodsId');
 		var numZ = parseInt(obj.parent().parent().find('.gouNum').attr('data-num'));
 		var numB = parseInt(obj.parent().find('.gounub').html());
 		 numB = numB+numT
 		if(numB <=1){
 			numB=1
 		}
+		$.post("/pages/front/cart/jiajian.action",{goodsId:goodsId,num:numB},function(result){ });;
 		obj.parent().find('.gounub').html((numB));
 		obj.parent().parent().find('.gouNum').html((numB*numZ));
 		forGoulist();
@@ -88,11 +90,17 @@ $(function(){
 		var clearType=$(this).attr('data-type');
 		if(clearType=='1'){
 			if(all){
+				var goodsId = $('.checkbox2').parents('.gouListFor').attr('goodsId');
 				$('.checkbox2').parents('.gouListFor').remove();
 			}else{
 				$('.clearModelBox').css('display','none');
 				$this.parents('.gouListFor').remove();
 			}
+			$.post("/pages/front/cart/goodsRemove.action",{goodsId:goodsId},function(result){
+				if(result=='false'){
+					alert("删除失败！") ;
+				}
+			});;
 			$('.clearModelBox').css('display','none');
 		}else{
 			$('.clearModelBox').css('display','none');
