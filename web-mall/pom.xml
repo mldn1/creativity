@@ -30,6 +30,19 @@
             <artifactId>util</artifactId>
         </dependency>
         <!-- 公告包 -->
+        <!-- https://mvnrepository.com/artifact/org.apache.shiro/shiro-web -->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-web</artifactId>
+            <version>1.4.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/commons-logging/commons-logging -->
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>1.2</version>
+        </dependency>
+
         <!--dubbo依赖 -->
         <dependency>
             <groupId>com.alibaba</groupId>

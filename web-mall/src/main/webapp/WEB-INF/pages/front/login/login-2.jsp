@@ -13,8 +13,8 @@
 	<title>登录-2</title>
 	<meta name="description" content="页面简述" />
 	<meta name="keywords" content="关键词" />
-	<link href="assets/css/style.css" rel="stylesheet" type="text/css">
-	<link href="assets/css/mystyle.css" rel="stylesheet" type="text/css">
+	<link href="css/style.css" rel="stylesheet" type="text/css">
+	<link href="css/mystyle.css" rel="stylesheet" type="text/css">
     <script>
 function htmlFontSize(){
     var clientWidth = document.documentElement ? document.documentElement.clientWidth : document.body.clientWidth;
@@ -38,28 +38,28 @@ window.onresize = function(){
 <body>
 
 <div class="GL_logo mar_Bottom">
-	<img src="assets/images/GL_icon_44.png">
+	<img src="images/GL_icon_44.png">
 </div>
 <div class="login_Input">
 	<ul>
     	<li><input type="text" name="" value="" placeholder="输入手机号"></li>
         <li><input type="text" name="" value="" placeholder="短信验证码"><input class="login_Code" type="button" id="btn" value="获取验证码" /></li>
     </ul>
-    <p><a href="pages/front/login/login-3.jsp">使用密码登录</a></p>
+    <p><a href="login_pswd.action">使用密码登录</a></p>
 </div>
 <div class="L_Btn">
-	<input type="button" value="手机登录" class="login_Btn" onclick="window.location.href='login-2.jsp'">
+	<input type="button" value="手机登录" class="login_Btn" onclick="window.location.href='login.action'">
 	<input type="button" value="快捷注册" class="register_Btn" onclick="window.location.href='../register/register-1.jsp'">
 </div>
 <div class="login_Other">
 	<div class="dropMore mar_Bottom"><div class="dropLeft"></div><div class="dropload-refresh">其他登录方式</div><div class="dropRight"></div></div>
   <div class="other_Dl">
-    	<div class="other_Wx"><a href="#"><img src="assets/images/GL_icon_49.png"></a></div>
-    	<div class="other_Qq"><a href="#"><img src="assets/images/GL_icon_48.png"></a></div>
-        <div class="other_Wx"><a href="#"><img src="assets/images/GL_icon_47.png"></a></div>
+    	<div class="other_Wx"><a href="#"><img src="images/GL_icon_49.png"></a></div>
+    	<div class="other_Qq"><a href="#"><img src="images/GL_icon_48.png"></a></div>
+        <div class="other_Wx"><a href="#"><img src="images/GL_icon_47.png"></a></div>
   </div>
 </div>
-<script src="assets/js/jquery-1.11.0.min.js"></script>
+<script src="js/jquery-1.11.0.min.js"></script>
 <script>
 	var wait=60; 
 	function time(o) { 
