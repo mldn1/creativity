@@ -12,4 +12,12 @@ public interface IGroupService {
 
     boolean delete(long gid);
 
+    Map<String, Object> getAllEmpsByGroup(long currentPage, int lineSize, long gid);
+
+    boolean deleteGroupEmp(long gid, long eid);
+
+    int addGroupEmpByNameOrUsername(String key, long gid);
+
+    Group getByTitle(String title);
+
 }

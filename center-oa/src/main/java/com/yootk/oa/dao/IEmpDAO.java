@@ -2,7 +2,10 @@ package com.yootk.oa.dao;
 
 import com.yootk.dubbo.vo.Emp;
 
+import java.util.Collection;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public interface IEmpDAO {
     /**
@@ -20,4 +23,8 @@ public interface IEmpDAO {
     public int updateByPassword(String password,String phone);
 
     public int updatePhoto(String photo,String phone);
+
+    List<Emp> findAllEmpsByIds(Map<String, Object> params) ;
+
+    List<Emp> findByNameOrUsername(String key);
 }

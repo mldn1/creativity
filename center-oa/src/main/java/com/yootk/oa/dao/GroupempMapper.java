@@ -2,16 +2,31 @@ package com.yootk.oa.dao;
 
 import com.yootk.dubbo.vo.Groupemp;
 
-public interface GroupempMapper {
-    int deleteByPrimaryKey(Long gid);
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-    int insert(Groupemp record);
+public interface GroupempMapper {
 
     int insertSelective(Groupemp record);
-
-    Groupemp selectByPrimaryKey(Long gid);
 
     int updateByPrimaryKeySelective(Groupemp record);
 
     int updateByPrimaryKey(Groupemp record);
+
+
+
+    Set<Long> findAllEidsByGid(Long gid);
+
+    long getAllCountByGid(Long gid);
+
+    int deleteByGidAndEid(Map<String, Long> params);
+
+    int deleteByGid(long gid);
+
+    int doCreate(Map<String, Long> params);
+
+    int getCountByGidAndEid(Map<String, Long> params);
+
+
 }

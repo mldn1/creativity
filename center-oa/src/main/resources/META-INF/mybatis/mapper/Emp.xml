@@ -30,4 +30,22 @@
             </where>
         </set>
     </update>
+
+    <select id="findAllEmpsByIds" parameterType="Map" resultType="Emp">
+        <include refid="selectBase"/>
+        <where>
+            eid in
+            <foreach collection="eids" open="(" separator="," close=")" item="eid">
+                #{eid}
+            </foreach>
+        </where>
+        limit #{start}, #{lineSize}
+    </select>
+
+    <select id="findByNameOrUsername" parameterType="String" resultType="Emp">
+        <include refid="selectBase"/>
+        <where>
+            name = #{key} or username = #{key}
+        </where>
+    </select>
 </mapper>

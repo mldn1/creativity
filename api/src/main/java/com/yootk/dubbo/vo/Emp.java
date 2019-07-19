@@ -25,6 +25,8 @@ public class Emp implements Serializable {
     private Date lastrecord;
     private String photo;
 
+
+
     public String getPhoto() {
         return photo;
     }
