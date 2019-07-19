@@ -65,7 +65,7 @@
     <!-- 9、 在Spring中配置有关Shiro的全部的过滤器的定义，这个名称必须与web.xml文件保持一致-->
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager" ref="securityManager"/>
-        <property name="loginUrl" value="/login_pswd.action"/> <!-- 配置登录页 -->
+        <property name="loginUrl" value="/pages/front/login/welcome.action"/> <!-- 配置登录页 -->
         <property name="successUrl" value="/pages/front/login/welcome.action"/> <!-- 配置登录页 -->
         <property name="unauthorizedUrl" value="/noauthz.action"/>
         <property name="filters">   <!-- 在ShiroFilter中配置要使用的过滤器 -->

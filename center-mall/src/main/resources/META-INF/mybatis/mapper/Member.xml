@@ -4,7 +4,7 @@
 
 <mapper namespace="com.yootk.mall.dao.IMemberDAO">
     <sql id="Member">
-    SELECT mid,name,email,sex,birthday,password,photo,grade,state,regist,lastrecord,eid,count,ip FROM member
+    SELECT mid,name,phone,email,sex,birthday,password,photo,grade,state,regist,lastrecord,eid,count,ip FROM member
    </sql>
     <select id="findByPhone" parameterType="java.lang.String" resultType="com.yootk.dubbo.vo.Member">
         <include refid="Member" />
@@ -21,4 +21,5 @@
             phone=#{phone}
         </where>
     </select>
+
 </mapper>

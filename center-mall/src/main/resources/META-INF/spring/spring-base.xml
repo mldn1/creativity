@@ -10,8 +10,9 @@
             http://www.springframework.org/schema/aop
             https://www.springframework.org/schema/aop/spring-aop.xsd">
     <!-- 进行扫描包的设置，如果要设置多个包，则可以使用“,”拆分 -->
-    <context:component-scan base-package="com.yootk.mall.service.impl,com.yootk.server.config,com.yootk.server.util"/>
+    <context:component-scan base-package="com.yootk.mall.consumer.listener,com.yootk.mall.service.impl,com.yootk.server.config,com.yootk.server.util"/>
     <context:property-placeholder location="classpath:*.properties"/>
     <aop:aspectj-autoproxy/>    <!-- 启用Annotation注解支持 -->
     <import resource="spring-cache.xml"/>
+    <import resource="spring-rabblit-consumer.xml"/>
 </beans>
