@@ -25,9 +25,7 @@ public class CheckorkServiceImpl implements ICheckorkService {
         Iterator<Checkork> iterator=this.checkorkMapper.findSplitByEid(params).iterator();
         SimpleDateFormat dataformat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         List<String> all=new ArrayList<>();
-        //Checkork checkork=null;
         while(iterator.hasNext()){
-            //Date checkork=;
             String time =dataformat.format(iterator.next().getDatetime());
             all.add(time);
         }

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+       xsi:schemaLocation="
+            http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/rabbit http://www.springframework.org/schema/rabbit/spring-rabbit.xsd">
+    <!-- 2、如果要进行RabbitMQ的管理，那么一定要建立一个专属的RabbitMQ工厂类 -->
+    <rabbit:connection-factory id="connectionFactory"
+                               host="${amqp.rabbitmq.host}"
+                               port="${amqp.rabbitmq.port}"
+                               virtual-host="${amqp.rabbitmq.vhost}"
+                               username="${amqp.rabbitmq.username}"
+                               password="${amqp.rabbitmq.password}"/>
+    <!-- 3、将此时定义的连接工厂交由RabbitMQ进行管理 -->
+    <rabbit:admin connection-factory="connectionFactory"/>
+    <!-- 4、建立消息消费中所需要的队列名称 -->
+    <rabbit:queue id="messageQueue" name="${amqp.rabbitmq.queue.name}" auto-delete="true"/>
+    <!-- 5、定义程序之中要使用的Exchange的配置信息 -->
+    <rabbit:topic-exchange name="${amqp.rabbitmq.exchange.name}">
+        <!--6、Queue和Exchange之间需要进行有效的绑定 -->
+        <rabbit:bindings>
+            <rabbit:binding queue="messageQueue" pattern="${amqp.rabbitmq.routing.key}"/>
+        </rabbit:bindings>
+    </rabbit:topic-exchange>
+    <!-- 6、以上实现了rabbitmq的配置，但是当前的配置里面缺少了之前定义的MessageConsumer程序类 -->
+    <bean id="messageListener" class="com.yootk.logs.consumer.listener.MemberlogsListener"/>
+    <!-- 7、将Listener与队列进行绑定处理 -->
+    <rabbit:listener-container connection-factory="connectionFactory">
+        <rabbit:listener ref="messageListener" method="createLogs" queues="messageQueue"/>
+    </rabbit:listener-container>
+</beans>

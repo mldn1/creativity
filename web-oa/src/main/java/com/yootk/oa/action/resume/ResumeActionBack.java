@@ -2,6 +2,7 @@ package com.yootk.oa.action.resume;
 
 import com.yootk.dubbo.vo.Resume;
 import com.yootk.dubbo.vo.WorkYears;
+import com.yootk.oa.service.checkork.IEmpServicewxlClient;
 import com.yootk.oa.service.resume.IResumeServiceClient;
 import com.yootk.util.action.AbstractAction;
 import com.yootk.util.split.SplitPageUtil;
@@ -18,6 +19,8 @@ import java.util.Map;
 public class ResumeActionBack extends AbstractAction {
     @Autowired
     private IResumeServiceClient resumeServiceClient;
+    @Autowired
+    private IEmpServicewxlClient empServicewxlClient;
     @RequestMapping("resume_list.action")
     public ModelAndView list(String status,String keywords){
         ModelAndView mav=new ModelAndView("back/admin/resumes/index");
@@ -34,7 +37,8 @@ public class ResumeActionBack extends AbstractAction {
 
     @RequestMapping("resume_add.action")
     public ModelAndView add(Resume resume){
-        resume.setEid(5L);//eid待连接
+        Long eid=this.empServicewxlClient.getIEmpServicewxl().getEidByPhone(super.getEmpId());
+        resume.setEid(eid);//eid待连接
         ModelAndView mav=new ModelAndView("back/admin/resumes/form-add");
         this.resumeServiceClient.getIResumeService().doCreate(resume);
         return mav;

@@ -1,7 +1,7 @@
 package com.yootk.test;
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.yootk.dubbo.service.IMemberService;
+import com.yootk.dubbo.service.mall.IMemberService;
 import com.yootk.dubbo.vo.Member;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,6 +19,5 @@ public class TestMemberService {
         Member member = new Member() ;
         member.setMid("2001");
         member.setPassword("hello");
-        System.out.println(this.memberService.login(member));
     }
 }

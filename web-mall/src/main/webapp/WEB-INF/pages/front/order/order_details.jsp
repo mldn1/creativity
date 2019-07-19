@@ -15,8 +15,8 @@
         <meta name="description" content="" />
         <meta name="robots" content="all" />
 		<title>订单详情</title>
-<link href="assets/css/style.css" rel="stylesheet" type="text/css">
-	<link href="assets/css/mystyle.css" rel="stylesheet" type="text/css">
+<link href="css/style.css" rel="stylesheet" type="text/css">
+	<link href="css/mystyle.css" rel="stylesheet" type="text/css">
 		<script>
 			function htmlFontSize(){
 			    var clientWidth = document.documentElement ? document.documentElement.clientWidth : document.body.clientWidth;
@@ -45,7 +45,7 @@
     <!--<span class="font_ColorWc">已完成</span>-->
 </div>
 <div class="details_Adds">
-	<div class="shop_Addsicon1"><img src="assets/images/GL_icon_11.png"></div>
+	<div class="shop_Addsicon1"><img src="images/GL_icon_11.png"></div>
   	<div class="shop_Addstext1">
     	<h2><span></span><span>133****2222</span></h2>
         <p>北京市xxxxxxxxxxxxxxxxxxx</p>
@@ -53,7 +53,7 @@
 </div>
 <div class="shop_Product">
 	<div class="shop_Prolist">
-    	<div class="shop_ProImg"><img src="assets/images/GL_img_02.jpg"></div>
+    	<div class="shop_ProImg"><img src="images/GL_img_02.jpg"></div>
         <div class="shop_Protext">
        	  <h2>缠枝莲缠枝莲缠枝莲缠枝莲缠枝莲缠</h2>
            	<p>红色</p>
@@ -64,7 +64,7 @@
         </div>
     </div>
     <div class="shop_Prolist">
-    	<div class="shop_ProImg"><img src="assets/images/GL_img_02.jpg"></div>
+    	<div class="shop_ProImg"><img src="images/GL_img_02.jpg"></div>
         <div class="shop_Protext">
        	  <h2>缠枝莲缠枝莲缠枝莲缠枝莲缠枝莲缠</h2>
            	<p>红色</p>
@@ -104,9 +104,9 @@
 </div>
 <!--待付款-->
 <div class="order_Qx">
-	<div class="order_Service"><a class=""><img src="assets/images/GL_icon_13.png"></a></div>
+	<div class="order_Service"><a class=""><img src="images/GL_icon_13.png"></a></div>
     <div class="order_Cancel"><a href="#">取消订单</a></div>
-    <div class="order_Payment" id="order_Payment"><a href="pages/front/cart/shopping_cart_2.jsp"><span id="showDiv"></span></a></div>
+    <div class="order_Payment" id="order_Payment"><a href="pages/front/cart/shopping_cart_2.action"><span id="showDiv"></span></a></div>
 </div>
 
 <!--<div class="order_Qx">
@@ -127,7 +127,7 @@
 	<div class="order_Service1"><a class="#"><img src="images/GL_icon_13.png"></a></div>
     <div class="order_CancelAll"><a href="#">申请退货</a></div>
 </div>-->
-<script src="assets/js/jquery-1.11.0.min.js"></script>
+<script src="js/jquery-1.11.0.min.js"></script>
 <script>
   var time;      
             var showDiv=document.getElementById("showDiv");  

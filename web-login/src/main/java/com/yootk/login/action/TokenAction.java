@@ -4,6 +4,7 @@ package com.yootk.login.action;
 import com.yootk.dubbo.vo.Client;
 import com.yootk.login.service.IOAuthService;
 import com.yootk.login.util.cache.RedisCache;
+import com.yootk.util.action.AbstractAction;
 import org.apache.oltu.oauth2.as.issuer.MD5Generator;
 import org.apache.oltu.oauth2.as.issuer.OAuthIssuerImpl;
 import org.apache.oltu.oauth2.as.request.OAuthTokenRequest;
@@ -12,8 +13,10 @@ import org.apache.oltu.oauth2.common.OAuth;
 import org.apache.oltu.oauth2.common.error.OAuthError;
 import org.apache.oltu.oauth2.common.message.OAuthResponse;
 import org.apache.oltu.oauth2.common.message.types.GrantType;
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.cache.CacheManager;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.HttpStatus;
@@ -25,6 +28,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Enumeration;
 import java.util.concurrent.TimeUnit;
 
 @Controller
@@ -32,10 +36,13 @@ import java.util.concurrent.TimeUnit;
 public class TokenAction {
     public static final String TOKEN_CACHE_NAME = "tokenCache" ;
     public static final String AUTHCODE_CACHE_NAME = "authcodeCache" ;
+    private static String accessToken = null;
+    private static String authcode = null;
     @Value("${oauth.token.expire}")
     private long expire ;
     @Autowired
     private IOAuthService oauthService ;
+    @Autowired
     private RedisCache<Object,Object> tokenRedisCache;
     private RedisCache<Object,Object> authcodeRedisCache ;
     @Autowired
@@ -50,17 +57,17 @@ public class TokenAction {
             // 1、在整个的程序之中，如果要想进行Token数据的生成处理，那么最为重要的内容就是要想办法获取用户的mid的信息
             // 对于此时的mid的数据信息是可以直接利用authcode信息获取的，如果没有找到对应的authcode那么就表示当前的信息不存在
             OAuthTokenRequest tokenRequest = new OAuthTokenRequest(request);// 根据请求创建OAuth请求
-            Object mid = null ; // 利用mid的信息进行数据的存储，主要是利用其来判断是否存在有特定的authcode
+            Object phone = null ; // 利用mid的信息进行数据的存储，主要是利用其来判断是否存在有特定的authcode
             // 2、必须判断当前用户的请求是否与当前指定的请求的授权类型相匹配
             if (tokenRequest.getParam(OAuth.OAUTH_GRANT_TYPE)
                     .equals(GrantType.AUTHORIZATION_CODE.toString())) {
-                String authcode = tokenRequest.getParam(OAuth.OAUTH_CODE) ; // 获取authcode
+                authcode = tokenRequest.getParam(OAuth.OAUTH_CODE) ; // 获取authcode
                 try {
-                    mid = this.authcodeRedisCache.get(authcode); // 根据authcode获取对应的mid数据
+                    phone = this.authcodeRedisCache.get(authcode); // 根据authcode获取对应的mid数据
                 } catch (Exception e) {}    // 出现了错误就表示没有对应的authcode内容存储
             }
             // 3、如果此时没有查询到mid，那么就表示用户发送的授权码出现了错误（超时了）
-            if (mid == null) {  // 查不到对应的mid数据，则认为authcode不合法
+            if (phone == null) {  // 查不到对应的mid数据，则认为authcode不合法
                 OAuthResponse authResponse = OAuthASResponse
                         .errorResponse(HttpServletResponse.SC_BAD_REQUEST)
                         .setError(OAuthError.TokenResponse.INVALID_GRANT)
@@ -92,9 +99,10 @@ public class TokenAction {
             }
             // 7、如果此时的客户信息有效，那么就可以依据客户信息生成一个accessToken，定义生成器
             OAuthIssuerImpl oauthIssuer = new OAuthIssuerImpl(new MD5Generator());
-            String accessToken = oauthIssuer.accessToken() ; // 生成AccessToken
+            accessToken = oauthIssuer.accessToken() ; // 生成AccessToken
+            System.err.println("accessToken:========="+accessToken);
             // 8、因为Token是交互的主要操作项，所以此时应该考虑将Token保存在Redis数据库之中
-            this.tokenRedisCache.putEx(accessToken,mid, TimeUnit.DAYS,this.expire) ;
+            this.tokenRedisCache.putEx(accessToken,phone, TimeUnit.DAYS,this.expire) ;
             // 9、将生成的Token的数据发送给客户端，创建一个新的响应处理，返回的内容为JSON数据
             OAuthResponse oauthResponse = OAuthASResponse
                     .tokenResponse(HttpServletResponse.SC_OK)

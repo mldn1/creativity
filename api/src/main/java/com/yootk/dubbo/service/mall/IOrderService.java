@@ -12,6 +12,6 @@ public interface IOrderService {
      * key=order       value=订单集合
      * key=allCount    value=
      */
-    public Map<String,Object> List(Map<String,Object> map) throws Exception ;
+    public Map<String,Object> list(Map<String,Object> map) throws Exception ;
 
 }

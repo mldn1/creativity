@@ -20,4 +20,8 @@ public interface IEmpDAO {
     public int updateByPassword(String password,String phone);
 
     public int updatePhoto(String photo,String phone);
+
+
+    public int updateEmp(Emp emp);
+
 }

@@ -13,7 +13,7 @@ public class EmpServiceImplwxl implements IEmpServicewxl {
     private EmpMapper empMapper;
     @Override
     public Long getEidByPhone(String phone) {
-        return null;
+        return this.empMapper.getEidByPhone(phone);
     }
 
     @Override

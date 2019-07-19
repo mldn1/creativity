@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yootk.mall.dao.IMemberLogsDAO">
+    <insert id="createLogs" parameterType="com.yootk.dubbo.vo.MemberLogs">
+         INSERT INTO memberlogs (logintime,loginip,phone) VALUES (#{logintime},#{logintip},#{phone})
+    </insert>
+</mapper>

@@ -6,7 +6,10 @@
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context
        https://www.springframework.org/schema/context/spring-context.xsd">
-    <context:component-scan base-package="com.yootk.mall.service,com.yootk.server.config,com.yootk.server.util" />
-    <context:property-placeholder location="classpath:dubbo.properties"/>
+
+    <context:component-scan base-package="com.yootk.mall.service.impl,com.yootk.mall.action" />
+    <context:property-placeholder location="classpath:*.properties"/>
     <import resource="spring-dubbo-consumer.xml"/>
+    <import resource="spring-shiro.xml"/>
+    <import resource="spring-rabblit-producer.xml"/>
 </beans>

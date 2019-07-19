@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpSession;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -35,15 +34,15 @@ public class CheckorkActionBack extends AbstractAction {
     @RequestMapping("checkork_list.action")
     public ModelAndView listl(String type){
         System.err.println("================"+super.getEmpId()+"=====================");
-        Long eid2=this.empServicewxlClient.getIEmpServicewxl().getEidByPhone(super.getEmpId());
-        System.err.println("================="+eid2+"========================");
-        //Emp emp=(Emp) super.getSession().getAttribute("emp");
-        //Long eid=emp.getEid();//等待取得session中封装的emp，session封装emp程序还没上传
+        Long eid=this.empServicewxlClient.getIEmpServicewxl().getEidByPhone(super.getEmpId());
+        System.err.println("================="+eid+"========================");
+//        Emp emp=(Emp) super.getSession().getAttribute("emp");
+//        Long eid=emp.getEid();//等待取得session中封装的emp，session封装emp程序还没上传
         ModelAndView mav=new ModelAndView("back/admin/checkworks/index");
         SplitPageUtil spu = new SplitPageUtil("/pages/back/admin/checkworks/checkork_list.action");
-        //System.err.println("====================================="+eid+"=====================================");
+        System.err.println("====================================="+eid+"=====================================");
         System.err.println("====================================="+spu.getKeyword()+"=====================================");
-        Map<String, Object> map = this.checkorkServiceClient.getICheckorkService().list(5L, spu.getCurrentPage(),spu.getLineSize(),"state",type);
+        Map<String, Object> map = this.checkorkServiceClient.getICheckorkService().list(eid, spu.getCurrentPage(),spu.getLineSize(),"state",type);
         mav.addAllObjects(map);
         return mav;
     }
@@ -77,6 +76,7 @@ public class CheckorkActionBack extends AbstractAction {
     }
     @RequestMapping("checkork_add.action")
     public String add(){
+        Long eid=this.empServicewxlClient.getIEmpServicewxl().getEidByPhone(super.getEmpId());
         Date datetime=new Date();
         DateFormat dateFormat=new SimpleDateFormat("HH:mm:ss");
          String time=dateFormat.format(datetime);
@@ -101,7 +101,7 @@ public class CheckorkActionBack extends AbstractAction {
             state=1;        //17:00到18:00之间打卡算正常
         }
         String ip=super.getRequest().getRemoteAddr();
-         this.checkorkServiceClient.getICheckorkService().doCreate(5L,new Date(), state, ip);
+         this.checkorkServiceClient.getICheckorkService().doCreate(eid,new Date(), state, ip);
            return "forward:checkork_list.action";
     }
 }

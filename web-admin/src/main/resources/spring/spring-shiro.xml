@@ -101,7 +101,7 @@
             <value>
                 /logout.shiro=logout
                 /shiro-oauth=oauthAuth
-                /login.action=authc
+                /pages/index.action=authc
                 /pages/**=authc,kickout
             </value>
         </property>

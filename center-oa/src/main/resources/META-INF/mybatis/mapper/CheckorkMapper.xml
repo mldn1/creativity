@@ -25,14 +25,15 @@
   </select>
   <select id="getAllRecorders" resultType="long" parameterType="map">
     select count(*) from `checkork`
-    <if test="column != null and keyword != null and column != &quot;&quot; and keyword !=&quot;&quot;">
-      <where>
-      <if test="eid!=null">
-        eid=#{eid}
-      </if>
+    <where>
+        <if test="eid!=null and eid != &quot;&quot;">
+          eid=#{eid}
+        </if>
+        <if test="column != null and keyword != null and column != &quot;&quot; and keyword !=&quot;&quot;">
         and ${column} like #{keyword}
-      </where>
-    </if>
+        </if>
+    </where>
+
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 

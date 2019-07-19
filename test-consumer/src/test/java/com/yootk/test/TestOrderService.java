@@ -1,9 +1,7 @@
 package com.yootk.test;
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.yootk.dubbo.service.IMemberService;
 import com.yootk.dubbo.service.mall.IOrderService;
-import com.yootk.dubbo.vo.Member;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;

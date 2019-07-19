@@ -26,7 +26,7 @@ public class MemberRealm extends AuthorizingRealm {
         if (emp.getState().equals(1)) { // 用户锁定了
             throw new LockedAccountException(mid + "账户已经被锁定！");
         }
-        return new SimpleAuthenticationInfo(token.getPrincipal(),emp.getPassword(),this.getName());
+        return new SimpleAuthenticationInfo(emp.getPhone(),emp.getPassword(),this.getName());
     }
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {

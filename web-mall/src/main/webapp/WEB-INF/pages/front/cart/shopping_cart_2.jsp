@@ -13,8 +13,8 @@
 	<title>购物车（支付方式）</title>
 	<meta name="description" content="页面简述" />
 	<meta name="keywords" content="关键词" />
-	<link href="assets/css/style.css" rel="stylesheet" type="text/css">
-	<link href="assets/css/mystyle.css" rel="stylesheet" type="text/css">
+	<link href="css/style.css" rel="stylesheet" type="text/css">
+	<link href="css/mystyle.css" rel="stylesheet" type="text/css">
     <script>
 function htmlFontSize(){
     var clientWidth = document.documentElement ? document.documentElement.clientWidth : document.body.clientWidth;
@@ -41,18 +41,18 @@ window.onresize = function(){
     <ul>
         <li>
           <span class="gou_Btn gouBtn_1"></span>
-          <span><img src="assets/images/GL_icon_41.png">支付宝支付</span>
+          <span><img src="images/GL_icon_41.png">支付宝支付</span>
         </li>
         <li>
            <span class="gou_Btn"></span>
-           <span><img src="assets/images/GL_icon_50.png">微信支付</span>
+           <span><img src="images/GL_icon_50.png">微信支付</span>
         </li>                   	   	
      </ul>
 </div>
 <div class="pay_Way">
-	<input type="button" value="付款" name="" onClick="window.open('pages/front/cart/shopping_cart_3.jsp','_self');">
+	<input type="button" value="付款" name="" onClick="window.open('pages/front/cart/shopping_cart_3.action','_self');">
 </div>
-<script src="assets/js/jquery-1.11.0.min.js"></script>
+<script src="js/jquery-1.11.0.min.js"></script>
  <script>
 $(function(){
 	$('.payment li').click(function(){

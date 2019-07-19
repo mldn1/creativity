@@ -2,7 +2,7 @@
 <!DOCTYPE html> 
 
 <head>
-    <jsp:include page="/pages/plugins/include_basepath.jsp"/>
+    <jsp:include page="/WEB-INF/pages/plugins/include_basepath.jsp"/>
     
 	<meta http-equiv="Pragma" content="no-cache">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
@@ -29,31 +29,31 @@
 				htmlFontSize()
 				}
 			</script>
-<link href="assets/css/style.css" rel="stylesheet" type="text/css">
-<link href="assets/css/swiper.min.css" rel="stylesheet" type="text/css">
-<link href="assets/css/mystyle.css" rel="stylesheet" type="text/css">
+<link href="css/style.css" rel="stylesheet" type="text/css">
+<link href="css/swiper.min.css" rel="stylesheet" type="text/css">
+<link href="css/mystyle.css" rel="stylesheet" type="text/css">
 <style>
 	.swiper-container{ height:auto;}
 </style>
-<script src="assets/js/jquery-1.11.0.min.js"></script>
+<script src="js/jquery-1.11.0.min.js"></script>
 </head>
 
 <body>
 <div class="GL_title">
-	<img src="assets/images/GL_img_30.jpg">
+	<img src="images/GL_img_30.jpg">
 </div>
 <div class="special_put">
 	<input type="text" placeholder="搜索" name="" value="" />
 </div>
 <div class="swiper-container">
   <div class="swiper-wrapper">
-    <div class="swiper-slide"><img src="assets/images/GL_img_31.jpg"></div>
-    <div class="swiper-slide"><img src="assets/images/GL_img_31.jpg"></div>
-    <div class="swiper-slide"><img src="assets/images/GL_img_31.jpg"></div>
+    <div class="swiper-slide"><img src="images/GL_img_31.jpg"></div>
+    <div class="swiper-slide"><img src="images/GL_img_31.jpg"></div>
+    <div class="swiper-slide"><img src="images/GL_img_31.jpg"></div>
   </div>
   <div class="swiper-pagination"></div>
 </div>
-<script src="assets/js/swiper.min.js"></script>
+<script src="js/swiper.min.js"></script>
 <script>
  var mySwiper = new Swiper('.swiper-container',{
     loop : true,
