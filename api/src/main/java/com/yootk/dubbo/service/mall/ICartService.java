@@ -1,9 +1,8 @@
 package com.yootk.dubbo.service.mall;
 
-import com.yootk.dubbo.vo.mall.Cart;
+import com.yootk.dubbo.vo.Cart;
 
 import java.util.Map;
-import java.util.Set;
 
 public interface ICartService {
 
