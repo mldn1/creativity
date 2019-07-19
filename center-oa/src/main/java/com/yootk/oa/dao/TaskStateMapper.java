@@ -1,6 +1,7 @@
 package com.yootk.oa.dao;
 
-import com.yootk.oa.vo.TaskState;
+
+import com.yootk.dubbo.vo.TaskState;
 
 public interface TaskStateMapper {
     int deleteByPrimaryKey(Integer tsid);

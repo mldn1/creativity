@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 定义所有的SQL语句的映射， 对于本实体而言相关的所有的SQL代码都在此定义 -->
+<mapper namespace="com.yootk.admin.dao.IOrders_addressDAO">   <!-- SSM整合的时候，这个命名空间异常重要 -->
+
+    <!--订单信息表的分页查询-->
+    <select id="findSplitByOid" resultType="Orders" parameterType="java.util.Map">
+        SELECT id,oid,mid,allprice,endprice,address,coupon,transport,fare,invoice,iid,state,payment,paystate,payid,createdate,editdate,paydate,channel,coid,eid,returns,returnstate FROM orders
+
+        <where>
+        <if test="column_oid != null and keyword != null and column_oid != '' and keyword != ''">
+            ${column_oid} LIKE  #{keyword} and
+        </if>
+        <if test="mid != null  and mid != '' ">
+            mid=#{mid} and
+        </if>
+        <if test="state != null  and state != '' ">
+            state=#{state} and
+        </if>
+        <if test="channel != null and channel != ''">
+            channel=#{channel} and
+        </if>
+        <if test="paystate != null and paystate != ''">
+            paystate=#{paystate} and
+        </if>
+        <if test="startTime != null and endTime != null">
+            createdate  between #{startTime} and #{endTime} and
+        </if>
+            1 = 1
+        </where>
+        <choose>
+            <when test="start != null and start != '' and lineSize != null and lineSize != ''">
+                LIMIT #{start},#{lineSize}
+            </when>
+        </choose>
+    </select>
+    <!--订单地址表查询-->
+    <select id="findOrders_Address" resultType="Orders_address" parameterType="java.util.Map">
+        SELECT oid,name,address,phone FROM orders_address
+        <where>
+        <!--<if test="oidList != null">
+            oid IN
+            <foreach collection="oidList" open="(" close=")" separator="," item="ele" >
+                #{ele}
+            </foreach>
+        </if>-->
+        <if test="name != null and name != &quot;&quot; and phone == null">
+            ${name} LIKE  #{keyword} and
+        </if>
+        <if test="name == null and name == &quot;&quot; and phone != null">
+            ${phone} LIKE  #{keyword} and
+        </if>
+    </where>
+    </select>
+    <!--订单商品查询-->
+
+
+    <!--分页统计-->
+    <select id="getAllCount" resultType="java.lang.Long" parameterType="Orders">
+        SELECT COUNT(*) FROM orders
+        <if test="column != null and keyword != null and column != &quot;&quot; and keyword != &quot;&quot;">
+            WHERE ${column} LIKE #{keyword}
+        </if>
+    </select>
+
+
+    <!--SSM查询测试-->
+    <sql id="selectBase">
+        SELECT oid,name,address,phone
+    </sql>
+    <select id="getCount" resultType="Orders_address" parameterType="java.util.List">
+         <include refid="selectBase"/>
+         <where>
+             oid=#{oid}
+         </where>
+    </select>
+
+</mapper>

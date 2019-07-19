@@ -1,6 +1,7 @@
 package com.yootk.oa.dao;
 
-import com.yootk.oa.vo.ApplyState;
+
+import com.yootk.dubbo.vo.ApplyState;
 
 public interface ApplyStateMapper {
     int deleteByPrimaryKey(Long asid);

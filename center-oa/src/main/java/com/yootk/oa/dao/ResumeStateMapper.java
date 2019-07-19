@@ -1,6 +1,7 @@
 package com.yootk.oa.dao;
 
-import com.yootk.oa.vo.ResumeState;
+
+import com.yootk.dubbo.vo.ResumeState;
 
 public interface ResumeStateMapper {
     int deleteByPrimaryKey(Long rsid);

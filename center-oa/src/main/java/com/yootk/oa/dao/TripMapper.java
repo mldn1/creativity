@@ -1,6 +1,7 @@
 package com.yootk.oa.dao;
 
-import com.yootk.oa.vo.Trip;
+
+import com.yootk.dubbo.vo.Trip;
 
 public interface TripMapper {
     int deleteByPrimaryKey(Long tripid);

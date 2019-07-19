@@ -1,6 +1,9 @@
-package com.yootk.authz.service.impl;
+package com.yootk.oa.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
+
+import com.yootk.admin.dao.IActionDAO;
+import com.yootk.admin.dao.IRoleDAO;
 import com.yootk.dubbo.service.IRoleAndActionService;
 import org.springframework.beans.factory.annotation.Autowired;
 

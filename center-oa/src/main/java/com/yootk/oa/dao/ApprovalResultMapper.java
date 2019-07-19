@@ -1,6 +1,7 @@
 package com.yootk.oa.dao;
 
-import com.yootk.oa.vo.ApprovalResult;
+
+import com.yootk.dubbo.vo.ApprovalResult;
 
 public interface ApprovalResultMapper {
     int deleteByPrimaryKey(Long arid);

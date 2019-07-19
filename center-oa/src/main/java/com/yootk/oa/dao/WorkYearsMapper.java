@@ -1,6 +1,7 @@
 package com.yootk.oa.dao;
 
-import com.yootk.oa.vo.WorkYears;
+
+import com.yootk.dubbo.vo.WorkYears;
 
 public interface WorkYearsMapper {
     int deleteByPrimaryKey(Long wyid);

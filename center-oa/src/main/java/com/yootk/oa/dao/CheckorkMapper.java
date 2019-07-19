@@ -1,6 +1,7 @@
 package com.yootk.oa.dao;
 
-import com.yootk.oa.vo.Checkork;
+
+import com.yootk.dubbo.vo.Checkork;
 
 public interface CheckorkMapper {
     int deleteByPrimaryKey(Long coid);

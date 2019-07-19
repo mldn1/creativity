@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 定义所有的SQL语句的映射， 对于本实体而言相关的所有的SQL代码都在此定义 -->
+<mapper namespace="com.yootk.admin.dao.IOrdersDAO">   <!-- SSM整合的时候，这个命名空间异常重要 -->
+    <!--SSM查询测试-->
+    <sql id="selectBase">
+        SELECT id,oid,mid,allprice,endprice,address,coupon,transport,fare,invoice,iid,state,payment,paystate,payid,createdate,editdate,paydate,channel,coid,eid,returns,returnstate FROM orders
+    </sql>
+    <select id="findAllByState" resultType="Orders" parameterType="java.lang.Integer">
+        <include refid="selectBase"/>
+        <where>
+            state=#{state}
+        </where>
+    </select>
+
+    <!--订单地址查询-->
+    <select id="findOrdersAddress" resultType="Orders" parameterType="java.util.Map">
+        SELECT oid,name,address,phone FROM orders_address
+        <where>
+            <if test="column_name != null and keyword_name != null and column_name != &quot;&quot; and keyword_name != &quot;&quot;">
+                ${column_name} LIKE #{keyword_name} and
+            </if>
+            <if test="column_phone != null and keyword_phone != null and column_phone != &quot;&quot; and keyword_phone != &quot;&quot;">
+                ${column_phone} LIKE #{keyword_phone}
+            </if>
+        </where>
+    </select>
+
+    <select id="findSplitByOidList" resultType="Orders" parameterType="java.util.Map">
+        SELECT id,oid,mid,allprice,endprice,address,coupon,transport,fare,invoice,iid,state,payment,paystate,payid,createdate,editdate,paydate,channel,coid,eid,returns,returnstate FROM orders
+        <where>
+            oid IN
+            <foreach collection="oidList" open="(" close=")" separator="," item="ele" >
+                #{ele}
+            </foreach>
+        </where>
+        LIMIT #{start},#{lineSize}
+    </select>
+
+    <!--分页统计-->
+    <select id="getCountByOidList1" resultType="java.lang.Long" parameterType="java.util.List">
+        SELECT COUNT(*) FROM orders
+        <where>
+            oid IN
+            <foreach collection="list" open="(" close=")" separator="," item="ele" >
+                #{ele}
+            </foreach>
+        </where>
+    </select>
+
+    <!--订单分页数据查询，上面的那个就不用了。-->
+    <select id="findSplitOrders" resultType="Orders" parameterType="java.util.Map" >
+        SELECT id,oid,mid,allprice,endprice,address,coupon,transport,fare,invoice,iid,
+        state,payment,paystate,payid,createdate,editdate,paydate,channel,coid,eid,returns,returnstate FROM `orders`
+        <where>
+            <if test="orders.oid != null and orders.oid != &quot;&quot;">
+                `oid`=#{orders.oid} and
+            </if>
+            <if test="orders.state != null  and orders.state != &quot;&quot; ">
+                `state`=#{orders.state} and
+            </if>
+            <if test="phone != null and phone != &quot;&quot; ">
+                `phone`=#{phone} and
+            </if>
+            <if test="column_name != null and keyword_name != &quot;&quot; ">
+                ${column_name} LIKE  #{keyword_name} and
+            </if>
+            <if test="orders.channel != null and orders.channel != &quot;&quot;">
+                `channel`=#{orders.channel} and
+            </if>
+            <if test="orders.paystate != null and orders.paystate != &quot;&quot;">
+                `paystate`=#{orders.paystate} and
+            </if>
+            <if test="startTime != null and endTime != null">
+                `createdate`  between #{startTime} and #{endTime} and
+            </if>
+            <if test="oidList != null">
+                oid IN
+                <foreach collection="oidList" open="(" close=")" separator="," item="ele" >
+                    #{ele}
+                </foreach>
+                and
+            </if>
+            1=1
+        </where>
+        LIMIT #{start},#{lineSie}
+    </select>
+
+    <!--订单商品查询-oid。如果存在商品id，那就先查询这一个-->
+    <select id="findOrdersGoods" resultType="Orders" parameterType="java.util.Map">
+        SELECT oid,gid,gaid,count,price FROM orders_goods
+        <where>
+            <if test="gid != null and gid != ''">
+                gid=#{gid}
+            </if>
+        </where>
+    </select>
+
+    <!--订单商品查询-goodsName。如果存在商品id，那就先查询这一个-->
+    <select id="findOrdersGoodsName" resultType="Orders_goods" parameterType="java.util.Map">
+        SELECT oid,gid,gaid,count,price FROM orders_goods
+        <where>
+            <if test="gid != null and gid != ''">
+                gid=#{gid}
+            </if>
+        </where>
+    </select>
+
+    <!--分页统计-->
+    <select id="getCountByOidList" resultType="java.lang.Long" parameterType="java.util.Map" >
+        SELECT count(*) FROM orders
+        <where>
+            <if test="orders.oid != null and orders.oid != &quot;&quot;">
+                `oid`=#{orders.oid} and
+            </if>
+            <if test="orders.state != null  and orders.state != &quot;&quot; ">
+                `state`=#{orders.state} and
+            </if>
+            <if test="phone != null and phone != &quot;&quot; ">
+                `phone`=#{phone} and
+            </if>
+            <if test="column_name != null and keyword_name != &quot;&quot; ">
+                ${column_name} LIKE  #{keyword_name} and
+            </if>
+            <if test="orders.channel != null and orders.channel != &quot;&quot;">
+                `channel`=#{orders.channel} and
+            </if>
+            <if test="orders.paystate != null and orders.paystate != &quot;&quot;">
+                `paystate`=#{orders.paystate} and
+            </if>
+            <if test="startTime != null and endTime != null">
+                `createdate`  between #{startTime} and #{endTime} and
+            </if>
+            <if test="oidList != null">
+                oid IN
+                <foreach collection="oidList" open="(" close=")" separator="," item="ele" >
+                    #{ele}
+                </foreach>
+            </if>
+        </where>
+    </select>
+
+    <!--订单渠道查询-->
+    <select id="getChannelName" resultType="Channel" parameterType="java.util.List" >
+        SELECT id,channel,title FROM channel
+        <where>
+            <if test="list != null">
+                channel IN
+                <foreach collection="list" open="(" close=")" separator="," item="ele">
+                    #{ele}
+                </foreach>
+            </if>
+        </where>
+    </select>
+
+    <!--订单列表的加载页面查询。-->
+    <select id="findAllOrders" resultType="Orders" parameterType="java.util.Map" >
+        SELECT id,oid,mid,allprice,endprice,address,coupon,transport,fare,invoice,iid,
+        state,payment,paystate,payid,createdate,editdate,paydate,channel,coid,eid,returns,returnstate FROM `orders`
+        LIMIT #{start},#{lineSize}
+    </select>
+    <!--统计所有订单数-->
+    <select id="getAllCount" resultType="java.lang.Long">
+        SELECT count(*) FROM orders
+    </select>
+
+    <!--订单编辑回显操作-->
+    <select id="findOrderByOid" resultType="Orders" parameterType="java.lang.String" >
+        SELECT id,oid,mid,allprice,endprice,address,coupon,transport,fare,invoice,iid,
+        state,payment,paystate,payid,createdate,editdate,paydate,channel,coid,eid,returns,returnstate,note,ordertype,operator,invoicestate FROM `orders`
+        where
+        oid=#{oid}
+    </select>
+
+    <!--查询所有订单类型名称-->
+    <select id="findOrderType" resultType="Order_type"  >
+        SELECT id,title FROM order_type
+    </select>
+
+    <!--查询对应发票-->
+    <select id="findInvoice" resultType="Invoice"  >
+        SELECT id,head,name,num,oid,price,phone,email,source FROM invoice
+        where oid=#{oid}
+    </select>
+
+    <!--查询所有发票状态-->
+    <select id="findInvoiceState" resultType="InvoiceState">
+        SELECT id,title FROM invoicestate
+    </select>
+
+</mapper>
