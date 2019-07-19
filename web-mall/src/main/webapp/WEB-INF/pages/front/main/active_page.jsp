@@ -1,6 +1,7 @@
 
 <%@ page pageEncoding="UTF-8"%>
-<!DOCTYPE html>  
+<!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
  
 <head>
     <jsp:include page="/WEB-INF/pages/plugins/include_basepath.jsp"/>
@@ -48,36 +49,40 @@ window.onresize = function(){
 <div class="activ_page">-&nbsp;&nbsp;茶具组&nbsp;&nbsp;-</div>
 <div class="khfxWarp">
   <div class="khfxPane classification_List list_group">
+
+    <c:forEach items="${allCategoryGoods}" var="categoryGoods">
 	<div class="list_Child">
-    	<a href="shop_details.action"><img src="images/GL_img_14.jpg"></a>
-        <h2>功夫鸡祥套装</h2>
-        <p>￥258.00</p>
+    	<a href="shop_details.action?gid=${categoryGoods.gid}"><img src="http://49.234.26.219/${categoryGoods.focuspicture}"></a>
+        <h2>${categoryGoods.title}</h2>
+        <p>￥${categoryGoods.saleprice}</p>
     </div>
-    <div class="list_Child">
-    	<img src="images/GL_img_15.jpg">
-        <h2>功夫鸡祥套餐</h2>
-        <p>￥258.00</p>
-    </div>
-    <div class="list_Child">
-    	<img src="images/GL_img_16.jpg">
-        <h2>功夫鸡祥套装</h2>
-        <p>￥258.00</p>
-    </div>
-    <div class="list_Child">
-    	<img src="images/GL_img_17.jpg">
-        <h2></h2>
-        <p></p>
-    </div>
-    <div class="list_Child">
-    	<img src="images/GL_img_18.jpg">
-        <h2>功夫鸡祥套装</h2>
-        <p>￥258.00</p>
-    </div>
-    <div class="list_Child">
-    	<img src="images/GL_img_19.jpg">
-        <h2>XXXX</h2>
-        <p>￥258.00</p>
-    </div>
+    </c:forEach>
+
+    <%--<div class="list_Child">--%>
+    	<%--<img src="images/GL_img_15.jpg">--%>
+        <%--<h2>功夫鸡祥套餐</h2>--%>
+        <%--<p>￥258.00</p>--%>
+    <%--</div>--%>
+    <%--<div class="list_Child">--%>
+    	<%--<img src="images/GL_img_16.jpg">--%>
+        <%--<h2>功夫鸡祥套装</h2>--%>
+        <%--<p>￥258.00</p>--%>
+    <%--</div>--%>
+    <%--<div class="list_Child">--%>
+    	<%--<img src="images/GL_img_17.jpg">--%>
+        <%--<h2></h2>--%>
+        <%--<p></p>--%>
+    <%--</div>--%>
+    <%--<div class="list_Child">--%>
+    	<%--<img src="images/GL_img_18.jpg">--%>
+        <%--<h2>功夫鸡祥套装</h2>--%>
+        <%--<p>￥258.00</p>--%>
+    <%--</div>--%>
+    <%--<div class="list_Child">--%>
+    	<%--<img src="images/GL_img_19.jpg">--%>
+        <%--<h2>XXXX</h2>--%>
+        <%--<p>￥258.00</p>--%>
+    <%--</div>--%>
   </div>
 </div>
 

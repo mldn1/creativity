@@ -13,30 +13,37 @@
 	<title>搜索（首页头）</title>
 	<meta name="description" content="页面简述" />
 	<meta name="keywords" content="关键词" />
+    <link href="css/zhan_search.css" rel="stylesheet" type="text/css">
 	<link href="css/style.css" rel="stylesheet" type="text/css">
 	<link href="css/mystyle.css" rel="stylesheet" type="text/css">
-    <script>
-function htmlFontSize(){
-    var clientWidth = document.documentElement ? document.documentElement.clientWidth : document.body.clientWidth;
+<script>
+    function htmlFontSize(){
+        var clientWidth = document.documentElement ? document.documentElement.clientWidth : document.body.clientWidth;
 
-    if(clientWidth >= 768 && clientWidth < 1280){
-    	clientWidth = 640;
-    }else if(clientWidth >= 1280){
-    	clientWidth = 640; 
+        if(clientWidth >= 768 && clientWidth < 1280){
+            clientWidth = 640;
+        }else if(clientWidth >= 1280){
+            clientWidth = 640;
+        }
+
+        document.documentElement.style.fontSize = clientWidth * 1/16+"px";
+        return clientWidth * 1/16;
     }
+    htmlFontSize()
 
-    document.documentElement.style.fontSize = clientWidth * 1/16+"px";
-  	return clientWidth * 1/16;
-}
-htmlFontSize()
-
-window.onresize = function(){
-	htmlFontSize()
-	}
+    window.onresize = function(){
+        htmlFontSize()
+    }
 </script>
 </head>
 <body class="sTop1">
-    <div class="search_Hot">
+        <div class="search bar6">
+            <form>
+                <input type="text" placeholder="请输入您要搜索的内容...">
+                <button type="submit"></button>
+            </form>
+        </div>
+        <div class="search_Hot">
     	<h2>热门搜索</h2>
         <a href="search_end.action" class="text_Red">铜器馆</a>
         <a href="search_end.action" class="text_Red">丝绸</a>
