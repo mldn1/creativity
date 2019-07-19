@@ -56,9 +56,9 @@
     <div class="swiper-pagination"></div>
 </div>
 <div class="details_Font">
-    <h2>缠枝莲茶具（一盖四杯）</h2>
-    <h3>缠枝莲纹，生生不息；传统青花，怡情养性</h3>
-    <p>￥1,688.12</p>
+    <h2>${goods.description}</h2>
+    <h3>${goods.title}</h3>
+    <p>￥${goods.saleprice}</p>
 </div>
 <%--
 <div class="details_Font">

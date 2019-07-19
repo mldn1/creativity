@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
 <meta charset="utf-8">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <head>
 	<meta http-equiv="Pragma" content="no-cache">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
@@ -35,12 +36,10 @@ window.onresize = function(){
 <div id="topNav" >
   <div class="swiper-wrapper" >
     <div class="swiper-slide swiper-slide-active active" date-id><span>全部</span></div>
-    <div class="swiper-slide swiper-slide-next" date-id='2'>
-	<span><a  href="active_page.action">丝绸馆</a></span></div>
-    <div class="swiper-slide" date-id='3'><span><a  href="active_page.action">铜器管</a></span></div>
-    <div class="swiper-slide" date-id='4'><span><a  href="active_page.action">御窑馆</a></span></div>
-    <div class="swiper-slide" date-id='5'><span>陶艺馆</span></div>
-    <div class="swiper-slide" date-id='6'><span>木艺馆</span></div>
+
+    <c:forEach items="${allCategory}" var="category">
+    <div class="swiper-slide" date-id='${category.cid} + 1'><span><a  href="active_page.action?cid=${category.cid}">${category.title}</a></span></div>
+    </c:forEach>
 
   </div>
 </div>  

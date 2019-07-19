@@ -4,7 +4,7 @@ import com.yootk.dubbo.service.IEmpLogsService;
 import com.yootk.dubbo.vo.EmpLogs;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class EmpListener {
+public class MemberlogsListener {
     @Autowired
     private IEmpLogsService empLogsService;
 

@@ -2,6 +2,8 @@ package com.yootk.oa.dao;
 
 import com.yootk.dubbo.vo.Education;
 
+import java.util.List;
+
 public interface EducationMapper {
     int deleteByPrimaryKey(Long eduid);
 
@@ -14,4 +16,6 @@ public interface EducationMapper {
     int updateByPrimaryKeySelective(Education record);
 
     int updateByPrimaryKey(Education record);
+
+    public List<Education> findAllEducation();
 }

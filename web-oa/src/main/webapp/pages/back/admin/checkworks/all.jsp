@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
@@ -18,9 +19,9 @@
       <a class="toggle-btn"><i class="fa fa-bars"></i></a>
       <!--toggle button end-->
       <!--search start-->
-      <form class="searchform" action="/checkwork/all" method="get">
-        <input type="text" id="team-username" class="form-control js-search-username" placeholder="请输入姓名或用户名匹配">
-        <input type="hidden" name="userid" id="userid" value="{{.condArr.userId}}">
+      <form class="searchform" action="pages/back/admin/checkworks/checkork_listall.action" method="get">
+        <input type="text" id="team-username" name="name" class="form-control js-search-username" placeholder="请输入姓名匹配">
+        <input type="hidden" name="column" id="column" value="eid">
         <button type="submit" class="btn btn-primary">搜索</button>
       </form>
       <!--search end--> <jsp:include page="/pages/plugins/include_userinfo.jsp"/> </div>
@@ -30,10 +31,10 @@
       <h3> 考勤 </h3>
       <ul class="breadcrumb pull-left">
         <li> <a href="/user/show/{{.LoginUserid}}"></a> </li>
-        <li> <a href="pages/back/admin/checkworks/index.jsp">考勤管理</a> </li>
+        <li> <a href="pages/back/admin/checkworks/checkork_list.action">考勤管理</a> </li>
         <li class="active"> 考勤 </li>
       </ul>
-      <div class="pull-right"><a href="index.jsp" class="btn btn-success">我的考勤</a></div>
+      <div class="pull-right"><a href="pages/back/admin/checkworks/checkork_list.action" class="btn btn-success">我的考勤</a></div>
     </div>
     <div class="clearfix"></div>
     <!-- page heading end-->
@@ -55,11 +56,26 @@
                       <tr>
                         <th>姓名</th>
                         <th>打卡时间</th>
-                        <th>日期</th>
                         <th>IP</th>
                       </tr>
                     </thead>
                     <tbody>
+                    <c:if test="${allCheckorks==null}">
+                      <tr>
+                        <td colspan="4">无记录可看</td>
+                      </tr>
+                    </c:if>
+                    <c:forEach items="${allCheckorks}" var="checkork">
+                      <tr>
+                        <td>
+                          <c:forEach items="${allEmp}" var="emp">
+                            ${emp.eid==checkork.eid ? emp.name :""}
+                          </c:forEach>
+                        </td>
+                        <td>${checkork.datetime}</td>
+                        <td>${checkork.ip}</td>
+                      </tr>
+                    </c:forEach>
                     
               
                     <tr>
@@ -68,13 +84,7 @@
                       <td>&nbsp;</td>
                       <td>&nbsp;</td>
                     </tr>
-                    
-                    <tr>
-                      <td colspan="4">无记录可看</td>
-                    </tr>
-                    
                     </tbody>
-                    
                   </table>
                    <jsp:include page="/pages/plugins/split_page_bar_plugin.jsp"/> </div>
               </div>

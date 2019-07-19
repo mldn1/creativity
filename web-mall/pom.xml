@@ -30,6 +30,11 @@
             <artifactId>util</artifactId>
         </dependency>
         <!-- 公告包 -->
+        <!-- RabbitMQ组件包 -->
+        <dependency>
+            <groupId>org.springframework.amqp</groupId>
+            <artifactId>spring-rabbit</artifactId>
+        </dependency>
         <!--dubbo依赖 -->
         <dependency>
             <groupId>com.alibaba</groupId>

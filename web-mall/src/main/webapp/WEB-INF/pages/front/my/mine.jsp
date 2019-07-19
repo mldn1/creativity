@@ -1,5 +1,6 @@
 <%@ page pageEncoding="UTF-8"%>
-<!DOCTYPE html>  
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
+<!DOCTYPE html>
 <head>
 	<jsp:include page="/WEB-INF/pages/plugins/include_basepath.jsp"/>
 	<meta charset="utf-8">
@@ -20,7 +21,7 @@ function htmlFontSize(){
     if(clientWidth >= 768 && clientWidth < 1280){
     	clientWidth = 640;
     }else if(clientWidth >= 1280){
-    	clientWidth = 640; 
+    	clientWidth = 640;
     }
 
     document.documentElement.style.fontSize = clientWidth * 1/16+"px";
@@ -61,10 +62,16 @@ window.onresize = function(){
               <p>账号设置</p></a></li>
             </ul>
         </div>
+	<shiro:notAuthenticated>
+	    <div class="mine_Btn">
+		    <input type="button" value="登   录" name="" onclick="window.location.href='login.action'"/>
+	    </div>
+	</shiro:notAuthenticated>
+    <shiro:authenticated>
         <div class="mine_Btn">
-        	<input type="button" value="退出登录" name="" />
+        	<input type="button" value="退出登录" name="" onclick="window.location.href='/logout.shiro'"/>
         </div>
-
+    </shiro:authenticated>
 <jsp:include page="/WEB-INF/pages/plugins/include_foot.jsp"/>
 </body>
 </html>

@@ -13,8 +13,8 @@
 	<title>找回密码</title>
 	<meta name="description" content="页面简述" />
 	<meta name="keywords" content="关键词" />
-	<link href="assets/css/style.css" rel="stylesheet" type="text/css">
-	<link href="assets/css/mystyle.css" rel="stylesheet" type="text/css">
+	<link href="css/style.css" rel="stylesheet" type="text/css">
+	<link href="css/mystyle.css" rel="stylesheet" type="text/css">
     <script>
 function htmlFontSize(){
     var clientWidth = document.documentElement ? document.documentElement.clientWidth : document.body.clientWidth;
@@ -47,7 +47,7 @@ window.onresize = function(){
 	<input type="button" value="取消" class="Choose1" name="" onclick="javascript:history.back(-1);" >
     <input type="button" value="确定" class="Choose2" name="">
 </div>
-<script src="assets/js/jquery-1.11.0.min.js"></script>
+<script src="js/jquery-1.11.0.min.js"></script>
 <script>
 	var wait=60; 
 	function time(o) { 

@@ -19,6 +19,7 @@ public class GoodsAction {
         Good goods = goodsTransferService.findGoodsById(gid);
         String[] pictures = goods.getPicture().split(";");
         mav.addObject("pictures", pictures);
+        mav.addObject("goods", goods);
         return mav;
     }
 

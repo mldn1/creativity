@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yootk.mall.dao.ICategoryDAO">
+
+  <sql id="Base_Column_List">
+    SELECT cid, title, grade, icon, sort, stitle, sdescription, skeyword, state, eid FROM category
+  </sql>
+  <select id="findAll" resultType="Category">
+    <include refid="Base_Column_List" />
+    where grade = 1;
+  </select>
+
+</mapper>

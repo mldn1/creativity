@@ -553,7 +553,7 @@
         </profile>
     </profiles>
     <build>
-        <finalName>dubbo</finalName>
+        <finalName>creativity</finalName>
         <resources>
             <resource>
                 <!-- 此处的属性是profile中统一定义的路径的名称，不同的配置文件有不同的子目录 -->

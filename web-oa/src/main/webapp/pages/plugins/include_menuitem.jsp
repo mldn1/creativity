@@ -7,11 +7,11 @@
 <%!
     public static final String PROFILE_URL = "pages/back/admin/users/profile.jsp";
     public static final String PROJECT_URL = "pages/back/admin/projects/project_list_pre.action";
-    public static final String CHECKWORKS_URL = "pages/back/admin/checkworks/index.jsp";
+    public static final String CHECKWORKS_URL = "pages/back/admin/checkworks/checkork_list.action";
     public static final String APPROVAL_URL = "pages/back/admin/leaves/approval-index.jsp";
     public static final String KNOWLEDGES_URL = "pages/back/admin/knowledges/index.jsp";
     public static final String ALBUMS_URL = "pages/back/admin/albums/index.jsp";
-    public static final String RESUMES_URL = "pages/back/admin/resumes/index.jsp";
+    public static final String RESUMES_URL = "pages/back/admin/resumes/resume_list.action";
 //    public static final String ORGANIZATION_URL = "pages/back/admin/groups/index.jsp";
     public static final String ORGANIZATION_URL = "pages/back/admin/groups/group_list.action";
     public static final String SHOW_USER_URL = "pages/back/admin//user/show/";
