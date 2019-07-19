@@ -12,13 +12,6 @@
         <include refid="Base_Column_List" />
         order by createdate desc limit 0,5;
     </select>
-
-    <select id="findById" resultType="Goods">
-        <include refid="Base_Column_List" />
-        <where>
-          gid = #{gid}
-        </where>
-    </select>
     <select id="findById" parameterType="java.lang.String" resultType="Good">
         <include refid="Base_Column_List"/>
         where  gid=#{gid}
