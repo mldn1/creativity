@@ -1,34 +1,42 @@
 package com.yootk.dubbo.vo;
 
 import java.io.Serializable;
-import java.util.Date;
 
-public class Memberlogs implements Serializable {
-    private Long mlid ;
-    private String mid ;
-    private Date logintime ;
+public class MemberLogs implements Serializable {
+    private String logintime;
+    private String logintip;
+    private String phone;
 
-    public Long getMlid() {
-        return mlid;
+    @Override
+    public String toString() {
+        return "EmpLogs{" +
+                "logintime='" + logintime + '\'' +
+                ", logintip='" + logintip + '\'' +
+                ", phone='" + phone + '\'' +
+                '}';
     }
 
-    public void setMlid(Long mlid) {
-        this.mlid = mlid;
-    }
-
-    public String getMid() {
-        return mid;
-    }
-
-    public void setMid(String mid) {
-        this.mid = mid;
-    }
-
-    public Date getLogintime() {
+    public String getLogintime() {
         return logintime;
     }
 
-    public void setLogintime(Date logintime) {
+    public void setLogintime(String logintime) {
         this.logintime = logintime;
+    }
+
+    public String getLogintip() {
+        return logintip;
+    }
+
+    public void setLogintip(String logintip) {
+        this.logintip = logintip;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

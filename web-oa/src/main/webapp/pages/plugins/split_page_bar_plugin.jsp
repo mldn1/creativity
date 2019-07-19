@@ -39,7 +39,6 @@
 	} catch (Exception e) {}
 	try {
 		allRecorders = (Long) request.getAttribute("allRecorders") ;
-		System.err.println("************************"+allRecorders+"**************************");
 	} catch (Exception e) {}
 	url = request.getContextPath() + (String) request.getAttribute("url") ;
 	column = (String) request.getAttribute("column") ;

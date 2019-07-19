@@ -56,7 +56,6 @@ public class ResumeActionBack extends AbstractAction {
 
     @RequestMapping("resume_edit.action")
     public String edit(Resume resume){
-        System.err.println("********************"+resume.getResid()+"****************************");
         this.resumeServiceClient.getIResumeService().doEdit(resume);
         return "forward:resume_list.action";
     }

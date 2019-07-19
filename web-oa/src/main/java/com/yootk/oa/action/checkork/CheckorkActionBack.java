@@ -28,20 +28,12 @@ public class CheckorkActionBack extends AbstractAction {
     @Autowired
     private IEmpServicewxlClient empServicewxlClient;
 
-    //private Long eid=this.empServiceClient.getIEmpService().getEid(super.getEmpId());
-    //Long eid=this.empServicewxlClient.getIEmpServicewxl().getEidByPhone(super.getEmpId());
 
     @RequestMapping("checkork_list.action")
     public ModelAndView listl(String type){
-        System.err.println("================"+super.getEmpId()+"=====================");
         Long eid=this.empServicewxlClient.getIEmpServicewxl().getEidByPhone(super.getEmpId());
-        System.err.println("================="+eid+"========================");
-//        Emp emp=(Emp) super.getSession().getAttribute("emp");
-//        Long eid=emp.getEid();//等待取得session中封装的emp，session封装emp程序还没上传
         ModelAndView mav=new ModelAndView("back/admin/checkworks/index");
         SplitPageUtil spu = new SplitPageUtil("/pages/back/admin/checkworks/checkork_list.action");
-        System.err.println("====================================="+eid+"=====================================");
-        System.err.println("====================================="+spu.getKeyword()+"=====================================");
         Map<String, Object> map = this.checkorkServiceClient.getICheckorkService().list(eid, spu.getCurrentPage(),spu.getLineSize(),"state",type);
         mav.addAllObjects(map);
         return mav;
@@ -57,16 +49,12 @@ public class CheckorkActionBack extends AbstractAction {
         if(!((name ==null) || name.equals(""))){
             Long eid=0L;
             while(iter.hasNext()){
-                System.err.println("****************************"+name+"************************************");
                 if((emp=iter.next()).getName().equals(name)){
-                    System.err.println("****************************"+emp.getName()+"************************************");
                     eid=emp.getEid();
-                    System.err.println("****************************"+eid+"************************************");
                     break;
                 }
             }
             keyword=eid.toString();
-            System.err.println("****************************"+keyword+"************************************");
         }
 
         Map<String, Object> map = this.checkorkServiceClient.getICheckorkService().list(null, spu.getCurrentPage(),spu.getLineSize(),column,keyword);

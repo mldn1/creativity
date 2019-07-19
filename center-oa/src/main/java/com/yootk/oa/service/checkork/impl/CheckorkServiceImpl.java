@@ -37,7 +37,6 @@ public class CheckorkServiceImpl implements ICheckorkService {
 
     @Override
     public boolean doCreate(Long eid, Date datetime, Integer state, String ip) {
-        System.err.println("============================调用了业务层方法==================================");
         Checkork checkork=new Checkork();
         checkork.setEid(eid);
         checkork.setDatetime(datetime);
