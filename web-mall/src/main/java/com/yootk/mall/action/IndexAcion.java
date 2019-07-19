@@ -1,6 +1,6 @@
 package com.yootk.mall.action;
 
-import com.yootk.mall.service.IGoodsTransferService;
+import com.yootk.mall.service.IGoodTransferService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,13 +9,13 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class IndexAcion {
     @Autowired
-    private IGoodsTransferService goodsTransferService;
+    private IGoodTransferService goodTransferService;
 
     // 跳转到首页
     @GetMapping("index")
     public ModelAndView index() {
         ModelAndView mav = new ModelAndView("front/main/index");
-        mav.addObject("showGoods", this.goodsTransferService.findShowGoods());
+        mav.addObject("showGoods", this.goodTransferService.findShowGoods());
         return mav;
     }
 

@@ -4,7 +4,7 @@ import com.yootk.dubbo.vo.mall.Good;
 
 import java.util.List;
 
-public interface IGoodsTransferService {
+public interface IGoodTransferService {
     /**
      * 查询展示商品信息
      * @return

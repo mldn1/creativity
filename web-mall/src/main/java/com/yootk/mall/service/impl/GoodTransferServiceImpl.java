@@ -3,7 +3,7 @@ package com.yootk.mall.service.impl;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.yootk.dubbo.service.mall.IGoodService;
 import com.yootk.dubbo.vo.mall.Good;
-import com.yootk.mall.service.IGoodsTransferService;
+import com.yootk.mall.service.IGoodTransferService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ import java.util.List;
 @ContextConfiguration(locations = {"classpath:spring/spring-base.xml"})
 @RunWith(SpringJUnit4ClassRunner.class)
 @Service
-public class GoodsTransferServiceImpl implements IGoodsTransferService {
+public class GoodTransferServiceImpl implements IGoodTransferService {
     @Reference
     private IGoodService goodsService;
 
