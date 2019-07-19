@@ -26,7 +26,7 @@
         </rabbit:bindings>
     </rabbit:topic-exchange>
     <!-- 6、以上实现了rabbitmq的配置，但是当前的配置里面缺少了之前定义的MessageConsumer程序类 -->
-    <bean id="messageListener" class="com.yootk.logs.consumer.listener.MemberlogsListener"/>
+    <bean id="messageListener" class="com.yootk.mall.consumer.listener.MemberListener"/>
     <!-- 7、将Listener与队列进行绑定处理 -->
     <rabbit:listener-container connection-factory="connectionFactory">
         <rabbit:listener ref="messageListener" method="createLogs" queues="messageQueue"/>
