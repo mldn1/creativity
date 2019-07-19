@@ -8,7 +8,7 @@
     public static final String AVATAR_URL = "pages/back/admin/users/avatar.jsp";
     public static final String PROFILE_PASSWORD_URL = "pages/back/admin/users/profile-pwd.jsp";
     public static final String TASK_URL = "pages/back/admin/projects/mytask.jsp";
-    public static final String LOGOUT_URL = "logout";
+    public static final String LOGOUT_URL = "logout.shiro";
 %>
 <!--notification menu start -->
 <div class="menu-right">

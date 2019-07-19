@@ -1,6 +1,7 @@
 
 <%@ page pageEncoding="UTF-8"%>
-<!DOCTYPE html>  
+<!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
  
 <head>
     <jsp:include page="/WEB-INF/pages/plugins/include_basepath.jsp"/>
@@ -16,9 +17,9 @@
 	<title>活动页</title>
 	<meta name="description" content="页面简述" />
 	<meta name="keywords" content="关键词" />
-	<link href="assets/css/style.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/swiper.min.css" rel="stylesheet" type="text/css">
-	<link href="assets/css/mystyle.css" rel="stylesheet" type="text/css">
+	<link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="css/swiper.min.css" rel="stylesheet" type="text/css">
+	<link href="css/mystyle.css" rel="stylesheet" type="text/css">
     <script>
 function htmlFontSize(){
     var clientWidth = document.documentElement ? document.documentElement.clientWidth : document.body.clientWidth;
@@ -48,43 +49,47 @@ window.onresize = function(){
 <div class="activ_page">-&nbsp;&nbsp;茶具组&nbsp;&nbsp;-</div>
 <div class="khfxWarp">
   <div class="khfxPane classification_List list_group">
+
+    <c:forEach items="${allCategoryGoods}" var="categoryGoods">
 	<div class="list_Child">
-    	<a href="pages/front/goods/shop_details.jsp"><img src="assets/images/GL_img_14.jpg"></a>
-        <h2>功夫鸡祥套装</h2>
-        <p>￥258.00</p>
+    	<a href="shop_details.action?gid=${categoryGoods.gid}"><img src="http://49.234.26.219/${categoryGoods.focuspicture}"></a>
+        <h2>${categoryGoods.title}</h2>
+        <p>￥${categoryGoods.saleprice}</p>
     </div>
-    <div class="list_Child">
-    	<img src="assets/images/GL_img_15.jpg">
-        <h2>功夫鸡祥套餐</h2>
-        <p>￥258.00</p>
-    </div>
-    <div class="list_Child">
-    	<img src="assets/images/GL_img_16.jpg">
-        <h2>功夫鸡祥套装</h2>
-        <p>￥258.00</p>
-    </div>
-    <div class="list_Child">
-    	<img src="assets/images/GL_img_17.jpg">
-        <h2></h2>
-        <p></p>
-    </div>
-    <div class="list_Child">
-    	<img src="assets/images/GL_img_18.jpg">
-        <h2>功夫鸡祥套装</h2>
-        <p>￥258.00</p>
-    </div>
-    <div class="list_Child">
-    	<img src="assets/images/GL_img_19.jpg">
-        <h2>XXXX</h2>
-        <p>￥258.00</p>
-    </div>
+    </c:forEach>
+
+    <%--<div class="list_Child">--%>
+    	<%--<img src="images/GL_img_15.jpg">--%>
+        <%--<h2>功夫鸡祥套餐</h2>--%>
+        <%--<p>￥258.00</p>--%>
+    <%--</div>--%>
+    <%--<div class="list_Child">--%>
+    	<%--<img src="images/GL_img_16.jpg">--%>
+        <%--<h2>功夫鸡祥套装</h2>--%>
+        <%--<p>￥258.00</p>--%>
+    <%--</div>--%>
+    <%--<div class="list_Child">--%>
+    	<%--<img src="images/GL_img_17.jpg">--%>
+        <%--<h2></h2>--%>
+        <%--<p></p>--%>
+    <%--</div>--%>
+    <%--<div class="list_Child">--%>
+    	<%--<img src="images/GL_img_18.jpg">--%>
+        <%--<h2>功夫鸡祥套装</h2>--%>
+        <%--<p>￥258.00</p>--%>
+    <%--</div>--%>
+    <%--<div class="list_Child">--%>
+    	<%--<img src="images/GL_img_19.jpg">--%>
+        <%--<h2>XXXX</h2>--%>
+        <%--<p>￥258.00</p>--%>
+    <%--</div>--%>
   </div>
 </div>
 
-<script src="assets/js/swiper.min.js"></script>
-<script type="text/javascript" src="assets/js/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="assets/js/dropload.js"></script>
-<script type="text/javascript" src="assets/js/jquery.flexText.js"></script>
+<script src="js/swiper.min.js"></script>
+<script type="text/javascript" src="ajs/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="js/dropload.js"></script>
+<script type="text/javascript" src="js/jquery.flexText.js"></script>
 <script language="javascript"> 
 var mySwiper = new Swiper('#swiper-container1',{
 pagination : '.swiper-pagination',
@@ -129,7 +134,7 @@ $(function () {
                         result
                         += ''
 						+ '	<div class="list_Child">' 
-						+ ' 	<img src="assets/images/GL_img_18.jpg">' 
+						+ ' 	<img src="images/GL_img_18.jpg">'
 						+ '		<h2>功夫鸡祥套装</h2>' 
 						+ '		<p>￥258.00</p>' 
 						+ '	</div>' ; 	

@@ -11,8 +11,8 @@
 	<title>登录-1</title>
 	<meta name="description" content="页面简述" />
 	<meta name="keywords" content="关键词" />
-	<link href="assets/css/style.css" rel="stylesheet" type="text/css">
-	<link href="assets/css/mystyle.css" rel="stylesheet" type="text/css">
+	<link href="css/style.css" rel="stylesheet" type="text/css">
+	<link href="css/mystyle.css" rel="stylesheet" type="text/css">
     <script>
 function htmlFontSize(){
     var clientWidth = document.documentElement ? document.documentElement.clientWidth : document.body.clientWidth;
@@ -35,7 +35,7 @@ window.onresize = function(){
 </head>
 <body>
 <div class="GL_logo">
-	<img src="assets/images/GL_icon_44.png">
+	<img src="images/GL_icon_44.png">
 </div>
 <div class="L_Btn">
 	<input type="button" value="手机登录" class="login_Btn"  onclick="window.location.href='login-2.jsp'">
@@ -45,9 +45,9 @@ window.onresize = function(){
 <div class="login_Other">
 	<div class="dropMore mar_Bottom"><div class="dropLeft"></div><div class="dropload-refresh">其他登录方式</div><div class="dropRight"></div></div>
   <div class="other_Dl">
-    	<div class="other_Wx"><a href="#"><img src="assets/images/GL_icon_49.png"></a></div>
-    	<div class="other_Qq"><a href="#"><img src="assets/images/GL_icon_48.png"></a></div>
-        <div class="other_Wx"><a href="#"><img src="assets/images/GL_icon_47.png"></a></div>
+    	<div class="other_Wx"><a href="#"><img src="images/GL_icon_49.png"></a></div>
+    	<div class="other_Qq"><a href="#"><img src="images/GL_icon_48.png"></a></div>
+        <div class="other_Wx"><a href="#"><img src="images/GL_icon_47.png"></a></div>
   </div>
 </div>
 </body>

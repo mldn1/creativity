@@ -1,5 +1,6 @@
 <%@ page pageEncoding="UTF-8"%>
-<!DOCTYPE html> 
+<!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <head>
 <jsp:include page="/WEB-INF/pages/plugins/include_basepath.jsp"/>
@@ -45,20 +46,27 @@
 
 <body>
 <div class="swiper-container" id="swiper-container1">
-	<div class="return"><a href="pages/front/main/active_page.jsp"><img src="images/GL_icon_34.png" border="0"></a></div>
-    <div class="detaila_Link"><img src="assets/images/GL_icon_16.png"></div>
+	<div class="return"><a href="active_page.action"><img src="images/GL_icon_34.png" border="0"></a></div>
+    <div class="detaila_Link"><img src="images/GL_icon_16.png"></div>
     <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="images/GL_img_02.jpg"></div>
-        <div class="swiper-slide"><img src="images/GL_img_02.jpg"></div>
-        <div class="swiper-slide"><img src="images/GL_img_02.jpg"></div>
+        <div class="swiper-slide"><img src="http://49.234.26.219/${pictures[0]}"></div>
+        <div class="swiper-slide"><img src="http://49.234.26.219/${pictures[1]}"></div>
+        <div class="swiper-slide"><img src="http://49.234.26.219/${pictures[2]}"></div>
   </div>
     <div class="swiper-pagination"></div>
 </div>
 <div class="details_Font">
-	<h2>缠枝莲茶具（一盖四杯）</h2>
+    <h2>${goods.description}</h2>
+    <h3>${goods.title}</h3>
+    <p>￥${goods.saleprice}</p>
+</div>
+<%--
+<div class="details_Font">
+    <h2>缠枝莲茶具（一盖四杯）</h2>
     <h3>缠枝莲纹，生生不息；传统青花，怡情养性</h3>
     <p>￥1,688.12</p>
 </div>
+--%>
 <div class="details_Img">
 <img src="images/GL_img_03.jpg">
 <img src="images/GL_img_04.jpg">
@@ -73,11 +81,11 @@
 <div class="sp_Shop">
 	<div class="sp_Service">
     	<ul>
-        	<li><a href="pages/front/main/index.jsp" class="sp_Service1"><img src="images/GL_icon_36.png" border="0"></a></li>
+        	<li><a href="index.action" class="sp_Service1"><img src="images/GL_icon_36.png" border="0"></a></li>
             <li><a href="#" class="sp_Service2" id="end"><img src="images/GL_icon_35.png"></a></li>
         </ul>
     </div>
-    <div class="sp_Buy"><a href="pages/front/cart/shopping_cart_1.jsp">立即购买</a></div>
+    <div class="sp_Buy"><a href="shopping_cart_1.action">立即购买</a></div>
     <div class="sp_Shopping cd-cart-container empty"><a href="#" class="add_Cart" data-price="29.5">加入购物车</a>
     	<span class="cd-cart-trigger add_CartNum">
             <ul class="count" style="display:none;">
@@ -102,7 +110,7 @@
 	<div class=" sh_Model_Center">
 		<div class="allFlex sp_modelImg">
 			<div class="sp_Model_zoom">
-		    	<img src="assets/images/GL_img_12.jpg">
+		    	<img src="images/GL_img_12.jpg">
             </div>
 			<div class="allFlex sp_Price">
 				<p>1,688.12元</p>
@@ -131,10 +139,10 @@
 	</div>
     <div id="msg" style="display:none;">已成功加入购物车！</div>
 </div>
-<script src="assets/js/jquery-1.11.0.min.js"></script>
-<script src="assets/js/swiper.min.js"></script>
-<script src="assets/js/main.js"></script>
-<script src="assets/js/jquery.fly.min.js"></script>
+<script src="js/jquery-1.11.0.min.js"></script>
+<script src="js/swiper.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/jquery.fly.min.js"></script>
 <script language="javascript"> 
 var mySwiper = new Swiper('#swiper-container1',{
 pagination : '.swiper-pagination',

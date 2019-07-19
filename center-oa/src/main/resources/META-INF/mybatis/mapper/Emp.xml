@@ -30,6 +30,15 @@
             </where>
         </set>
     </update>
+    <update id="updateEmp" parameterType="com.yootk.dubbo.vo.Emp">
+        UPDATE emp
+        <set>
+            name=#{name},sex=#{sex},birthday=#{birthday},email=#{email},wchet=#{wchet},qq=#{qq},tele=#{tele},address=#{address},contacts=#{contacts},contactscall=#{contactscall}
+            <where>
+               phone=#{phone}
+            </where>
+        </set>
+    </update>
 
     <select id="findAllEmpsByIds" parameterType="Map" resultType="Emp">
         <include refid="selectBase"/>

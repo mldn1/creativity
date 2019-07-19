@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -18,7 +19,7 @@
       <a class="toggle-btn"><i class="fa fa-bars"></i></a>
       <!--toggle button end-->
       <!--search start-->
-      <form class="searchform" action="/checkwork/manage" method="get">
+      <form class="searchform" action="pages/back/admin/checkworks/checkork_list.action" method="get">
         <select name="type" class="form-control">
           <option value="">打卡状态</option>
           <option value="1" {{if eq "1" .condArr.type}}selected>正常</option>
@@ -39,7 +40,7 @@
         <li class="active"> 考勤 </li>
       </ul>
       <shiro:hasPermission name="oaattendance:all">
-      <div class="pull-right"><a href="pages/back/admin/checkworks/all.jsp" class="btn btn-success">全部员工考勤</a></div>
+      <div class="pull-right"><a href="pages/back/admin/checkworks/checkork_listall.action" class="btn btn-success">全部员工考勤</a></div>
       </shiro:hasPermission>
     </div>
     <div class="clearfix"></div>
@@ -60,28 +61,40 @@
                   <table class="table table-bordered table-striped table-condensed" border="1">
                     <thead>
                       <tr>
-                        <th>日期</th>
-                        <th>打卡</th>
+                        <th>打卡日期</th>
                         <th>状态</th>
                         <th>IP</th>
                       </tr>
                     </thead>
                     <tbody>
-                    
+                    <c:if test="${allCheckorks==null}">
+                      <tr>
+                        <td colspan="4">无记录可看</td>
+                      </tr>
+                    </c:if>
+                    <c:forEach items="${allCheckorks}" var="checkork">
+                    <tr>
+                      <td>${checkork.datetime}</td>
+                      <c:if test="${checkork.state==1}">
+                        <td>正常</td>
+                      </c:if>
+                      <c:if test="${checkork.state==2}">
+                        <td>迟到</td>
+                      </c:if>
+                      <c:if test="${checkork.state==3}">
+                        <td>早退</td>
+                      </c:if>
+                      <c:if test="${checkork.state==4}">
+                        <td>加班</td>
+                      </c:if>
+                      <td>${checkork.ip}</td>
+                    </tr>
+                    </c:forEach>
 
-                    <tr>
-                      <td>2019-1-1</td>
-                      <td>10:00</td>
-                      <td>迟到</td>
-                      <td>111.111.111.1</td>
-                    </tr>
-                    
-                    <tr>
-                      <td colspan="4">无记录可看</td>
-                    </tr>
-                    
+
+
                     </tbody>
-                    
+
                   </table>
                    <jsp:include page="/pages/plugins/split_page_bar_plugin.jsp"/> </div>
               </div>
@@ -92,7 +105,7 @@
           <div class="panel">
             <div class="panel-body">
               <div class="blog-post">
-                <div class="text-center"> <a href="javascript:;" id="js-clock" class="btn btn-info">打卡<br/>
+                <div class="text-center"> <a href="pages/back/admin/checkworks/checkork_add.action" id="js-clock" class="btn btn-info">打卡<br/>
                   <span></span></a> </div>
               </div>
             </div>
@@ -129,45 +142,45 @@ $(function(){
 		html += '<option value="{{.year}}-'+addZero(i)+'">{{.year}}年'+addZero(i)+'月</option>';
 	}
 	$('#ym').html(html);
-	
+
 	$('#ym').on('change', function(){
 		window.location.href='/checkwork/manage?date='+$(this).val();
 	});
-	$('#ym option').each(function(i){	  
+	$('#ym option').each(function(i){
 		if ({{.condArr.date}} == $(this).attr('value')) {
 			$(this).attr('selected', true);
 		}
-	});	
-	
+	});
+
 	//考勤
 	$.ajax({
    		success:function(result, status, xhr){
 	        var originalDate = new Date(xhr.getResponseHeader("Date"));
-	        var date = originalDate// + (3600000 * 8);     
+	        var date = originalDate;// + (3600000 * 8);
 			callbackTime(date)
     	}
-	});	
+	});
 	var srv_nowtime;
 	function callbackTime(req){
-	    srv_nowtime = new Date(req).getTime();	
+	    srv_nowtime = new Date(req).getTime();
 	    showTime();
 	    window.setInterval(showTime, 1000);
-	}  
+	}
 	function showTime(){
 	    srv_nowtime += 1000;
-	    var nowtime = new Date(srv_nowtime);		
-	    $('#js-clock span').text(addZero(nowtime.getHours())+":"+addZero(nowtime.getMinutes())+":"+addZero(nowtime.getSeconds()));       
+	    var nowtime = new Date(srv_nowtime);
+	    $('#js-clock span').text(addZero(nowtime.getHours())+":"+addZero(nowtime.getMinutes())+":"+addZero(nowtime.getSeconds()));
 	}
-		
+
 	$('#js-clock').on('click', function(){
 		var that = $(this);
 		var time = that.find('span').text();
-		$.post('/checkwork/ajax/clock', { clock: time },function(data){
+		$.post('pages/back/admin/checkworks/checkork_add.action', { clock: time },function(data){
 			dialogInfo(data.message);
-			setTimeout(function(){ $('#dialogInfo').modal('hide'); }, 2000);			
-		},'json');
+			setTimeout(function(){ $('#dialogInfo').modal('hide'); }, 2000);
+		},'text');
 	});
-	
+
 })
 </script>
 </body>

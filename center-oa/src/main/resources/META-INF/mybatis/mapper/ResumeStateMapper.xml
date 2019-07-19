@@ -8,6 +8,9 @@
   <sql id="Base_Column_List">
     rsid, title
   </sql>
+  <select id="findAll" resultType="ResumeState">
+    select rsid, title from resume_state;
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

@@ -1,8 +1,8 @@
 package com.yootk.oa.action.projects;
 
+import com.yootk.oa.service.projects.IProjectsClientService;
 import com.yootk.dubbo.vo.Emp;
 import com.yootk.dubbo.vo.Project;
-import com.yootk.oa.service.projects.IProjectsClientService;
 import com.yootk.util.action.AbstractAction;
 import com.yootk.util.split.SplitPageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ import java.util.Map;
  * @author yaoxinlan
  */
 @Controller
-@RequestMapping("/pages/back/admin/projects/*")
+@RequestMapping("/pages/back/admin/projects/")
 public class ProjectAction extends AbstractAction {
     @Autowired
     private IProjectsClientService projectClientService;

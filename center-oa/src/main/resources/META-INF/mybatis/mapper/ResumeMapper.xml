@@ -5,6 +5,34 @@
   <sql id="Base_Column_List">
     resid, name, sex, phone, birthday, eduid, wyid, note, appendix, state, eid
   </sql>
+  <select id="findByRsid" resultType="Resume" parameterType="java.lang.Long">
+    select resid, name, sex, phone, birthday, eduid, wyid, note, appendix, state, eid from resume where resid=#{resid}
+  </select>
+  <select id="findAll" parameterType="java.util.Map" resultType="Resume">
+    select
+    <include refid="Base_Column_List" />
+    from resume
+    <where>
+        <if test="name != null and name !=&quot;&quot;">
+          ${columnone} like #{name}
+        </if>
+      <if test="state != null and state !=&quot;&quot;">
+        and ${columntwo} like #{state}
+      </if>
+    </where>
+    limit #{start},#{end}
+  </select>
+  <select id="getAllRecorders" resultType="java.lang.Long" parameterType="java.util.Map">
+    select count(*) from resume
+    <where>
+    <if test="name != null and name !=&quot;&quot;">
+      ${columnone} like #{name}
+    </if>
+    <if test="state != null and state !=&quot;&quot;">
+      and ${columntwo} like #{state}
+    </if>
+    </where>
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultType="Resume">
     select 
     <include refid="Base_Column_List" />

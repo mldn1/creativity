@@ -30,6 +30,11 @@
             <artifactId>util</artifactId>
         </dependency>
         <!-- 公告包 -->
+        <!-- RabbitMQ组件包 -->
+        <dependency>
+            <groupId>org.springframework.amqp</groupId>
+            <artifactId>spring-rabbit</artifactId>
+        </dependency>
         <!--dubbo依赖 -->
         <dependency>
             <groupId>com.alibaba</groupId>
@@ -227,6 +232,10 @@
             <artifactId>spring-web</artifactId>
         </dependency>
         <!-- WEB依赖 -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+        </dependency>
         <dependency>
             <groupId>javax.servlet.jsp.jstl</groupId>
             <artifactId>jstl-api</artifactId>

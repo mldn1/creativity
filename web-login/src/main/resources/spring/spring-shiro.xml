@@ -52,7 +52,7 @@
     </bean>
     <!-- 7、定义Cookie的存储配置 -->
     <bean id="sessionIdCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
-        <property name="name" value="HappyLee-Session-ID"/> <!-- Cookie属性名称 -->
+        <property name="name" value="login-Session-ID"/> <!-- Cookie属性名称 -->
     </bean>
 
     <!-- 8、定义session管理器，实现session的整体配置 -->

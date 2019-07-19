@@ -13,7 +13,7 @@ import java.util.Map;
  */
 @Service
 public class ProjectsClientServiceImpl implements IProjectsClientService {
-    @Reference
+    @Reference(check = false)
     private IProjectService projectService;
 
     @Override

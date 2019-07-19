@@ -3,7 +3,7 @@
 <!DOCTYPE html>  
  
 <head>
-    <jsp:include page="/pages/plugins/include_basepath.jsp"/>
+    <jsp:include page="/WEB-INF/pages/plugins/include_basepath.jsp"/>
     
 	<meta http-equiv="Pragma" content="no-cache">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
@@ -66,6 +66,6 @@ window.onresize = function(){
 	} 
 	document.getElementById("btn").onclick=function(){time(this);} 
 </script>
-<jsp:include page="/pages/plugins/include_foot.jsp"/>
+<jsp:include page="/WEB-INF/pages/plugins/include_foot.jsp"/>
 </body>
 </html>
