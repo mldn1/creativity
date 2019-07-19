@@ -13,8 +13,8 @@
 	<title>购物车（登陆）</title>
 	<meta name="description" content="页面简述" />
 	<meta name="keywords" content="关键词" />
-	<link href="assets/css/style.css" rel="stylesheet" type="text/css">
-	<link href="assets/css/mystyle.css" rel="stylesheet" type="text/css">
+	<link href="css/style.css" rel="stylesheet" type="text/css">
+	<link href="css/mystyle.css" rel="stylesheet" type="text/css">
     <script>
 function htmlFontSize(){
     var clientWidth = document.documentElement ? document.documentElement.clientWidth : document.body.clientWidth;
@@ -37,12 +37,12 @@ window.onresize = function(){
 </head>
 <body>
 	<div class="gouConterText">
-		<img src="assets/images/GL_icon_45.png">
+		<img src="images/GL_icon_45.png">
         <p>您的购物袋还是空的呢...<br>去挑点儿什么吧！</p>
 		<div class="gouBtn"><a href="pages/front/goods/shop_special.jsp">新品推荐</a></div>
     </div>
     <div class="go_Land">
-    	<input type="button" value="登陆" name="" onClick="window.open('pages/front/login/login-1.jsp','_self');"/>
+    	<input type="button" value="登陆" name="" onClick="window.open('pages/front/login/login-1.action','_self');"/>
     </div>
 
 </body>

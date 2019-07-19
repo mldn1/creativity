@@ -13,8 +13,8 @@
 	<title>支付失败（没有头只有脚）</title>
 	<meta name="description" content="页面简述" />
 	<meta name="keywords" content="关键词" />
-	<link href="assets/css/style.css" rel="stylesheet" type="text/css">
-	<link href="assets/css/mystyle.css" rel="stylesheet" type="text/css">
+	<link href="css/style.css" rel="stylesheet" type="text/css">
+	<link href="css/mystyle.css" rel="stylesheet" type="text/css">
     <script>
 function htmlFontSize(){
     var clientWidth = document.documentElement ? document.documentElement.clientWidth : document.body.clientWidth;
@@ -40,8 +40,8 @@ window.onresize = function(){
 	<h2>付款失败</h2>
     <p>您的订单未支付成功</p>
     <div class="success_Btn">
-    	<input type="button" value="返回订单" name=""  onClick="window.open('pages/front/cart/shopping_cart.jsp','_self');">
-        <input class="return_Pay" type="button" value="重新付款" name="" onClick="window.open('pages/front/cart/shopping_cart_2.jsp','_self');">
+    	<input type="button" value="返回订单" name=""  onClick="window.open('pages/front/cart/shopping_cart.action','_self');">
+        <input class="return_Pay" type="button" value="重新付款" name="" onClick="window.open('pages/front/cart/shopping_cart_2.action','_self');">
     </div>
 </div>
 
