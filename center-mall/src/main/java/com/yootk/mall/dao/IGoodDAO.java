@@ -16,4 +16,11 @@ public interface IGoodDAO {
      * @return
      */
     Good findById(String gid);
+
+    /**
+     * 根据category_goods表的cid查询goods表数据
+     * @param cid 要查询的cid
+     * @return 查询结果保存在List集合中返回
+     */
+    List<Good> findCategoryGood(Long cid);
 }

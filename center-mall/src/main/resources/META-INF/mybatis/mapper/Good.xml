@@ -16,4 +16,9 @@
         <include refid="Base_Column_List"/>
         where  gid=#{gid}
     </select>
+
+    <select id="findCategoryGood" parameterType="java.lang.Long" resultType="Good">
+        <include refid="Base_Column_List"/>
+        where gid IN(SELECT gid FROM category_goods WHERE cid = #{cid});
+    </select>
 </mapper>

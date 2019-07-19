@@ -1,5 +1,6 @@
 package com.yootk.mall.action;
 
+import com.yootk.mall.service.ICategoryTransferService;
 import com.yootk.mall.service.IGoodTransferService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,11 +13,15 @@ public class IndexAcion {
     @Autowired
     private IGoodTransferService goodTransferService;
 
+    @Autowired
+    private ICategoryTransferService categoryTransferService;
+
     // 跳转到首页
     @GetMapping("index")
     public ModelAndView index() {
         ModelAndView mav = new ModelAndView("front/main/index");
         mav.addObject("showGoods", this.goodTransferService.findShowGoods());
+        mav.addObject("allCategory", this.categoryTransferService.findAllCategory());
         return mav;
     }
 
@@ -42,8 +47,10 @@ public class IndexAcion {
     }
     // 跳转到xxX馆
     @GetMapping("active_page")
-    public ModelAndView activePage() {
+    public ModelAndView activePage(Long cid) {
         ModelAndView mav = new ModelAndView("front/main/active_page");
+        mav.addObject("allCategory", this.categoryTransferService.findAllCategory());
+        mav.addObject("allCategoryGoods", this.goodTransferService.findCateGood(cid));
         return mav;
     }
 

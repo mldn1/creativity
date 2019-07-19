@@ -4,8 +4,6 @@ import org.csource.common.NameValuePair;
 import org.csource.fastdfs.*;
 import org.springframework.core.io.ClassPathResource;
 
-import java.io.File;
-import java.util.Arrays;
 
 public class FileUpload {
     public static String[] Upload(FastDFSFile fastFile,String fileExt) throws Exception {

@@ -6,17 +6,17 @@
 .list_group,.nav_link_ul,.mine_List ul,.width_Choose,.gouLikeShop{justify-content:space-around;}
 .dropMore,.login_Head,.login_Input li,.register_Choose,.register_pwd li,.my_Button2,.clearfixul,.clearfix1,.clearfix1 li,.gouListFor,.lose_Head,.lose_Text li,.choose li.gl_Del,.shop_Address,.shop_Prolist,.shop_Invoice,.shop_Pay,.success_Btn,.invoice_Confirm,.mine_Address,.my_Icon,.my_Datum li,.order_Tab,.order_StatuTit,.order_StatuText,.order_Pay,.order_Pay1,.order_Pay2,.order_Qx,.choose li,.aboutUs{justify-content: space-between;}
   /*head*/ 
-.head_Logo{ position:fixed; bottom:2rem; left:0; height:2.5rem; width:100%; background:url(assets/images/GL_icon_32.png) no-repeat center center; background-size:100%; z-index:2;}
+.head_Logo{ position:fixed; bottom:2rem; left:0; height:2.5rem; width:100%; background:url(/WEB-INF/assets/images/GL_icon_32.png) no-repeat center center; background-size:100%; z-index:2;}
 .head_Link{ width:1rem; height:1rem; margin:0.75rem;position: fixed; top: 0;right: 0;z-index: 2;}
 .head_Link a{ display:block;}
  /*footer*/ 
 .footer{ height:2.15rem; position:fixed; left:0; bottom:0; width:100%; z-index:2;background-color:#0f1837;}
 .active{color:#b1812c !important;} 
 .nav_link_ul li{ flex-grow:0; width:15%; margin:1.5% 0; text-align:center; font-size:0.55rem;} 
-#homeLink{ background:url(assets/images/GL_icon_01.png) no-repeat center 0rem; padding-top:1rem;background-size:35%;}
-#taskLink{ background:url(assets/images/GL_icon_02.png) no-repeat center 0rem; padding-top:1rem; background-size:35%;} 
-#messageLink{ background:url(assets/images/GL_icon_03.png) no-repeat center 0rem; padding-top:1rem; background-size:35%;} 
-#userLink{ background:url(assets/images/GL_icon_04.png) no-repeat center 0rem; padding-top:1rem; background-size:35%;} 
+#homeLink{ background:url(/WEB-INF/assets/images/GL_icon_01.png) no-repeat center 0rem; padding-top:1rem;background-size:35%;}
+#taskLink{ background:url(/WEB-INF/assets/images/GL_icon_02.png) no-repeat center 0rem; padding-top:1rem; background-size:35%;}
+#messageLink{ background:url(/WEB-INF/assets/images/GL_icon_03.png) no-repeat center 0rem; padding-top:1rem; background-size:35%;}
+#userLink{ background:url(/WEB-INF/assets/images/GL_icon_04.png) no-repeat center 0rem; padding-top:1rem; background-size:35%;}
 .nav_link_ul li a{ display:inline-block; width:100%; color:#e2dbce; font-size:0.5rem;} 
 .active{ background-position:center -1.885rem !important; width:100%;} 
 /*全屏滚动*/ 
