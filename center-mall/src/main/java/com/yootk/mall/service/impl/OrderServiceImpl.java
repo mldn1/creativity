@@ -20,7 +20,7 @@ public class OrderServiceImpl implements IOrderService {
     @Autowired
     private RedisLock redisLock;
     @Override
-    public Map<String, Object> List(Map<String, Object> map) throws Exception {
+    public Map<String, Object> list(Map<String, Object> map) throws Exception {
 
 
         String SERVICE_KEY = "money-service" ;

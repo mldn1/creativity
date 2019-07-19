@@ -26,7 +26,7 @@ public class OrderTransferServiceImpl  implements IOrderTransferService {
         Map<String,Object> map = null ;
         Map<String,Object> parmaMap = new HashMap<>() ;
         try {
-            map = this.orderService.List(parmaMap) ;
+            map = this.orderService.list(parmaMap) ;
         } catch (Exception e) {
             e.printStackTrace();
         }
