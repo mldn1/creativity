@@ -34,6 +34,8 @@ public class Emp implements Serializable {
         this.imagepath = imagepath;
     }
 
+
+
     public String getPhoto() {
         return photo;
     }
