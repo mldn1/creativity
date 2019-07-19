@@ -8,6 +8,9 @@
   <sql id="Base_Column_List">
     eduid, title
   </sql>
+  <select id="findAllEducation" resultType="Education">
+    select eduid, title from education
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

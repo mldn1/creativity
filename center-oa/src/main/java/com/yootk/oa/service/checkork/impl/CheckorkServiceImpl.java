@@ -6,9 +6,8 @@ import com.yootk.dubbo.vo.Checkork;
 import com.yootk.oa.dao.CheckorkMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @Service
 public class CheckorkServiceImpl implements ICheckorkService {
@@ -23,8 +22,18 @@ public class CheckorkServiceImpl implements ICheckorkService {
         params.put("end",lineSize);
         params.put("column",column);
         params.put("keyword",keyword);
-        result.put("allCheckorks", this.checkorkMapper.findSplitByEid(params));
+        Iterator<Checkork> iterator=this.checkorkMapper.findSplitByEid(params).iterator();
+        SimpleDateFormat dataformat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        List<String> all=new ArrayList<>();
+        //Checkork checkork=null;
+        while(iterator.hasNext()){
+            //Date checkork=;
+            String time =dataformat.format(iterator.next().getDatetime());
+            all.add(time);
+        }
+        result.put("allTimes",all);
         result.put("allRecorders", this.checkorkMapper.getAllRecorders(params));
+        result.put("allCheckorks", this.checkorkMapper.findSplitByEid(params));
         return result;
     }
 

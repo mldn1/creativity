@@ -1,7 +1,7 @@
 <%@ page pageEncoding="UTF-8"%>
 <!DOCTYPE html>  
 <head>
-    <jsp:include page="/pages/plugins/include_basepath.jsp"/>
+    <jsp:include page="/WEB-INF/pages/plugins/include_basepath.jsp"/>
 	<meta charset="utf-8">
 	<meta http-equiv="Pragma" content="no-cache">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
@@ -65,6 +65,6 @@ window.onresize = function(){
         	<input type="button" value="退出登录" name="" />
         </div>
 
-<jsp:include page="/pages/plugins/include_foot.jsp"/>
+<jsp:include page="/WEB-INF/pages/plugins/include_foot.jsp"/>
 </body>
 </html>

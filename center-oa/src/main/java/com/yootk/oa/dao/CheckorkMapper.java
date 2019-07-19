@@ -27,5 +27,4 @@ public interface CheckorkMapper {
 
     public Long getAllRecorders(Map<String, Object> params);//获得返回数据的总记录数，下面分页查询需要用到
 
-   // public boolean doCreate(Checkork checkork);
 }

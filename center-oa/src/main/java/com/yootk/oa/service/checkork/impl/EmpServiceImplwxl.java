@@ -12,7 +12,7 @@ public class EmpServiceImplwxl implements IEmpServicewxl {
     @Autowired
     private EmpMapper empMapper;
     @Override
-    public Long getEid(String phone) {
+    public Long getEidByPhone(String phone) {
         return null;
     }
 

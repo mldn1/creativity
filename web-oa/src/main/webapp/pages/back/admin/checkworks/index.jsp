@@ -19,7 +19,7 @@
       <a class="toggle-btn"><i class="fa fa-bars"></i></a>
       <!--toggle button end-->
       <!--search start-->
-      <form class="searchform" action="/pages/back/admin/checkworks/checkork_list.action" method="get">
+      <form class="searchform" action="pages/back/admin/checkworks/checkork_list.action" method="get">
         <select name="type" class="form-control">
           <option value="">打卡状态</option>
           <option value="1" {{if eq "1" .condArr.type}}selected>正常</option>
@@ -40,7 +40,7 @@
         <li class="active"> 考勤 </li>
       </ul>
       <shiro:hasPermission name="oaattendance:all">
-      <div class="pull-right"><a href="pages/back/admin/checkworks/checkork_list.action?eid=null" class="btn btn-success">全部员工考勤</a></div>
+      <div class="pull-right"><a href="pages/back/admin/checkworks/checkork_listall.action" class="btn btn-success">全部员工考勤</a></div>
       </shiro:hasPermission>
     </div>
     <div class="clearfix"></div>

@@ -21,11 +21,11 @@ public class ProjectsServiceImpl implements IProjectService {
     public Map<String, Object> getAllSplit(Long eid, Long currentPage, Integer lineSize, String column, String keyWord) {
         Map<String, Object> result = new HashMap<>();
         Map<String, Object> params = new HashMap<>();
-        params.put("founder",eid);
+        params.put("founder", eid);
         params.put("start", (currentPage - 1) * lineSize);
         params.put("lineSize", lineSize);
         params.put("column", column);
-        params.put("keyWord", keyWord);
+        params.put("keyword", keyWord);
         result.put("allProjects", this.projectMapper.findSplit(params));
         result.put("allRecorders", this.projectMapper.getAllRecorders(params));
         return result;

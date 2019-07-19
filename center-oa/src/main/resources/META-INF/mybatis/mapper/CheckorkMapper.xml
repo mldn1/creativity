@@ -17,7 +17,7 @@
       <if test="eid != null">
         eid=#{eid}
       </if>
-      <if test="keyword != null and keyword != ''">
+      <if test="keyword != null and keyword != &quot;&quot; and column !=null and column != &quot;&quot;">
       and ${column} like #{keyword}
       </if>
     </where>
@@ -25,7 +25,7 @@
   </select>
   <select id="getAllRecorders" resultType="long" parameterType="map">
     select count(*) from `checkork`
-    <if test="column != null and keyword != null and column != '' and keyword !=''">
+    <if test="column != null and keyword != null and column != &quot;&quot; and keyword !=&quot;&quot;">
       <where>
       <if test="eid!=null">
         eid=#{eid}

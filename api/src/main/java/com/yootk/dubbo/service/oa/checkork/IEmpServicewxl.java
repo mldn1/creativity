@@ -10,7 +10,7 @@ public interface IEmpServicewxl {
      * @param phone 用户手机号
      * @return 用户id
      */
-    public Long getEid(String phone);
+    public Long getEidByPhone(String phone);
 
     /**
      * 获得全部的雇员信息

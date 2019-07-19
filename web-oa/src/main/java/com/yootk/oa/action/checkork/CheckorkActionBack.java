@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -27,34 +28,50 @@ public class CheckorkActionBack extends AbstractAction {
     private ICheckorkServiceClient checkorkServiceClient;
     @Autowired
     private IEmpServicewxlClient empServicewxlClient;
-    //HttpSession session=super.getSession();
-    //Emp emp=(Emp) session.getAttribute("emp");
-    //Long eid=emp.getEid();//等待取得session中封装的emp，session封装emp程序还没上传
+
     //private Long eid=this.empServiceClient.getIEmpService().getEid(super.getEmpId());
+    //Long eid=this.empServicewxlClient.getIEmpServicewxl().getEidByPhone(super.getEmpId());
+
     @RequestMapping("checkork_list.action")
     public ModelAndView listl(String type){
+        System.err.println("================"+super.getEmpId()+"=====================");
+        Long eid2=this.empServicewxlClient.getIEmpServicewxl().getEidByPhone(super.getEmpId());
+        System.err.println("================="+eid2+"========================");
+        //Emp emp=(Emp) super.getSession().getAttribute("emp");
+        //Long eid=emp.getEid();//等待取得session中封装的emp，session封装emp程序还没上传
         ModelAndView mav=new ModelAndView("back/admin/checkworks/index");
         SplitPageUtil spu = new SplitPageUtil("/pages/back/admin/checkworks/checkork_list.action");
-        System.err.println("====================================="+spu.getCurrentPage()+"=====================================");
-        System.err.println("====================================="+spu.getLineSize()+"=====================================");
+        //System.err.println("====================================="+eid+"=====================================");
         System.err.println("====================================="+spu.getKeyword()+"=====================================");
         Map<String, Object> map = this.checkorkServiceClient.getICheckorkService().list(5L, spu.getCurrentPage(),spu.getLineSize(),"state",type);
         mav.addAllObjects(map);
         return mav;
     }
     @RequestMapping("checkork_listall.action")
-    public ModelAndView listall(){
+    public ModelAndView listall(String column,String name){
         ModelAndView mav=new ModelAndView("back/admin/checkworks/all");
         SplitPageUtil spu = new SplitPageUtil("/pages/back/admin/checkworks/checkork_listall.action");
-        System.err.println("====================================="+spu.getCurrentPage()+"=====================================");
-        System.err.println("====================================="+spu.getLineSize()+"=====================================");
-        System.err.println("====================================="+spu.getKeyword()+"=====================================");
-        System.err.println("====================================="+this.empServicewxlClient+"=====================================");
-        System.err.println("====================================="+this.empServicewxlClient.getIEmpServicewxl()+"=====================================");
-        Map<String, Object> map = this.checkorkServiceClient.getICheckorkService().list(null, spu.getCurrentPage(),spu.getLineSize(),spu.getColumn(),spu.getKeyword());
         List<Emp> all=this.empServicewxlClient.getIEmpServicewxl().getAllEmp();
+        Iterator<Emp> iter=all.iterator();
+        Emp emp=null;
+        String keyword=null;
+        if(!((name ==null) || name.equals(""))){
+            Long eid=0L;
+            while(iter.hasNext()){
+                System.err.println("****************************"+name+"************************************");
+                if((emp=iter.next()).getName().equals(name)){
+                    System.err.println("****************************"+emp.getName()+"************************************");
+                    eid=emp.getEid();
+                    System.err.println("****************************"+eid+"************************************");
+                    break;
+                }
+            }
+            keyword=eid.toString();
+            System.err.println("****************************"+keyword+"************************************");
+        }
+
+        Map<String, Object> map = this.checkorkServiceClient.getICheckorkService().list(null, spu.getCurrentPage(),spu.getLineSize(),column,keyword);
         mav.addObject("allEmp",all);
-        System.err.println("====================================="+all+"=====================================");
         mav.addAllObjects(map);
         return mav;
     }
@@ -84,7 +101,6 @@ public class CheckorkActionBack extends AbstractAction {
             state=1;        //17:00到18:00之间打卡算正常
         }
         String ip=super.getRequest().getRemoteAddr();
-        System.err.println("==================================="+ip+"===========================================");
          this.checkorkServiceClient.getICheckorkService().doCreate(5L,new Date(), state, ip);
            return "forward:checkork_list.action";
     }
