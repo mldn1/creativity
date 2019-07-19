@@ -5,7 +5,6 @@ import com.yootk.oa.service.IEmpAllPrivilegeService;
 import com.yootk.oa.service.IEmpPrivilegeService;
 import com.yootk.util.action.AbstractAction;
 import com.yootk.util.upload.token.UploadToken;
-import com.yootk.util.upload.util.FileDelete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,13 +40,6 @@ public class UserAction extends AbstractAction {
             super.getSession().removeAttribute("emp");
             Emp emp = this.empPrivilegeService.getByPhone(super.getEmpId());
             super.getSession().setAttribute("emp",emp);
-        }else {
-            try {
-                FileDelete.Upload(
-                         upload[1]);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
         }
     }
     @RequestMapping("profile_form")

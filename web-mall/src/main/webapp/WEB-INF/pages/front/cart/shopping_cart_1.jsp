@@ -15,8 +15,8 @@
 	<title>购物车（下单）</title>
 	<meta name="description" content="页面简述" />
 	<meta name="keywords" content="关键词" />
-	<link href="assets/css/style.css" rel="stylesheet" type="text/css">
-	<link href="assets/css/mystyle.css" rel="stylesheet" type="text/css">
+	<link href="css/style.css" rel="stylesheet" type="text/css">
+	<link href="css/mystyle.css" rel="stylesheet" type="text/css">
     <script>
 function htmlFontSize(){
     var clientWidth = document.documentElement ? document.documentElement.clientWidth : document.body.clientWidth;
@@ -39,19 +39,19 @@ window.onresize = function(){
 </head>
 <body class="sTop1">
 <div class="shop_Address">
-	<div class="shop_Addsicon"><img src="assets/images/GL_icon_11.png"></div>
+	<div class="shop_Addsicon"><img src="images/GL_icon_11.png"></div>
   	<div class="shop_Addstext">
     	<h2><span></span><span>133****3333</span></h2>
         <p>北京市xxxxxxxxxxx </p>
     </div>
-    <div class="shop_Addrevise"><a href="pages/front/address/address.jsp"><img src="assets/images/GL_icon_19.png"></a></div>
+    <div class="shop_Addrevise"><a href="pages/front/address/address.jsp"><img src="images/GL_icon_19.png"></a></div>
 </div>
 <!--未选择地址-->
 <!--<div class="shop_Address">
   	<div class="shop_None">
     	<h2>您还没有添加或选择地址</h2>
     </div>
-    <div class="shop_Addrevise1"><img src="assets/images/GL_icon_19.png"></div>
+    <div class="shop_Addrevise1"><img src="images/GL_icon_19.png"></div>
 </div>-->
 <div class="shop_Invoice">
 	<div class="logistics">选择物流</div>
@@ -64,7 +64,7 @@ window.onresize = function(){
 </div>
 <div class="shop_Product">
 	<div class="shop_Prolist">
-    	<div class="shop_ProImg"><img src="assets/images/GL_img_02.jpg"></div>
+    	<div class="shop_ProImg"><img src="images/GL_img_02.jpg"></div>
         <div class="shop_Protext">
        	  <h2>缠枝莲缠枝莲缠枝莲缠枝莲缠枝莲缠</h2>
            	<p>红色</p>
@@ -75,7 +75,7 @@ window.onresize = function(){
         </div>
     </div>
     <div class="shop_Prolist">
-    	<div class="shop_ProImg"><img src="assets/images/GL_img_02.jpg"></div>
+    	<div class="shop_ProImg"><img src="images/GL_img_02.jpg"></div>
         <div class="shop_Protext">
        	  <h2>缠枝莲缠枝莲缠枝莲缠枝莲缠枝莲缠</h2>
            	<p>红色</p>
@@ -87,9 +87,9 @@ window.onresize = function(){
     </div>
 </div>
 <div class="shop_Invoice">
-	<!--<span><b class="gary"><img src="assets/images/GL_icon_42.png"></b><i>我要开发票</i></span>-->
-    <p class="gray"><img src="assets/images/GL_icon_42.png"><a href="pages/front/cart/shopping_cart_6.jsp"><i>开发票</i></a></p>
-    <span class="shop_InvoiceR"><a href="pages/front/cart/shopping_cart_6.jsp"><img src="assets/images/GL_icon_19.png"></a></span>
+	<!--<span><b class="gary"><img src="images/GL_icon_42.png"></b><i>我要开发票</i></span>-->
+    <p class="gray"><img src="images/GL_icon_42.png"><a href="pages/front/cart/shopping_cart_6.jsp"><i>开发票</i></a></p>
+    <span class="shop_InvoiceR"><a href="pages/front/cart/shopping_cart_6.jsp"><img src="images/GL_icon_19.png"></a></span>
 </div>
 <div class="shop_Details borderNone">
 	<ul>
@@ -109,21 +109,21 @@ window.onresize = function(){
     <br class="clear">
 </div>
 <div class="shop_Agree">
-    <p class="gray"><img src="assets/images/GL_icon_43.png"><span>我已同意<a href="#">《文化创意馆协议》</a></span></p>
+    <p class="gray"><img src="images/GL_icon_43.png"><span>我已同意<a href="#">《文化创意馆协议》</a></span></p>
 </div>
 <div class="shop_Pay">
 	<span>应付：<i>2,451,27元</i></span>
 
-    <input type="button" name="" value="下单" onClick="window.open('pages/front/cart/shopping_cart_2.jsp','_self');">
+    <input type="button" name="" value="下单" onClick="window.open('pages/front/cart/shopping_cart_2.action','_self');">
 </div>
-<script src="assets/js/jquery-1.11.0.min.js"></script>
+<script src="js/jquery-1.11.0.min.js"></script>
 <script>
 	$('body').on('click','.gray img',function(){
 		var hSrc = $(this).attr('src');
-		if(hSrc == 'assets/images/GL_icon_42.png'){
-			 $(this).attr('src','assets/images/GL_icon_43.png');
+		if(hSrc == 'images/GL_icon_42.png'){
+			 $(this).attr('src','images/GL_icon_43.png');
 		}else{
-			$(this).attr('src','assets/images/GL_icon_42.png');
+			$(this).attr('src','images/GL_icon_42.png');
 		}
 	})
 </script>

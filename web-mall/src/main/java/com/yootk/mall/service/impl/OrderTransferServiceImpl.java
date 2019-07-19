@@ -1,7 +1,7 @@
 package com.yootk.mall.service.impl;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.yootk.dubbo.service.mall.IOrderService;
-import com.yootk.dubbo.vo.mall.Orders;
+import com.yootk.dubbo.vo.mall.Order;
 import com.yootk.mall.service.IOrderTransferService;
 import org.springframework.stereotype.Service;
 
@@ -22,11 +22,11 @@ public class OrderTransferServiceImpl  implements IOrderTransferService {
      */
     @Override
     public Map<String, Object> handleOrder() {
-        List<Orders>  ordersList = new ArrayList<>() ;
+        List<Order>  ordersList = new ArrayList<>() ;
         Map<String,Object> map = null ;
         Map<String,Object> parmaMap = new HashMap<>() ;
         try {
-            map = this.orderService.List(parmaMap) ;
+            map = this.orderService.list(parmaMap) ;
         } catch (Exception e) {
             e.printStackTrace();
         }
