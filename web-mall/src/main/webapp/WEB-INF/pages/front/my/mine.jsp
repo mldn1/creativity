@@ -41,7 +41,7 @@ window.onresize = function(){
         </div>
     </div>
         <div class="my_Order">
-    	  <a href="pages/front/order/order_status.action">
+    	  <a href="order_status.action">
             	<div class="Order_pic1"><img src="images/GL_icon_21.png"></div>
             	<p>我的订单</p>
             </a>
@@ -52,12 +52,12 @@ window.onresize = function(){
 </div>
         <div class="mine_List">
         	<ul>
-            	<li><a href="pages/front/address/address.action"><img src="images/GL_icon_11.png">
+            	<li><a href="address.action"><img src="images/GL_icon_11.png">
            	  <p>地址管理</p></a></li>
-                <li><a href="#"><img src="assets/images/GL_icon_13.png"><p>联系客服</p></a></li>
-                <li><a href="pages/front/help/help_center.action"><img src="images/GL_icon_23.png">
+                <li><a href="#"><img src="images/GL_icon_13.png"><p>联系客服</p></a></li>
+                <li><a href="help_center.action"><img src="images/GL_icon_23.png">
               <p>帮助中心</p></a></li>
-                <li><a href="pages/front/my/mineset.action"><img src="images/GL_icon_25.png">
+                <li><a href="mineset.action"><img src="images/GL_icon_25.png">
               <p>账号设置</p></a></li>
             </ul>
         </div>

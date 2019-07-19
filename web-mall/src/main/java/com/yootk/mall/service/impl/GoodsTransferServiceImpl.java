@@ -4,9 +4,16 @@ import com.alibaba.dubbo.config.annotation.Reference;
 import com.yootk.dubbo.service.mall.IGoodsService;
 import com.yootk.dubbo.vo.mall.Goods;
 import com.yootk.mall.service.IGoodsTransferService;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.stereotype.Service;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
 import java.util.List;
 
+@ContextConfiguration(locations = {"classpath:spring/spring-base.xml"})
+@RunWith(SpringJUnit4ClassRunner.class)
 @Service
 public class GoodsTransferServiceImpl implements IGoodsTransferService {
     @Reference
@@ -14,10 +21,17 @@ public class GoodsTransferServiceImpl implements IGoodsTransferService {
 
     @Override
     public List<Goods> findShowGoods() {
-        System.out.println("【第一次查询】：" + goodsService.findShowGoods());
-        System.out.println("----------------------------------------------------------------------------------------");
-        System.err.println("【第二次查询】：" + goodsService.findShowGoods());
-        return goodsService.findShowGoods();
+        return goodsService.findShowGoodss();
+    }
+
+    @Override
+    public Goods findGoodsById(String gid) {
+        return goodsService.findGoodsById(gid);
+    }
+
+    @Test
+    public void info() {
+        System.out.println(goodsService.findGoodsById("1001").getPicture());
     }
 
 }

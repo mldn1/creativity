@@ -10,6 +10,13 @@
    </sql>
     <select id="findShow" resultType="Goods">
         <include refid="Base_Column_List" />
-        order by createdate desc limit 0,4;
+        order by createdate desc limit 0,5;
+    </select>
+
+    <select id="findById" resultType="Goods">
+        <include refid="Base_Column_List" />
+        <where>
+          gid = #{gid}
+        </where>
     </select>
 </mapper>

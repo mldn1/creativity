@@ -15,11 +15,9 @@ public class IndexAcion {
     @GetMapping("index")
     public ModelAndView index() {
         ModelAndView mav = new ModelAndView("front/main/index");
-       // System.out.println(this.goodsTransferService);
         mav.addObject("showGoods", this.goodsTransferService.findShowGoods());
         return mav;
     }
-
 
     // 跳转到搜索页
     @GetMapping("search")

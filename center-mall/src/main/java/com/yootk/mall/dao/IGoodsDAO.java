@@ -10,4 +10,10 @@ public interface IGoodsDAO {
      * @return 查询结果以List<Goods>集合返回
      */
     List<Goods> findShow();
+
+    /**
+     * 根据id查询单条数据
+     * @return
+     */
+    Goods findById(String gid);
 }

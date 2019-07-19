@@ -38,15 +38,15 @@ window.onresize = function(){
 <body class="sTop1">
     <div class="search_Hot">
     	<h2>热门搜索</h2>
-        <a href="pages/front/search/search_end.action" class="text_Red">铜器馆</a>
-        <a href="pages/front/search/search_end.action" class="text_Red">丝绸</a>
-        <a href="pages/front/search/search_end.action" class="text_Red">珠光宝气方巾</a>
-        <a href="pages/front/search/search_end.action" class="text_Red">福至杯</a>
-        <a href="pages/front/search/search_end.action">逐鹿顺意</a>
-        <a href="pages/front/search/search_end.action">送礼首选</a>
-        <a href="pages/front/search/search_end.action">文创出品</a>
-        <a href="pages/front/search/search_end.action">福禄盖碗</a>
-        <a href="pages/front/search/search_end.action">前程似锦领带</a>
+        <a href="search_end.action" class="text_Red">铜器馆</a>
+        <a href="search_end.action" class="text_Red">丝绸</a>
+        <a href="search_end.action" class="text_Red">珠光宝气方巾</a>
+        <a href="search_end.action" class="text_Red">福至杯</a>
+        <a href="search_end.action">逐鹿顺意</a>
+        <a href="search_end.action">送礼首选</a>
+        <a href="search_end.action">文创出品</a>
+        <a href="search_end.action">福禄盖碗</a>
+        <a href="search_end.action">前程似锦领带</a>
     </div>
     <div class="search_History">
     	<h2><span>历史搜索</span><a class="add_Del clearList" href="javascript:;"><img src="images/GL_icon_29.png"></a></h2>
