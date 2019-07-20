@@ -24,4 +24,12 @@ public class GoodsServiceImpl implements IGoodsService {
         result.put("allRecorders",this.goodsDAO.getAllCount(params));
         return result;
     }
+
+    @Override
+    public Long allCount(String column, String keyword) {
+        Map<String,Object> map = new HashMap<>() ;
+        map.put("column",column) ;
+        map.put("keyword",keyword) ;
+        return goodsDAO.getAllCount(map);
+    }
 }

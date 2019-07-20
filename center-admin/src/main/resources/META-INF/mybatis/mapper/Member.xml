@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 定义所有的SQL语句的映射， 对于本实体而言相关的所有的SQL代码都在此定义 -->
+<mapper namespace="com.yootk.admin.dao.IMemberDAO">   <!-- SSM整合的时候，这个命名空间异常重要 -->
+    <sql id="selectBase">
+         SELECT id,mid,phone,name,email,sex,birthday,password,photo,grade,state,regist,lastrecord,eid,count,ip,source from member
+    </sql>
+    <select id="findSplit" parameterType="java.util.Map" resultType="Member">
+        <include refid="selectBase"/>
+        <where>
+            <if test="column != null and keyword != null and column != &quot;&quot; and keyword != &quot;&quot;">
+                 ${column} LIKE #{keyword} and
+            </if>
+            <if test="state != null and state != &quot;&quot;">
+                 state = #{state} and
+            </if>
+            <if test="source != null and source != &quot;&quot;">
+                source = #{source} and
+            </if>
+            1 = 1
+         </where>
+         LIMIT #{start},#{linesize}
+    </select>
+    <select id="getAllCount" parameterType="java.util.Map" resultType="java.lang.Long">
+        SELECT COUNT(*) FROM member
+        <where>
+            <if test="column != null and keyword != null and column != &quot;&quot; and keyword != &quot;&quot;">
+                ${column} LIKE #{keyword} and
+            </if>
+            <if test="state != null and state != &quot;&quot;">
+                state = #{state} and
+            </if>
+            <if test="source != null and source != &quot;&quot;">
+                source = #{source} and
+            </if>
+            1 = 1
+        </where>
+    </select>
+
+</mapper>

@@ -5,14 +5,25 @@
 <mapper namespace="com.yootk.admin.dao.IGoodsDAO">   <!-- SSM整合的时候，这个命名空间异常重要 -->
     <sql id="selectBase">
          SELECT id,gid,title,shortname,link,deduction,standard,color,size,material,purpose,showpicture,focuspicture,
-         description,details,originprice,saleprice,pack,supplier,singlesize,iscg,stateid,showstate,weight,sort,site,click,sales,createdate,editdate,eid from goods
+         description,details,originprice,saleprice,pack,supplier,singlesize,iscg,stateid,showstate,weight,sort,site,click,sales,createdate,editdate,eid FROM goods
     </sql>
     <select id="findSplit" parameterType="java.util.Map" resultType="Goods">
         <include refid="selectBase"/>
         <if test="column != null and keyword != null and column != &quot;&quot; and keyword != &quot;&quot;">
             WHERE ${column} LIKE #{keyword}
         </if>
-        LIMIT #{start},#{linesize};
+        <if test="start != null and start != &quot;&quot;">
+            LIMIT #{start}
+        </if>
+        <if test="start == null or start == &quot;&quot;">
+            LIMIT 1
+        </if>
+        <if test="lineSize != null and lineSize != &quot;&quot;">
+            ,#{lineSize}
+        </if>
+        <if test="lineSize == null or lineSize == &quot;&quot;">
+            ,2
+        </if>
     </select>
     <select id="getAllCount" parameterType="java.util.Map" resultType="java.lang.Long">
         SELECT COUNT(*) FROM goods

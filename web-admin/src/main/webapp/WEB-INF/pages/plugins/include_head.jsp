@@ -68,7 +68,7 @@
                             class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                             <shiro:hasPermission name="mallproduct:product">
-                            <li><a href="pages/front/user/user_list.jsp">用户管理</a></li>
+                            <li><a href="pages/front/user/user_list.action">用户管理</a></li>
                             </shiro:hasPermission>
                                 <shiro:hasPermission name="mallproduct:product">
                             <li><a href="pages/front/user/coupon_list.jsp">卡卷管理</a></li>

@@ -1,48 +1,46 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page pageEncoding="UTF-8" %>
 <html>
 <head>
     <jsp:include page="/WEB-INF/pages/plugins/include_basepath.jsp"/>
     <jsp:include page="/WEB-INF/pages/plugins/include_head.jsp"/>
-</head>
-<body role="document">
+</head>le="document">
 
 <div id="mainDiv">
   <div style="width: 98%; margin-left:auto; margin-right:auto; text-align:left;">
 <div style="width: 98%; margin-left: 1%;">
-  <form name="form_simple" method="post" action="manage.jsp">
+  <form name="form_simple" method="post" action="pages/front/user/user_list.action">
     <input type="hidden" name="action" id="action" value="main">
     <input type="hidden" name="exec" id="exec" value="Users_userss">
     <table class="table table-hover table-bordered">
       <tbody>
         <tr>
           <td colspan="2" style="text-align:left; vertical-align:bottom;"><div class="form-group">
-              <label class="col-md-2" for="key">搜索关键词：</label>
+              <label class="col-md-2" for="keyword">搜索关键词：</label>
               <div class="col-md-7">
-                <input type="input" class="form-control" id="key" name="key" value=""
+                <input type="input" class="form-control" id="keyword" name="keyword" value="${keyword}"
 					placeholder="搜索关键词">
               </div>
             </div></td>
         </tr>
-      
         <tr>
            </td>                		
           <td style="text-align:left; vertical-align:bottom;"><div class="form-group">
               <label class="col-md-2" for="source">用户来源：</label>
-                <div id="source_div" class="col-sm-3"><select name="source" id="source" class="form-control" >
-<option value="">请选择</option>
-<option value="1">本站</option>
-<option value="2">微信</option>
-<option value="3">QQ</option>
-<option value="4">sina微博</option>
-<option value="5">小程序</option>
-</select></div>
+                <div id="source_div" class="col-sm-3">
+                    <select name="source" id="source" class="form-control" >
+                        <option value="">请选择</option>
+                            <c:forEach items="${allChannels}" var="channels">
+                                <option value="${channels.channel}">${channels.title}</option>
+                            </c:forEach>
+                    </select></div>
 
             </div>
           </td>
           <td style="text-align:left; vertical-align:bottom;"><div class="form-group">
-              <label class="col-md-2" for="size">个/页：</label>
+              <label class="col-md-2" for="linesize">个/页：</label>
               <div class="col-md-2">
-                <input type="number" class="form-control" id="size" name="size" value="20" min="20" max="100" step="20">
+                <input type="number" class="form-control" id="linesize" name="linesize" value="20" min="20" max="100" step="20">
               </div>
             </div>
            </td>
@@ -74,58 +72,31 @@
       </tr>
     </thead>
     <tbody>
+        <c:forEach items="${allMembers}" var="member">
             <tr>
-        <td><b>2003</b></td>
-        <td>XXX</td>
-        <td><a href="pages/front/user/user_modify.jsp">1231232132131</a></td>
-        <td>未知</td>
-        <td>普通</td>
-        <td>本站</td>
-        <td>打开</td>
-        <td>2019-06-23 12:49:32</td>
-        <td>2019-06-23 12:49:32</td>
-        <td></td>
-        <td><a href="pages/front/user/send_coupon.jsp"  target="_blank" >发卷</a>&nbsp;&nbsp;&nbsp;<a href="pages/front/user/send_ms.jsp"  target="_blank" >发消息</a>&nbsp;&nbsp;&nbsp;<a href="?action=main&exec=Users_userss&fun=viewEdit&id=2003&t_uniq=" ></a></td>
-      </tr>
-            <tr>
-        <td><b><a href="">2002</a></b></td>
-        <td>XXX</td>
-        <td>21312321321312</td>
-        <td>未知</td>
-        <td>普通</td>
-        <td>本站</td>
-        <td>打开</td>
-        <td>2019-06-22 15:10:18</td>
-        <td>2019-06-22 15:10:18</td>
-        <td></td>
-        <td>发卷&nbsp;&nbsp;&nbsp;发消息&nbsp;&nbsp;</td>
-      </tr>
-            <tr>
-        <td><b><a href="">2001</a></b></td>
-        <td>XXX</td>
-        <td>123123213213213</td>
-        <td>未知</td>
-        <td>普通</td>
-        <td>本站</td>
-        <td>打开</td>
-        <td>2019-06-19 13:29:16</td>
-        <td>2019-06-19 13:29:16</td>
-        <td></td>
-        <td>发卷&nbsp;&nbsp;&nbsp;发消息&nbsp;&nbsp;&nbsp;<a href="?action=main&exec=Users_userss&fun=viewEdit&id=2001&t_uniq=" ></a></td>
-      </tr>
+                <td><b>${member.id}</b></td>
+                <td>${member.name}</td>
+                <td><a href="pages/front/user/user_modify.jsp">${member.phone}</a></td>
+                <td>${member.sex}</td>
+                <td>${allM_grades[member.grade]}</td>
+                <td>${Channels[member.source]}</td>
+                <td>${allStates[member.state]}</td>
+                <td>${member.regist}</td>
+                <td>${member.lastrecord}</td>
+                <td>${member.eid}</td>
+                <td><a href="pages/front/user/send_coupon.jsp"  target="_blank" >发卷</a>&nbsp;&nbsp;&nbsp;<a href="pages/front/user/send_ms.jsp"  target="_blank" >发消息</a>&nbsp;&nbsp;&nbsp;<a href="?action=main&exec=Users_userss&fun=viewEdit&id=2003&t_uniq=" ></a></td>
+            </tr>
+        </c:forEach>
         </tbody>
     <tr>
-      <td colspan="12" align="center" valign="middle"><span class="">首页</span>&nbsp;<span class="">上一页</span>[<span class="">1</span>]
-[<a  href="/manage.jsp?action=main&exec=Users_userss&page=2">2</a>]
-[<a  href="/manage.jsp?action=main&exec=Users_userss&page=3">3</a>]
-[<a  href="/manage.jsp?action=main&exec=Users_userss&page=4">4</a>]
-<a  href="/manage.jsp?action=main&exec=Users_userss&page=2">下一页</a>&nbsp;<a  href="/manage.jsp?action=main&exec=Users_userss&page=100">尾页</a>&nbsp;转到第&nbsp;<select name="PB_Page_Select" onChange="window.location.href='/manage.jsp?action=main&exec=Users_userss&page='+this.options[this.selectedIndex].value"><option value="1" selected>1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option><option value="32">32</option><option value="33">33</option><option value="34">34</option><option value="35">35</option><option value="36">36</option><option value="37">37</option><option value="38">38</option><option value="39">39</option><option value="40">40</option><option value="41">41</option><option value="42">42</option><option value="43">43</option><option value="44">44</option><option value="45">45</option><option value="46">46</option><option value="47">47</option><option value="48">48</option><option value="49">49</option><option value="50">50</option><option value="51">51</option><option value="52">52</option><option value="53">53</option><option value="54">54</option><option value="55">55</option><option value="56">56</option><option value="57">57</option><option value="58">58</option><option value="59">59</option><option value="60">60</option><option value="61">61</option><option value="62">62</option><option value="63">63</option><option value="64">64</option><option value="65">65</option><option value="66">66</option><option value="67">67</option><option value="68">68</option><option value="69">69</option><option value="70">70</option><option value="71">71</option><option value="72">72</option><option value="73">73</option><option value="74">74</option><option value="75">75</option><option value="76">76</option><option value="77">77</option><option value="78">78</option><option value="79">79</option><option value="80">80</option><option value="81">81</option><option value="82">82</option><option value="83">83</option><option value="84">84</option><option value="85">85</option><option value="86">86</option><option value="87">87</option><option value="88">88</option><option value="89">89</option><option value="90">90</option><option value="91">91</option><option value="92">92</option><option value="93">93</option><option value="94">94</option><option value="95">95</option><option value="96">96</option><option value="97">97</option><option value="98">98</option><option value="99">99</option><option value="100">100</option></select>&nbsp;页&nbsp;共100页&nbsp;1986条</td>
+        <td colspan="12" align="center" valign="middle">
+            <div id="splitBarDiv" style="float:right">
+                <jsp:include page="/WEB-INF/pages/plugins/split_page_bar_plugin.jsp"/>
+            </div>&nbsp;共&nbsp;${allRecorders}条&nbsp;&nbsp;&nbsp;
+        </td>
     </tr>
   </table>
 </form>
- 
-
- 
 </div>
 </div>
 </body>
