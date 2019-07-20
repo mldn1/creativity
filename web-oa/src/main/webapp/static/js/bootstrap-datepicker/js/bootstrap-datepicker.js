@@ -207,7 +207,7 @@
 				if (prevMonth.valueOf() === currentDate) {
 					clsName += ' active';
 				}
-				html.push('<td class="day'+clsName+'">'+prevMonth.getDate() + '</td>');
+				html.push('<td class="date'+clsName+'">'+prevMonth.getDate() + '</td>');
 				if (prevMonth.getDay() === this.weekEnd) {
 					html.push('</tr>');
 				}

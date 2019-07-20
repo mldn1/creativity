@@ -552,7 +552,7 @@
 					$.inArray(prevMonth.getUTCDay(), this.daysOfWeekDisabled) !== -1) {
 					clsName += ' disabled';
 				}
-				html.push('<td class="day'+clsName+'">'+prevMonth.getUTCDate() + '</td>');
+				html.push('<td class="date'+clsName+'">'+prevMonth.getUTCDate() + '</td>');
 				if (prevMonth.getUTCDay() == this.weekEnd) {
 					html.push('</tr>');
 				}
@@ -1013,9 +1013,9 @@
 			} else {
 				// For magnitudes >1, move one month at a time...
 				for (var i=0; i<mag; i++)
-					// ...which might decrease the day (eg, Jan 31 to Feb 28, etc)...
+					// ...which might decrease the date (eg, Jan 31 to Feb 28, etc)...
 					new_date = this.moveMonth(new_date, dir);
-				// ...then reset the day, keeping it in the new month
+				// ...then reset the date, keeping it in the new month
 				new_month = new_date.getUTCMonth();
 				new_date.setUTCDate(day);
 				test = function(){ return new_month != new_date.getUTCMonth(); };
@@ -1420,7 +1420,7 @@
 					m: date.getUTCMonth() + 1,
 					M: dates[language].monthsShort[date.getUTCMonth()],
 					MM: dates[language].months[date.getUTCMonth()],
-					// day
+					// date
 					d: date.getUTCDate(),
 					D: dates[language].daysShort[date.getUTCDay()],
 					DD: dates[language].days[date.getUTCDay()],
@@ -1451,7 +1451,7 @@
 					M: dates[language].monthsShort[date.getUTCMonth()],
 					n: date.getUTCMonth() + 1,
 					t: DPGlobal.getDaysInMonth(date.getUTCFullYear(), date.getUTCMonth()),
-					// day
+					// date
 					j: date.getUTCDate(),
 					l: dates[language].days[date.getUTCDay()],
 					D: dates[language].daysShort[date.getUTCDay()],

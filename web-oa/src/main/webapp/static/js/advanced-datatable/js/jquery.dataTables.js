@@ -8972,7 +8972,7 @@
 		 *  @example
 		 *    $(document).ready( function() {
 		 *      $('#example').dataTable( {
-		 *        "iCookieDuration": 60*60*24; // 1 day
+		 *        "iCookieDuration": 60*60*24; // 1 date
 		 *      } );
 		 *    } )
 		 */
