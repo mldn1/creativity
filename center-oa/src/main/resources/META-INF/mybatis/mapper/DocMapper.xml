@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yootk.oa.dao.DocMapper">
+  <sql id="Base_Column_List">
+    docid, proid, title, keyword, type, founder, createdate, link, content, appendix
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultType="Doc">
+    select 
+    <include refid="Base_Column_List" />
+    from doc
+    where docid = #{docid}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from doc
+    where docid = #{docid}
+  </delete>
+  <insert id="insert" parameterType="Doc">
+    insert into doc (docid, proid, title, 
+      keyword, type, founder, 
+      createdate, link, content, 
+      appendix)
+    values (#{docid}, #{proid}, #{title}, 
+      #{keyword}, #{type}, #{founder}, 
+      #{createdate}, #{link}, #{content}, 
+      #{appendix})
+  </insert>
+  <insert id="insertSelective" parameterType="Doc">
+    insert into doc
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="docid != null">
+        docid,
+      </if>
+      <if test="proid != null">
+        proid,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="keyword != null">
+        keyword,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="founder != null">
+        founder,
+      </if>
+      <if test="createdate != null">
+        createdate,
+      </if>
+      <if test="link != null">
+        link,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="appendix != null">
+        appendix,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="docid != null">
+        #{docid},
+      </if>
+      <if test="proid != null">
+        #{proid},
+      </if>
+      <if test="title != null">
+        #{title},
+      </if>
+      <if test="keyword != null">
+        #{keyword},
+      </if>
+      <if test="type != null">
+        #{type},
+      </if>
+      <if test="founder != null">
+        #{founder},
+      </if>
+      <if test="createdate != null">
+        #{createdate},
+      </if>
+      <if test="link != null">
+        #{link},
+      </if>
+      <if test="content != null">
+        #{content},
+      </if>
+      <if test="appendix != null">
+        #{appendix},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="Doc">
+    update doc
+    <set>
+      <if test="proid != null">
+        proid = #{proid},
+      </if>
+      <if test="title != null">
+        title = #{title},
+      </if>
+      <if test="keyword != null">
+        keyword = #{keyword},
+      </if>
+      <if test="type != null">
+        type = #{type},
+      </if>
+      <if test="founder != null">
+        founder = #{founder},
+      </if>
+      <if test="createdate != null">
+        createdate = #{createdate},
+      </if>
+      <if test="link != null">
+        link = #{link},
+      </if>
+      <if test="content != null">
+        content = #{content},
+      </if>
+      <if test="appendix != null">
+        appendix = #{appendix},
+      </if>
+    </set>
+    where docid = #{docid}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="Doc">
+    update doc
+    set proid = #{proid},
+      title = #{title},
+      keyword = #{keyword},
+      type = #{type},
+      founder = #{founder},
+      createdate = #{createdate},
+      link = #{link},
+      content = #{content},
+      appendix = #{appendix}
+    where docid = #{docid}
+  </update>
+</mapper>

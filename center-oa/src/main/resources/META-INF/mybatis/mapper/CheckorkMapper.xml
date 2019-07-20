@@ -24,17 +24,17 @@
     select 
     <include refid="Base_Column_List" />
     from checkork
-    where coid = #{coid,jdbcType=BIGINT}
+    where coid = #{coid}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from checkork
-    where coid = #{coid,jdbcType=BIGINT}
+    where coid = #{coid}
   </delete>
   <insert id="insert" parameterType="Checkork">
     insert into checkork (coid, eid, datetime, 
       state, ip)
-    values (#{coid,jdbcType=BIGINT}, #{eid,jdbcType=BIGINT}, #{datetime,jdbcType=TIMESTAMP}, 
-      #{state,jdbcType=INTEGER}, #{ip,jdbcType=VARCHAR})
+    values (#{coid}, #{eid}, #{datetime}, 
+      #{state}, #{ip})
   </insert>
   <insert id="insertSelective" parameterType="Checkork">
     insert into checkork
@@ -57,19 +57,19 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="coid != null">
-        #{coid,jdbcType=BIGINT},
+        #{coid},
       </if>
       <if test="eid != null">
-        #{eid,jdbcType=BIGINT},
+        #{eid},
       </if>
       <if test="datetime != null">
-        #{datetime,jdbcType=TIMESTAMP},
+        #{datetime},
       </if>
       <if test="state != null">
-        #{state,jdbcType=INTEGER},
+        #{state},
       </if>
       <if test="ip != null">
-        #{ip,jdbcType=VARCHAR},
+        #{ip},
       </if>
     </trim>
   </insert>
@@ -77,26 +77,26 @@
     update checkork
     <set>
       <if test="eid != null">
-        eid = #{eid,jdbcType=BIGINT},
+        eid = #{eid},
       </if>
       <if test="datetime != null">
-        datetime = #{datetime,jdbcType=TIMESTAMP},
+        datetime = #{datetime},
       </if>
       <if test="state != null">
-        state = #{state,jdbcType=INTEGER},
+        state = #{state},
       </if>
       <if test="ip != null">
-        ip = #{ip,jdbcType=VARCHAR},
+        ip = #{ip},
       </if>
     </set>
-    where coid = #{coid,jdbcType=BIGINT}
+    where coid = #{coid}
   </update>
   <update id="updateByPrimaryKey" parameterType="Checkork">
     update checkork
-    set eid = #{eid,jdbcType=BIGINT},
-      datetime = #{datetime,jdbcType=TIMESTAMP},
-      state = #{state,jdbcType=INTEGER},
-      ip = #{ip,jdbcType=VARCHAR}
-    where coid = #{coid,jdbcType=BIGINT}
+    set eid = #{eid},
+      datetime = #{datetime},
+      state = #{state},
+      ip = #{ip}
+    where coid = #{coid}
   </update>
 </mapper>

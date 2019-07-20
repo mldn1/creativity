@@ -23,11 +23,11 @@
     select 
     <include refid="Base_Column_List" />
     from ask_leave
-    where alid = #{alid,jdbcType=BIGINT}
+    where alid = #{alid}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from ask_leave
-    where alid = #{alid,jdbcType=BIGINT}
+    where alid = #{alid}
   </delete>
   <insert id="insert" parameterType="AskLeave">
     insert into ask_leave (alid, eid, type, 
@@ -35,10 +35,10 @@
       picture, approver, note, 
       state, result, progress
       )
-    values (#{alid,jdbcType=BIGINT}, #{eid,jdbcType=BIGINT}, #{type,jdbcType=INTEGER}, 
-      #{startdate,jdbcType=TIMESTAMP}, #{enddate,jdbcType=TIMESTAMP}, #{reason}, 
-      #{picture,jdbcType=VARCHAR}, #{approver,jdbcType=BIGINT}, #{note}, 
-      #{state,jdbcType=INTEGER}, #{result,jdbcType=INTEGER}, #{progress,jdbcType=INTEGER}
+    values (#{alid}, #{eid}, #{type}, 
+      #{startdate}, #{enddate}, #{reason}, 
+      #{picture}, #{approver}, #{note}, 
+      #{state}, #{result}, #{progress}
       )
   </insert>
   <insert id="insertSelective" parameterType="AskLeave">
@@ -83,40 +83,40 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="alid != null">
-        #{alid,jdbcType=BIGINT},
+        #{alid},
       </if>
       <if test="eid != null">
-        #{eid,jdbcType=BIGINT},
+        #{eid},
       </if>
       <if test="type != null">
-        #{type,jdbcType=INTEGER},
+        #{type},
       </if>
       <if test="startdate != null">
-        #{startdate,jdbcType=TIMESTAMP},
+        #{startdate},
       </if>
       <if test="enddate != null">
-        #{enddate,jdbcType=TIMESTAMP},
+        #{enddate},
       </if>
       <if test="reason != null">
         #{reason},
       </if>
       <if test="picture != null">
-        #{picture,jdbcType=VARCHAR},
+        #{picture},
       </if>
       <if test="approver != null">
-        #{approver,jdbcType=BIGINT},
+        #{approver},
       </if>
       <if test="note != null">
         #{note},
       </if>
       <if test="state != null">
-        #{state,jdbcType=INTEGER},
+        #{state},
       </if>
       <if test="result != null">
-        #{result,jdbcType=INTEGER},
+        #{result},
       </if>
       <if test="progress != null">
-        #{progress,jdbcType=INTEGER},
+        #{progress},
       </if>
     </trim>
   </insert>
@@ -124,54 +124,54 @@
     update ask_leave
     <set>
       <if test="eid != null">
-        eid = #{eid,jdbcType=BIGINT},
+        eid = #{eid},
       </if>
       <if test="type != null">
-        type = #{type,jdbcType=INTEGER},
+        type = #{type},
       </if>
       <if test="startdate != null">
-        startdate = #{startdate,jdbcType=TIMESTAMP},
+        startdate = #{startdate},
       </if>
       <if test="enddate != null">
-        enddate = #{enddate,jdbcType=TIMESTAMP},
+        enddate = #{enddate},
       </if>
       <if test="reason != null">
         reason = #{reason},
       </if>
       <if test="picture != null">
-        picture = #{picture,jdbcType=VARCHAR},
+        picture = #{picture},
       </if>
       <if test="approver != null">
-        approver = #{approver,jdbcType=BIGINT},
+        approver = #{approver},
       </if>
       <if test="note != null">
         note = #{note},
       </if>
       <if test="state != null">
-        state = #{state,jdbcType=INTEGER},
+        state = #{state},
       </if>
       <if test="result != null">
-        result = #{result,jdbcType=INTEGER},
+        result = #{result},
       </if>
       <if test="progress != null">
-        progress = #{progress,jdbcType=INTEGER},
+        progress = #{progress},
       </if>
     </set>
-    where alid = #{alid,jdbcType=BIGINT}
+    where alid = #{alid}
   </update>
   <update id="updateByPrimaryKey" parameterType="AskLeave">
     update ask_leave
-    set eid = #{eid,jdbcType=BIGINT},
-      type = #{type,jdbcType=INTEGER},
-      startdate = #{startdate,jdbcType=TIMESTAMP},
-      enddate = #{enddate,jdbcType=TIMESTAMP},
+    set eid = #{eid},
+      type = #{type},
+      startdate = #{startdate},
+      enddate = #{enddate},
       reason = #{reason},
-      picture = #{picture,jdbcType=VARCHAR},
-      approver = #{approver,jdbcType=BIGINT},
+      picture = #{picture},
+      approver = #{approver},
       note = #{note},
-      state = #{state,jdbcType=INTEGER},
-      result = #{result,jdbcType=INTEGER},
-      progress = #{progress,jdbcType=INTEGER}
-    where alid = #{alid,jdbcType=BIGINT}
+      state = #{state},
+      result = #{result},
+      progress = #{progress}
+    where alid = #{alid}
   </update>
 </mapper>

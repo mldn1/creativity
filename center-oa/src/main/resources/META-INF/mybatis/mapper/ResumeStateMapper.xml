@@ -12,15 +12,15 @@
     select 
     <include refid="Base_Column_List" />
     from resume_state
-    where rsid = #{rsid,jdbcType=BIGINT}
+    where rsid = #{rsid}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from resume_state
-    where rsid = #{rsid,jdbcType=BIGINT}
+    where rsid = #{rsid}
   </delete>
   <insert id="insert" parameterType="ResumeState">
     insert into resume_state (rsid, title)
-    values (#{rsid,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR})
+    values (#{rsid}, #{title})
   </insert>
   <insert id="insertSelective" parameterType="ResumeState">
     insert into resume_state
@@ -34,10 +34,10 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="rsid != null">
-        #{rsid,jdbcType=BIGINT},
+        #{rsid},
       </if>
       <if test="title != null">
-        #{title,jdbcType=VARCHAR},
+        #{title},
       </if>
     </trim>
   </insert>
@@ -45,14 +45,14 @@
     update resume_state
     <set>
       <if test="title != null">
-        title = #{title,jdbcType=VARCHAR},
+        title = #{title},
       </if>
     </set>
-    where rsid = #{rsid,jdbcType=BIGINT}
+    where rsid = #{rsid}
   </update>
   <update id="updateByPrimaryKey" parameterType="ResumeState">
     update resume_state
-    set title = #{title,jdbcType=VARCHAR}
-    where rsid = #{rsid,jdbcType=BIGINT}
+    set title = #{title}
+    where rsid = #{rsid}
   </update>
 </mapper>

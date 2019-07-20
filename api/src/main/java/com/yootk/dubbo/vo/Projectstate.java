@@ -3,15 +3,15 @@ package com.yootk.dubbo.vo;
 import java.io.Serializable;
 
 public class Projectstate implements Serializable {
-    private Long id;
+    private Integer id;
 
     private String title;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

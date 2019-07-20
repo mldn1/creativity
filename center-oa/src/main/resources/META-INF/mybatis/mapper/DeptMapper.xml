@@ -14,17 +14,17 @@
     select 
     <include refid="Base_Column_List" />
     from dept
-    where deptno = #{deptno,jdbcType=BIGINT}
+    where deptno = #{deptno}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from dept
-    where deptno = #{deptno,jdbcType=BIGINT}
+    where deptno = #{deptno}
   </delete>
   <insert id="insert" parameterType="Dept">
     insert into dept (deptno, dname, description, 
       state)
-    values (#{deptno,jdbcType=BIGINT}, #{dname,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
-      #{state,jdbcType=INTEGER})
+    values (#{deptno}, #{dname}, #{description}, 
+      #{state})
   </insert>
   <insert id="insertSelective" parameterType="Dept">
     insert into dept
@@ -44,16 +44,16 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="deptno != null">
-        #{deptno,jdbcType=BIGINT},
+        #{deptno},
       </if>
       <if test="dname != null">
-        #{dname,jdbcType=VARCHAR},
+        #{dname},
       </if>
       <if test="description != null">
-        #{description,jdbcType=VARCHAR},
+        #{description},
       </if>
       <if test="state != null">
-        #{state,jdbcType=INTEGER},
+        #{state},
       </if>
     </trim>
   </insert>
@@ -61,22 +61,22 @@
     update dept
     <set>
       <if test="dname != null">
-        dname = #{dname,jdbcType=VARCHAR},
+        dname = #{dname},
       </if>
       <if test="description != null">
-        description = #{description,jdbcType=VARCHAR},
+        description = #{description},
       </if>
       <if test="state != null">
-        state = #{state,jdbcType=INTEGER},
+        state = #{state},
       </if>
     </set>
-    where deptno = #{deptno,jdbcType=BIGINT}
+    where deptno = #{deptno}
   </update>
   <update id="updateByPrimaryKey" parameterType="Dept">
     update dept
-    set dname = #{dname,jdbcType=VARCHAR},
-      description = #{description,jdbcType=VARCHAR},
-      state = #{state,jdbcType=INTEGER}
-    where deptno = #{deptno,jdbcType=BIGINT}
+    set dname = #{dname},
+      description = #{description},
+      state = #{state}
+    where deptno = #{deptno}
   </update>
 </mapper>

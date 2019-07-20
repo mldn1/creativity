@@ -2,6 +2,8 @@ package com.yootk.oa.dao;
 
 import com.yootk.dubbo.vo.Requirestate;
 
+import java.util.List;
+
 public interface RequirestateMapper {
     int deleteByPrimaryKey(Long id);
 
@@ -11,7 +13,11 @@ public interface RequirestateMapper {
 
     Requirestate selectByPrimaryKey(Long id);
 
+    List<Requirestate> findAll();
+
     int updateByPrimaryKeySelective(Requirestate record);
 
     int updateByPrimaryKey(Requirestate record);
+
+    String getNameById(Integer id);
 }

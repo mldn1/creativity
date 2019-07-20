@@ -12,15 +12,15 @@
     select 
     <include refid="Base_Column_List" />
     from group-emp
-    where gid = #{gid,jdbcType=BIGINT}
+    where gid = #{gid}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from group-emp
-    where gid = #{gid,jdbcType=BIGINT}
+    where gid = #{gid}
   </delete>
   <insert id="insert" parameterType="Groupemp">
     insert into group-emp (gid, eid)
-    values (#{gid,jdbcType=BIGINT}, #{eid,jdbcType=BIGINT})
+    values (#{gid}, #{eid})
   </insert>
   <insert id="insertSelective" parameterType="Groupemp">
     insert into group-emp
@@ -34,10 +34,10 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="gid != null">
-        #{gid,jdbcType=BIGINT},
+        #{gid},
       </if>
       <if test="eid != null">
-        #{eid,jdbcType=BIGINT},
+        #{eid},
       </if>
     </trim>
   </insert>
@@ -45,14 +45,14 @@
     update group-emp
     <set>
       <if test="eid != null">
-        eid = #{eid,jdbcType=BIGINT},
+        eid = #{eid},
       </if>
     </set>
-    where gid = #{gid,jdbcType=BIGINT}
+    where gid = #{gid}
   </update>
   <update id="updateByPrimaryKey" parameterType="Groupemp">
     update group-emp
-    set eid = #{eid,jdbcType=BIGINT}
-    where gid = #{gid,jdbcType=BIGINT}
+    set eid = #{eid}
+    where gid = #{gid}
   </update>
 </mapper>

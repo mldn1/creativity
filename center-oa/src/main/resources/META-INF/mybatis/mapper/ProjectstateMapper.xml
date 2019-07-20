@@ -1,58 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yootk.oa.dao.ProjectstateMapper">
-  <resultMap id="BaseResultMap" type="Projectstate">
-    <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="title" jdbcType="VARCHAR" property="title" />
-  </resultMap>
-  <sql id="Base_Column_List">
+    <sql id="Base_Column_List">
     id, title
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from project_state
-    where id = #{id,jdbcType=BIGINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultType="Projectstate">
+        select
+        <include refid="Base_Column_List"/>
+        from project_state
+        where id = #{id}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from project_state
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id}
   </delete>
-  <insert id="insert" parameterType="Projectstate">
+    <insert id="insert" parameterType="Projectstate">
     insert into project_state (id, title)
-    values (#{id,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR})
+    values (#{id}, #{title})
   </insert>
-  <insert id="insertSelective" parameterType="Projectstate">
-    insert into project_state
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="title != null">
-        title,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=BIGINT},
-      </if>
-      <if test="title != null">
-        #{title,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="Projectstate">
+    <insert id="insertSelective" parameterType="Projectstate">
+        insert into project_state
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="title != null">
+                title,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id},
+            </if>
+            <if test="title != null">
+                #{title},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="Projectstate">
+        update project_state
+        <set>
+            <if test="title != null">
+                title = #{title},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="Projectstate">
     update project_state
-    <set>
-      <if test="title != null">
-        title = #{title,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=BIGINT}
+    set title = #{title}
+    where id = #{id}
   </update>
-  <update id="updateByPrimaryKey" parameterType="Projectstate">
-    update project_state
-    set title = #{title,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=BIGINT}
-  </update>
+    <select id="getTittleByById" parameterType="java.lang.Integer" resultType="String">
+        SELECT title FROM project_state
+        <where>
+            id=#{id}
+        </where>
+    </select>
+    <select id="getAll" resultType="Projectstate">
+        select id,title from project_state
+    </select>
 </mapper>

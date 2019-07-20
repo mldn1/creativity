@@ -8,21 +8,21 @@
         select
         <include refid="Base_Column_List"/>
         from project
-        where proid = #{proid,jdbcType=BIGINT}
+        where proid = #{proid}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from project
-    where proid = #{proid,jdbcType=BIGINT}
+    where proid = #{proid}
   </delete>
     <insert id="insert" parameterType="Project">
     insert into project (proid, title, alias, 
       founder, head, pl, tl, 
       startdate, enddate, description, 
       state, workinghours)
-    values (#{proid,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, #{alias,jdbcType=VARCHAR}, 
-      #{founder,jdbcType=BIGINT}, #{head,jdbcType=BIGINT}, #{pl,jdbcType=BIGINT}, #{tl,jdbcType=BIGINT}, 
-      #{startdate,jdbcType=TIMESTAMP}, #{enddate,jdbcType=TIMESTAMP}, #{description}, 
-      #{state,jdbcType=INTEGER}, #{workinghours,jdbcType=INTEGER})
+    values (#{proid}, #{title}, #{alias}, 
+      #{founder}, #{head}, #{pl}, #{tl}, 
+      #{startdate}, #{enddate}, #{description}, 
+      #{state}, #{workinghours})
   </insert>
     <insert id="insertSelective" parameterType="Project">
         insert into project
@@ -66,40 +66,40 @@
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="proid != null">
-                #{proid,jdbcType=BIGINT},
+                #{proid},
             </if>
             <if test="title != null">
-                #{title,jdbcType=VARCHAR},
+                #{title},
             </if>
             <if test="alias != null">
-                #{alias,jdbcType=VARCHAR},
+                #{alias},
             </if>
             <if test="founder != null">
-                #{founder,jdbcType=BIGINT},
+                #{founder},
             </if>
             <if test="head != null">
-                #{head,jdbcType=BIGINT},
+                #{head},
             </if>
             <if test="pl != null">
-                #{pl,jdbcType=BIGINT},
+                #{pl},
             </if>
             <if test="tl != null">
-                #{tl,jdbcType=BIGINT},
+                #{tl},
             </if>
             <if test="startdate != null">
-                #{startdate,jdbcType=TIMESTAMP},
+                #{startdate},
             </if>
             <if test="enddate != null">
-                #{enddate,jdbcType=TIMESTAMP},
+                #{enddate},
             </if>
             <if test="description != null">
                 #{description},
             </if>
             <if test="state != null">
-                #{state,jdbcType=INTEGER},
+                #{state},
             </if>
             <if test="workinghours != null">
-                #{workinghours,jdbcType=INTEGER},
+                #{workinghours},
             </if>
         </trim>
     </insert>
@@ -107,75 +107,112 @@
         update project
         <set>
             <if test="title != null">
-                title = #{title,jdbcType=VARCHAR},
+                title = #{title},
             </if>
             <if test="alias != null">
-                alias = #{alias,jdbcType=VARCHAR},
+                alias = #{alias},
             </if>
             <if test="founder != null">
-                founder = #{founder,jdbcType=BIGINT},
+                founder = #{founder},
             </if>
             <if test="head != null">
-                head = #{head,jdbcType=BIGINT},
+                head = #{head},
             </if>
             <if test="pl != null">
-                pl = #{pl,jdbcType=BIGINT},
+                pl = #{pl},
             </if>
             <if test="tl != null">
-                tl = #{tl,jdbcType=BIGINT},
+                tl = #{tl},
             </if>
             <if test="startdate != null">
-                startdate = #{startdate,jdbcType=TIMESTAMP},
+                startdate = #{startdate},
             </if>
             <if test="enddate != null">
-                enddate = #{enddate,jdbcType=TIMESTAMP},
+                enddate = #{enddate},
             </if>
             <if test="description != null">
                 description = #{description},
             </if>
             <if test="state != null">
-                state = #{state,jdbcType=INTEGER},
+                state = #{state},
             </if>
             <if test="workinghours != null">
-                workinghours = #{workinghours,jdbcType=INTEGER},
+                workinghours = #{workinghours},
             </if>
         </set>
-        where proid = #{proid,jdbcType=BIGINT}
+        where proid = #{proid}
     </update>
     <update id="updateByPrimaryKey" parameterType="Project">
         update project
-        set title = #{title,jdbcType=VARCHAR},
-        alias = #{alias,jdbcType=VARCHAR},
-        founder = #{founder,jdbcType=BIGINT},
-        head = #{head,jdbcType=BIGINT},
-        pl = #{pl,jdbcType=BIGINT},
-        tl = #{tl,jdbcType=BIGINT},
-        startdate = #{startdate,jdbcType=TIMESTAMP},
-        enddate = #{enddate,jdbcType=TIMESTAMP},
+        set title = #{title},
+        alias = #{alias},
+        founder = #{founder},
+        head = #{head},
+        pl = #{pl},
+        tl = #{tl},
+        startdate = #{startdate},
+        enddate = #{enddate},
         description = #{description},
-        state = #{state,jdbcType=INTEGER},
-        workinghours = #{workinghours,jdbcType=INTEGER}
-        where proid = #{proid,jdbcType=BIGINT}
+        state = #{state},
+        workinghours = #{workinghours}
+        where proid = #{proid}
     </update>
 
     <select id="findSplit" parameterType="Map" resultType="Project">
         select
         <include refid="Base_Column_List"/>
         from project
-        where founder=#{founder}
-        <if test="column != null and keyword != null and keyword != &quot;&quot; and column != &quot;&quot;">
-            and ${column} `like` #{keyword}
-        </if>
-        <if test="start != null and lineSize != null and start != &quot;&quot; and lineSize != &quot;&quot;">
+        <where>
+            <if test="column != null and keyword != null and keyword != &quot;&quot; and column != &quot;&quot;">
+                ${column} like #{keyword}
+            </if>
+        </where>
+        <if test="start != null and lineSize != null">
             limit #{start}, #{lineSize}
         </if>
     </select>
 
     <select id="getAllRecorders" resultType="java.lang.Long" parameterType="Map">
         select count(*) from project
-        where founder=#{founder}
-        <if test="column != null and keyword != null and keyword != &quot;&quot; and column != &quot;&quot;">
-            and ${column} `like` #{keyword}
+        <where>
+            <if test="column != null and keyword != null and keyword != &quot;&quot; and column != &quot;&quot;">
+                ${column} like #{keyword}
+            </if>
+        </where>
+    </select>
+
+    <update id="state" parameterType="Project">
+        update project
+        set state=#{state}
+        where proid = #{proid}
+    </update>
+
+    <select id="findSearchSplit" parameterType="Map" resultType="Project">
+        select
+        <include refid="Base_Column_List"/>
+        from project
+        <where>
+            <if test="state != null and state != &quot;&quot;">
+                state=#{state} and
+            </if>
+            <if test="title != null and title != &quot;&quot;">
+                title like #{title}
+            </if>
+        </where>
+        <if test="start != null and lineSize != null">
+            limit #{start}, #{lineSize}
         </if>
+    </select>
+
+    <select id="getAllSearchRecorders" resultType="java.lang.Long" parameterType="Map">
+        select count(*) from project
+        <where>
+            <if test="state != null and state != &quot;&quot;">
+                state=#{state} and
+            </if>
+            <if test="title != null and title != &quot;&quot;">
+                title like #{title}
+            </if>
+        </where>
     </select>
 </mapper>
