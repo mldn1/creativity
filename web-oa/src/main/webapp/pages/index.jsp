@@ -8,7 +8,7 @@
 </head>
 <body class="sticky-header">
 <%!
-    public static final String SHOW_USER_URL = "pages/back/authz//user/show/" ;
+    public static final String SHOW_USER_URL = "pages/back/admin//user/show/" ;
 %>
 <section>
     <jsp:include page="/pages/plugins/include_menuitem.jsp"/>

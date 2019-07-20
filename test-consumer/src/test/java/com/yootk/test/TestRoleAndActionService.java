@@ -14,6 +14,6 @@ public class TestRoleAndActionService {
     private IRoleAndActionService roleAndActionService ;
     @Test
     public void testLogin() {
-        System.out.println(this.roleAndActionService.get("authz"));
+        System.out.println(this.roleAndActionService.get("admin"));
     }
 }
