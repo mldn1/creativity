@@ -1,6 +1,7 @@
 package com.yootk.authz.action.sale;
 
 import com.yootk.authz.service.IOrdersTransferService;
+import com.yootk.authz.util.web.PageUtil;
 import com.yootk.dubbo.vo.Orders;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,8 @@ public class OrderAction {
 
     @Autowired
     private IOrdersTransferService  ordersService ;
+
+    private static PageUtil pu ;
 
     //跳转订单修改页面(回显数据)
     @RequestMapping("preEditOrder")
@@ -90,6 +93,14 @@ public class OrderAction {
         }catch (Exception e){
             e.printStackTrace();
         }
+        mav.addObject("start",0) ;
+        /*mav.addObject("start",(pu.getCurrentPage()-1)*pu.getLineSize());*/
+/*        if (size!=null){
+            allInvoice.put("lineSize",size);
+        }else {
+            allInvoice.put("lineSize",pu.getLineSize());
+        }*/
+        mav.addObject("lineSize",2) ;
         return mav ;
     }
 

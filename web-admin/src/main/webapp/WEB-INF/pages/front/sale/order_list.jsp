@@ -1,6 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
+<%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <jsp:include page="/WEB-INF/pages/plugins/include_basepath.jsp"/>
@@ -148,6 +149,7 @@
                 </table>
             </form>
         </div>
+        <div class="panel-body">
         <form name="form_list" id="form_list" class="form-inline" role="form" method="POST" action=""
               onsubmit="javascript:return confirm('你确定执行该操作吗!!!');">
             <table width="98%" class="table table-striped table-hover table-bordered">
@@ -168,6 +170,10 @@
                                 href="/manage.jsp?action=main&exec=Marketing_orderss&page=77">尾页</a>&nbsp;转到第&nbsp;<select
                                 name="PB_Page_Select"
                                 onChange="window.location.href='/manage.jsp?action=main&exec=Marketing_orderss&page='+this.options[this.selectedIndex].value">
+
+                            <%--<C:forEach items="${allRecorders}" var="recorder">
+                            <option value="${recorder}"></option>
+                            </C:forEach>--%>
                             <option value="1" selected>1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -192,6 +198,8 @@
                 </tr>
                 </thead>
                 <tbody>
+                <%--数据测试${allOrders} <br>
+                数据数量测试${allRecorders}--%>
                 <%--<c:if test="${orders.channel==1}">
                     <td>官方H5</td>
                 </c:if>
@@ -247,20 +255,20 @@
                     <td>${orders.createdate}</td>
                     <td>${orders.editdate}</td>
                     <td>${orders.usernote}</td>
-                    <td>小王</td>
+                    <td>${orders.operator}</td>
                 </tr>
                 </c:forEach>
                 </tbody>
                 <tr>
+
                     <td colspan="11" align="center" valign="middle"><span class="">首页</span>&nbsp;<span
                             class="">上一页</span>[<span class="">1</span>]
                         [<a href="/manage.jsp?action=main&exec=Marketing_orderss&page=2">2</a>]
                         [<a href="/manage.jsp?action=main&exec=Marketing_orderss&page=3">3</a>]
                         [<a href="/manage.jsp?action=main&exec=Marketing_orderss&page=4">4</a>]
-                        <a href="/manage.jsp?action=main&exec=Marketing_orderss&page=2">下一页</a>&nbsp;<a
-                                href="/manage.jsp?action=main&exec=Marketing_orderss&page=77">尾页</a>&nbsp;转到第&nbsp;<select
-                                name="PB_Page_Select"
-                                onChange="window.location.href='/manage.jsp?action=main&exec=Marketing_orderss&page='+this.options[this.selectedIndex].value">
+                        <a href="/manage.jsp?action=main&exec=Marketing_orderss&page=2">下一页</a>&nbsp;
+                        <a href="/manage.jsp?action=main&exec=Marketing_orderss&page=77">尾页</a>&nbsp;转到第&nbsp;
+                        <select name="PB_Page_Select" onChange="window.location.href='/manage.jsp?action=main&exec=Marketing_orderss&page='+this.options[this.selectedIndex].value">
                             <option value="1" selected>1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -276,7 +284,11 @@
                             class="btn btn-info"/></td>
                 </tr>
             </table>
+            <div class="panel-footer">
+                <jsp:include page="/WEB-INF/pages/plugins/split_page_bar_plugin.jsp"/>
+            </div>
         </form>
+        </div>
         <script>
             function selectDay(dateLimit) {
                 var _tmp = dateLimit.split('|');

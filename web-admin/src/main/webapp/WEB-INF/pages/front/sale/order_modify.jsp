@@ -76,7 +76,7 @@
                 <tr>
                     <td>用户备注</td>
                     <td>
-                        <div class="col-sm-5"><input name="user_remarks" type="text" id="user_remarks" size="100" value="" class="form-control"/>
+                        <div class="col-sm-5"><input name="usernote" type="text" id="usernote" size="100" value="${preEditOrder.usernote}" class="form-control"/>
 
                         </div>
                     </td>

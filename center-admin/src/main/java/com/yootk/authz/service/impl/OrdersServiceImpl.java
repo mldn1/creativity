@@ -104,7 +104,7 @@ public class OrdersServiceImpl implements IOrdersService {
             return channelMap ;
     }*/
 
-    //订单页面加载
+    //订单进入页面加载
     @Override
     public Map<String,Object> getAllOrders() {
         Map<String,Object> map = new HashMap<>() ;
