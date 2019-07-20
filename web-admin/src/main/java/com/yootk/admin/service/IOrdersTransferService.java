@@ -20,8 +20,8 @@ public interface IOrdersTransferService {
     //获取渠道名称
   /*  public Map<Integer,String> channelName() ;*/
 
-    //订单进入预加载
-    public Map<String,Object> orderPre() ;
+    //订单进入预加载列表
+    public Map<String,Object> orderPre(Long currentPage,Integer lineSize) ;
 
     //订单编辑预加载回显
     public Map<String,Object> preEdit(String oid) ;

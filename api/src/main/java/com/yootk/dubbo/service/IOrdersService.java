@@ -48,7 +48,7 @@ public interface IOrdersService {
      * 订单加载
      * @return
      */
-    public Map<String,Object> getAllOrders() ;
+    public Map<String,Object> getAllOrders(Long currentPage,Integer lineSize) ;
 
     /**
      * 订单编辑回显操作

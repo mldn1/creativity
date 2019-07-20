@@ -56,10 +56,10 @@ public class OrdersServiceImpl implements IOrdersTransferService {
 
     //首页进入订单页时的列表加载
     @Override
-    public Map<String, Object> orderPre() {
+    public Map<String, Object> orderPre(Long currentPage,Integer lineSize) {
         Map<String,Object> map = new HashMap<>() ;
         System.out.println("消费端业务层进入测试"+this.ordersService);
-        map = this.ordersService.getAllOrders() ;
+        map = this.ordersService.getAllOrders(currentPage,lineSize) ;
         return map;
     }
 

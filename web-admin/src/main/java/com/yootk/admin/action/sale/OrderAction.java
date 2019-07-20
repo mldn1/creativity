@@ -1,7 +1,7 @@
 package com.yootk.admin.action.sale;
 
 import com.yootk.admin.service.IOrdersTransferService;
-import com.yootk.admin.util.web.PageUtil;
+import com.yootk.admin.util.PageUtil;
 import com.yootk.dubbo.vo.Orders;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,7 +23,6 @@ public class OrderAction {
     @Autowired
     private IOrdersTransferService  ordersService ;
 
-    private static PageUtil pu ;
 
     //跳转订单修改页面(回显数据)
     @RequestMapping("preEditOrder")
@@ -46,21 +45,31 @@ public class OrderAction {
     public ModelAndView editOrder(Orders order) {
         System.err.println("前台修改参数"+order);
         ModelAndView mav = new ModelAndView("front/sale/order_list") ;
+        PageUtil pu = new PageUtil("pages/front/sale/order_list.action");
         boolean flag = this.ordersService.editOrder(order) ;
         Map<String,Object> map = new HashMap<>() ;
         map.put("editResult",flag) ;
         mav.addAllObjects(map) ;
-        mav.addAllObjects(this.ordersService.orderPre()) ;
+
+        Map<String,Object> frontMap = new HashMap<>() ;
+        frontMap = this.ordersService.orderPre(pu.getCurrentPage(),pu.getLineSize()) ;
+        Long count = (Long)frontMap.get("allRecorders") ;
+        mav.addAllObjects(frontMap) ;
+        mav.addObject("start",(pu.getCurrentPage()-1)*pu.getLineSize()) ;
+        mav.addObject("lineSize",pu.getLineSize()) ;  //默认为每页
+        mav.addObject("allRecorders",count) ;
         return mav ;
     }
 
     //订单列表查询
     @PostMapping("order_list_search")
     public ModelAndView order_list_search(Orders orders,String gid,String uaddr,String sdate,String edate,Integer lineSize) throws ParseException {
+        Map<String,Object> map = new HashMap<>() ;
         System.err.println("前台传递的所有参数********************"+"\n"+
                 orders+";"+gid+","+uaddr+","+sdate+","+edate+","+lineSize);
         System.err.println("**********************************************");
         ModelAndView mav = new ModelAndView("front/sale/order_list") ;
+        PageUtil pu = new PageUtil("pages/front/sale/order_list.action");
         //处理uaddr
         String column_name = null ;
         String keyword_name = null ;
@@ -78,6 +87,7 @@ public class OrderAction {
                 System.out.println("name值"+keyword_name);
             }
         }
+
         //处理日期
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd") ;
         //Date startDate = dateFormat.parse(sdate) ;
@@ -86,7 +96,7 @@ public class OrderAction {
                 orders+","+gid+","+phone+","+keyword_name+","+sdate+","+edate);
         try{
             System.out.println("******************");
-            Map<String,Object> map = this.ordersService.orderMap(
+            map = this.ordersService.orderMap(
                     orders,null,null,gid, phone, column_name,keyword_name,1L,2) ;
            /* map.put("allChannel",this.ordersService.channelName()) ;  获取渠道名。这里直接先放到前端处理了*/
             System.err.println("map集合"+map);
@@ -95,14 +105,10 @@ public class OrderAction {
         }catch (Exception e){
             e.printStackTrace();
         }
-        mav.addObject("start",0) ;
-        /*mav.addObject("start",(pu.getCurrentPage()-1)*pu.getLineSize());*/
-/*        if (size!=null){
-            allInvoice.put("lineSize",size);
-        }else {
-            allInvoice.put("lineSize",pu.getLineSize());
-        }*/
-        mav.addObject("lineSize",2) ;
+        Long count = (Long)map.get("allRecorders") ;
+        mav.addObject("start",(pu.getCurrentPage()-1)*pu.getLineSize()) ;
+        mav.addObject("lineSize",pu.getLineSize()) ;  //默认为每页
+        mav.addObject("allRecorders",count) ;
         return mav ;
     }
 

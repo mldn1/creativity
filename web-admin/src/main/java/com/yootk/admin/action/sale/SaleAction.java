@@ -1,7 +1,7 @@
 package com.yootk.admin.action.sale;
 
 import com.yootk.admin.service.IOrdersTransferService;
-import com.yootk.admin.util.web.PageUtil;
+import com.yootk.admin.util.PageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,15 +26,16 @@ public class SaleAction  {
 
     @GetMapping("order_list")
     public ModelAndView orderList() {
+        ModelAndView mav = new ModelAndView("front/sale/order_list") ;
+        PageUtil pu = new PageUtil("pages/front/sale/order_list.action");
         Map<String, Object> map = new HashMap<>();
-        map = this.ordersService.orderPre() ;
+        map = this.ordersService.orderPre(pu.getCurrentPage(),pu.getLineSize()) ;
         Long count = (Long)map.get("allRecorders") ;
         //不传数据，查询全部
-        ModelAndView mav = new ModelAndView("front/sale/order_list") ;
-        PageUtil pu = new PageUtil("front/sale/order_list.action");
+
         mav.addAllObjects(map) ;
-        mav.addObject("start",0) ;    //默认从第一页开始。
-        mav.addObject("lineSize",2) ;  //默认为每页2
+        mav.addObject("start",(pu.getCurrentPage()-1)*pu.getLineSize()) ;
+        mav.addObject("lineSize",pu.getLineSize()) ;  //默认为每页
         mav.addObject("allRecorders",count) ;
         System.err.println("order数据"+map+"数据统计"+count);
 

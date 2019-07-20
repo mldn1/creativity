@@ -79,37 +79,13 @@ public class OrdersServiceImpl implements IOrdersService {
     }
 
 
-    /**
-     * 渠道名称查询
-     * @return
-     */
-    /*@Override
-    public Map<Integer,String> orderChannel() {    //不需要参数
-        Map<Integer,String> channelMap = new HashMap<>() ;
-        List<Integer> channelId = new ArrayList<>() ;
-        for(Orders s : orderList){
-            channelId.add(s.getChannel()) ;
-        }
-        System.out.println("渠道id集合"+channelId);
-        List<Channel> tempList = new ArrayList<>() ;
-
-        if(channelId != null) {
-            tempList = this.ordersDAO.getChannelName(channelId);
-            System.out.println("渠道名称集合测试" + tempList);
-            for (Channel s : tempList) {
-                channelMap.put(s.getChannel(), s.getTitle());
-            }
-            System.out.println("返回的渠道名称" + channelMap);
-        }
-            return channelMap ;
-    }*/
 
     //订单进入页面加载
     @Override
-    public Map<String,Object> getAllOrders() {
+    public Map<String,Object> getAllOrders(Long currentPage,Integer lineSize) {
         Map<String,Object> map = new HashMap<>() ;
-        map.put("start",0) ;    //从第一条数据开始
-        map.put("lineSize",20); //默认就设置为每页20条
+        map.put("start",currentPage) ;    //从第一条数据开始
+        map.put("lineSize",lineSize); //默认就设置为每页20条
         List<Orders> list = new ArrayList<>() ;
         list = this.ordersDAO.findAllOrders(map) ;
         Long allCounts = this.ordersDAO.getAllCount() ;
