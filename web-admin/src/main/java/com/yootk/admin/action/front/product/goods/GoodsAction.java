@@ -1,6 +1,7 @@
 package com.yootk.admin.action.front.product.goods;
 
 import com.yootk.dubbo.service.ICategoryService;
+import com.yootk.dubbo.service.IGoodsService;
 import com.yootk.dubbo.service.IGoods_stateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,11 +15,14 @@ public class GoodsAction {
     private IGoods_stateService goods_stateService;
     @Autowired
     private ICategoryService categoryService;
+    @Autowired
+    private IGoodsService goodsService ;
     @RequestMapping("product_list")
-    public ModelAndView categoryList() {
+    public ModelAndView categoryList(Long currentPage, Integer lineSize, String keyWord , Integer state, Long category) {
         ModelAndView mav = new ModelAndView("front/product/product_list") ;
         mav.addObject("allCategory",this.categoryService.listByGrade(1));
         mav.addObject("allGoods_state",this.goods_stateService.list());
+        mav.addObject("allRecorders",this.goodsService.allCount("",keyWord)) ;
         return mav ;
     }
 }

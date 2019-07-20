@@ -10,25 +10,25 @@
 <div id="mainDiv">
   <div style="width: 98%; margin-left:auto; margin-right:auto; text-align:left;">
 <div style="width: 98%; margin-left: 1%;">
-  <form name="form_simple" method="GET" action="manage.jsp">
+  <form name="form_simple" method="GET" action="pages/front/product/prduct_list.action">
     <input type="hidden" name="action" id="action" value="main">
     <input type="hidden" name="exec" id="exec" value="Commodity_commoditys">
     <table class="table table-hover table-bordered">
       <tbody>
         <tr>
           <td style="text-align:left; vertical-align:bottom;"><div class="form-group">
-              <label class="col-md-2" for="key">搜索关键词：</label>
+              <label class="col-md-2" for="keyword">搜索关键词：</label>
               <div class="col-md-7">
-                <input type="input" class="form-control" id="key" name="key" value=""
+                <input type="input" class="form-control" id="keyword" name="keyword" value=""
 					placeholder="请输入查询关键词">
               </div>
             </div></td>
         </tr>
         <tr>
           <td style="text-align:left; vertical-align:bottom;"><div class="form-group">
-              <label class="col-md-2" for="size">个/页：</label>
+              <label class="col-md-2" for="linesize">个/页：</label>
               <div class="col-md-2">
-                <input type="number" class="form-control" id="size" name="size" value="20" min="20" max="100" step="20">
+                <input type="number" class="form-control" id="linesize" name="linesize" value="20" min="20" max="100" step="20">
               </div>
             </div></td>
         </tr>
@@ -50,10 +50,10 @@
         </tr>
         <tr>
           <td style="text-align:left; vertical-align:bottom;"><div class="form-group">
-              <label class="col-lg-2" for="cls">分类：</label>
+              <label class="col-lg-2" for="category">分类：</label>
               <div class="col-lg-7">
                 <div id="cls_div" class="col-sm-3">
-                    <select name="cls" id="cls" class="form-control" >
+                    <select name="category" id="category" class="form-control" >
                         <option value="">请选择</option>
                         <c:forEach items="${allCategory}" var="category">
                             <option value="${category.cid}">${category.title}</option>
