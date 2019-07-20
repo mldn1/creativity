@@ -3,6 +3,8 @@ package com.yootk.test;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.yootk.dubbo.service.IChannelService;
 import com.yootk.dubbo.service.IMemberService;
+import com.yootk.dubbo.vo.Member;
+import com.yootk.util.encrypt.EncryptUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -37,5 +39,20 @@ public class TestUserService {
         System.err.println(result.get("allRecorders") + "【allRecorders】");
         System.err.println("【States】" + result.get("allStates"));
         System.err.println("【M_grades】" + result.get("allM_grades"));
+    }
+    @Test
+    public void testGetByPhone(){
+        Map<String,Object> result = this.memberService.getByPhone("1000000001");
+        System.err.println("[res]" + result);
+    }
+    @Test
+    public void testEdit(){
+        Member member = new Member();
+        System.err.println("Password" + member.getPassword());
+        member.setGrade(2L);
+        member.setState(1L);
+        member.setPhone("1000000002");
+        System.err.println(member + "member");
+        System.err.println(this.memberService.edit(member));
     }
 }

@@ -21,6 +21,8 @@ public class Member implements Serializable {
     private Long count;
     private String ip;
     private Long source;
+    private Double money;
+    private Long integral;
 
     @Override
     public String toString() {
@@ -42,6 +44,8 @@ public class Member implements Serializable {
                 ", count=" + count +
                 ", ip='" + ip + '\'' +
                 ", source=" + source +
+                ", money=" + money +
+                ", integral=" + integral +
                 '}';
     }
 
@@ -179,5 +183,21 @@ public class Member implements Serializable {
 
     public void setSource(Long source) {
         this.source = source;
+    }
+
+    public Double getMoney() {
+        return money;
+    }
+
+    public void setMoney(Double money) {
+        this.money = money;
+    }
+
+    public Long getIntegral() {
+        return integral;
+    }
+
+    public void setIntegral(Long integral) {
+        this.integral = integral;
     }
 }

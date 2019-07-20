@@ -43,7 +43,6 @@ public class MemberServiceImpl implements IMemberService {
         for(State state : this.stateDAO.findAll()){
             states.put(state.getId(),state.getTitle());
         }
-
         Map<Long,String> m_grades = new HashMap<>();
         for(Member_grade m_grade: this.member_gradeDAO.findAll()){
             m_grades.put(m_grade.getId(),m_grade.getTitle());
@@ -51,5 +50,20 @@ public class MemberServiceImpl implements IMemberService {
         result.put("allStates",states);
         result.put("allM_grades",m_grades);
         return result;
+    }
+
+    @Override
+    public Map<String, Object> getByPhone(String phone) {
+        Map<String,Object> result = new HashMap<>();
+        result.put("member",this.memberDAO.findByPhone(phone));
+        result.put("allStates",this.stateDAO.findAll());
+        result.put("allGrades",this.member_gradeDAO.findAll());
+        result.put("allChannels",this.channelDAO.findAll());
+        return result;
+    }
+
+    @Override
+    public boolean edit(Member member) {
+        return this.memberDAO.doUpdate(member);
     }
 }

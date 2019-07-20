@@ -4,7 +4,7 @@
 <!-- 定义所有的SQL语句的映射， 对于本实体而言相关的所有的SQL代码都在此定义 -->
 <mapper namespace="com.yootk.admin.dao.IMemberDAO">   <!-- SSM整合的时候，这个命名空间异常重要 -->
     <sql id="selectBase">
-         SELECT id,mid,phone,name,email,sex,birthday,password,photo,grade,state,regist,lastrecord,eid,count,ip,source from member
+         SELECT id,mid,phone,name,email,sex,birthday,password,photo,grade,state,regist,lastrecord,eid,count,ip,source,money,integral from member
     </sql>
     <select id="findSplit" parameterType="java.util.Map" resultType="Member">
         <include refid="selectBase"/>
@@ -37,5 +37,23 @@
             1 = 1
         </where>
     </select>
-
+    <select id="findByPhone" resultType="java.util.Map" parameterType="string">
+        <include refid="selectBase"/>
+        <where>
+            phone = #{phone}
+        </where>
+    </select>
+    <update id="doUpdate" parameterType="Member" >
+        UPDATE member
+        <set>
+            <if test="password != null and password != &quot;&quot;">
+                password = #{password},
+            </if>
+            grade = #{grade},
+            state = #{state}
+        </set>
+        <where>
+            phone = #{phone}
+        </where>
+    </update>
 </mapper>

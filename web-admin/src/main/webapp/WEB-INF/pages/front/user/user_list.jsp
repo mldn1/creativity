@@ -26,12 +26,12 @@
         <tr>
            </td>                		
           <td style="text-align:left; vertical-align:bottom;"><div class="form-group">
-              <label class="col-md-2" for="source">用户来源：</label>
+              <label class="col-md-2" for="source">用户来源: </label>
                 <div id="source_div" class="col-sm-3">
                     <select name="source" id="source" class="form-control" >
                         <option value="">请选择</option>
                             <c:forEach items="${allChannels}" var="channels">
-                                <option value="${channels.channel}">${channels.title}</option>
+                                <option value="${channels.channel}" ${channels.channel == source? "selected":""}>${channels.title}</option>
                             </c:forEach>
                     </select></div>
 
@@ -75,8 +75,8 @@
         <c:forEach items="${allMembers}" var="member">
             <tr>
                 <td><b>${member.id}</b></td>
-                <td>${member.name}</td>
-                <td><a href="pages/front/user/user_modify.jsp">${member.phone}</a></td>
+                <td>${member.mid}</td>
+                <td><a href="pages/front/user/user_modify.action?phone=${member.phone}">${member.phone}</a></td>
                 <td>${member.sex}</td>
                 <td>${allM_grades[member.grade]}</td>
                 <td>${Channels[member.source]}</td>

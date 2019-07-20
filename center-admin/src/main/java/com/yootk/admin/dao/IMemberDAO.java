@@ -31,4 +31,7 @@ public interface IMemberDAO {
      */
     public Long getAllCount(Map<String, Object> map);
 
+    public Map<String,Object> findByPhone(String phone);
+
+    public boolean doUpdate(Member member);
 }

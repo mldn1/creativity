@@ -4,8 +4,11 @@ import com.yootk.admin.service.IChannel;
 import com.yootk.admin.service.IMember;
 import com.yootk.admin.util.PageUtil;
 import com.yootk.dubbo.vo.Channels;
+import com.yootk.dubbo.vo.Member;
+import com.yootk.util.encrypt.EncryptUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -21,7 +24,7 @@ public class UserAction{
     @Autowired
     private IMember memberService;
     @RequestMapping("user_list")
-    public ModelAndView userLis(String keyword,Integer state,Integer source) {
+    public ModelAndView userList(String keyword, Long state, Long source) {
         ModelAndView mav = new ModelAndView("front/user/user_list") ;
         PageUtil pu = new PageUtil("pages/front/user/user_list.action");
         Map<String,Object> param = new HashMap<>();
@@ -38,13 +41,14 @@ public class UserAction{
             param.put("state","");
         }else{
             param.put("state",state);
+            mav.addObject("state",state);
         }
         if(source == null){
             param.put("source","");
         }else{
             param.put("source",source);
+            mav.addObject("source",source);
         }
-        System.err.println(param + "【param】");
         List<Channels> allChannels = this.channelService.getAll();
         mav.addObject("allChannels",allChannels);
         Map<Long,String> channels = new HashMap<>();
@@ -53,11 +57,29 @@ public class UserAction{
         }
         mav.addObject("Channels",channels);
         Map<String,Object> result = this.memberService.list(param);
-        System.err.println(result + "【result】");
         mav.addObject("allMembers",result.get("allMembers"));
         mav.addObject("allRecorders",result.get("allRecorders"));
         mav.addObject("allStates",result.get("allStates"));
         mav.addObject("allM_grades",result.get("allM_grades"));
         return mav ;
+    }
+    @GetMapping("user_modify")
+    public ModelAndView userUpdate(String phone){
+        ModelAndView mav = new ModelAndView("front/user/user_modify");
+        Map<String,Object> result = this.memberService.getByPhone(phone);
+        mav.addObject("member",result.get("member"));
+        mav.addObject("allStates",result.get("allStates"));
+        mav.addObject("allChannels",result.get("allChannels"));
+        mav.addObject("allGrades",result.get("allGrades"));
+        return mav;
+    }
+    @RequestMapping("user_modify_do")
+    public ModelAndView userUpdateDo(Member member){
+        member.setPassword(EncryptUtil.encode(member.getPassword()));
+        if(this.memberService.edit(member)){
+            return this.userList("",null,null);
+        }else{
+            return this.userUpdate(member.getPhone());
+        }
     }
 }

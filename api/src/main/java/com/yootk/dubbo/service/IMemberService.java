@@ -27,4 +27,19 @@ public interface IMemberService {
      */
     public Map<String,Object> list(Map<String, Object> param);
 
+    /**
+     * 实现用户数据的回填
+     * @param phone 用户手机号
+     * @return
+     * 1.key = Member， value = 根据指定phone查询到的用户数据；
+     * 2.key = allGrades， value = 所有的用户级别List集合；
+     * 3.key = allStates， value = 所有的用户状态List集合；
+     */
+    public Map<String,Object> getByPhone(String phone);
+
+    /**
+     * 修改用户的部分信息
+     * @return
+     */
+    public boolean edit(Member member);
 }
