@@ -11,7 +11,9 @@
     <dubbo:application name="${dubbo.application.name}" version="${dubbo.interface.version}" />
     <!-- 在进行Dubbo服务注册的时候一定要将服务注册到ZooKeeper之中 -->
     <dubbo:registry protocol="zookeeper" address="${dubbo.registry.address}"
-                    timeout="${dubbo.provider.timeout}"/>
+                    timeout="${dubbo.provider.timeout}"
+                    username="${dubbo.registry.username}"
+                    password="${dubbo.registry.password}" client="curator"/>
     <!-- 此时一定要写上Dubbo远程业务接口的注入开发包名称 -->
-    <dubbo:annotation package="com.yootk.authz.service.impl,com.yootk.admin.service.impl"/>
+    <dubbo:annotation package="com.yootk.admin.service.impl,com.yootk.admin.service.impl"/>
 </beans>

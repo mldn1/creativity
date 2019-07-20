@@ -6,7 +6,7 @@
 <title>博物馆电商</title>
 <link href="mvccss/bootstrap.min.css" rel="stylesheet" type="text/css">
 <link href="mvccss/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
-<link href="mvccss/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css">
+<%--<link href="mvccss/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css">--%>
 
 <script language="javascript" type="text/javascript" src="mvcjs/jquery-1.11.2.min.js"></script>
 <script language="javascript" type="text/javascript" src="mvcjs/jquery-ui.min.js"></script>
@@ -48,18 +48,18 @@
                     <li id="Marketing" class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">销售管理<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                             <shiro:hasPermission name="mallmarket:prderform">
-                            <li><a href="pages/front/sale/order_list.jsp">订单管理</a></li>
+                            <li><a href="pages/front/sale/order_list.action">订单管理</a></li>
                             </shiro:hasPermission>
                             <shiro:hasPermission name="mallmarket:returns">
-                            <li><a href="pages/front/sale/Return_list.jsp">退换管理</a></li>
+                            <li><a href="pages/front/sale/Return_list.action">退换管理</a></li>
                             </shiro:hasPermission>
                             <shiro:hasPermission name="mallmarket:logistics">
-                            <li><a href="pages/front/sale/express_list.jsp">物流管理</a></li>
+                            <li><a href="pages/front/sale/express_list.action">物流管理</a></li>
                             </shiro:hasPermission>
                             <shiro:hasPermission name="mallmarket:service">
                             <li><a href="pages/front/sale/chat_list.action">客服问题记录</a></li>
                             </shiro:hasPermission>
-                            <li><a href="pages/front/sale/FAQ_list.jsp">FAQ</a></li>
+                            <li><a href="pages/front/sale/FAQ_list.action">FAQ</a></li>
                         </ul>
                     </li>
                 </shiro:hasRole>
