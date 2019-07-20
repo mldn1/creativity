@@ -19,6 +19,6 @@ public class test {
     }
     @Test
     public void testGett(){
-        System.out.println(this.redisCache.get("admin"));
+        System.out.println(this.redisCache.get("authz"));
     }
 }

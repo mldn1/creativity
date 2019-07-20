@@ -47,13 +47,6 @@ public class TestOrderService {
         TimeUnit.SECONDS.sleep(Long.MAX_VALUE);
     }
 
-    @Test
-    public void testChannleName () throws InterruptedException {
-        new Thread(()->{
-        System.err.println("渠道名称信息"+this.ordersService.orderChannel());
-        }).start();
-        TimeUnit.SECONDS.sleep(Long.MAX_VALUE);
-    }
 
     @Test
     public void testPreOrder() throws InterruptedException {
@@ -68,5 +61,15 @@ public class TestOrderService {
             System.err.println("订单编辑页面数据回显"+this.ordersService.preEditOrder("20190320120604afd78900"));
         }).start();
         TimeUnit.SECONDS.sleep(Long.MAX_VALUE);
+    }
+
+    @Test
+    public void editOrder() {
+        Orders orders = new Orders() ;
+        orders.setOid("16553qreqrqet4546262347");
+        orders.setUsernote("啦啦啦啦！");
+        new Thread(()->{
+            System.err.println("订单编辑测试"+this.ordersService.editOrder(orders));
+        }).start();
     }
 }

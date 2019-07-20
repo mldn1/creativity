@@ -5,15 +5,15 @@
     页面功能：定义功能菜单页
 --%>
 <%!
-    public static final String PROFILE_URL = "pages/back/admin/users/profile.jsp";
-    public static final String PROJECT_URL = "pages/back/admin/projects/project.jsp";
-    public static final String CHECKWORKS_URL = "pages/back/admin/checkworks/index.jsp";
-    public static final String APPROVAL_URL = "pages/back/admin/leaves/approval-index.jsp";
-    public static final String KNOWLEDGES_URL = "pages/back/admin/knowledges/index.jsp";
-    public static final String ALBUMS_URL = "pages/back/admin/albums/index.jsp";
-    public static final String RESUMES_URL = "pages/back/admin/resumes/index.jsp";
-    public static final String ORGANIZATION_URL = "pages/back/admin/groups/index.jsp";
-    public static final String SHOW_USER_URL = "pages/back/admin//user/show/";
+    public static final String PROFILE_URL = "pages/back/authz/users/profile.jsp";
+    public static final String PROJECT_URL = "pages/back/authz/projects/project.jsp";
+    public static final String CHECKWORKS_URL = "pages/back/authz/checkworks/index.jsp";
+    public static final String APPROVAL_URL = "pages/back/authz/leaves/approval-index.jsp";
+    public static final String KNOWLEDGES_URL = "pages/back/authz/knowledges/index.jsp";
+    public static final String ALBUMS_URL = "pages/back/authz/albums/index.jsp";
+    public static final String RESUMES_URL = "pages/back/authz/resumes/index.jsp";
+    public static final String ORGANIZATION_URL = "pages/back/authz/groups/index.jsp";
+    public static final String SHOW_USER_URL = "pages/back/authz//user/show/";
     public static final String LOGOUT_URL = "logout";
 %>
 <div class="left-side sticky-left-side">

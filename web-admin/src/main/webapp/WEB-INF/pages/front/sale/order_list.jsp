@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 <html>
 <head>
     <jsp:include page="/WEB-INF/pages/plugins/include_basepath.jsp"/>
@@ -89,8 +90,7 @@
                             <div class="form-group">
                                 <label class="col-md-2" for="paystate">支付状态：</label>
                                 <div id="pay_state_div" class="col-sm-3">
-                                    <select name="paystate" id="paystate"
-                                                                                 class="form-control">
+                                    <select name="paystate" id="paystate" class="form-control">
                                     <option value="">请选择</option>
                                     <option value="-9">已退款</option>
                                     <option value="-2">退款中</option>
@@ -187,24 +187,66 @@
                     <td>支付渠道</td>
                     <td>订单时间</td>
                     <td>修改时间</td>
+                    <td>用户备注</td>
                     <td>操作人员</td>
                 </tr>
                 </thead>
                 <tbody>
+                <%--<c:if test="${orders.channel==1}">
+                    <td>官方H5</td>
+                </c:if>
+                <c:if test="${orders.channel==2}">
+                    <td>微信</td>
+                </c:if>--%>
                 <c:forEach items="${allOrders}" var="orders" >
                 <tr>
                     <td><input name="id[]" type="checkbox" id="id[]" value="16550"/>&nbsp;&nbsp;<b><a
-                            href="?action=main&exec=Marketing_orderss&fun=viewEdit&id=16550">${orders.id}</a></b></td>
+                            href="?action=main&exec=Marketing_orderss&fun=viewEdit&id=16550">${orders.id}</a></b>
+                    </td>
                     <td>${orders.payid}</td>
                     <td><span id="${orders.oid}"><a href="<%=ORDER_MODIFY%>?oid=${orders.oid}">${orders.oid}</a></span></td>
-                    <td>${orders.channel}</td>
+                    <%--订单渠道--%>
+                    <td>
+                    <c:if test="${orders.channel==1}">
+                        <span>官方H5</span>
+                    </c:if>
+                    <c:if test="${orders.channel==2}">
+                        <span>微信</span>
+                    </c:if>
+                    </td>
                     <td>商品：金猴献瑞儿童套碗&nbsp;|&nbsp;数量：1&nbsp;|&nbsp;单价：265.00&nbsp;|&nbsp;颜色：金&nbsp;|&nbsp;规格：付款后45天发货<br/>
                     </td>
-                    <td>${orders.state}</td>
-                    <td><font color="#A00000">${order.paystate}</font></td>
-                    <td>${orders.payment}</td>
+                    <%--订单状态--%>
+                    <td>
+                    <c:if test="${orders.state==0}">关闭</c:if>
+                    <c:if test="${orders.state==1}">完成</td></c:if>
+                    <c:if test="${orders.state==2}">待发货</c:if>
+                    <c:if test="${orders.state==3}">待收货</c:if>
+                    <c:if test="${orders.state==4}">待支付</c:if>
+                    <c:if test="${orders.state==5}">退换货</c:if>
+                    </td>
+                    <%--支付状态--%>
+                    <td style="color: red">
+                    <c:if test="${orders.paystate==0}"><span>已退货</span></c:if>
+                    <c:if test="${orders.paystate==1}"><span>退款中</span></c:if>
+                    <c:if test="${orders.paystate==2}"><span>申请退款</span></c:if>
+                    <c:if test="${orders.paystate==3}"><span>未支付</span></c:if>
+                    <c:if test="${orders.paystate==4}"><span>已支付</span></c:if>
+                    <c:if test="${orders.paystate==5}"><span>赠品</span></c:if>
+                    <c:if test="${orders.paystate==6}"><span>免费</span></c:if>
+                    <c:if test="${orders.paystate==7}"><span>已对账确认</span></c:if>
+                    </td>
+                    <%--<td>${orders.paychannel}</td>--%>
+                    <td>
+                        <c:if test="${orders.paychannel==0}"><span>支付宝</span></c:if>
+                        <c:if test="${orders.paychannel==1}"><span>微信</span></c:if>
+                        <c:if test="${orders.paychannel==2}"><span>银联</span></c:if>
+                        <c:if test="${orders.paychannel==3}"><span>兑换券</span></c:if>
+                    </td>
+                    <%--<td><fmt:formatDate value="${orders.createdate}" type="date" dateStyle="medium"/></td>--%>
                     <td>${orders.createdate}</td>
                     <td>${orders.editdate}</td>
+                    <td>${orders.usernote}</td>
                     <td>小王</td>
                 </tr>
                 </c:forEach>

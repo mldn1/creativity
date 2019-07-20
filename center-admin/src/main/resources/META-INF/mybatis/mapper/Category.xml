@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- 定义所有的SQL语句的映射， 对于本实体而言相关的所有的SQL代码都在此定义 -->
-<mapper namespace="com.yootk.admin.dao.ICategoryDAO">   <!-- SSM整合的时候，这个命名空间异常重要 -->
+<mapper namespace="com.yootk.authz.dao.ICategoryDAO">   <!-- SSM整合的时候，这个命名空间异常重要 -->
     <sql id="selectBase">
          SELECT cid,title,grade,icon,sort,stitle,sdescription,skeyword,state,eid FROM category
     </sql>

@@ -42,7 +42,7 @@ public interface IOrdersService {
      * 查询订单渠道名称
      * @return
      */
-    public Map<Integer,String> orderChannel() ;
+    /*public Map<Integer,String> orderChannel() ;*/
 
     /**
      * 订单加载
@@ -56,4 +56,11 @@ public interface IOrdersService {
      * @return
      */
     public Map<String,Object> preEditOrder(String oid) ;
+
+    /**
+     * 订单编辑
+     * @param orders
+     * @return
+     */
+    public boolean editOrder(Orders orders) ;
 }

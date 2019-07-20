@@ -9,7 +9,7 @@
 </head>
 <body class="sticky-header">
 <%!
-    public static final String UPLOAD_URL = "pages/back/admin/albums/upload.jsp" ;
+    public static final String UPLOAD_URL = "pages/back/authz/albums/upload.jsp" ;
 %>
 <jsp:include page="/pages/plugins/include_menuitem.jsp"/>
 <!-- main content start-->

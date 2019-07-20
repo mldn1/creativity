@@ -3,11 +3,11 @@
     系统首页用于进行信息显示页面
 --%>
 <%!
-    public static final String PROFILE_URL = "pages/back/admin/users/profile.jsp";
-    public static final String PROFILE_FORM_URL = "pages/back/admin/users/profile-form.jsp";
-    public static final String AVATAR_URL = "pages/back/admin/users/avatar.jsp";
-    public static final String PROFILE_PASSWORD_URL = "pages/back/admin/users/profile-pwd.jsp";
-    public static final String TASK_URL = "pages/back/admin/projects/mytask.jsp";
+    public static final String PROFILE_URL = "pages/back/authz/users/profile.jsp";
+    public static final String PROFILE_FORM_URL = "pages/back/authz/users/profile-form.jsp";
+    public static final String AVATAR_URL = "pages/back/authz/users/avatar.jsp";
+    public static final String PROFILE_PASSWORD_URL = "pages/back/authz/users/profile-pwd.jsp";
+    public static final String TASK_URL = "pages/back/authz/projects/mytask.jsp";
     public static final String LOGOUT_URL = "logout";
 %>
 <!--notification menu start -->

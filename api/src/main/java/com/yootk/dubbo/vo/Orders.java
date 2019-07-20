@@ -30,11 +30,13 @@ public class Orders implements Serializable {
     private Integer returnstate ;
     private String name ;
     private String phone ;
+    private String addr ;
     private String note ;
     private String ordertype ;
     private String operator ;
     private Integer invoiceState ;
-
+    private Integer paychannel ;
+    private String usernote ;
 
     @Override
     public String toString() {
@@ -64,12 +66,41 @@ public class Orders implements Serializable {
                 ", returnstate=" + returnstate +
                 ", name='" + name + '\'' +
                 ", phone='" + phone + '\'' +
+                ", addr='" + addr + '\'' +
                 ", note='" + note + '\'' +
                 ", ordertype='" + ordertype + '\'' +
                 ", operator='" + operator + '\'' +
                 ", invoiceState=" + invoiceState +
+                ", paychannel=" + paychannel +
+                ", usernote='" + usernote + '\'' +
                 '}';
     }
+
+    public String getUsernote() {
+        return usernote;
+    }
+
+    public void setUsernote(String usernote) {
+        this.usernote = usernote;
+    }
+
+
+    public String getAddr() {
+        return addr;
+    }
+
+    public void setAddr(String addr) {
+        this.addr = addr;
+    }
+
+    public Integer getPaychannel() {
+        return paychannel;
+    }
+
+    public void setPaychannel(Integer paychannel) {
+        this.paychannel = paychannel;
+    }
+
 
     public String getNote() {
         return note;

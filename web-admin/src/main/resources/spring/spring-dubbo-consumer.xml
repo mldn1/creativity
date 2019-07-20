@@ -15,5 +15,5 @@
                     username="${dubbo.registry.username}"
                     password="${dubbo.registry.password}" client="curator"/>
     <!-- 此时一定要写上Dubbo远程业务接口的注入开发包名称 -->
-    <dubbo:annotation package="com.yootk.admin.service.impl"/>
+    <dubbo:annotation package="com.yootk.authz.service.impl"/>
 </beans>
