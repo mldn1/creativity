@@ -61,11 +61,12 @@
                                 <ul class="dropdown-menu">
                                     <li><a href="pages/back/admin/groups/group-permission.jsp">权限</a></li>
                                     <li role="separator" class="divider"></li>
-                                    <li><a href="pages/back/admin/groups/user.jsp">成员</a></li>
+<%--                                    <li><a href="pages/back/admin/groups/user.jsp">成员</a></li>--%>
+                                    <li><a href="pages/back/admin/groups/group_user.action?gid=${group.gid}">成员</a></li>
                                     <li role="separator" class="divider"></li>
-                                    <li><a href="pages/back/admin/groups/user-form.jsp">编辑</a></li>
+                                    <li><a href="pages/back/admin/groups/user-form.jsp?gid=${group.gid}">编辑</a></li>
                                     <li role="separator" class="divider"></li>
-                                    <li><a href="javascript:;" class="js-group-delete" data-op="delete" data-id="${group.gid}">删除</a></li>
+                                    <li><a href="javascript:confirm('确定要删除组吗！');" class="js-group-delete" data-op="delete" data-id="${group.gid}">删除</a></li>
                                 </ul>
                             </div></td>
                         </tr>
@@ -120,10 +121,13 @@
                 $.getJSON("pages/back/admin/groups/group_delete.action", {"gid":gid}, function (data) {
                     console.log("我被调用了**************")
                     if (data==(true)) {
-                        $("footer").append("组删除成功，5秒后自动刷新页面");
-                        setTimeout(window.location.reload(),5);
+                        // $("footer").append("组删除成功，5秒后自动刷新页面");
+                        // setTimeout(window.location.reload(),5);
+                        alert("组删除成功！");
+                        window.location.reload()
                     }else {
-                        $("footer").append("组删除失败！");
+                        // $("footer").append("组删除失败！");
+                        alert("组删除失败！");
                     }
 
                 });

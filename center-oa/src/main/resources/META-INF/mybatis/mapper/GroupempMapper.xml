@@ -8,20 +8,35 @@
   <sql id="Base_Column_List">
     gid, eid
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from group-emp
-    where gid = #{gid}
+
+  <select id="findAllEidsByGid" parameterType="java.lang.Long" resultType="long">
+    select eid from `group-emp`
+    where gid = #{gid,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from group-emp
-    where gid = #{gid}
+  <select id="getAllCountByGid" parameterType="long" resultType="long">
+    select count(*) from `group-emp` where gid=#{gid}
+  </select>
+
+  <select id="getCountByGidAndEid" parameterType="Map" resultType="int">
+    select count(*) from `group-emp` where gid = #{gid,jdbcType=BIGINT} and eid =#{eid,jdbcType=BIGINT}
+  </select>
+
+  <delete id="deleteByGidAndEid" parameterType="Map">
+    delete from `group-emp`
+    where gid = #{gid,jdbcType=BIGINT} and eid =#{eid,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="Groupemp">
-    insert into group-emp (gid, eid)
-    values (#{gid}, #{eid})
+
+  <delete id="deleteByGid" parameterType="long">
+     delete from `group-emp`
+    where gid = #{gid,jdbcType=BIGINT}
+  </delete>
+
+
+  <insert id="doCreate" parameterType="Map">
+    insert into `group-emp` (gid, eid)
+    values (#{gid,jdbcType=BIGINT}, #{eid,jdbcType=BIGINT})
   </insert>
+
   <insert id="insertSelective" parameterType="Groupemp">
     insert into group-emp
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -34,10 +49,10 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="gid != null">
-        #{gid},
+        #{gid,jdbcType=BIGINT},
       </if>
       <if test="eid != null">
-        #{eid},
+        #{eid,jdbcType=BIGINT},
       </if>
     </trim>
   </insert>
@@ -45,14 +60,14 @@
     update group-emp
     <set>
       <if test="eid != null">
-        eid = #{eid},
+        eid = #{eid,jdbcType=BIGINT},
       </if>
     </set>
-    where gid = #{gid}
+    where gid = #{gid,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="Groupemp">
     update group-emp
-    set eid = #{eid}
-    where gid = #{gid}
+    set eid = #{eid,jdbcType=BIGINT}
+    where gid = #{gid,jdbcType=BIGINT}
   </update>
 </mapper>

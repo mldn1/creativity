@@ -75,15 +75,16 @@
       debug : true , // 此配置描述的是当前的表单不允许直接提交
       submitHandler: function(form) { //  针对于表单的提交进行的处理
         // form.submit() ; // 手工提交表单
-        console.log("我被调用了**************")
+        console.log("我被调用了**************");
         title = $("#name").val();
         description = $("#summary").val();
         console.log("我被调用了**************" + title);
         console.log("我被调用了**************" + description);
         $.getJSON("pages/back/admin/groups/group_add.action", {"title":title, "description":description}, function (data) {
-          console.log("我被调用了**************")
+          console.log("我被调用了**************");
+          $("footer").empty();
           if (data==(true)) {
-            $("footer").append("组添加成功");
+            $("footer").append("组添加成功！");
             $("#name").val("");
             $("#summary").val("");
             // alert("组添加成功！")
@@ -110,34 +111,43 @@
         divId = elementId + "Div" ; // 设置层的元素的id名称
         $("#" + divId).attr("class","form-group has-success") ; // 设置错误信息的样式
       } ,
-      errorPlacement : function(error,element) {
-        elementId = $(element).attr("id") ; // 获取元素的id
-        if (elementId.indexOf(".")) {
-          elementId = elementId.replace(".","\\.") ; // 进行“.”的替换
-        }
-        msgId = elementId + "Msg" ; // 获取错误文本的显示元素
-        $("#" + msgId).empty() ; // 清空已有内容
-        $(error).attr("class","text-danger") ;
-        $("#" + msgId).append(error) ; // 追加错误信息
-      } ,
-      success : function(error,element) {  // 操作成功
-        elementId = $(element).attr("id") ; // 获取元素的id
-        if (elementId.indexOf(".")) {
-          elementId = elementId.replace(".","\\.") ; // 进行“.”的替换
-        }
-        msgId = elementId + "Msg" ; // 获取错误文本的显示元素
-        $("#" + msgId).empty() ; // 清空已有内容
-        $("#" + msgId).append("<span class='h2'><span class='text-success glyphicon glyphicon-ok'/></span>") ; // 追加错误信息
-      } ,
       rules: {        // 定义所有要使用的验证规则
         "name" : {  // 要验证表单的id名称
           required: true   // 该内容不允许为空
         } ,
         "summary": {
-          required : true , // 该自动内容不允许为空
+          required : true  // 该自动内容不允许为空
         }
-      }
+      } ,
+        messages:{
+          "name":{
+              required: "组名不允许为空！"   // 该内容不允许为空
+          },
+          "summary": {
+              required : "描述信息不允许为空！"  // 该自动内容不允许为空
+          }
+        }
     });
+
+      $("#name").on("change",function(){
+          title = $("#name").val();
+          console.log("************" + title);
+          $.getJSON("pages/back/admin/groups/group_add_check.action", {"title": title}, function (data) {
+              console.log("title已验证！");
+              if (data == false) {
+                  $("footer").empty();
+                  $("footer").append("重复的组名称，请重新填写！");
+                  $("#nameDiv").attr("class","form-group has-error") ; // 设置错误信息的样式
+                  $("button[type=submit]").attr("disabled",true);
+              }else {
+                  $("footer").empty();
+                  $("footer").append("组名称可用，请继续填写其他项！");
+                  $("#nameDiv").attr("class","form-group has-success") ; // 设置错误信息的样式
+                  $("button[type=submit]").attr("disabled",false);
+              }
+          });
+      }) ;
+
   })
 </script>
 

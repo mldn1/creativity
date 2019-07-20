@@ -2,6 +2,7 @@ package com.yootk.oa.dao;
 
 import com.yootk.dubbo.vo.Checkork;
 
+import java.util.List;
 import java.util.Map;
 
 public interface CheckorkMapper {
@@ -21,7 +22,9 @@ public interface CheckorkMapper {
      * 根据用户eid查找到所有的考勤记录
      * @param map 封装好eid，currentpage，linesize
      * @return 返回权限表的对象
-     * @throws Exception 抛出异常
      */
-    public Checkork findSplitByEid(Map<String,Object> map) throws Exception;
+    public List<Checkork> findSplitByEid(Map<String,Object> map) ;
+
+    public Long getAllRecorders(Map<String, Object> params);//获得返回数据的总记录数，下面分页查询需要用到
+
 }

@@ -28,4 +28,9 @@ public class OaEmpAllServiceImpl implements IEmpAllService {
     public boolean updatePhoto(String photo,String phone) {
         return this.empDAO.updatePhoto(photo,phone)>0;
     }
+
+    @Override
+    public boolean upadteEmp(Emp emp) {
+        return this.empDAO.updateEmp(emp)>0;
+    }
 }

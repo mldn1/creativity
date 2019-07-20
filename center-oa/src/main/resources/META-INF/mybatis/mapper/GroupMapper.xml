@@ -35,6 +35,13 @@
     </if>
   </select>
 
+  <select id="findByTitle" parameterType="String" resultType="Group">
+    select
+    <include refid="Base_Column_List"/>
+    from `group`
+    where title =#{title}
+  </select>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

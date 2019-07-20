@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
@@ -32,79 +33,80 @@
           <section class="panel">
             <header class="panel-heading"> </header>
             <div class="panel-body">
-              <form class="form-horizontal adminex-form" id="resume-form">
+              <form action="pages/back/admin/resumes/resume_edit.action?resid=${resume.resid}" class="form-horizontal adminex-form" id="resume-form" method="post">
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label"><span>*</span>姓名</label>
                   <div class="col-sm-10">
-                    <input type="text" name="realname" value="" class="form-control" placeholder="请输入姓名">
+                    <input type="text" name="name" value="${resume.name}" class="form-control" placeholder="输入手请机号姓名">
                   </div>
                 </div>
+                <input type="hidden" name="resid" value="${resume.resid}">
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label"><span>*</span>手机</label>
                   <div class="col-sm-10">
-                    <input type="text" name="phone" value="" class="form-control" placeholder="请输入手机号">
+                    <input type="text" name="phone" value="${resume.phone}" class="form-control" placeholder="输入手请机号">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">性别</label>
                   <div class="col-sm-10">
                     <label class="radio-inline">
-                    <input type="radio" name="sex" value="1" {{if eq 1 .resume.Sex}}checked>
+                      <input type="radio" name="sex" value="0" <c:if test="${resume.sex==0}">checked</c:if>>
                     男 </label>
                     <label class="radio-inline">
-                    <input type="radio" name="sex" value="2" {{if eq 2 .resume.Sex}}checked>
+                    <input type="radio" name="sex" value="1" <c:if test="${resume.sex==1}">checked</c:if>>
                     女 </label>
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">生日</label>
                   <div class="col-sm-10">
-                    <input type="text" name="birth" id="default-date-picker"  value="" class="form-control" placeholder="出生日期">
+                    <input type="text" name="birthday" id="default-date-picker"  value="${resume.birthday}" class="form-control" placeholder="出生日期">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">学历</label>
                   <div class="col-sm-10">
-                    <select name="edu" class="form-control">
+                    <select name="eduid" class="form-control">
                       <option value="">请选择学历</option>
-                      <option value="1" {{if eq 1 .resume.Edu}}selected>小学</option>
-                      <option value="2" {{if eq 2 .resume.Edu}}selected>中专</option>
-                      <option value="3" {{if eq 3 .resume.Edu}}selected>初中</option>
-                      <option value="4" {{if eq 4 .resume.Edu}}selected>高中</option>
-                      <option value="5" {{if eq 5 .resume.Edu}}selected>技校</option>
-                      <option value="6" {{if eq 6 .resume.Edu}}selected>大专</option>
-                      <option value="7" {{if eq 7 .resume.Edu}}selected>本科</option>
-                      <option value="8" {{if eq 8 .resume.Edu}}selected>硕士</option>
-                      <option value="9" {{if eq 9 .resume.Edu}}selected>博士</option>
-                      <option value="10" {{if eq 10 .resume.Edu}}selected>博士后</option>
+                      <option value="1" <c:if test="${resume.eduid==1}">selected</c:if>>小学</option>
+                      <option value="2" <c:if test="${resume.eduid==2}">selected</c:if>>中专</option>
+                      <option value="3" <c:if test="${resume.eduid==3}">selected</c:if>>初中</option>
+                      <option value="4" <c:if test="${resume.eduid==4}">selected</c:if>>高中</option>
+                      <option value="5" <c:if test="${resume.eduid==5}">selected</c:if>>技校</option>
+                      <option value="6" <c:if test="${resume.eduid==6}">selected</c:if>>大专</option>
+                      <option value="7" <c:if test="${resume.eduid==7}">selected</c:if>>本科</option>
+                      <option value="8" <c:if test="${resume.eduid==8}">selected</c:if>>硕士</option>
+                      <option value="9" <c:if test="${resume.eduid==9}">selected</c:if>>博士</option>
+                      <option value="10" <c:if test="${resume.eduid==10}">selected</c:if>>博士后</option>
                     </select>
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">工作年限</label>
                   <div class="col-sm-10">
-                    <select name="work" class="form-control">
+                    <select name="wyid" class="form-control">
                       <option value="">请选择工作年限</option>
-                      <option value="1" {{if eq 1 .resume.Work}}selected>应届毕业生</option>
-                      <option value="2" {{if eq 2 .resume.Work}}selected>1年以下</option>
-                      <option value="3" {{if eq 3 .resume.Work}}selected>1-2年</option>
-                      <option value="4" {{if eq 4 .resume.Work}}selected>3-5年</option>
-                      <option value="5" {{if eq 5 .resume.Work}}selected>6-7年</option>
-                      <option value="6" {{if eq 6 .resume.Work}}selected>8-10年</option>
-                      <option value="7" {{if eq 7 .resume.Work}}selected>10年以上</option>
+                      <option value="1" <c:if test="${resume.wyid==1}">selected</c:if>>应届毕业生</option>
+                      <option value="2" <c:if test="${resume.wyid==2}">selected</c:if>>1年以下</option>
+                      <option value="3" <c:if test="${resume.wyid==3}">selected</c:if>>1-2年</option>
+                      <option value="4" <c:if test="${resume.wyid==4}">selected</c:if>>3-5年</option>
+                      <option value="5" <c:if test="${resume.wyid==5}">selected</c:if>>6-7年</option>
+                      <option value="6" <c:if test="${resume.wyid==6}">selected</c:if>>8-10年</option>
+                      <option value="7" <c:if test="${resume.wyid==7}">selected</c:if>>10年以上</option>
                     </select>
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">备注</label>
                   <div class="col-sm-10">
-                    <textarea name="note" placeholder="备注说明" style="height:300px;" class="form-control"></textarea>
+                    <textarea name="note"  placeholder="备注说明" style="height:300px;" class="form-control">${resume.note}</textarea>
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">简历附件</label>
                   <div class="col-sm-10">
-                    <input type="file" name="attachment">
+                    <input type="file" name="appendix" value="${resume.appendix}">
                     <br/>
                     <a href="{{.resume.Attachment}}" target="_blank">预览下载</a>  </div>
                 </div>
@@ -112,19 +114,19 @@
                   <label class="col-sm-2 col-sm-2 control-label">状态</label>
                   <div class="col-sm-10">
                     <label class="radio-inline">
-                    <input type="radio" name="status" value="1" {{if eq 1 .resume.Status}}checked>
+                    <input type="radio" name="state" value="1" <c:if test="${resume.state==1}">checked</c:if>>
                     入档 </label>
                     <label class="radio-inline">
-                    <input type="radio" name="status" value="2" {{if eq 2 .resume.Status}}checked>
+                    <input type="radio" name="state" value="2" <c:if test="${resume.state==2}">checked</c:if>>
                     通知面试 </label>
                     <label class="radio-inline">
-                    <input type="radio" name="status" value="3" {{if eq 3 .resume.Status}}checked>
+                    <input type="radio" name="state" value="3" <c:if test="${resume.state==3}">checked</c:if>>
                     违约 </label>
                     <label class="radio-inline">
-                    <input type="radio" name="status" value="4" {{if eq 4 .resume.Status}}checked>
+                    <input type="radio" name="state" value="4" <c:if test="${resume.state==4}">checked</c:if>>
                     录用 </label>
                     <label class="radio-inline">
-                    <input type="radio" name="status" value="5" {{if eq 5 .resume.Status}}checked>
+                    <input type="radio" name="state" value="5" <c:if test="${resume.state==5}">checked</c:if>>
                     不录用 </label>
                   </div>
                 </div>

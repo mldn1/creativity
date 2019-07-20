@@ -8,6 +8,9 @@
   <sql id="Base_Column_List">
     wyid, title
   </sql>
+  <select id="findAll" resultType="WorkYears">
+    select wyid, title from work_years
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

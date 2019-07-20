@@ -11,10 +11,11 @@
         <property name="caches">
             <set>
                 <bean class="com.yootk.server.cache.RedisCache">
-                    <property name="name" value="news"/>
+                    <property name="name" value="goods"/>
                     <property name="redisTemplate" ref="redisTemplate"/>
                 </bean>
             </set>
         </property>
     </bean>
+
 </beans>

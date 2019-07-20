@@ -2,6 +2,8 @@ package com.yootk.oa.dao;
 
 import com.yootk.dubbo.vo.WorkYears;
 
+import java.util.List;
+
 public interface WorkYearsMapper {
     int deleteByPrimaryKey(Long wyid);
 
@@ -14,4 +16,6 @@ public interface WorkYearsMapper {
     int updateByPrimaryKeySelective(WorkYears record);
 
     int updateByPrimaryKey(WorkYears record);
+
+    public List<WorkYears> findAll();
 }

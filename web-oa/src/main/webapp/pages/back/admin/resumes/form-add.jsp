@@ -32,11 +32,11 @@
           <section class="panel">
             <header class="panel-heading"> </header>
             <div class="panel-body">
-              <form class="form-horizontal adminex-form" id="resume-form">
+              <form action="pages/back/admin/resumes/resume_add.action" class="form-horizontal adminex-form" id="resume-form">
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label"><span>*</span>姓名</label>
                   <div class="col-sm-10">
-                    <input type="text" name="realname" value="" class="form-control" placeholder="请输入姓名">
+                    <input type="text" name="name"  class="form-control" placeholder="请输入姓名">
                   </div>
                 </div>
                 <div class="form-group">
@@ -49,23 +49,23 @@
                   <label class="col-sm-2 col-sm-2 control-label">性别</label>
                   <div class="col-sm-10">
                     <label class="radio-inline">
-                    <input type="radio" name="sex" value="1" {{if eq 1 .resume.Sex}}checked>
+                    <input type="radio" name="sex"  value="0" {{if eq 0 .resume.Sex}}checked>
                     男 </label>
                     <label class="radio-inline">
-                    <input type="radio" name="sex" value="2" {{if eq 2 .resume.Sex}}checked>
+                    <input type="radio" name="sex" value="1" {{if eq 1 .resume.Sex}}checked>
                     女 </label>
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">生日</label>
                   <div class="col-sm-10">
-                    <input type="text" name="birth" id="default-date-picker"  value="" class="form-control" placeholder="出生日期">
+                    <input type="text" name="birthday" id="default-date-picker"  value="" class="form-control" placeholder="出生日期">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">学历</label>
                   <div class="col-sm-10">
-                    <select name="edu" class="form-control">
+                    <select name="eduid" class="form-control">
                       <option value="">请选择学历</option>
                       <option value="1" {{if eq 1 .resume.Edu}}selected>小学</option>
                       <option value="2" {{if eq 2 .resume.Edu}}selected>中专</option>
@@ -83,7 +83,7 @@
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">工作年限</label>
                   <div class="col-sm-10">
-                    <select name="work" class="form-control">
+                    <select name="wyid" class="form-control">
                       <option value="">请选择工作年限</option>
                       <option value="1" {{if eq 1 .resume.Work}}selected>应届毕业生</option>
                       <option value="2" {{if eq 2 .resume.Work}}selected>1年以下</option>
@@ -104,7 +104,7 @@
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">简历附件</label>
                   <div class="col-sm-10">
-                    <input type="file" name="attachment">
+                    <input type="file" name="appendix">
                     <br/>
                     <a href="{{.resume.Attachment}}" target="_blank">预览下载</a>  </div>
                 </div>
@@ -112,26 +112,26 @@
                   <label class="col-sm-2 col-sm-2 control-label">状态</label>
                   <div class="col-sm-10">
                     <label class="radio-inline">
-                    <input type="radio" name="status" value="1" {{if eq 1 .resume.Status}}checked>
+                    <input type="radio" name="state" value="1" {{if eq 1 .resume.Status}}checked>
                     入档 </label>
                     <label class="radio-inline">
-                    <input type="radio" name="status" value="2" {{if eq 2 .resume.Status}}checked>
+                    <input type="radio" name="state" value="2" {{if eq 2 .resume.Status}}checked>
                     通知面试 </label>
                     <label class="radio-inline">
-                    <input type="radio" name="status" value="3" {{if eq 3 .resume.Status}}checked>
+                    <input type="radio" name="state" value="3" {{if eq 3 .resume.Status}}checked>
                     违约 </label>
                     <label class="radio-inline">
-                    <input type="radio" name="status" value="4" {{if eq 4 .resume.Status}}checked>
+                    <input type="radio" name="state" value="4" {{if eq 4 .resume.Status}}checked>
                     录用 </label>
                     <label class="radio-inline">
-                    <input type="radio" name="status" value="5" {{if eq 5 .resume.Status}}checked>
+                    <input type="radio" name="state" value="5" {{if eq 5 .resume.Status}}checked>
                     不录用 </label>
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-lg-2 col-sm-2 control-label"></label>
                   <div class="col-lg-10">
-                    <button type="submit" class="btn btn-primary">提交保存</button>
+                    <button type="submit"  class="btn btn-primary" >提交保存</button>
                   </div>
                 </div>
               </form>

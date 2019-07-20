@@ -105,6 +105,7 @@ public abstract class AbstractRedisCache<K, V> implements Cache<K, V> {
     }
     @Override
     public V remove(K k) throws CacheException {
+        System.err.println("admin==================="+k);
         V resultObject = null ;
         RedisConnection connection = null ;
         try {
@@ -117,6 +118,7 @@ public abstract class AbstractRedisCache<K, V> implements Cache<K, V> {
                 connection.close();
             }
         }
+        System.err.println("admin==================="+resultObject);
         return resultObject;
     }
     @Override

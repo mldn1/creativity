@@ -2,6 +2,8 @@ package com.yootk.oa.dao;
 
 import com.yootk.dubbo.vo.ResumeState;
 
+import java.util.List;
+
 public interface ResumeStateMapper {
     int deleteByPrimaryKey(Long rsid);
 
@@ -14,4 +16,6 @@ public interface ResumeStateMapper {
     int updateByPrimaryKeySelective(ResumeState record);
 
     int updateByPrimaryKey(ResumeState record);
+
+    public List<ResumeState> findAll();
 }

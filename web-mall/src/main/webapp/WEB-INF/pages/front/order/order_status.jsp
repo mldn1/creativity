@@ -1,7 +1,7 @@
 <%@ page pageEncoding="UTF-8"%>
 <!DOCTYPE html> 
 <head>
-<jsp:include page="/pages/plugins/include_basepath.jsp"/>
+<jsp:include page="/WEB-INF/pages/plugins/include_basepath.jsp"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="description" content="" />
@@ -15,8 +15,8 @@
         <meta name="description" content="" />
         <meta name="robots" content="all" />
 		<title>订单</title>
-<link href="assets/css/style.css" rel="stylesheet" type="text/css">
-	<link href="assets/css/mystyle.css" rel="stylesheet" type="text/css">
+<link href="css/style.css" rel="stylesheet" type="text/css">
+	<link href="css/mystyle.css" rel="stylesheet" type="text/css">
 		<script>
 			function htmlFontSize(){
 			    var clientWidth = document.documentElement ? document.documentElement.clientWidth : document.body.clientWidth;
@@ -54,7 +54,7 @@
             <span>取消订单</span>
         </div>
         <div class="order_StatuText">
-        	<div class="order_Img"><img src="assets/images/GL_img_14.jpg"></div>
+        	<div class="order_Img"><img src="images/GL_img_14.jpg"></div>
             <div class="order_StatuFont">
             	<h2>缠枝莲（一杯四盖）<span>×99</span></h2>
                 <p>红色</p>
@@ -74,7 +74,7 @@
             <span>联系客服</span>
         </div>
         <div class="order_StatuText">
-        	<div class="order_Img"><img src="assets/images/GL_img_14.jpg"></div>
+        	<div class="order_Img"><img src="images/GL_img_14.jpg"></div>
             <div class="order_StatuFont">
             	<h2>缠枝莲（一杯四盖）<span>×99</span></h2>
                 <p>红色</p>
@@ -94,7 +94,7 @@
             <span>联系客服</span>
         </div>
         <div class="order_StatuText">
-        	<div class="order_Img"><img src="assets/images/GL_img_14.jpg"></div>
+        	<div class="order_Img"><img src="images/GL_img_14.jpg"></div>
             <div class="order_StatuFont">
             	<h2>缠枝莲（一杯四盖）<span>×99</span></h2>
                 <p>红色</p>
@@ -114,7 +114,7 @@
             <span class="order_Del">删除</span>
         </div>
         <div class="order_StatuText">
-        	<div class="order_Img"><img src="assets/images/GL_img_14.jpg"></div>
+        	<div class="order_Img"><img src="images/GL_img_14.jpg"></div>
             <div class="order_StatuFont">
             	<h2>缠枝莲（一杯四盖）<span>×99</span></h2>
                 <p>红色</p>
@@ -133,7 +133,7 @@
             <span class="order_Del">删除</span>
         </div>
         <div class="order_StatuText">
-        	<div class="order_Img"><img src="assets/images/GL_img_14.jpg"></div>
+        	<div class="order_Img"><img src="images/GL_img_14.jpg"></div>
             <div class="order_StatuFont">
             	<h2>缠枝莲（一杯四盖）<span>×99</span></h2>
                 <p>红色</p>
@@ -149,7 +149,7 @@
 </div>
 <div class="order_Details">
 	<div class="gouConterText">
-					<img src="assets/assets/images/GL_icon_45.png">
+					<img src="images/GL_icon_45.png">
                     <p>您还没有任何订单<br>去挑点儿什么吧！</p>
 					<div class="gouBtn">新品推荐</div>
 	</div>
@@ -158,28 +158,28 @@
 				<div class="dropMore mar_Bottom"><div class="dropLeft"></div><div class="dropload-refresh like_Cai">猜你喜欢</div><div class="dropRight"></div></div>
 				<div class="gouLikeShop">
 					  <div class="gouLikeShopText">
-						<img src="assets/images/GL_img_14.jpg">
+						<img src="images/GL_img_14.jpg">
 						<div class="like_Text">
                                 <p class="listName">文创出品,官方认证.....</p>
                                 <p><i><span class="Daole">399</span><span>元/套</span></i></p>
                         </div>
 						</div>
 						<div class="gouLikeShopText">
-							<img src="assets/images/GL_img_14.jpg">
+							<img src="images/GL_img_14.jpg">
 							<div class="like_Text">
                                 <p class="listName">文创出品,官方认证.....</p>
                                 <p><i><span class="Daole">399</span><span>元/套</span></i></p>
                             </div>
 						</div>
 						<div class="gouLikeShopText">
-							<img src="assets/images/GL_img_14.jpg">
+							<img src="images/GL_img_14.jpg">
 							<div class="like_Text">
                                 <p class="listName">文创出品,官方认证.....</p>
                                 <p><i><span class="Daole">399</span><span>元/套</span></i></p>
                             </div>
 						</div>
 						<div class="gouLikeShopText">
-							<img src="assets/images/GL_img_14.jpg">
+							<img src="images/GL_img_14.jpg">
                             <div class="like_Text">
                                 <p class="listName">文创出品,官方认证.....</p>
                                 <p><i><span class="Daole">399</span><span>元/套</span></i></p>
@@ -196,7 +196,7 @@
             <span>联系客服</span>
         </div>
         <div class="order_StatuText">
-        	<div class="order_Img"><img src="assets/images/GL_img_14.jpg"></div>
+        	<div class="order_Img"><img src="images/GL_img_14.jpg"></div>
             <div class="order_StatuFont">
             	<h2>缠枝莲（一杯四盖）<span>×99</span></h2>
                 <p>红色</p>
@@ -216,7 +216,7 @@
             <span>联系客服</span>
         </div>
         <div class="order_StatuText">
-        	<div class="order_Img"><img src="assets/images/GL_img_14.jpg"></div>
+        	<div class="order_Img"><img src="images/GL_img_14.jpg"></div>
             <div class="order_StatuFont">
             	<h2>缠枝莲（一杯四盖）<span>×99</span></h2>
                 <p>红色</p>
@@ -238,7 +238,7 @@
             <span>联系客服</span>
         </div>
         <div class="order_StatuText">
-        	<div class="order_Img"><img src="assets/images/GL_img_14.jpg"></div>
+        	<div class="order_Img"><img src="images/GL_img_14.jpg"></div>
             <div class="order_StatuFont">
             	<h2>缠枝莲（一杯四盖）<span>×99</span></h2>
                 <p>红色</p>
@@ -258,7 +258,7 @@
             <span>联系客服</span>
         </div>
         <div class="order_StatuText">
-        	<div class="order_Img"><img src="assets/images/GL_img_14.jpg"></div>
+        	<div class="order_Img"><img src="images/GL_img_14.jpg"></div>
             <div class="order_StatuFont">
             	<h2>缠枝莲（一杯四盖）<span>×99</span></h2>
                 <p>红色</p>
@@ -280,7 +280,7 @@
             <span class="order_Del">删除</span>
         </div>
         <div class="order_StatuText">
-        	<div class="order_Img"><img src="assets/images/GL_img_14.jpg"></div>
+        	<div class="order_Img"><img src="images/GL_img_14.jpg"></div>
             <div class="order_StatuFont">
             	<h2>缠枝莲（一杯四盖）<span>×99</span></h2>
                 <p>红色</p>
@@ -299,7 +299,7 @@
             <span class="order_Del">删除</span>
         </div>
         <div class="order_StatuText">
-        	<div class="order_Img"><img src="assets/images/GL_img_14.jpg"></div>
+        	<div class="order_Img"><img src="images/GL_img_14.jpg"></div>
             <div class="order_StatuFont">
             	<h2>缠枝莲（一杯四盖）<span>×99</span></h2>
                 <p>红色</p>
@@ -326,7 +326,7 @@
 			</div>
 		</div>
 	</div>
-<script src="assets/js/jquery-1.11.0.min.js"></script>
+<script src="js/jquery-1.11.0.min.js"></script>
 <script>
 	 $(document).ready(function() {
      $(".order_Tab li").click(function() {
@@ -358,6 +358,6 @@
 		$this =$(this)
 	});
 </script>
-<jsp:include page="/pages/plugins/include_foot.jsp"/>
+<jsp:include page="/WEB-INF/pages/plugins/include_foot.jsp"/>
 </body>
 </html>

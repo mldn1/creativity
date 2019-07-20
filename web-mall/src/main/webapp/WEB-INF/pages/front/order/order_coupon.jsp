@@ -1,7 +1,7 @@
 <%@ page pageEncoding="UTF-8"%>
 <!DOCTYPE html> 
 <head>
-<jsp:include page="/pages/plugins/include_basepath.jsp"/>
+<jsp:include page="/WEB-INF/pages/plugins/include_basepath.jsp"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="description" content="" />
@@ -15,8 +15,8 @@
 	<meta name="description" content="" />
 	<meta name="robots" content="all" />
 	<title>优惠券</title>
-<link href="assets/css/style.css" rel="stylesheet" type="text/css">
-	<link href="assets/css/mystyle.css" rel="stylesheet" type="text/css">
+<link href="css/style.css" rel="stylesheet" type="text/css">
+	<link href="css/mystyle.css" rel="stylesheet" type="text/css">
 	<script>
 			function htmlFontSize(){
 			    var clientWidth = document.documentElement ? document.documentElement.clientWidth : document.body.clientWidth;
@@ -110,7 +110,7 @@
     <br class="clear">
   </div>
     </div>
-<script src="assets/js/jquery-1.11.0.min.js"></script> 
+<script src="js/jquery-1.11.0.min.js"></script> 
 <script>
 	 $(document).ready(function() {
      $(".order_Tab li").click(function() {

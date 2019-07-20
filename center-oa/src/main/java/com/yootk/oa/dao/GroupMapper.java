@@ -1,10 +1,13 @@
 package com.yootk.oa.dao;
 
 import com.yootk.dubbo.vo.Group;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 
 import java.util.List;
 import java.util.Map;
 
+@CacheConfig(cacheNames = "group")
 public interface GroupMapper {
     int deleteByPrimaryKey(Long gid);
 
@@ -23,4 +26,6 @@ public interface GroupMapper {
     Long getAllRecorders(Map<String, Object> params);
 
     boolean doCreate(Group group) ;
+
+    Group findByTitle(String title);
 }

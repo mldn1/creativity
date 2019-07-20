@@ -24,6 +24,17 @@ public class Emp implements Serializable {
     private String ip;
     private Date lastrecord;
     private String photo;
+    private String imagepath;
+
+    public String getImagepath() {
+        return imagepath;
+    }
+
+    public void setImagepath(String imagepath) {
+        this.imagepath = imagepath;
+    }
+
+
 
     public String getPhoto() {
         return photo;

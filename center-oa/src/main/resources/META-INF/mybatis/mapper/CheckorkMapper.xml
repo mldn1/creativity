@@ -14,27 +14,42 @@
   <select id="findSplitByEid" parameterType="java.util.Map" resultType="Checkork">
     select coid,eid,datetime,state,ip from checkork
     <where>
-      <if test="eid!=null">
+      <if test="eid != null">
         eid=#{eid}
+      </if>
+      <if test="keyword != null and keyword != &quot;&quot; and column !=null and column != &quot;&quot;">
+      and ${column} like #{keyword}
       </if>
     </where>
     limit #{start},#{end}
+  </select>
+  <select id="getAllRecorders" resultType="long" parameterType="map">
+    select count(*) from `checkork`
+    <where>
+        <if test="eid!=null and eid != &quot;&quot;">
+          eid=#{eid}
+        </if>
+        <if test="column != null and keyword != null and column != &quot;&quot; and keyword !=&quot;&quot;">
+        and ${column} like #{keyword}
+        </if>
+    </where>
+
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from checkork
-    where coid = #{coid}
+    where coid = #{coid,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from checkork
-    where coid = #{coid}
+    where coid = #{coid,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="Checkork">
-    insert into checkork (coid, eid, datetime, 
+    insert into checkork (eid, datetime,
       state, ip)
-    values (#{coid}, #{eid}, #{datetime}, 
-      #{state}, #{ip})
+    values ( #{eid,jdbcType=BIGINT}, #{datetime,jdbcType=TIMESTAMP},
+      #{state,jdbcType=INTEGER}, #{ip,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="Checkork">
     insert into checkork
@@ -57,19 +72,19 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="coid != null">
-        #{coid},
+        #{coid,jdbcType=BIGINT},
       </if>
       <if test="eid != null">
-        #{eid},
+        #{eid,jdbcType=BIGINT},
       </if>
       <if test="datetime != null">
-        #{datetime},
+        #{datetime,jdbcType=TIMESTAMP},
       </if>
       <if test="state != null">
-        #{state},
+        #{state,jdbcType=INTEGER},
       </if>
       <if test="ip != null">
-        #{ip},
+        #{ip,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -77,26 +92,26 @@
     update checkork
     <set>
       <if test="eid != null">
-        eid = #{eid},
+        eid = #{eid,jdbcType=BIGINT},
       </if>
       <if test="datetime != null">
-        datetime = #{datetime},
+        datetime = #{datetime,jdbcType=TIMESTAMP},
       </if>
       <if test="state != null">
-        state = #{state},
+        state = #{state,jdbcType=INTEGER},
       </if>
       <if test="ip != null">
-        ip = #{ip},
+        ip = #{ip,jdbcType=VARCHAR},
       </if>
     </set>
-    where coid = #{coid}
+    where coid = #{coid,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="Checkork">
     update checkork
-    set eid = #{eid},
-      datetime = #{datetime},
-      state = #{state},
-      ip = #{ip}
-    where coid = #{coid}
+    set eid = #{eid,jdbcType=BIGINT},
+      datetime = #{datetime,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=INTEGER},
+      ip = #{ip,jdbcType=VARCHAR}
+    where coid = #{coid,jdbcType=BIGINT}
   </update>
 </mapper>

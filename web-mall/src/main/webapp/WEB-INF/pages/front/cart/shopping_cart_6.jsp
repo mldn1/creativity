@@ -13,8 +13,8 @@
 	<title>发票信息</title>
 	<meta name="description" content="页面简述" />
 	<meta name="keywords" content="关键词" />
-	<link href="assets/css/style.css" rel="stylesheet" type="text/css">
-	<link href="assets/css/mystyle.css" rel="stylesheet" type="text/css">
+	<link href="css/style.css" rel="stylesheet" type="text/css">
+	<link href="css/mystyle.css" rel="stylesheet" type="text/css">
     <script>
 function htmlFontSize(){
     var clientWidth = document.documentElement ? document.documentElement.clientWidth : document.body.clientWidth;
@@ -85,17 +85,17 @@ window.onresize = function(){
     </ul>
 </div>
 <div class="invoice_Confirm">
-	<input type="button" value="取消" name="" onClick="window.open('pages/front/cart/shopping_cart_1.jsp','_self');"/>
-    <input class="return_Pay" type="button" value="确定" name="" onClick="window.open('pages/front/cart/shopping_cart_1.jsp','_self');"/>
+	<input type="button" value="取消" name="" onClick="window.open('pages/front/cart/shopping_cart_1.action','_self');"/>
+    <input class="return_Pay" type="button" value="确定" name="" onClick="window.open('pages/front/cart/shopping_cart_1.action','_self');"/>
 </div>
-<script src="assets/js/jquery-1.11.0.min.js"></script>
+<script src="js/jquery-1.11.0.min.js"></script>
 <script>
 	$('body').on('click','.gray img',function(){
 		var hSrc = $(this).attr('src')
-		if(hSrc == 'assets/images/quanxuan_1.png'){
-			 $(this).attr('src','assets/images/quanxuan_2.png')
+		if(hSrc == 'images/quanxuan_1.png'){
+			 $(this).attr('src','images/quanxuan_2.png')
 		}else{
-			$(this).attr('src','assets/images/quanxuan_1.png')
+			$(this).attr('src','images/quanxuan_1.png')
 		}
 	})
 	/*单位个人发票切换*/
