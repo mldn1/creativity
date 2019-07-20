@@ -82,11 +82,13 @@
 	<div class="sp_Service">
     	<ul>
         	<li><a href="index.action" class="sp_Service1"><img src="images/GL_icon_36.png" border="0"></a></li>
-            <li><a href="#" class="sp_Service2" id="end"><img src="images/GL_icon_35.png"></a></li>
+            <li><a href="/pages/front/cart/shopping_cart.action" class="sp_Service2" id="end"><img src="images/GL_icon_35.png"></a></li>
         </ul>
     </div>
-    <div class="sp_Buy"><a href="shopping_cart_1.action">立即购买</a></div>
-    <div class="sp_Shopping cd-cart-container empty"><a href="#" class="add_Cart" data-price="29.5">加入购物车</a>
+
+
+    <!--<div class="sp_Buy"><a href="shopping_cart_1.action">立即购买</a></div> -->
+    <div class="sp_Shopping cd-cart-container empty"><a href="#" class="add_Cart"  goodsId="${goods.gid}" data-price="29.5">加入购物车</a>
     	<span class="cd-cart-trigger add_CartNum">
             <ul class="count" style="display:none;">
               <li>0</li>
@@ -94,6 +96,7 @@
             </ul>
       </span>
   </div>
+
 </div>
 <!--上架提醒状态-->
 <!--<div class="details_Remind">
@@ -107,36 +110,6 @@
     </div>
 </div>-->
 <div class="sh_Model_box">
-	<div class=" sh_Model_Center">
-		<div class="allFlex sp_modelImg">
-			<div class="sp_Model_zoom">
-		    	<img src="images/GL_img_12.jpg">
-            </div>
-			<div class="allFlex sp_Price">
-				<p>1,688.12元</p>
-			</div>
-		</div>
-		<div class="sp_model_col">
-			<p>颜色</p>
-			<ul class="clearfix">
-				<li><span>红</span><span>黄</span><span>蓝</span><span>绿</span><span>青</span><span>紫</span></li>
-			</ul>
-		</div>
-        <div class="sp_model_size">
-			<p>尺码</p>
-			<ul class="clearfix">
-				<li><span>S</span><span>M</span><span>L</span><span>XL</span></li>
-			</ul>
-		</div>
-		<div class="sp_model_num">
-			<p>数量</p>
-			<div class="sp_modelNu">
-				<span class="sp_jian">-</span>
-                <span class="sp_num">1</span>
-                <span class="sp_jia ">+</span>
-			</div>
-		</div>
-	</div>
     <div id="msg" style="display:none;">已成功加入购物车！</div>
 </div>
 <script src="js/jquery-1.11.0.min.js"></script>
@@ -149,16 +122,16 @@ pagination : '.swiper-pagination',
 //pagination : '#swiper-pagination1',
 })
  //
-    $('.sp_Spec li').eq(0).click(function(){
-    	$('.sh_Model_box').show()
-    	$('.sh_Model_Center').css('bottom','6.7%')
-    })
+ //    $('.sp_Spec li').eq(0).click(function(){
+ //    	$('.sh_Model_box').show()
+ //    	//$('.sh_Model_Center').css('bottom','6.7%')
+ //    })
     $('.sh_Model_box').click(function(event){
     	var _con = $('.sh_Model_Center');  // 设置目标区域
-        if(!_con.is(event.target) && _con.has(event.target).length === 0){ // Mark 1
-           $('.sh_Model_Center').css('bottom','-30rem')
+        if(!_con.is(event.target) && _con.has(event.target).length === 0){ // Mark 1
+      // $('.sh_Model_Center').css('bottom','-30rem')
     		$('.sh_Model_box').hide()
-        }
+     }
     })
 // 规格加减
     $('body').on('click','.sp_jia',function(){
@@ -194,8 +167,19 @@ pagination : '.swiper-pagination',
 	//飞入购物车效果
 	var offset = $("#end").offset();
 	$(".sp_Shopping").click(function(event){
-		$('.sh_Model_box').show()
-    	$('.sh_Model_Center').css('bottom','6.7%')
+        goodsId= $('.add_Cart').attr("goodsId") ;
+        $.ajaxSettings.async = false;
+        $.post("/pages/front/cart/goodsAdd.action",{goodsId:goodsId},function(result){
+            if(result){
+                $('.sh_Model_box').show()
+                $("#msg").show().fadeOut(4000);
+            }
+        });
+        $.ajaxSettings.async = true;
+
+
+        //$('.sh_Model_box').destory();
+    	//$('.sh_Model_Center').css('bottom','80%')
     	if($('.sp_model_colLi').html()!=undefined&&$('.sp_model_col').find('.sp_model_colLi').html()!=undefined){
     		var addcar = $('.sp_Model_zoom');
 			var img = addcar.find('img').attr('src');

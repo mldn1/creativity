@@ -146,7 +146,7 @@ $(function(){
 		if($(this).attr('class')=='gw_ShopB gw_ShopBs'){
 			$('.gw_ShopB').html('编辑');
 			$('.gw_ShopB').removeClass('gw_ShopBs');
-			$('.jiesuan').html('结算');
+			$('.jiesuan').html('下单');
 			$('.jiesuan').removeClass('allClear');
 			$('.clearList').css('display','none');
 		}else{
@@ -160,5 +160,19 @@ $(function(){
 	$('body').on('click','.allClear',function(){
 		$('.clearModelBox').css('display','flex');
 		all = true;
+	})
+
+
+	$('body').on('click','.jiesuan',function(){
+		var selectGoods = $('.checkbox2').length;
+		var goodsIds = "";
+		if(selectGoods>0){
+			for(var i=0;i<selectGoods;i++){
+				goodsIds += $('.checkbox2').eq(i).attr("goodsid")+";";
+			}
+		}else{
+			alert("请选择结算商品！") ;
+		}
+		window.open('pages/front/cart/shopping_cart_1.action?goodsIds='+goodsIds,'_self');
 	})
 })

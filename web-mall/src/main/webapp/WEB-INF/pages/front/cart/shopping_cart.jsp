@@ -48,10 +48,10 @@ window.onresize = function(){
 				<!-- 购物车内容列表 -->
 				<c:forEach items="${allCarts}" var="cart" >
 					<div class="gouLisBox">
-						<div class="gouListFor clearfix" goodsId="${cart.goodsId}">
+						<div class="gouListFor clearfix" >
 							<div class="gouListLeft">
 								<div class="el-checkbox">
-									<a href="javascript:;" class="checkbox"><img src="images/GL_icon_42.png"></a>
+									<a href="javascript:;" class="checkbox" goodsId="${cart.goodsId}"><img src="images/GL_icon_42.png"></a>
 								</div>
 							</div>
 							<div class="gouListcon"><img src="http://49.234.26.219/${cart.goodsUrl}"></div>

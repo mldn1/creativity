@@ -41,7 +41,7 @@ window.onresize = function(){
     <p>感谢您光临文创文创馆</p>
     <div class="success_Btn">
     	<input type="button" value="查看我的订单" name="" onClick="window.open('pages/front/order/order_details.action','_self');">
-        <input type="button" value="继续逛逛" name="" onClick="window.open('pages/front/main/index.main','_self');">
+        <input type="button" value="继续逛逛" name="" onClick="window.open('/index.action','_self');">
     </div>
 </div>
 <div class="pay_Details">

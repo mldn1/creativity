@@ -13,10 +13,10 @@
 .footer{ height:2.15rem; position:fixed; left:0; bottom:0; width:100%; z-index:2;background-color:#0f1837;}
 .active{color:#b1812c !important;} 
 .nav_link_ul li{ flex-grow:0; width:15%; margin:1.5% 0; text-align:center; font-size:0.55rem;} 
-#homeLink{ background:url(/WEB-INF/assets/images/GL_icon_01.png) no-repeat center 0rem; padding-top:1rem;background-size:35%;}
-#taskLink{ background:url(/WEB-INF/assets/images/GL_icon_02.png) no-repeat center 0rem; padding-top:1rem; background-size:35%;}
-#messageLink{ background:url(/WEB-INF/assets/images/GL_icon_03.png) no-repeat center 0rem; padding-top:1rem; background-size:35%;}
-#userLink{ background:url(/WEB-INF/assets/images/GL_icon_04.png) no-repeat center 0rem; padding-top:1rem; background-size:35%;}
+#homeLink{ background:url(/images/GL_icon_01.png) no-repeat center 0rem; padding-top:1rem;background-size:35%;}
+#taskLink{ background:url(/images/GL_icon_02.png) no-repeat center 0rem; padding-top:1rem; background-size:35%;}
+#messageLink{ background:url(/images/GL_icon_03.png) no-repeat center 0rem; padding-top:1rem; background-size:35%;}
+#userLink{ background:url(/images/GL_icon_04.png) no-repeat center 0rem; padding-top:1rem; background-size:35%;}
 .nav_link_ul li a{ display:inline-block; width:100%; color:#e2dbce; font-size:0.5rem;} 
 .active{ background-position:center -1.885rem !important; width:100%;} 
 /*全屏滚动*/ 
@@ -515,10 +515,10 @@ a.clearList img{ width:70%;}
 .payment li span:last-child{ font-size:0.65rem; width:70%;}
 .pay_zfb,.pay_wx{ width:15%;}
 .pay_Font{ text-align:left; width:65%;}
-.gou_Btn{ width:10%; background:url(assets/images/GL_icon_42.png) no-repeat center left; display:block; height:2.5rem; background-size:55%;}
-.gouBtn_1{background:url(assets/images/GL_icon_43.png) no-repeat center left;background-size:55%;}
-.gou_Btn_2{ width:10%; background:url(assets/images/GL_icon_52.png) no-repeat center left; display:block; height:2.5rem; background-size:55%;}
-.gouBtn_3{background:url(assets/images/GL_icon_53.png) no-repeat center left;background-size:55%;}
+.gou_Btn{ width:10%; background:url(/images/GL_icon_42.png) no-repeat center left; display:block; height:2.5rem; background-size:55%;}
+.gouBtn_1{background:url(/images/GL_icon_43.png) no-repeat center left;background-size:55%;}
+.gou_Btn_2{ width:10%; background:url(/images/GL_icon_52.png) no-repeat center left; display:block; height:2.5rem; background-size:55%;}
+.gouBtn_3{background:url(/images/GL_icon_53.png) no-repeat center left;background-size:55%;}
 .pay_Way{ width:100%; margin:0 auto; position:fixed; left:0; bottom:0; height:2.5rem;}
 .pay_Way input[type='button']{ width:100%; height:2.5rem; line-height:2.5rem; color:#0f1837; font-size:0.7rem; text-align:center; border:none; border-radius:0; box-shadow:none; background-color:#b1812c;}
 /*--------------------------------------下单成功---------------------------------------*/
@@ -580,7 +580,7 @@ a.Card_r{ width:30%;text-align:right; color:#888;}
 .width_All li{ line-height:2.7rem; height:2.7rem;}
 .width_All p{ color:#666; text-align:center; margin-top:5%; font-size:0.6rem;}
 /*------------------------------------搜索---------------------------------------*/
-.search_None{ height:10vh; padding:15% 0 4% 0; background:url(assets/images/GL_icon_46.png) no-repeat top center; background-size:10%; text-align:center; margin-top:10%;}
+.search_None{ height:10vh; padding:15% 0 4% 0; background:url(/images/GL_icon_46.png) no-repeat top center; background-size:10%; text-align:center; margin-top:10%;}
 .search_None p{ font-size:0.65rem; color:#666;}
 .search_Hot{ width:92%; padding:4%; margin-top:3%;}
 .search_History{ width:92%; padding:4% 4% 0 4%;}
