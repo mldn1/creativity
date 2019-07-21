@@ -72,4 +72,8 @@ public class TestOrderService {
             System.err.println("订单编辑测试"+this.ordersService.editOrder(orders));
         }).start();
     }
+    @Test
+    public void testOrdersGoodsName() {
+        System.out.println(this.ordersService.listOrderGoodsName()) ;
+    }
 }

@@ -151,4 +151,6 @@ public interface IOrdersDAO {
      */
     public long editOrderByOid(Orders orders) ;
 
+    public List<Orders_goods> findOGoodsName() ;
+
 }

@@ -2,6 +2,9 @@ package com.yootk.oa.dao;
 
 import com.yootk.dubbo.vo.Team;
 
+import java.util.List;
+import java.util.Map;
+
 public interface TeamMapper {
     int deleteByPrimaryKey(Long tid);
 
@@ -14,4 +17,10 @@ public interface TeamMapper {
     int updateByPrimaryKeySelective(Team record);
 
     int updateByPrimaryKey(Team record);
+
+    List<Team> findSplitByProid(Map<String, Object> params);
+
+    int getTeamCount(Long proid);
+
+    List<Long> findEids(Long proid);
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yootk.oa.dao.ApplyStateMapper">
-  <resultMap id="BaseResultMap" type="com.yootk.dubbo.vo.ApplyState">
+  <resultMap id="BaseResultMap" type="ApplyState">
     <id column="asid" jdbcType="BIGINT" property="asid" />
     <result column="state" jdbcType="INTEGER" property="state" />
   </resultMap>
@@ -12,17 +12,17 @@
     select 
     <include refid="Base_Column_List" />
     from apply_state
-    where asid = #{asid,jdbcType=BIGINT}
+    where asid = #{asid}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from apply_state
-    where asid = #{asid,jdbcType=BIGINT}
+    where asid = #{asid}
   </delete>
-  <insert id="insert" parameterType="com.yootk.oa.vo.ApplyState">
+  <insert id="insert" parameterType="ApplyState">
     insert into apply_state (asid, state)
-    values (#{asid,jdbcType=BIGINT}, #{state,jdbcType=INTEGER})
+    values (#{asid}, #{state})
   </insert>
-  <insert id="insertSelective" parameterType="com.yootk.oa.vo.ApplyState">
+  <insert id="insertSelective" parameterType="ApplyState">
     insert into apply_state
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="asid != null">
@@ -34,25 +34,25 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="asid != null">
-        #{asid,jdbcType=BIGINT},
+        #{asid},
       </if>
       <if test="state != null">
-        #{state,jdbcType=INTEGER},
+        #{state},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yootk.oa.vo.ApplyState">
+  <update id="updateByPrimaryKeySelective" parameterType="ApplyState">
     update apply_state
     <set>
       <if test="state != null">
-        state = #{state,jdbcType=INTEGER},
+        state = #{state},
       </if>
     </set>
-    where asid = #{asid,jdbcType=BIGINT}
+    where asid = #{asid}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yootk.oa.vo.ApplyState">
+  <update id="updateByPrimaryKey" parameterType="ApplyState">
     update apply_state
-    set state = #{state,jdbcType=INTEGER}
-    where asid = #{asid,jdbcType=BIGINT}
+    set state = #{state}
+    where asid = #{asid}
   </update>
 </mapper>

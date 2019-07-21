@@ -1,47 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yootk.oa.dao.AskLeaveMapper">
-  <resultMap id="BaseResultMap" type="com.yootk.dubbo.vo.AskLeave">
-    <id column="alid" jdbcType="BIGINT" property="alid" />
-    <result column="eid" jdbcType="BIGINT" property="eid" />
-    <result column="type" jdbcType="INTEGER" property="type" />
-    <result column="startdate" jdbcType="TIMESTAMP" property="startdate" />
-    <result column="enddate" jdbcType="TIMESTAMP" property="enddate" />
-    <result column="reason" jdbcType="TEXT" property="reason" />
-    <result column="picture" jdbcType="VARCHAR" property="picture" />
-    <result column="approver" jdbcType="BIGINT" property="approver" />
-    <result column="note" jdbcType="TEXT" property="note" />
-    <result column="state" jdbcType="INTEGER" property="state" />
-    <result column="result" jdbcType="INTEGER" property="result" />
-    <result column="progress" jdbcType="INTEGER" property="progress" />
-  </resultMap>
+<!--  <resultMap id="BaseResultMap" type="AskLeave">-->
+<!--    <id column="alid" jdbcType="BIGINT" property="alid" />-->
+<!--    <result column="eid" jdbcType="BIGINT" property="eid" />-->
+<!--    <result column="type" jdbcType="INTEGER" property="type" />-->
+<!--    <result column="startdate" jdbcType="TIMESTAMP" property="startdate" />-->
+<!--    <result column="enddate" jdbcType="TIMESTAMP" property="enddate" />-->
+<!--    <result column="reason" jdbcType="TEXT" property="reason" />-->
+<!--    <result column="picture" jdbcType="VARCHAR" property="picture" />-->
+<!--    <result column="approver" jdbcType="BIGINT" property="approver" />-->
+<!--    <result column="note" jdbcType="TEXT" property="note" />-->
+<!--    <result column="state" jdbcType="INTEGER" property="state" />-->
+<!--    <result column="result" jdbcType="INTEGER" property="result" />-->
+<!--    <result column="progress" jdbcType="INTEGER" property="progress" />-->
+<!--  </resultMap>-->
   <sql id="Base_Column_List">
     alid, eid, type, startdate, enddate, reason, picture, approver, note, state, result, 
     progress
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultType="AskLeave">
     select 
     <include refid="Base_Column_List" />
     from ask_leave
-    where alid = #{alid,jdbcType=BIGINT}
+    where alid = #{alid}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from ask_leave
-    where alid = #{alid,jdbcType=BIGINT}
+    where alid = #{alid}
   </delete>
-  <insert id="insert" parameterType="com.yootk.oa.vo.AskLeave">
+  <insert id="insert" parameterType="AskLeave">
     insert into ask_leave (alid, eid, type, 
       startdate, enddate, reason, 
       picture, approver, note, 
       state, result, progress
       )
-    values (#{alid,jdbcType=BIGINT}, #{eid,jdbcType=BIGINT}, #{type,jdbcType=INTEGER}, 
-      #{startdate,jdbcType=TIMESTAMP}, #{enddate,jdbcType=TIMESTAMP}, #{reason,jdbcType=TEXT}, 
-      #{picture,jdbcType=VARCHAR}, #{approver,jdbcType=BIGINT}, #{note,jdbcType=TEXT}, 
-      #{state,jdbcType=INTEGER}, #{result,jdbcType=INTEGER}, #{progress,jdbcType=INTEGER}
+    values (#{alid}, #{eid}, #{type}, 
+      #{startdate}, #{enddate}, #{reason}, 
+      #{picture}, #{approver}, #{note}, 
+      #{state}, #{result}, #{progress}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.yootk.oa.vo.AskLeave">
+  <insert id="insertSelective" parameterType="AskLeave">
     insert into ask_leave
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="alid != null">
@@ -83,95 +83,95 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="alid != null">
-        #{alid,jdbcType=BIGINT},
+        #{alid},
       </if>
       <if test="eid != null">
-        #{eid,jdbcType=BIGINT},
+        #{eid},
       </if>
       <if test="type != null">
-        #{type,jdbcType=INTEGER},
+        #{type},
       </if>
       <if test="startdate != null">
-        #{startdate,jdbcType=TIMESTAMP},
+        #{startdate},
       </if>
       <if test="enddate != null">
-        #{enddate,jdbcType=TIMESTAMP},
+        #{enddate},
       </if>
       <if test="reason != null">
-        #{reason,jdbcType=TEXT},
+        #{reason},
       </if>
       <if test="picture != null">
-        #{picture,jdbcType=VARCHAR},
+        #{picture},
       </if>
       <if test="approver != null">
-        #{approver,jdbcType=BIGINT},
+        #{approver},
       </if>
       <if test="note != null">
-        #{note,jdbcType=TEXT},
+        #{note},
       </if>
       <if test="state != null">
-        #{state,jdbcType=INTEGER},
+        #{state},
       </if>
       <if test="result != null">
-        #{result,jdbcType=INTEGER},
+        #{result},
       </if>
       <if test="progress != null">
-        #{progress,jdbcType=INTEGER},
+        #{progress},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yootk.oa.vo.AskLeave">
+  <update id="updateByPrimaryKeySelective" parameterType="AskLeave">
     update ask_leave
     <set>
       <if test="eid != null">
-        eid = #{eid,jdbcType=BIGINT},
+        eid = #{eid},
       </if>
       <if test="type != null">
-        type = #{type,jdbcType=INTEGER},
+        type = #{type},
       </if>
       <if test="startdate != null">
-        startdate = #{startdate,jdbcType=TIMESTAMP},
+        startdate = #{startdate},
       </if>
       <if test="enddate != null">
-        enddate = #{enddate,jdbcType=TIMESTAMP},
+        enddate = #{enddate},
       </if>
       <if test="reason != null">
-        reason = #{reason,jdbcType=TEXT},
+        reason = #{reason},
       </if>
       <if test="picture != null">
-        picture = #{picture,jdbcType=VARCHAR},
+        picture = #{picture},
       </if>
       <if test="approver != null">
-        approver = #{approver,jdbcType=BIGINT},
+        approver = #{approver},
       </if>
       <if test="note != null">
-        note = #{note,jdbcType=TEXT},
+        note = #{note},
       </if>
       <if test="state != null">
-        state = #{state,jdbcType=INTEGER},
+        state = #{state},
       </if>
       <if test="result != null">
-        result = #{result,jdbcType=INTEGER},
+        result = #{result},
       </if>
       <if test="progress != null">
-        progress = #{progress,jdbcType=INTEGER},
+        progress = #{progress},
       </if>
     </set>
-    where alid = #{alid,jdbcType=BIGINT}
+    where alid = #{alid}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yootk.oa.vo.AskLeave">
+  <update id="updateByPrimaryKey" parameterType="AskLeave">
     update ask_leave
-    set eid = #{eid,jdbcType=BIGINT},
-      type = #{type,jdbcType=INTEGER},
-      startdate = #{startdate,jdbcType=TIMESTAMP},
-      enddate = #{enddate,jdbcType=TIMESTAMP},
-      reason = #{reason,jdbcType=TEXT},
-      picture = #{picture,jdbcType=VARCHAR},
-      approver = #{approver,jdbcType=BIGINT},
-      note = #{note,jdbcType=TEXT},
-      state = #{state,jdbcType=INTEGER},
-      result = #{result,jdbcType=INTEGER},
-      progress = #{progress,jdbcType=INTEGER}
-    where alid = #{alid,jdbcType=BIGINT}
+    set eid = #{eid},
+      type = #{type},
+      startdate = #{startdate},
+      enddate = #{enddate},
+      reason = #{reason},
+      picture = #{picture},
+      approver = #{approver},
+      note = #{note},
+      state = #{state},
+      result = #{result},
+      progress = #{progress}
+    where alid = #{alid}
   </update>
 </mapper>

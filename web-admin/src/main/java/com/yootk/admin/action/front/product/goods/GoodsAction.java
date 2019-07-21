@@ -1,6 +1,7 @@
 package com.yootk.admin.action.front.product.goods;
 
-import com.yootk.dubbo.service.ICategoryService;
+
+import com.yootk.dubbo.service.ICategorysService;
 import com.yootk.dubbo.service.IGoodsService;
 import com.yootk.dubbo.service.IGoods_stateService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ public class GoodsAction {
     @Autowired
     private IGoods_stateService goods_stateService;
     @Autowired
-    private ICategoryService categoryService;
+    private ICategorysService categoryService;
     @Autowired
     private IGoodsService goodsService ;
     @RequestMapping("product_list")

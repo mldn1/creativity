@@ -29,7 +29,7 @@
     "<thead>" +
     "<tr class='header-days'>" +
     "<% for(var i = 0; i < daysOfTheWeek.length; i++) { %>" +
-      "<td class='header-day'><%= daysOfTheWeek[i] %></td>" +
+      "<td class='header-date'><%= daysOfTheWeek[i] %></td>" +
     "<% } %>" +
     "</tr>" +
     "</thead>" +
@@ -38,7 +38,7 @@
       "<tr>" +
       "<% for(var j = 0; j < 7; j++){ %>" +
       "<% var d = j + i * 7; %>" +
-      "<td class='<%= days[d].classes %>'><div class='day-contents'><%= days[d].day %>" +
+      "<td class='<%= days[d].classes %>'><div class='date-contents'><%= days[d].date %>" +
       "</div></td>" +
       "<% } %>" +
       "</tr>" +
@@ -135,7 +135,7 @@
     this._defaults = defaults;
     this._name = pluginName;
 
-    // Some first-time initialization -> day of the week offset,
+    // Some first-time initialization -> date of the week offset,
     // template compiling, making and storing some elements we'll need later,
     // & event handling for the controller.
     this.init();
@@ -207,7 +207,7 @@
     if(this.options.events.length) {
 
       // MULTI-DAY EVENT PARSING
-      // if we're using multi-day events, the start or end must be in the current month
+      // if we're using multi-date events, the start or end must be in the current month
       if(this.options.multiDayEvents) {
         this.eventsThisMonth = $(this.options.events).filter( function() {
           return this._clndrStartDateObject.format("YYYY-MM") == currentMonth.format("YYYY-MM")
@@ -230,7 +230,7 @@
       }
 
       // SINGLE-DAY EVENT PARSING
-      // if we're using single-day events, use _clndrDateObject
+      // if we're using single-date events, use _clndrDateObject
       else {
         this.eventsThisMonth = $(this.options.events).filter( function() {
           return this._clndrDateObject.format("YYYY-MM") == currentMonth.format("YYYY-MM");
@@ -313,12 +313,12 @@
     var j = 0, l = monthEvents.length;
     for(j; j < l; j++) {
       // keep in mind that the events here already passed the month/year test.
-      // now all we have to compare is the moment.date(), which returns the day of the month.
+      // now all we have to compare is the moment.date(), which returns the date of the month.
       if(self.options.multiDayEvents) {
         var start = monthEvents[j]._clndrStartDateObject;
         var end = monthEvents[j]._clndrEndDateObject;
-        // if today is the same day as start or is after the start, and
-        // if today is the same day as the end or before the end ...
+        // if today is the same date as start or is after the start, and
+        // if today is the same date as the end or before the end ...
         // woohoo semantics!
         if( ( day.isSame(start, 'day') || day.isAfter(start, 'day') ) &&
           ( day.isSame(end, 'day') || day.isBefore(end, 'day') ) ) {
@@ -375,7 +375,7 @@
     // we're moving away from using IDs in favor of classes, since when
     // using multiple calendars on a page we are technically violating the
     // uniqueness of IDs.
-    extraClasses += " calendar-day-" + day.format("YYYY-MM-DD");
+    extraClasses += " calendar-date-" + day.format("YYYY-MM-DD");
 
     return this.calendarDay({
       day: day.date(),
@@ -464,7 +464,7 @@
     var $container = $(this.element);
     var self = this;
 
-    // target the day elements and give them click events
+    // target the date elements and give them click events
     $container.on('click', '.'+this.options.targets.day, function(event) {
       if(self.options.clickEvents.click) {
         var target = self.buildTargetObject(event.currentTarget, true);
@@ -508,18 +508,18 @@
   // the DOM element, events, and the date (if the latter two exist). Currently it is based on the id,
   // however it'd be nice to use a data- attribute in the future.
   Clndr.prototype.buildTargetObject = function(currentTarget, targetWasDay) {
-    // This is our default target object, assuming we hit an empty day with no events.
+    // This is our default target object, assuming we hit an empty date with no events.
     var target = {
       element: currentTarget,
       events: [],
       date: null
     };
-    // did we click on a day or just an empty box?
+    // did we click on a date or just an empty box?
     if(targetWasDay) {
       var dateString;
 
       // Our identifier is in the list of classNames. Find it!
-      var classNameIndex = currentTarget.className.indexOf('calendar-day-');
+      var classNameIndex = currentTarget.className.indexOf('calendar-date-');
       if(classNameIndex !== 0) {
         // our unique identifier is always 23 characters long.
         // If this feels a little wonky, that's probably because it is.

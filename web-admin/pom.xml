@@ -12,10 +12,16 @@
     <artifactId>web-admin</artifactId>
     <packaging>war</packaging>
 
-    <name>web-mall Maven Webapp</name>
+    <name>web-admin Maven Webapp</name>
     <url>http://www.example.com</url>
 
     <dependencies>
+
+        <dependency>
+            <groupId>org.apache.taglibs</groupId>
+            <artifactId>taglibs-standard-impl</artifactId>
+            <version>1.2.5</version>
+        </dependency>
         <!-- 公告包 -->
         <dependency>
             <groupId>com.yootk</groupId>
@@ -30,6 +36,11 @@
             <artifactId>util</artifactId>
         </dependency>
         <!-- 公告包 -->
+        <!-- RabbitMQ组件包 -->
+        <dependency>
+            <groupId>org.springframework.amqp</groupId>
+            <artifactId>spring-rabbit</artifactId>
+        </dependency>
         <!--dubbo依赖 -->
         <dependency>
             <groupId>com.alibaba</groupId>
@@ -228,9 +239,12 @@
         </dependency>
         <!-- WEB依赖 -->
         <dependency>
-            <groupId>javax.servlet</groupId>
+            <groupId>javax.servlet.jsp.jstl</groupId>
             <artifactId>jstl</artifactId>
-            <version>1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet.jsp.jstl</groupId>
+            <artifactId>jstl-api</artifactId>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -240,13 +254,6 @@
             <groupId>javax.servlet.jsp</groupId>
             <artifactId>javax.servlet.jsp-api</artifactId>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.taglibs/taglibs-standard-impl -->
-        <dependency>
-            <groupId>org.apache.taglibs</groupId>
-            <artifactId>taglibs-standard-impl</artifactId>
-            <version>1.2.5</version>
-        </dependency>
-
         <!-- Spring依赖包结束-->
         <!-- Junit测试依赖 -->
         <dependency>

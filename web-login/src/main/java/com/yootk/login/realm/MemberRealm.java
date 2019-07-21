@@ -18,15 +18,15 @@ public class MemberRealm extends AuthorizingRealm {
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
         System.err.println("【1】｛MemberRealm｝============== 用户认证处理 ==============");
-        String phone = (String) token.getPrincipal() ;
-        Emp emp = this.oauthService.getEmp(phone) ; // 根据mid查询用户信息
+        String mid = (String) token.getPrincipal() ;
+        Emp emp = this.oauthService.getEmp(mid) ; // 根据mid查询用户信息
         if (emp == null) {   // 用户信息不存在
-            throw new UnknownAccountException(phone + "账户信息不存在！") ;
+            throw new UnknownAccountException(mid + "账户信息不存在！") ;
         }
         if (emp.getState().equals(1)) { // 用户锁定了
-            throw new LockedAccountException(phone + "账户已经被锁定！");
+            throw new LockedAccountException(mid + "账户已经被锁定！");
         }
-        return new SimpleAuthenticationInfo(token.getPrincipal(),emp.getPassword(),this.getName());
+        return new SimpleAuthenticationInfo(emp.getPhone(),emp.getPassword(),this.getName());
     }
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {

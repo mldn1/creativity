@@ -3,6 +3,7 @@ package com.yootk.dubbo.service;
 import com.sun.org.apache.xpath.internal.operations.Or;
 import com.yootk.dubbo.vo.Orders;
 import com.yootk.dubbo.vo.Orders_address;
+import com.yootk.dubbo.vo.Orders_goods;
 import com.yootk.dubbo.vo.PayState;
 
 import java.util.Date;
@@ -63,4 +64,10 @@ public interface IOrdersService {
      * @return
      */
     public boolean editOrder(Orders orders) ;
+
+    /**
+     * 商品查询
+     * @return
+     */
+    public List<Orders_goods> listOrderGoodsName() ;
 }

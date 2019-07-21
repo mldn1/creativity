@@ -1,8 +1,9 @@
 package com.yootk.dubbo.vo;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Team {
+public class Team implements Serializable {
     private Long tid;
 
     private Long proid;

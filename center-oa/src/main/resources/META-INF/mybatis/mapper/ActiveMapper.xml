@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yootk.oa.dao.ActiveMapper">
-  <resultMap id="BaseResultMap" type="com.yootk.dubbo.vo.Active">
+  <resultMap id="BaseResultMap" type="Active">
     <id column="aid" jdbcType="BIGINT" property="aid" />
     <result column="title" jdbcType="VARCHAR" property="title" />
     <result column="description" jdbcType="VARCHAR" property="description" />
@@ -25,25 +25,25 @@
     select 
     <include refid="Base_Column_List" />
     from active
-    where aid = #{aid,jdbcType=BIGINT}
+    where aid = #{aid}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from active
-    where aid = #{aid,jdbcType=BIGINT}
+    where aid = #{aid}
   </delete>
-  <insert id="insert" parameterType="com.yootk.dubbo.vo.Active">
+  <insert id="insert" parameterType="Active">
     insert into active (aid, title, description, 
       context, type, mgrade, 
       count, startdate, enddate, 
       gid, state, createdate, 
       editdate, eid)
-    values (#{aid,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
-      #{context,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, #{mgrade,jdbcType=INTEGER}, 
-      #{count,jdbcType=INTEGER}, #{startdate,jdbcType=TIMESTAMP}, #{enddate,jdbcType=TIMESTAMP}, 
-      #{gid,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER}, #{createdate,jdbcType=TIMESTAMP}, 
-      #{editdate,jdbcType=TIMESTAMP}, #{eid,jdbcType=BIGINT})
+    values (#{aid}, #{title}, #{description}, 
+      #{context}, #{type}, #{mgrade}, 
+      #{count}, #{startdate}, #{enddate}, 
+      #{gid}, #{state}, #{createdate}, 
+      #{editdate}, #{eid})
   </insert>
-  <insert id="insertSelective" parameterType="com.yootk.dubbo.vo.Active">
+  <insert id="insertSelective" parameterType="Active">
     insert into active
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="aid != null">
@@ -91,109 +91,109 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="aid != null">
-        #{aid,jdbcType=BIGINT},
+        #{aid},
       </if>
       <if test="title != null">
-        #{title,jdbcType=VARCHAR},
+        #{title},
       </if>
       <if test="description != null">
-        #{description,jdbcType=VARCHAR},
+        #{description},
       </if>
       <if test="context != null">
-        #{context,jdbcType=VARCHAR},
+        #{context},
       </if>
       <if test="type != null">
-        #{type,jdbcType=INTEGER},
+        #{type},
       </if>
       <if test="mgrade != null">
-        #{mgrade,jdbcType=INTEGER},
+        #{mgrade},
       </if>
       <if test="count != null">
-        #{count,jdbcType=INTEGER},
+        #{count},
       </if>
       <if test="startdate != null">
-        #{startdate,jdbcType=TIMESTAMP},
+        #{startdate},
       </if>
       <if test="enddate != null">
-        #{enddate,jdbcType=TIMESTAMP},
+        #{enddate},
       </if>
       <if test="gid != null">
-        #{gid,jdbcType=VARCHAR},
+        #{gid},
       </if>
       <if test="state != null">
-        #{state,jdbcType=INTEGER},
+        #{state},
       </if>
       <if test="createdate != null">
-        #{createdate,jdbcType=TIMESTAMP},
+        #{createdate},
       </if>
       <if test="editdate != null">
-        #{editdate,jdbcType=TIMESTAMP},
+        #{editdate},
       </if>
       <if test="eid != null">
-        #{eid,jdbcType=BIGINT},
+        #{eid},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yootk.dubbo.vo.Active">
+  <update id="updateByPrimaryKeySelective" parameterType="Active">
     update active
     <set>
       <if test="title != null">
-        title = #{title,jdbcType=VARCHAR},
+        title = #{title},
       </if>
       <if test="description != null">
-        description = #{description,jdbcType=VARCHAR},
+        description = #{description},
       </if>
       <if test="context != null">
-        context = #{context,jdbcType=VARCHAR},
+        context = #{context},
       </if>
       <if test="type != null">
-        type = #{type,jdbcType=INTEGER},
+        type = #{type},
       </if>
       <if test="mgrade != null">
-        mgrade = #{mgrade,jdbcType=INTEGER},
+        mgrade = #{mgrade},
       </if>
       <if test="count != null">
-        count = #{count,jdbcType=INTEGER},
+        count = #{count},
       </if>
       <if test="startdate != null">
-        startdate = #{startdate,jdbcType=TIMESTAMP},
+        startdate = #{startdate},
       </if>
       <if test="enddate != null">
-        enddate = #{enddate,jdbcType=TIMESTAMP},
+        enddate = #{enddate},
       </if>
       <if test="gid != null">
-        gid = #{gid,jdbcType=VARCHAR},
+        gid = #{gid},
       </if>
       <if test="state != null">
-        state = #{state,jdbcType=INTEGER},
+        state = #{state},
       </if>
       <if test="createdate != null">
-        createdate = #{createdate,jdbcType=TIMESTAMP},
+        createdate = #{createdate},
       </if>
       <if test="editdate != null">
-        editdate = #{editdate,jdbcType=TIMESTAMP},
+        editdate = #{editdate},
       </if>
       <if test="eid != null">
-        eid = #{eid,jdbcType=BIGINT},
+        eid = #{eid},
       </if>
     </set>
-    where aid = #{aid,jdbcType=BIGINT}
+    where aid = #{aid}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yootk.dubbo.vo.Active">
+  <update id="updateByPrimaryKey" parameterType="Active">
     update active
-    set title = #{title,jdbcType=VARCHAR},
-      description = #{description,jdbcType=VARCHAR},
-      context = #{context,jdbcType=VARCHAR},
-      type = #{type,jdbcType=INTEGER},
-      mgrade = #{mgrade,jdbcType=INTEGER},
-      count = #{count,jdbcType=INTEGER},
-      startdate = #{startdate,jdbcType=TIMESTAMP},
-      enddate = #{enddate,jdbcType=TIMESTAMP},
-      gid = #{gid,jdbcType=VARCHAR},
-      state = #{state,jdbcType=INTEGER},
-      createdate = #{createdate,jdbcType=TIMESTAMP},
-      editdate = #{editdate,jdbcType=TIMESTAMP},
-      eid = #{eid,jdbcType=BIGINT}
-    where aid = #{aid,jdbcType=BIGINT}
+    set title = #{title},
+      description = #{description},
+      context = #{context},
+      type = #{type},
+      mgrade = #{mgrade},
+      count = #{count},
+      startdate = #{startdate},
+      enddate = #{enddate},
+      gid = #{gid},
+      state = #{state},
+      createdate = #{createdate},
+      editdate = #{editdate},
+      eid = #{eid}
+    where aid = #{aid}
   </update>
 </mapper>

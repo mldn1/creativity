@@ -1,48 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yootk.oa.dao.NewsMapper">
-  <resultMap id="BaseResultMap" type="com.yootk.dubbo.vo.News">
-    <id column="nid" jdbcType="BIGINT" property="nid" />
-    <result column="title" jdbcType="VARCHAR" property="title" />
-    <result column="shorttitle" jdbcType="VARCHAR" property="shorttitle" />
-    <result column="overview" jdbcType="VARCHAR" property="overview" />
-    <result column="context" jdbcType="TEXT" property="context" />
-    <result column="type" jdbcType="INTEGER" property="type" />
-    <result column="position" jdbcType="INTEGER" property="position" />
-    <result column="state" jdbcType="INTEGER" property="state" />
-    <result column="sort" jdbcType="INTEGER" property="sort" />
-    <result column="createdate" jdbcType="TIMESTAMP" property="createdate" />
-    <result column="editdate" jdbcType="TIMESTAMP" property="editdate" />
-    <result column="count" jdbcType="BIGINT" property="count" />
-    <result column="eid" jdbcType="BIGINT" property="eid" />
-  </resultMap>
   <sql id="Base_Column_List">
     nid, title, shorttitle, overview, context, type, position, state, sort, createdate, 
     editdate, count, eid
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultType="News">
     select 
     <include refid="Base_Column_List" />
     from news
-    where nid = #{nid,jdbcType=BIGINT}
+    where nid = #{nid}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from news
-    where nid = #{nid,jdbcType=BIGINT}
+    where nid = #{nid}
   </delete>
-  <insert id="insert" parameterType="com.yootk.dubbo.vo.News">
+  <insert id="insert" parameterType="News">
     insert into news (nid, title, shorttitle, 
       overview, context, type, 
       position, state, sort, 
       createdate, editdate, count, 
       eid)
-    values (#{nid,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, #{shorttitle,jdbcType=VARCHAR}, 
-      #{overview,jdbcType=VARCHAR}, #{context,jdbcType=TEXT}, #{type,jdbcType=INTEGER}, 
-      #{position,jdbcType=INTEGER}, #{state,jdbcType=INTEGER}, #{sort,jdbcType=INTEGER}, 
-      #{createdate,jdbcType=TIMESTAMP}, #{editdate,jdbcType=TIMESTAMP}, #{count,jdbcType=BIGINT}, 
-      #{eid,jdbcType=BIGINT})
+    values (#{nid}, #{title}, #{shorttitle}, 
+      #{overview}, #{context}, #{type}, 
+      #{position}, #{state}, #{sort}, 
+      #{createdate}, #{editdate}, #{count}, 
+      #{eid})
   </insert>
-  <insert id="insertSelective" parameterType="com.yootk.dubbo.vo.News">
+  <insert id="insertSelective" parameterType="News">
     insert into news
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="nid != null">
@@ -87,102 +72,102 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="nid != null">
-        #{nid,jdbcType=BIGINT},
+        #{nid},
       </if>
       <if test="title != null">
-        #{title,jdbcType=VARCHAR},
+        #{title},
       </if>
       <if test="shorttitle != null">
-        #{shorttitle,jdbcType=VARCHAR},
+        #{shorttitle},
       </if>
       <if test="overview != null">
-        #{overview,jdbcType=VARCHAR},
+        #{overview},
       </if>
       <if test="context != null">
-        #{context,jdbcType=TEXT},
+        #{context},
       </if>
       <if test="type != null">
-        #{type,jdbcType=INTEGER},
+        #{type},
       </if>
       <if test="position != null">
-        #{position,jdbcType=INTEGER},
+        #{position},
       </if>
       <if test="state != null">
-        #{state,jdbcType=INTEGER},
+        #{state},
       </if>
       <if test="sort != null">
-        #{sort,jdbcType=INTEGER},
+        #{sort},
       </if>
       <if test="createdate != null">
-        #{createdate,jdbcType=TIMESTAMP},
+        #{createdate},
       </if>
       <if test="editdate != null">
-        #{editdate,jdbcType=TIMESTAMP},
+        #{editdate},
       </if>
       <if test="count != null">
-        #{count,jdbcType=BIGINT},
+        #{count},
       </if>
       <if test="eid != null">
-        #{eid,jdbcType=BIGINT},
+        #{eid},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yootk.dubbo.vo.News">
+  <update id="updateByPrimaryKeySelective" parameterType="News">
     update news
     <set>
       <if test="title != null">
-        title = #{title,jdbcType=VARCHAR},
+        title = #{title},
       </if>
       <if test="shorttitle != null">
-        shorttitle = #{shorttitle,jdbcType=VARCHAR},
+        shorttitle = #{shorttitle},
       </if>
       <if test="overview != null">
-        overview = #{overview,jdbcType=VARCHAR},
+        overview = #{overview},
       </if>
       <if test="context != null">
-        context = #{context,jdbcType=TEXT},
+        context = #{context},
       </if>
       <if test="type != null">
-        type = #{type,jdbcType=INTEGER},
+        type = #{type},
       </if>
       <if test="position != null">
-        position = #{position,jdbcType=INTEGER},
+        position = #{position},
       </if>
       <if test="state != null">
-        state = #{state,jdbcType=INTEGER},
+        state = #{state},
       </if>
       <if test="sort != null">
-        sort = #{sort,jdbcType=INTEGER},
+        sort = #{sort},
       </if>
       <if test="createdate != null">
-        createdate = #{createdate,jdbcType=TIMESTAMP},
+        createdate = #{createdate},
       </if>
       <if test="editdate != null">
-        editdate = #{editdate,jdbcType=TIMESTAMP},
+        editdate = #{editdate},
       </if>
       <if test="count != null">
-        count = #{count,jdbcType=BIGINT},
+        count = #{count},
       </if>
       <if test="eid != null">
-        eid = #{eid,jdbcType=BIGINT},
+        eid = #{eid},
       </if>
     </set>
-    where nid = #{nid,jdbcType=BIGINT}
+    where nid = #{nid}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yootk.dubbo.vo.News">
+  <update id="updateByPrimaryKey" parameterType="News">
     update news
-    set title = #{title,jdbcType=VARCHAR},
-      shorttitle = #{shorttitle,jdbcType=VARCHAR},
-      overview = #{overview,jdbcType=VARCHAR},
-      context = #{context,jdbcType=TEXT},
-      type = #{type,jdbcType=INTEGER},
-      position = #{position,jdbcType=INTEGER},
-      state = #{state,jdbcType=INTEGER},
-      sort = #{sort,jdbcType=INTEGER},
-      createdate = #{createdate,jdbcType=TIMESTAMP},
-      editdate = #{editdate,jdbcType=TIMESTAMP},
-      count = #{count,jdbcType=BIGINT},
-      eid = #{eid,jdbcType=BIGINT}
-    where nid = #{nid,jdbcType=BIGINT}
+    set title = #{title},
+      shorttitle = #{shorttitle},
+      overview = #{overview},
+      context = #{context},
+      type = #{type},
+      position = #{position},
+      state = #{state},
+      sort = #{sort},
+      createdate = #{createdate},
+      editdate = #{editdate},
+      count = #{count},
+      eid = #{eid}
+    where nid = #{nid}
   </update>
 </mapper>

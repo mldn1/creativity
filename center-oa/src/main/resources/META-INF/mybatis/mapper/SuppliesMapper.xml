@@ -1,47 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yootk.oa.dao.SuppliesMapper">
-  <resultMap id="BaseResultMap" type="com.yootk.dubbo.vo.Supplies">
-    <id column="supid" jdbcType="BIGINT" property="supid" />
-    <result column="eid" jdbcType="BIGINT" property="eid" />
-    <result column="purpose" jdbcType="VARCHAR" property="purpose" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="count" jdbcType="INTEGER" property="count" />
-    <result column="details" jdbcType="TEXT" property="details" />
-    <result column="picture" jdbcType="VARCHAR" property="picture" />
-    <result column="approver" jdbcType="BIGINT" property="approver" />
-    <result column="note" jdbcType="TEXT" property="note" />
-    <result column="state" jdbcType="INTEGER" property="state" />
-    <result column="result" jdbcType="INTEGER" property="result" />
-    <result column="progress" jdbcType="INTEGER" property="progress" />
-  </resultMap>
+
   <sql id="Base_Column_List">
     supid, eid, purpose, name, count, details, picture, approver, note, state, result, 
     progress
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultType="Supplies">
     select 
     <include refid="Base_Column_List" />
     from supplies
-    where supid = #{supid,jdbcType=BIGINT}
+    where supid = #{supid}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from supplies
-    where supid = #{supid,jdbcType=BIGINT}
+    where supid = #{supid}
   </delete>
-  <insert id="insert" parameterType="com.yootk.oa.vo.Supplies">
+  <insert id="insert" parameterType="Supplies">
     insert into supplies (supid, eid, purpose, 
       name, count, details, 
       picture, approver, note, 
       state, result, progress
       )
-    values (#{supid,jdbcType=BIGINT}, #{eid,jdbcType=BIGINT}, #{purpose,jdbcType=VARCHAR}, 
-      #{name,jdbcType=VARCHAR}, #{count,jdbcType=INTEGER}, #{details,jdbcType=TEXT}, 
-      #{picture,jdbcType=VARCHAR}, #{approver,jdbcType=BIGINT}, #{note,jdbcType=TEXT}, 
-      #{state,jdbcType=INTEGER}, #{result,jdbcType=INTEGER}, #{progress,jdbcType=INTEGER}
+    values (#{supid}, #{eid}, #{purpose}, 
+      #{name}, #{count}, #{details}, 
+      #{picture}, #{approver}, #{note}, 
+      #{state}, #{result}, #{progress}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.yootk.oa.vo.Supplies">
+  <insert id="insertSelective" parameterType="Supplies">
     insert into supplies
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="supid != null">
@@ -83,95 +70,95 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="supid != null">
-        #{supid,jdbcType=BIGINT},
+        #{supid},
       </if>
       <if test="eid != null">
-        #{eid,jdbcType=BIGINT},
+        #{eid},
       </if>
       <if test="purpose != null">
-        #{purpose,jdbcType=VARCHAR},
+        #{purpose},
       </if>
       <if test="name != null">
-        #{name,jdbcType=VARCHAR},
+        #{name},
       </if>
       <if test="count != null">
-        #{count,jdbcType=INTEGER},
+        #{count},
       </if>
       <if test="details != null">
-        #{details,jdbcType=TEXT},
+        #{details},
       </if>
       <if test="picture != null">
-        #{picture,jdbcType=VARCHAR},
+        #{picture},
       </if>
       <if test="approver != null">
-        #{approver,jdbcType=BIGINT},
+        #{approver},
       </if>
       <if test="note != null">
-        #{note,jdbcType=TEXT},
+        #{note},
       </if>
       <if test="state != null">
-        #{state,jdbcType=INTEGER},
+        #{state},
       </if>
       <if test="result != null">
-        #{result,jdbcType=INTEGER},
+        #{result},
       </if>
       <if test="progress != null">
-        #{progress,jdbcType=INTEGER},
+        #{progress},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yootk.oa.vo.Supplies">
+  <update id="updateByPrimaryKeySelective" parameterType="Supplies">
     update supplies
     <set>
       <if test="eid != null">
-        eid = #{eid,jdbcType=BIGINT},
+        eid = #{eid},
       </if>
       <if test="purpose != null">
-        purpose = #{purpose,jdbcType=VARCHAR},
+        purpose = #{purpose},
       </if>
       <if test="name != null">
-        name = #{name,jdbcType=VARCHAR},
+        name = #{name},
       </if>
       <if test="count != null">
-        count = #{count,jdbcType=INTEGER},
+        count = #{count},
       </if>
       <if test="details != null">
-        details = #{details,jdbcType=TEXT},
+        details = #{details},
       </if>
       <if test="picture != null">
-        picture = #{picture,jdbcType=VARCHAR},
+        picture = #{picture},
       </if>
       <if test="approver != null">
-        approver = #{approver,jdbcType=BIGINT},
+        approver = #{approver},
       </if>
       <if test="note != null">
-        note = #{note,jdbcType=TEXT},
+        note = #{note},
       </if>
       <if test="state != null">
-        state = #{state,jdbcType=INTEGER},
+        state = #{state},
       </if>
       <if test="result != null">
-        result = #{result,jdbcType=INTEGER},
+        result = #{result},
       </if>
       <if test="progress != null">
-        progress = #{progress,jdbcType=INTEGER},
+        progress = #{progress},
       </if>
     </set>
-    where supid = #{supid,jdbcType=BIGINT}
+    where supid = #{supid}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yootk.oa.vo.Supplies">
+  <update id="updateByPrimaryKey" parameterType="Supplies">
     update supplies
-    set eid = #{eid,jdbcType=BIGINT},
-      purpose = #{purpose,jdbcType=VARCHAR},
-      name = #{name,jdbcType=VARCHAR},
-      count = #{count,jdbcType=INTEGER},
-      details = #{details,jdbcType=TEXT},
-      picture = #{picture,jdbcType=VARCHAR},
-      approver = #{approver,jdbcType=BIGINT},
-      note = #{note,jdbcType=TEXT},
-      state = #{state,jdbcType=INTEGER},
-      result = #{result,jdbcType=INTEGER},
-      progress = #{progress,jdbcType=INTEGER}
-    where supid = #{supid,jdbcType=BIGINT}
+    set eid = #{eid},
+      purpose = #{purpose},
+      name = #{name},
+      count = #{count},
+      details = #{details},
+      picture = #{picture},
+      approver = #{approver},
+      note = #{note},
+      state = #{state},
+      result = #{result},
+      progress = #{progress}
+    where supid = #{supid}
   </update>
 </mapper>

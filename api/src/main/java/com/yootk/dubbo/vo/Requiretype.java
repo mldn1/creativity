@@ -1,6 +1,8 @@
 package com.yootk.dubbo.vo;
 
-public class Requiretype {
+import java.io.Serializable;
+
+public class Requiretype implements Serializable {
     private Long id;
 
     private String title;

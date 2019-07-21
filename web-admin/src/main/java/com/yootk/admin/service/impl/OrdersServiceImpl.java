@@ -4,6 +4,7 @@ import com.alibaba.dubbo.config.annotation.Reference;
 import com.yootk.admin.service.IOrdersTransferService;
 import com.yootk.dubbo.service.IOrdersService;
 import com.yootk.dubbo.vo.Orders;
+import com.yootk.dubbo.vo.Orders_goods;
 import com.yootk.dubbo.vo.PayState;
 import org.springframework.stereotype.Service;
 
@@ -76,5 +77,10 @@ public class OrdersServiceImpl implements IOrdersTransferService {
     public boolean editOrder(Orders orders) {
 
         return this.ordersService.editOrder(orders);
+    }
+
+    @Override
+    public List<Orders_goods> listOGoodsName() {
+        return this.ordersService.listOrderGoodsName();
     }
 }

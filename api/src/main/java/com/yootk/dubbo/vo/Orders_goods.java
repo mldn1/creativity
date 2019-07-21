@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Orders_goods implements Serializable {
     private Long id ;
-    private Orders oid ;
+    private String oid ;
     private String gid ;
     private Integer count ;
     private Double price ;
@@ -30,11 +30,11 @@ public class Orders_goods implements Serializable {
         this.id = id;
     }
 
-    public Orders getOid() {
+    public String getOid() {
         return oid;
     }
 
-    public void setOid(Orders oid) {
+    public void setOid(String oid) {
         this.oid = oid;
     }
 

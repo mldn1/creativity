@@ -2,6 +2,7 @@ package com.yootk.admin.realm;
 
 import com.yootk.admin.filter.token.OAuthToken;
 import com.yootk.admin.service.IMemberPrivilegeService;
+import com.yootk.dubbo.vo.Emp;
 import org.apache.oltu.oauth2.client.OAuthClient;
 import org.apache.oltu.oauth2.client.URLConnectionClient;
 import org.apache.oltu.oauth2.client.request.OAuthBearerClientRequest;
@@ -37,11 +38,12 @@ public class OAuthRealm extends AuthorizingRealm {
         // 2、根据token获取此时的密码（code）
         String code = (String) oauthToken.getCredentials() ; // 获取Code信息
         // 3、用户名现在保存在远程的OAuth之中（Redis里）
-        String mid = this.getMemberInfoUrl(code) ; // 根据code获取用户信息
-        return new SimpleAuthenticationInfo(mid,code,this.getName());
+        String phone = this.getMemberInfoUrl(code) ; // 根据code获取用户信息
+        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(phone,code,this.getName());
+        return info;
     }
     private String getMemberInfoUrl(String code) {
-        String mid = null ; // 利用oAuth的资源访问获取用户信息
+        String phone = null ; // 利用oAuth的资源访问获取用户信息
         try {
             // 1、如果要进行OAuth访问，那么就必须配置有一个OAuth客户端处理类
             OAuthClient oauthClient = new OAuthClient(new URLConnectionClient());
@@ -64,15 +66,14 @@ public class OAuthRealm extends AuthorizingRealm {
             // 6、根据客户端的请求将memberInfo的请求进行发送，此时可以使用GET提交模式
             OAuthResourceResponse resourceResponse = oauthClient.resource(memberInfoRequest, OAuth.HttpMethod.GET, OAuthResourceResponse.class);
             // 7、获取了资源访问请求回应对象之后就可以获取对应的mid的数据信息
-            mid = resourceResponse.getBody() ;
+            phone = resourceResponse.getBody() ;
         } catch (Exception e) {}
-        return mid ;
+        return phone ;
     }
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         System.err.println("【2】｛MemberRealm｝************** 用户授权处理 **************");
         Map<String, Set<String>> map = this.memberPrivilegeService.getByMember((String) principals.getPrimaryPrincipal());
-        System.err.println("map=========================:"+map);
         // 将所有获取的授权信息保存在AuthorizationInfo类的实例之中
         SimpleAuthorizationInfo authz = new SimpleAuthorizationInfo() ; // 返回的授权信息
         authz.setRoles(map.get("allRoles"));

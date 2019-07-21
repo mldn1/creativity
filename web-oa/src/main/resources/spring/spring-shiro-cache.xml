@@ -12,9 +12,6 @@
     <bean id="authorizationCache" class="com.yootk.oa.util.cache.RedisCache">
         <property name="redisConnectionFactory" ref="shiroAuthorizationRedisConnectionFactory"/>
     </bean>
-    <bean id="retryRedisCache" class="com.yootk.oa.util.cache.RedisCache">
-        <property name="redisConnectionFactory" ref="shiroRetryRedisConnectionFactory"/>
-    </bean>
     <bean id="kickoutRedisCache" class="com.yootk.oa.util.cache.RedisCache">
         <property name="redisConnectionFactory" ref="kickoutRedisConnectionFactory"/>
     </bean>
@@ -25,7 +22,6 @@
                 <entry key="shiro-activeSessionCache" value-ref="sessionCache"/>
                 <entry key="authenticationCache" value-ref="authenticationCache"/>
                 <entry key="authorizationCache" value-ref="authorizationCache"/>
-                <entry key="retryCache" value-ref="retryRedisCache"/>
                 <entry key="kickoutCache" value-ref="kickoutRedisCache"/>
             </map>
         </property>

@@ -1,7 +1,7 @@
 package com.yootk;
 
-import com.yootk.ssm.util.EncryptUtil;
-import com.yootk.ssm.util.cache.RedisCache;
+import com.yootk.admin.util.EncryptUtil;
+import com.yootk.admin.util.cache.RedisCache;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

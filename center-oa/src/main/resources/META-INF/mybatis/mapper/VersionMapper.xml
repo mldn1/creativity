@@ -1,43 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yootk.oa.dao.VersionMapper">
-  <resultMap id="BaseResultMap" type="com.yootk.dubbo.vo.Version">
-    <id column="verid" jdbcType="BIGINT" property="verid" />
-    <result column="proid" jdbcType="BIGINT" property="proid" />
-    <result column="founder" jdbcType="BIGINT" property="founder" />
-    <result column="version" jdbcType="VARCHAR" property="version" />
-    <result column="packagedate" jdbcType="TIMESTAMP" property="packagedate" />
-    <result column="createdate" jdbcType="TIMESTAMP" property="createdate" />
-    <result column="source" jdbcType="VARCHAR" property="source" />
-    <result column="download" jdbcType="VARCHAR" property="download" />
-    <result column="distribution" jdbcType="VARCHAR" property="distribution" />
-    <result column="description" jdbcType="TEXT" property="description" />
-  </resultMap>
   <sql id="Base_Column_List">
     verid, proid, founder, version, packagedate, createdate, source, download, distribution, 
     description
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultType="Version">
     select 
     <include refid="Base_Column_List" />
     from version
-    where verid = #{verid,jdbcType=BIGINT}
+    where verid = #{verid}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from version
-    where verid = #{verid,jdbcType=BIGINT}
+    where verid = #{verid}
   </delete>
-  <insert id="insert" parameterType="com.yootk.oa.vo.Version">
+  <insert id="insert" parameterType="Version">
     insert into version (verid, proid, founder, 
       version, packagedate, createdate, 
       source, download, distribution, 
       description)
-    values (#{verid,jdbcType=BIGINT}, #{proid,jdbcType=BIGINT}, #{founder,jdbcType=BIGINT}, 
-      #{version,jdbcType=VARCHAR}, #{packagedate,jdbcType=TIMESTAMP}, #{createdate,jdbcType=TIMESTAMP}, 
-      #{source,jdbcType=VARCHAR}, #{download,jdbcType=VARCHAR}, #{distribution,jdbcType=VARCHAR}, 
-      #{description,jdbcType=TEXT})
+    values (#{verid}, #{proid}, #{founder}, 
+      #{version}, #{packagedate}, #{createdate}, 
+      #{source}, #{download}, #{distribution}, 
+      #{description})
   </insert>
-  <insert id="insertSelective" parameterType="com.yootk.oa.vo.Version">
+  <insert id="insertSelective" parameterType="Version">
     insert into version
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="verid != null">
@@ -73,81 +61,81 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="verid != null">
-        #{verid,jdbcType=BIGINT},
+        #{verid},
       </if>
       <if test="proid != null">
-        #{proid,jdbcType=BIGINT},
+        #{proid},
       </if>
       <if test="founder != null">
-        #{founder,jdbcType=BIGINT},
+        #{founder},
       </if>
       <if test="version != null">
-        #{version,jdbcType=VARCHAR},
+        #{version},
       </if>
       <if test="packagedate != null">
-        #{packagedate,jdbcType=TIMESTAMP},
+        #{packagedate},
       </if>
       <if test="createdate != null">
-        #{createdate,jdbcType=TIMESTAMP},
+        #{createdate},
       </if>
       <if test="source != null">
-        #{source,jdbcType=VARCHAR},
+        #{source},
       </if>
       <if test="download != null">
-        #{download,jdbcType=VARCHAR},
+        #{download},
       </if>
       <if test="distribution != null">
-        #{distribution,jdbcType=VARCHAR},
+        #{distribution},
       </if>
       <if test="description != null">
-        #{description,jdbcType=TEXT},
+        #{description},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yootk.oa.vo.Version">
+  <update id="updateByPrimaryKeySelective" parameterType="Version">
     update version
     <set>
       <if test="proid != null">
-        proid = #{proid,jdbcType=BIGINT},
+        proid = #{proid},
       </if>
       <if test="founder != null">
-        founder = #{founder,jdbcType=BIGINT},
+        founder = #{founder},
       </if>
       <if test="version != null">
-        version = #{version,jdbcType=VARCHAR},
+        version = #{version},
       </if>
       <if test="packagedate != null">
-        packagedate = #{packagedate,jdbcType=TIMESTAMP},
+        packagedate = #{packagedate},
       </if>
       <if test="createdate != null">
-        createdate = #{createdate,jdbcType=TIMESTAMP},
+        createdate = #{createdate},
       </if>
       <if test="source != null">
-        source = #{source,jdbcType=VARCHAR},
+        source = #{source},
       </if>
       <if test="download != null">
-        download = #{download,jdbcType=VARCHAR},
+        download = #{download},
       </if>
       <if test="distribution != null">
-        distribution = #{distribution,jdbcType=VARCHAR},
+        distribution = #{distribution},
       </if>
       <if test="description != null">
-        description = #{description,jdbcType=TEXT},
+        description = #{description},
       </if>
     </set>
-    where verid = #{verid,jdbcType=BIGINT}
+    where verid = #{verid}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yootk.oa.vo.Version">
+  <update id="updateByPrimaryKey" parameterType="Version">
     update version
-    set proid = #{proid,jdbcType=BIGINT},
-      founder = #{founder,jdbcType=BIGINT},
-      version = #{version,jdbcType=VARCHAR},
-      packagedate = #{packagedate,jdbcType=TIMESTAMP},
-      createdate = #{createdate,jdbcType=TIMESTAMP},
-      source = #{source,jdbcType=VARCHAR},
-      download = #{download,jdbcType=VARCHAR},
-      distribution = #{distribution,jdbcType=VARCHAR},
-      description = #{description,jdbcType=TEXT}
-    where verid = #{verid,jdbcType=BIGINT}
+    set proid = #{proid},
+      founder = #{founder},
+      version = #{version},
+      packagedate = #{packagedate},
+      createdate = #{createdate},
+      source = #{source},
+      download = #{download},
+      distribution = #{distribution},
+      description = #{description}
+    where verid = #{verid}
   </update>
 </mapper>

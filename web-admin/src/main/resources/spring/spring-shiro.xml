@@ -56,7 +56,7 @@
     </bean>
     <!-- 7、定义Cookie的存储配置 -->
     <bean id="sessionIdCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
-        <property name="name" value="HappyLee-Session-ID"/> <!-- Cookie属性名称 -->
+        <property name="name" value="admin-Session-ID"/> <!-- Cookie属性名称 -->
     </bean>
 
     <!-- 8、定义session管理器，实现session的整体配置 -->
@@ -71,7 +71,7 @@
 
     <!-- 9、为RememberMe在客户端的存储配置有一个Cookie的信息 -->
     <bean id="rememberMeCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
-        <property name="name" value="HappyLee-RememberMe"/> <!-- Cookie存储名称 -->
+        <property name="name" value="admin-RememberMe"/> <!-- Cookie存储名称 -->
         <property name="path" value="/"/><!-- Cookie存储路径 -->
         <property name="maxAge" value="2592000"/><!-- 30天内免登录有效，单位：秒 -->
     </bean>
@@ -101,7 +101,7 @@
             <value>
                 /logout.shiro=logout
                 /shiro-oauth=oauthAuth
-                /login.action=authc
+                /pages/index.action=authc
                 /pages/**=authc,kickout
             </value>
         </property>

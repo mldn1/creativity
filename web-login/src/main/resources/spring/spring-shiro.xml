@@ -27,16 +27,18 @@
     </bean>
     <!-- 3、采用内置过滤器的形式实现用户登录控制处理 -->
     <bean id="formAuthenticationFilter"
-          class="com.yootk.login.filter.authc.RandomCodeFormAuthenticationFilter">
+          class="org.apache.shiro.web.filter.authc.FormAuthenticationFilter">
         <property name="usernameParam" value="form-username"/>    <!-- 用户名参数名称配置 -->
         <property name="passwordParam" value="form-password"/>    <!-- 密码参数名称配置 -->
         <property name="rememberMeParam" value="rememberme"/><!-- 记住我的选项 -->
         <property name="loginUrl" value="/login.action"/>   <!-- 表单提交路径 -->
         <property name="failureKeyAttribute" value="errors"/> <!-- 保存错误信息的属性名称 -->
-        <property name="codeParamName" value="code"/>
-        <property name="randParamName" value="rand"/>
     </bean>
 
+    <bean id="logoutFilter" class="org.apache.shiro.web.filter.authc.LogoutFilter">
+        <!-- 在登录注销实现之后，将跳转到CommonAction中配置的“/logoutInfo.action”路径 -->
+        <property name="redirectUrl" value="/logoutInfo.action"/>
+    </bean>
     <!-- 5、定义Shiro可以使用的session生成管理器，通过此操作进行Shiro-session管理 -->
     <bean id="sessionIdGenerator"
           class="org.apache.shiro.session.mgt.eis.JavaUuidSessionIdGenerator"/>
@@ -50,7 +52,7 @@
     </bean>
     <!-- 7、定义Cookie的存储配置 -->
     <bean id="sessionIdCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
-        <property name="name" value="HappyLee-Session-ID"/> <!-- Cookie属性名称 -->
+        <property name="name" value="login-Session-ID"/> <!-- Cookie属性名称 -->
     </bean>
 
     <!-- 8、定义session管理器，实现session的整体配置 -->
@@ -87,10 +89,12 @@
             <map>
                 <!-- authc描述的执行处理路径，此时相当于替换了原始的authc功能 -->
                 <entry key="authc" value-ref="formAuthenticationFilter"/>
+                <entry key="logout" value-ref="logoutFilter"/>
             </map>
         </property>
         <property name="filterChainDefinitions"><!-- 检测路径 -->
             <value>
+                /logout.shiro=logout
                 /login.action=authc
                 /pages/**=user
             </value>

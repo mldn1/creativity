@@ -21,7 +21,8 @@
       <h3> 组织管理     <jsp:include page="/pages/plugins/include_nav.jsp"/></h3>
       <ul class="breadcrumb pull-left">
         <li> <a href="/user/show/{{.LoginUserid}}"></a> </li>
-        <li> <a href="pages/back/admin/groups/index.jsp">组管理</a> </li>
+<%--        <li> <a href="pages/back/admin/groups/index.jsp">组管理</a> </li>--%>
+        <li> <a href="pages/back/admin/groups/group_list.action">组管理</a> </li>
         <li class="active"> 组权限 </li>
       </ul>
     </div>
@@ -33,17 +34,17 @@
           <section class="panel">
             <header class="panel-heading"> </header>
             <div class="panel-body">
-              <form class="form-horizontal adminex-form" id="group-form">
-                <div class="form-group">
+                <form class="form-horizontal adminex-form" id="group-form">
+                <div class="form-group" id="nameDiv">
                   <label class="col-sm-2 col-sm-2 control-label"><span>*</span>需求名称</label>
                   <div class="col-sm-10">
-                    <input type="text" name="name" value="" class="form-control" placeholder="请输入组名称">
+                    <input type="text" name="name" id="name" value="" class="form-control" placeholder="请输入组名称">
                   </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group" id="summaryDiv">
                   <label class="col-sm-2 col-sm-2 control-label"><span>*</span>描述</label>
                   <div class="col-sm-10">
-                    <textarea name="summary" placeholder="请填写描述" style="height:300px;" class="form-control"></textarea>
+                    <textarea name="summary" id="summary" placeholder="请填写描述" style="height:300px;" class="form-control"></textarea>
                   </div>
                 </div>
                 <div class="form-group">
@@ -67,4 +68,89 @@
 </section>
 <jsp:include page="/pages/plugins/include_foot.jsp"/>
 </body>
+
+<script>
+  $(function () {
+    $("#group-form").validate({
+      debug : true , // 此配置描述的是当前的表单不允许直接提交
+      submitHandler: function(form) { //  针对于表单的提交进行的处理
+        // form.submit() ; // 手工提交表单
+        console.log("我被调用了**************");
+        title = $("#name").val();
+        description = $("#summary").val();
+        console.log("我被调用了**************" + title);
+        console.log("我被调用了**************" + description);
+        $.getJSON("pages/back/admin/groups/group_add.action", {"title":title, "description":description}, function (data) {
+          console.log("我被调用了**************");
+          $("footer").empty();
+          if (data==(true)) {
+            $("footer").append("组添加成功！");
+            $("#name").val("");
+            $("#summary").val("");
+            // alert("组添加成功！")
+          }else {
+            // alert("组添加失败！")
+            $("footer").append("组添加失败！");
+          }
+
+        });
+      },
+      highlight: function(element,errorClass) { // 进行高亮显示的配置
+        elementId = element.id ; // 获取组件的id内容
+        if (elementId.indexOf(".")) {
+          elementId = elementId.replace(".","\\.") ; // 进行“.”的替换
+        }
+        divId = elementId + "Div" ; // 设置层的元素的id名称
+        $("#" + divId).attr("class","form-group has-error") ; // 设置错误信息的样式
+      },
+      unhighlight : function(element,errorClass) {
+        elementId = element.id ; // 获取组件的id内容
+        if (elementId.indexOf(".")) {
+          elementId = elementId.replace(".","\\.") ; // 进行“.”的替换
+        }
+        divId = elementId + "Div" ; // 设置层的元素的id名称
+        $("#" + divId).attr("class","form-group has-success") ; // 设置错误信息的样式
+      } ,
+      rules: {        // 定义所有要使用的验证规则
+        "name" : {  // 要验证表单的id名称
+          required: true   // 该内容不允许为空
+        } ,
+        "summary": {
+          required : true  // 该自动内容不允许为空
+        }
+      } ,
+        messages:{
+          "name":{
+              required: "组名不允许为空！"   // 该内容不允许为空
+          },
+          "summary": {
+              required : "描述信息不允许为空！"  // 该自动内容不允许为空
+          }
+        }
+    });
+
+      $("#name").on("change",function(){
+          title = $("#name").val();
+          console.log("************" + title);
+          $.getJSON("pages/back/admin/groups/group_add_check.action", {"title": title}, function (data) {
+              console.log("title已验证！");
+              if (data == false) {
+                  $("footer").empty();
+                  $("footer").append("重复的组名称，请重新填写！");
+                  $("#nameDiv").attr("class","form-group has-error") ; // 设置错误信息的样式
+                  $("button[type=submit]").attr("disabled",true);
+              }else {
+                  $("footer").empty();
+                  $("footer").append("组名称可用，请继续填写其他项！");
+                  $("#nameDiv").attr("class","form-group has-success") ; // 设置错误信息的样式
+                  $("button[type=submit]").attr("disabled",false);
+              }
+          });
+      }) ;
+
+  })
+</script>
+
 </html>
+
+

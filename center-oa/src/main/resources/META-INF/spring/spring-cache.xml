@@ -11,7 +11,7 @@
         <property name="caches">
             <set>
                 <bean class="com.yootk.server.cache.RedisCache">
-                    <property name="name" value="news"/>
+                    <property name="name" value="group"/>
                     <property name="redisTemplate" ref="redisTemplate"/>
                 </bean>
             </set>

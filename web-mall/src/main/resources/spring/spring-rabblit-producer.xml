@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+       xsi:schemaLocation="
+            http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/rabbit http://www.springframework.org/schema/rabbit/spring-rabbit.xsd">
+    <!-- 2、如果要进行RabbitMQ的管理，那么一定要建立一个专属的RabbitMQ工厂类 -->
+    <rabbit:connection-factory id="connectionFactory"
+                               host="${amqp.rabbitmq.host}"
+                               port="${amqp.rabbitmq.port}"
+                               virtual-host="${amqp.rabbitmq.vhost}"
+                               username="${amqp.rabbitmq.username}"
+                               password="${amqp.rabbitmq.password}"/>
+    <!-- 3、将此时定义的连接工厂交由RabbitMQ进行管理 -->
+    <rabbit:admin connection-factory="connectionFactory"/>
+    <!-- 4、建立消息消费中所需要的队列名称 -->
+    <!-- 5、定义程序之中要使用的Exchange的配置信息 -->
+    <rabbit:topic-exchange name="${amqp.rabbitmq.exchange.name}" id="logsExchange"/>
+    <rabbit:template id="amqpTemplate" connection-factory="connectionFactory" exchange="${amqp.rabbitmq.exchange.name}"/>
+</beans>

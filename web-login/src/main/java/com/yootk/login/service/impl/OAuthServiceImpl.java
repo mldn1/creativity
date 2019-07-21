@@ -5,7 +5,6 @@ import com.yootk.dubbo.service.IClientService;
 import com.yootk.dubbo.service.IEmpService;
 import com.yootk.dubbo.vo.Client;
 import com.yootk.dubbo.vo.Emp;
-import com.yootk.dubbo.vo.Member;
 import com.yootk.login.service.IOAuthService;
 import org.springframework.stereotype.Service;
 
@@ -17,8 +16,8 @@ public class OAuthServiceImpl implements IOAuthService {
     private IEmpService empService;
 
     @Override
-    public Emp getEmp(String phone) {
-        return this.empService.get(phone);
+    public Emp getEmp(String mid) {
+        return this.empService.get(mid);
     }
     @Override
     public Client get(String mid) {

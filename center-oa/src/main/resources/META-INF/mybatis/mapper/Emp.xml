@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 定义所有的SQL语句的映射， 对于本实体而言相关的所有的SQL代码都在此定义 -->
+<mapper namespace="com.yootk.oa.dao.IEmpDAO">   <!-- SSM整合的时候，这个命名空间异常重要 -->
+    <sql id="selectBase">
+         SELECT eid,name,sex,email,birthday,phone,deptno,job,password,wchet,qq,tele,address,contacts,contactscall,state,count,ip,lastrecord,photo FROM emp
+    </sql>
+    <select id="findByPhone" parameterType="java.lang.String" resultType="com.yootk.dubbo.vo.Emp">
+        <include refid="selectBase"/>
+        <where>
+            phone=#{phone} AND state=0
+        </where>
+    </select>
+    <update id="updateByPassword">
+        UPDATE emp
+        <set>
+            password=#{arg0}
+            <where>
+                phone=#{arg1}
+            </where>
+        </set>
+    </update>
+    <update id="updatePhoto">
+        UPDATE emp
+        <set>
+            photo=#{arg0}
+            <where>
+                phone=#{arg1}
+            </where>
+        </set>
+    </update>
+    <select id="getNameByEid" parameterType="java.lang.Long" resultType="String">
+        SELECT name FROM emp
+        <where>
+            eid=#{eid}
+        </where>
+    </select>
+    <select id="getAlanAll" resultType="Emp">
+        SELECT eid,name FROM emp
+    </select>
+    <select id="getAlanEmp" parameterType="java.lang.Long" resultType="Emp">
+        select eid,name,job from emp where eid=#{eid}
+    </select>
+    <select id="getEidByUsername" parameterType="String" resultType="java.lang.Long">
+        select eid from emp where username=#{username}
+    </select>
+
+
+    <select id="findJobByEid" resultType="String" parameterType="java.util.List">
+        select job from emp
+        <where>
+            <if test="List != null">
+                eid IN
+                <foreach collection="List" open="(" close=")" separator="," item="ele">
+                    #{ele}
+                </foreach>
+            </if>
+        </where>
+    </select>
+    <select id="getJobCount" parameterType="Map" resultType="java.lang.Integer">
+        select count(*) from emp
+        where job=#{job}
+        <if test="eids != null">
+            and eid IN
+            <foreach collection="eids" open="(" close=")" separator="," item="ele">
+                #{ele}
+            </foreach>
+        </if>
+    </select>
+    <update id="updateEmp" parameterType="com.yootk.dubbo.vo.Emp">
+        UPDATE emp
+        <set>
+            name=#{name},sex=#{sex},birthday=#{birthday},email=#{email},wchet=#{wchet},qq=#{qq},tele=#{tele},address=#{address},contacts=#{contacts},contactscall=#{contactscall}
+            <where>
+               phone=#{phone}
+            </where>
+        </set>
+    </update>
+
+    <select id="findAllEmpsByIds" parameterType="Map" resultType="Emp">
+        <include refid="selectBase"/>
+        <where>
+            eid in
+            <foreach collection="eids" open="(" separator="," close=")" item="eid">
+                #{eid}
+            </foreach>
+        </where>
+        limit #{start}, #{lineSize}
+    </select>
+
+    <select id="findByNameOrUsername" parameterType="String" resultType="Emp">
+        <include refid="selectBase"/>
+        <where>
+            name = #{key} or username = #{key}
+        </where>
+    </select>
+</mapper>

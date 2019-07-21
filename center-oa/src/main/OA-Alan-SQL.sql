@@ -55,7 +55,7 @@ create TABLE bug_state(
 
 drop table if exists text;
 create TABLE text(
-    textid BIGINT AUTO_INCREMENT ,
+    docid BIGINT AUTO_INCREMENT ,
     proid BIGINT ,
     title varchar(100) ,
     keyword varchar(100) ,
@@ -65,7 +65,7 @@ create TABLE text(
     link varchar (100) ,
     content text ,
     appendix varchar(100) ,
-    CONSTRAINT pk_textid PRIMARY KEY(textid)
+    CONSTRAINT pk_textid PRIMARY KEY(docid)
 )engine=innodb ;
 
 drop table if exists version;

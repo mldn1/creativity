@@ -1,6 +1,8 @@
 package com.yootk.dubbo.vo;
 
-public class Grade {
+import java.io.Serializable;
+
+public class Grade implements Serializable {
     private Long id;
 
     private String title;

@@ -1,6 +1,8 @@
 package com.yootk.dubbo.vo;
 
-public class Reimbursement {
+import java.io.Serializable;
+
+public class Reimbursement implements Serializable {
     private Long reiid;
 
     private Long eid;

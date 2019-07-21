@@ -1,5 +1,9 @@
 package com.yootk.util.action;
 
+import com.yootk.util.upload.token.UploadToken;
+import com.yootk.util.upload.util.FastDFSFile;
+import com.yootk.util.upload.util.FileUpload;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.web.bind.WebDataBinder;
@@ -26,37 +30,26 @@ public class AbstractAction {
     @Autowired
     private MessageSource messageSource ;
 
+    /**
+     * 获取当前用户登录使用的Id
+     * @return id
+     */
+    public String getEmpId(){
+        return (String) SecurityUtils.getSubject().getPrincipal();
+    }
     public String getUploadDir() {
         return "/upload/" ;
     }
-    public String upload(MultipartFile file) {  // 进行上传的控制
-        String fileName = UUID.randomUUID() + "." + file.getContentType().substring(file.getContentType().lastIndexOf("/") + 1) ;
-        String filePath = this.getApplication().getRealPath(this.getUploadDir()) + fileName ;
-        OutputStream output = null ;
+    public String[] upload(MultipartFile file) {  // 进行上传的控制
+        String fileExt = file.getContentType().substring(file.getContentType().lastIndexOf("/") + 1) ;
         try {
-            File saveFile = new File(filePath) ;
-            if (!saveFile.getParentFile().exists()) {
-                saveFile.getParentFile().mkdirs() ;
-            }
-            output = new FileOutputStream(saveFile);
-            byte [] data = new byte[1024] ;
-            int temp = 0 ;
-            InputStream inputStream = file.getInputStream() ;
-            while((temp = inputStream.read(data)) != -1) {
-                output.write(data, 0, temp);
-            }
+            FastDFSFile fastDFSFile = new FastDFSFile(file.getBytes(),file.getOriginalFilename(),file.getSize());
+            String[] upload = FileUpload.Upload(fastDFSFile, fileExt);
+            return upload;
         } catch (Exception e) {
-            return null ;
-        } finally {
-            if (output != null) {
-                try {
-                    output.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
+            e.printStackTrace();
+            return null;
         }
-        return fileName ;
     }
     /**
      * 通过资源文件读取相应的key对应的数据内容
@@ -95,5 +88,17 @@ public class AbstractAction {
                 super.setValue(java.util.Date.from(instant)); // 字符串与日期转换
             }
         });
+    }
+    /**
+     * 实现信息输出
+     * @param obj 要输出的信息内容
+     */
+    public  void print(Object obj) {
+        try {
+            this.getRequest().setCharacterEncoding("UTF-8");
+            this.getResponse().setCharacterEncoding("UTF-8");
+            this.getResponse().getWriter().println(obj);
+        } catch (IOException e) {
+        }
     }
 }

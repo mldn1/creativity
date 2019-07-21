@@ -1,6 +1,8 @@
 package com.yootk.dubbo.vo;
 
-public class Education {
+import java.io.Serializable;
+
+public class Education implements Serializable {
     private Long eduid;
 
     private String title;

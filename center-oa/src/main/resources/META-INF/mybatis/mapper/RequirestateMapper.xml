@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yootk.oa.dao.RequirestateMapper">
-  <resultMap id="BaseResultMap" type="com.yootk.dubbo.vo.Requirestate">
+  <resultMap id="BaseResultMap" type="Requirestate">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="title" jdbcType="VARCHAR" property="title" />
   </resultMap>
@@ -12,17 +12,17 @@
     select 
     <include refid="Base_Column_List" />
     from require_state
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from require_state
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id}
   </delete>
-  <insert id="insert" parameterType="com.yootk.dubbo.vo.Requirestate">
+  <insert id="insert" parameterType="Requirestate">
     insert into require_state (id, title)
-    values (#{id,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR})
+    values (#{id}, #{title})
   </insert>
-  <insert id="insertSelective" parameterType="com.yootk.dubbo.vo.Requirestate">
+  <insert id="insertSelective" parameterType="Requirestate">
     insert into require_state
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -34,25 +34,34 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
-        #{id,jdbcType=BIGINT},
+        #{id},
       </if>
       <if test="title != null">
-        #{title,jdbcType=VARCHAR},
+        #{title},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yootk.dubbo.vo.Requirestate">
+  <update id="updateByPrimaryKeySelective" parameterType="Requirestate">
     update require_state
     <set>
       <if test="title != null">
-        title = #{title,jdbcType=VARCHAR},
+        title = #{title},
       </if>
     </set>
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yootk.dubbo.vo.Requirestate">
+  <update id="updateByPrimaryKey" parameterType="Requirestate">
     update require_state
-    set title = #{title,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=BIGINT}
+    set title = #{title}
+    where id = #{id}
   </update>
+  <select id="getNameById" parameterType="java.lang.Integer" resultType="String">
+    SELECT title FROM require_state
+    <where>
+      id=#{id}
+    </where>
+  </select>
+  <select id="findAll" parameterType="java.lang.Integer" resultType="Requirestate">
+    SELECT id,title FROM require_state
+  </select>
 </mapper>

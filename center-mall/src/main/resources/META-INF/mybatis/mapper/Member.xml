@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yootk.mall.dao.IMemberDAO">
+    <sql id="Member">
+    SELECT mid,name,phone,email,sex,birthday,password,photo,grade,state,regist,lastrecord,eid,count,ip FROM member
+   </sql>
+    <select id="findByPhone" parameterType="java.lang.String" resultType="com.yootk.dubbo.vo.Member">
+        <include refid="Member" />
+        <where>
+            phone=#{phone} AND state=0
+        </where>
+    </select>
+    <insert id="doCreateMmeber" parameterType="Map">
+        INSERT INTO member (phone,password) VALUES (#{phone},#{password})
+    </insert>
+    <select id="findPhone" parameterType="java.lang.String" resultType="java.lang.String">
+        SELECT phone FROM member
+        <where>
+            phone=#{phone}
+        </where>
+    </select>
+
+</mapper>

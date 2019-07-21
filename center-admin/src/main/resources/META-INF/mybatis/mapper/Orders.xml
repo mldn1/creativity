@@ -212,4 +212,8 @@
         where oid=#{oid}
     </update>
 
+    <!--商品查询-->
+    <select id="findOGoodsName" resultType="Orders_goods">
+        SELECT id,oid,gid,gaid,count,price,goodsname FROM orders_goods ;
+    </select>
 </mapper>

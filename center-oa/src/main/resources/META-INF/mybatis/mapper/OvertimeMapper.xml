@@ -1,48 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yootk.oa.dao.OvertimeMapper">
-  <resultMap id="BaseResultMap" type="com.yootk.dubbo.vo.Overtime">
-    <id column="otid" jdbcType="BIGINT" property="otid" />
-    <result column="eid" jdbcType="BIGINT" property="eid" />
-    <result column="startdate" jdbcType="TIMESTAMP" property="startdate" />
-    <result column="enddate" jdbcType="TIMESTAMP" property="enddate" />
-    <result column="time" jdbcType="INTEGER" property="time" />
-    <result column="method" jdbcType="INTEGER" property="method" />
-    <result column="islegalholiday" jdbcType="INTEGER" property="islegalholiday" />
-    <result column="reason" jdbcType="TEXT" property="reason" />
-    <result column="approver" jdbcType="BIGINT" property="approver" />
-    <result column="note" jdbcType="TEXT" property="note" />
-    <result column="state" jdbcType="INTEGER" property="state" />
-    <result column="result" jdbcType="INTEGER" property="result" />
-    <result column="progress" jdbcType="INTEGER" property="progress" />
-  </resultMap>
   <sql id="Base_Column_List">
     otid, eid, startdate, enddate, time, method, islegalholiday, reason, approver, note, 
     state, result, progress
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultType="Overtime">
     select 
     <include refid="Base_Column_List" />
     from overtime
-    where otid = #{otid,jdbcType=BIGINT}
+    where otid = #{otid}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from overtime
-    where otid = #{otid,jdbcType=BIGINT}
+    where otid = #{otid}
   </delete>
-  <insert id="insert" parameterType="com.yootk.oa.vo.Overtime">
+  <insert id="insert" parameterType="Overtime">
     insert into overtime (otid, eid, startdate, 
       enddate, time, method, 
       islegalholiday, reason, approver, 
       note, state, result, progress
       )
-    values (#{otid,jdbcType=BIGINT}, #{eid,jdbcType=BIGINT}, #{startdate,jdbcType=TIMESTAMP}, 
-      #{enddate,jdbcType=TIMESTAMP}, #{time,jdbcType=INTEGER}, #{method,jdbcType=INTEGER}, 
-      #{islegalholiday,jdbcType=INTEGER}, #{reason,jdbcType=TEXT}, #{approver,jdbcType=BIGINT}, 
-      #{note,jdbcType=TEXT}, #{state,jdbcType=INTEGER}, #{result,jdbcType=INTEGER}, #{progress,jdbcType=INTEGER}
+    values (#{otid}, #{eid}, #{startdate}, 
+      #{enddate}, #{time}, #{method}, 
+      #{islegalholiday}, #{reason}, #{approver}, 
+      #{note}, #{state}, #{result}, #{progress}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.yootk.oa.vo.Overtime">
+  <insert id="insertSelective" parameterType="Overtime">
     insert into overtime
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="otid != null">
@@ -87,102 +72,102 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="otid != null">
-        #{otid,jdbcType=BIGINT},
+        #{otid},
       </if>
       <if test="eid != null">
-        #{eid,jdbcType=BIGINT},
+        #{eid},
       </if>
       <if test="startdate != null">
-        #{startdate,jdbcType=TIMESTAMP},
+        #{startdate},
       </if>
       <if test="enddate != null">
-        #{enddate,jdbcType=TIMESTAMP},
+        #{enddate},
       </if>
       <if test="time != null">
-        #{time,jdbcType=INTEGER},
+        #{time},
       </if>
       <if test="method != null">
-        #{method,jdbcType=INTEGER},
+        #{method},
       </if>
       <if test="islegalholiday != null">
-        #{islegalholiday,jdbcType=INTEGER},
+        #{islegalholiday},
       </if>
       <if test="reason != null">
-        #{reason,jdbcType=TEXT},
+        #{reason},
       </if>
       <if test="approver != null">
-        #{approver,jdbcType=BIGINT},
+        #{approver},
       </if>
       <if test="note != null">
-        #{note,jdbcType=TEXT},
+        #{note},
       </if>
       <if test="state != null">
-        #{state,jdbcType=INTEGER},
+        #{state},
       </if>
       <if test="result != null">
-        #{result,jdbcType=INTEGER},
+        #{result},
       </if>
       <if test="progress != null">
-        #{progress,jdbcType=INTEGER},
+        #{progress},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yootk.oa.vo.Overtime">
+  <update id="updateByPrimaryKeySelective" parameterType="Overtime">
     update overtime
     <set>
       <if test="eid != null">
-        eid = #{eid,jdbcType=BIGINT},
+        eid = #{eid},
       </if>
       <if test="startdate != null">
-        startdate = #{startdate,jdbcType=TIMESTAMP},
+        startdate = #{startdate},
       </if>
       <if test="enddate != null">
-        enddate = #{enddate,jdbcType=TIMESTAMP},
+        enddate = #{enddate},
       </if>
       <if test="time != null">
-        time = #{time,jdbcType=INTEGER},
+        time = #{time},
       </if>
       <if test="method != null">
-        method = #{method,jdbcType=INTEGER},
+        method = #{method},
       </if>
       <if test="islegalholiday != null">
-        islegalholiday = #{islegalholiday,jdbcType=INTEGER},
+        islegalholiday = #{islegalholiday},
       </if>
       <if test="reason != null">
-        reason = #{reason,jdbcType=TEXT},
+        reason = #{reason},
       </if>
       <if test="approver != null">
-        approver = #{approver,jdbcType=BIGINT},
+        approver = #{approver},
       </if>
       <if test="note != null">
-        note = #{note,jdbcType=TEXT},
+        note = #{note},
       </if>
       <if test="state != null">
-        state = #{state,jdbcType=INTEGER},
+        state = #{state},
       </if>
       <if test="result != null">
-        result = #{result,jdbcType=INTEGER},
+        result = #{result},
       </if>
       <if test="progress != null">
-        progress = #{progress,jdbcType=INTEGER},
+        progress = #{progress},
       </if>
     </set>
-    where otid = #{otid,jdbcType=BIGINT}
+    where otid = #{otid}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yootk.oa.vo.Overtime">
+  <update id="updateByPrimaryKey" parameterType="Overtime">
     update overtime
-    set eid = #{eid,jdbcType=BIGINT},
-      startdate = #{startdate,jdbcType=TIMESTAMP},
-      enddate = #{enddate,jdbcType=TIMESTAMP},
-      time = #{time,jdbcType=INTEGER},
-      method = #{method,jdbcType=INTEGER},
-      islegalholiday = #{islegalholiday,jdbcType=INTEGER},
-      reason = #{reason,jdbcType=TEXT},
-      approver = #{approver,jdbcType=BIGINT},
-      note = #{note,jdbcType=TEXT},
-      state = #{state,jdbcType=INTEGER},
-      result = #{result,jdbcType=INTEGER},
-      progress = #{progress,jdbcType=INTEGER}
-    where otid = #{otid,jdbcType=BIGINT}
+    set eid = #{eid},
+      startdate = #{startdate},
+      enddate = #{enddate},
+      time = #{time},
+      method = #{method},
+      islegalholiday = #{islegalholiday},
+      reason = #{reason},
+      approver = #{approver},
+      note = #{note},
+      state = #{state},
+      result = #{result},
+      progress = #{progress}
+    where otid = #{otid}
   </update>
 </mapper>

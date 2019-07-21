@@ -1,43 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yootk.oa.dao.ReimbursementMapper">
-  <resultMap id="BaseResultMap" type="com.yootk.dubbo.vo.Reimbursement">
-    <id column="reiid" jdbcType="BIGINT" property="reiid" />
-    <result column="eid" jdbcType="BIGINT" property="eid" />
-    <result column="type" jdbcType="VARCHAR" property="type" />
-    <result column="money" jdbcType="DOUBLE" property="money" />
-    <result column="details" jdbcType="TEXT" property="details" />
-    <result column="picture" jdbcType="VARCHAR" property="picture" />
-    <result column="approver" jdbcType="BIGINT" property="approver" />
-    <result column="note" jdbcType="TEXT" property="note" />
-    <result column="state" jdbcType="INTEGER" property="state" />
-    <result column="result" jdbcType="INTEGER" property="result" />
-    <result column="progress" jdbcType="INTEGER" property="progress" />
-  </resultMap>
   <sql id="Base_Column_List">
     reiid, eid, type, money, details, picture, approver, note, state, result, progress
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultType="Reimbursement">
     select 
     <include refid="Base_Column_List" />
     from reimbursement
-    where reiid = #{reiid,jdbcType=BIGINT}
+    where reiid = #{reiid}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from reimbursement
-    where reiid = #{reiid,jdbcType=BIGINT}
+    where reiid = #{reiid}
   </delete>
-  <insert id="insert" parameterType="com.yootk.oa.vo.Reimbursement">
+  <insert id="insert" parameterType="Reimbursement">
     insert into reimbursement (reiid, eid, type, 
       money, details, picture, 
       approver, note, state, 
       result, progress)
-    values (#{reiid,jdbcType=BIGINT}, #{eid,jdbcType=BIGINT}, #{type,jdbcType=VARCHAR}, 
-      #{money,jdbcType=DOUBLE}, #{details,jdbcType=TEXT}, #{picture,jdbcType=VARCHAR}, 
-      #{approver,jdbcType=BIGINT}, #{note,jdbcType=TEXT}, #{state,jdbcType=INTEGER}, 
-      #{result,jdbcType=INTEGER}, #{progress,jdbcType=INTEGER})
+    values (#{reiid}, #{eid}, #{type}, 
+      #{money}, #{details}, #{picture}, 
+      #{approver}, #{note}, #{state}, 
+      #{result}, #{progress})
   </insert>
-  <insert id="insertSelective" parameterType="com.yootk.oa.vo.Reimbursement">
+  <insert id="insertSelective" parameterType="Reimbursement">
     insert into reimbursement
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="reiid != null">
@@ -76,88 +63,88 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="reiid != null">
-        #{reiid,jdbcType=BIGINT},
+        #{reiid},
       </if>
       <if test="eid != null">
-        #{eid,jdbcType=BIGINT},
+        #{eid},
       </if>
       <if test="type != null">
-        #{type,jdbcType=VARCHAR},
+        #{type},
       </if>
       <if test="money != null">
-        #{money,jdbcType=DOUBLE},
+        #{money},
       </if>
       <if test="details != null">
-        #{details,jdbcType=TEXT},
+        #{details},
       </if>
       <if test="picture != null">
-        #{picture,jdbcType=VARCHAR},
+        #{picture},
       </if>
       <if test="approver != null">
-        #{approver,jdbcType=BIGINT},
+        #{approver},
       </if>
       <if test="note != null">
-        #{note,jdbcType=TEXT},
+        #{note},
       </if>
       <if test="state != null">
-        #{state,jdbcType=INTEGER},
+        #{state},
       </if>
       <if test="result != null">
-        #{result,jdbcType=INTEGER},
+        #{result},
       </if>
       <if test="progress != null">
-        #{progress,jdbcType=INTEGER},
+        #{progress},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yootk.oa.vo.Reimbursement">
+  <update id="updateByPrimaryKeySelective" parameterType="Reimbursement">
     update reimbursement
     <set>
       <if test="eid != null">
-        eid = #{eid,jdbcType=BIGINT},
+        eid = #{eid},
       </if>
       <if test="type != null">
-        type = #{type,jdbcType=VARCHAR},
+        type = #{type},
       </if>
       <if test="money != null">
-        money = #{money,jdbcType=DOUBLE},
+        money = #{money},
       </if>
       <if test="details != null">
-        details = #{details,jdbcType=TEXT},
+        details = #{details},
       </if>
       <if test="picture != null">
-        picture = #{picture,jdbcType=VARCHAR},
+        picture = #{picture},
       </if>
       <if test="approver != null">
-        approver = #{approver,jdbcType=BIGINT},
+        approver = #{approver},
       </if>
       <if test="note != null">
-        note = #{note,jdbcType=TEXT},
+        note = #{note},
       </if>
       <if test="state != null">
-        state = #{state,jdbcType=INTEGER},
+        state = #{state},
       </if>
       <if test="result != null">
-        result = #{result,jdbcType=INTEGER},
+        result = #{result},
       </if>
       <if test="progress != null">
-        progress = #{progress,jdbcType=INTEGER},
+        progress = #{progress},
       </if>
     </set>
-    where reiid = #{reiid,jdbcType=BIGINT}
+    where reiid = #{reiid}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yootk.oa.vo.Reimbursement">
+  <update id="updateByPrimaryKey" parameterType="Reimbursement">
     update reimbursement
-    set eid = #{eid,jdbcType=BIGINT},
-      type = #{type,jdbcType=VARCHAR},
-      money = #{money,jdbcType=DOUBLE},
-      details = #{details,jdbcType=TEXT},
-      picture = #{picture,jdbcType=VARCHAR},
-      approver = #{approver,jdbcType=BIGINT},
-      note = #{note,jdbcType=TEXT},
-      state = #{state,jdbcType=INTEGER},
-      result = #{result,jdbcType=INTEGER},
-      progress = #{progress,jdbcType=INTEGER}
-    where reiid = #{reiid,jdbcType=BIGINT}
+    set eid = #{eid},
+      type = #{type},
+      money = #{money},
+      details = #{details},
+      picture = #{picture},
+      approver = #{approver},
+      note = #{note},
+      state = #{state},
+      result = #{result},
+      progress = #{progress}
+    where reiid = #{reiid}
   </update>
 </mapper>

@@ -1,28 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yootk.oa.dao.ResumeStateMapper">
-  <resultMap id="BaseResultMap" type="com.yootk.dubbo.vo.ResumeState">
+  <resultMap id="BaseResultMap" type="ResumeState">
     <id column="rsid" jdbcType="BIGINT" property="rsid" />
     <result column="title" jdbcType="VARCHAR" property="title" />
   </resultMap>
   <sql id="Base_Column_List">
     rsid, title
   </sql>
+  <select id="findAll" resultType="ResumeState">
+    select rsid, title from resume_state;
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from resume_state
-    where rsid = #{rsid,jdbcType=BIGINT}
+    where rsid = #{rsid}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from resume_state
-    where rsid = #{rsid,jdbcType=BIGINT}
+    where rsid = #{rsid}
   </delete>
-  <insert id="insert" parameterType="com.yootk.oa.vo.ResumeState">
+  <insert id="insert" parameterType="ResumeState">
     insert into resume_state (rsid, title)
-    values (#{rsid,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR})
+    values (#{rsid}, #{title})
   </insert>
-  <insert id="insertSelective" parameterType="com.yootk.oa.vo.ResumeState">
+  <insert id="insertSelective" parameterType="ResumeState">
     insert into resume_state
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="rsid != null">
@@ -34,25 +37,25 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="rsid != null">
-        #{rsid,jdbcType=BIGINT},
+        #{rsid},
       </if>
       <if test="title != null">
-        #{title,jdbcType=VARCHAR},
+        #{title},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yootk.oa.vo.ResumeState">
+  <update id="updateByPrimaryKeySelective" parameterType="ResumeState">
     update resume_state
     <set>
       <if test="title != null">
-        title = #{title,jdbcType=VARCHAR},
+        title = #{title},
       </if>
     </set>
-    where rsid = #{rsid,jdbcType=BIGINT}
+    where rsid = #{rsid}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yootk.oa.vo.ResumeState">
+  <update id="updateByPrimaryKey" parameterType="ResumeState">
     update resume_state
-    set title = #{title,jdbcType=VARCHAR}
-    where rsid = #{rsid,jdbcType=BIGINT}
+    set title = #{title}
+    where rsid = #{rsid}
   </update>
 </mapper>

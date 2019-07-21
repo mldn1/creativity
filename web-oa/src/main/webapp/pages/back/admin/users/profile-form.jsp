@@ -24,28 +24,28 @@
           <section class="panel">
              <header class="panel-heading"> 基本资料 </header>
             <div class="panel-body">
-              <form class="form-horizontal adminex-form" id="userprofile-form">
+              <form action="pages/back/admin/users/profile_form.action" class="form-horizontal adminex-form" id="userprofile-form" method="get">
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">姓名</label>
                   <div class="col-sm-10">
-                    <input type="text" name="realname"  value="" class="form-control" placeholder="请填写姓名">
+                    <input type="text" name="name"  value="" class="form-control" placeholder="请填写姓名">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">性别</label>
                   <div class="col-sm-10">
                     <label class="radio-inline">
-                    <input type="radio" name="sex" value="1" {{if eq 1 .pro.Sex}}checked>
+                    <input type="radio" name="sex" value="1">
                     男 </label>
                     <label class="radio-inline">
-                    <input type="radio" name="sex" value="2" {{if eq 2 .pro.Sex}}checked>
+                    <input type="radio" name="sex" value="2">
                     女 </label>
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">生日</label>
                   <div class="col-sm-10">
-                    <input type="text" name="birth" id="default-date-picker"  value="" class="form-control" placeholder="请填写昵称">
+                    <input type="text" name="birthday" id="default-date-picker"  value="" class="form-control" placeholder="请填写昵称">
                   </div>
                 </div>
                 <div class="form-group">
@@ -57,25 +57,25 @@
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">微信号</label>
                   <div class="col-sm-10">
-                    <input type="text" name="webchat"  value="" class="form-control" placeholder="微信号">
+                    <input type="text" name="wchet"  value="" class="form-control" placeholder="微信号">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">QQ</label>
                   <div class="col-sm-10">
-                    <input type="number" name="qq"  value="" class="form-control" placeholder="QQ号">
+                    <input type="text" name="qq"  value="" class="form-control" placeholder="QQ号">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">手机号</label>
                   <div class="col-sm-10">
-                    <input type="number" name="phone" maxlength="11" value="{{.pro.Phone}}" class="form-control" placeholder="手机号">
+                    <input type="text" name="phone" maxlength="11" value="" class="form-control" placeholder="${emp.phone}" readonly="readonly">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">电话</label>
                   <div class="col-sm-10">
-                    <input type="text" name="tel"  value="" class="form-control" placeholder="联系电话">
+                    <input type="text" name="tele"  value="" class="form-control" placeholder="联系电话">
                   </div>
                 </div>
                 <div class="form-group">
@@ -87,13 +87,13 @@
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">紧急联系人</label>
                   <div class="col-sm-10">
-                    <input type="text" name="emercontact"  value="" class="form-control" placeholder="紧急联系人">
+                    <input type="text" name="contacts"  value="" class="form-control" placeholder="紧急联系人">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">紧急联系人电话</label>
                   <div class="col-sm-10">
-                    <input type="text" name="emerphone"  value="" class="form-control" placeholder="紧急联系人电话">
+                    <input type="text" name="contactscall"  value="" class="form-control" placeholder="紧急联系人电话">
                   </div>
                 </div>
                 <div class="form-group">

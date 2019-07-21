@@ -33,6 +33,7 @@ public class OrderAction {
             System.out.println("******************");
             Map<String,Object> map = this.ordersService.preEdit(oid) ;
             System.err.println("map集合"+map);
+            map.put("allOrdersGoodsName",this.ordersService.listOGoodsName()) ; //将订单商品加入map集合
             mav.addAllObjects(map) ;
             System.err.println("mav集合"+mav);
         }catch (Exception e){
@@ -102,6 +103,7 @@ public class OrderAction {
                     orders,null,null,gid, phone, column_name,keyword_name,1L,2) ;
            /* map.put("allChannel",this.ordersService.channelName()) ;  获取渠道名。这里直接先放到前端处理了*/
             System.err.println("map集合"+map);
+            map.put("allOrdersGoodsName",this.ordersService.listOGoodsName()) ; //将订单商品加入map集合
             mav.addAllObjects(map) ;
             System.err.println("mav集合"+mav);
         }catch (Exception e){

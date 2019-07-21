@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yootk.oa.dao.BugStateMapper">
-  <resultMap id="BaseResultMap" type="com.yootk.dubbo.vo.BugState">
+  <resultMap id="BaseResultMap" type="BugState">
     <id column="bsid" jdbcType="INTEGER" property="bsid" />
     <result column="title" jdbcType="VARCHAR" property="title" />
   </resultMap>
@@ -12,17 +12,17 @@
     select 
     <include refid="Base_Column_List" />
     from bug_state
-    where bsid = #{bsid,jdbcType=INTEGER}
+    where bsid = #{bsid}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from bug_state
-    where bsid = #{bsid,jdbcType=INTEGER}
+    where bsid = #{bsid}
   </delete>
-  <insert id="insert" parameterType="com.yootk.oa.vo.BugState">
+  <insert id="insert" parameterType="BugState">
     insert into bug_state (bsid, title)
-    values (#{bsid,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR})
+    values (#{bsid}, #{title})
   </insert>
-  <insert id="insertSelective" parameterType="com.yootk.oa.vo.BugState">
+  <insert id="insertSelective" parameterType="BugState">
     insert into bug_state
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="bsid != null">
@@ -34,25 +34,25 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="bsid != null">
-        #{bsid,jdbcType=INTEGER},
+        #{bsid},
       </if>
       <if test="title != null">
-        #{title,jdbcType=VARCHAR},
+        #{title},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yootk.oa.vo.BugState">
+  <update id="updateByPrimaryKeySelective" parameterType="BugState">
     update bug_state
     <set>
       <if test="title != null">
-        title = #{title,jdbcType=VARCHAR},
+        title = #{title},
       </if>
     </set>
-    where bsid = #{bsid,jdbcType=INTEGER}
+    where bsid = #{bsid}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yootk.oa.vo.BugState">
+  <update id="updateByPrimaryKey" parameterType="BugState">
     update bug_state
-    set title = #{title,jdbcType=VARCHAR}
-    where bsid = #{bsid,jdbcType=INTEGER}
+    set title = #{title}
+    where bsid = #{bsid}
   </update>
 </mapper>

@@ -2,9 +2,8 @@ package com.yootk.test;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.yootk.dubbo.service.IChannelService;
-import com.yootk.dubbo.service.IMemberService;
+import com.yootk.dubbo.service.IMemberServiceAdmin;
 import com.yootk.dubbo.vo.Member;
-import com.yootk.util.encrypt.EncryptUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -19,7 +18,7 @@ public class TestUserService {
     @Reference
     private IChannelService channelService;
     @Reference
-    private IMemberService memberService;
+    private IMemberServiceAdmin memberService;
     @Test
     public void testGetAll(){
         System.err.println(this.channelService.getAll() + "【哈哈哈！】");

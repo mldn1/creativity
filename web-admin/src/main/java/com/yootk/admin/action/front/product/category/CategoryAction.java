@@ -1,7 +1,7 @@
 package com.yootk.admin.action.front.product.category;
 
-import com.yootk.dubbo.service.ICategoryService;
-import com.yootk.dubbo.vo.Category;
+import com.yootk.dubbo.service.ICategorysService;
+import com.yootk.dubbo.vo.Categorys;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,7 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/pages/front/product/*")
 public class CategoryAction {
     @Autowired
-    ICategoryService categoryService ;
+    ICategorysService categoryService ;
     @RequestMapping("class_list")
     public ModelAndView listCategory() {
         ModelAndView mav = new ModelAndView("front/product/class_list") ;
@@ -26,7 +26,7 @@ public class CategoryAction {
         return mav ;
     }
     @RequestMapping("class_add_do")
-    public ModelAndView addCategory(Category category){
+    public ModelAndView addCategory(Categorys category){
         category.setCid(null);
         Integer grade = category.getGrade() ;
         Long pcid = 0L ;
@@ -49,7 +49,7 @@ public class CategoryAction {
         mav.addObject("categorys",this.categoryService.listByGrade(1)) ;
         mav.addObject("thisCategory",this.categoryService.getCategory(cid)) ;
         Long pcid = 0L ;
-        Category parent = this.categoryService.getParent(cid) ;
+        Categorys parent = this.categoryService.getParent(cid) ;
         if ( parent != null){
             pcid = parent.getCid() ;
         }
@@ -58,7 +58,7 @@ public class CategoryAction {
     }
 
     @RequestMapping("class_edit_do")
-    public ModelAndView edit(Category category){
+    public ModelAndView edit(Categorys category){
         ModelAndView mav = new ModelAndView() ;
         Long pcid = 0L ;
         Integer grade = category.getGrade() ;

@@ -1,8 +1,9 @@
 package com.yootk.dubbo.vo;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Bug {
+public class Bug implements Serializable {
     private Long bugid;
 
     private Long rid;

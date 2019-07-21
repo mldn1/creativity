@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 定义所有的SQL语句的映射， 对于本实体而言相关的所有的SQL代码都在此定义 -->
+<mapper namespace="com.yootk.mall.dao.IOrderGoodDAO">   <!-- SSM整合的时候，这个命名空间异常重要 -->
+    <sql id="selectBase">
+         SELECT id,oid,gid,count,price,goodsname FROM orders_goods
+    </sql>
+    <insert id="doCreate" parameterType="Order">
+        INSERT INTO orders_goods (oid,gid,count,price,goodsname)
+         VALUES (#{oid},#{gid},#{count},#{price},#{goodsname})
+    </insert>
+    <select id="findById" parameterType="java.lang.String" resultType="OrderGood">
+      <include refid="selectBase"/>
+        where  id=#{id}
+    </select>
+    <select id="findByOid" parameterType="java.lang.String" resultType="OrderGood">
+        <include refid="selectBase"/>
+        where  oid=#{oid}
+    </select>
+</mapper>

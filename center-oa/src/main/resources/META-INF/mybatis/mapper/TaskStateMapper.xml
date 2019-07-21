@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yootk.oa.dao.TaskStateMapper">
-  <resultMap id="BaseResultMap" type="com.yootk.dubbo.vo.TaskState">
+  <resultMap id="BaseResultMap" type="TaskState">
     <id column="tsid" jdbcType="INTEGER" property="tsid" />
     <result column="title" jdbcType="VARCHAR" property="title" />
   </resultMap>
@@ -12,17 +12,17 @@
     select 
     <include refid="Base_Column_List" />
     from task_state
-    where tsid = #{tsid,jdbcType=INTEGER}
+    where tsid = #{tsid}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from task_state
-    where tsid = #{tsid,jdbcType=INTEGER}
+    where tsid = #{tsid}
   </delete>
-  <insert id="insert" parameterType="com.yootk.oa.vo.TaskState">
+  <insert id="insert" parameterType="TaskState">
     insert into task_state (tsid, title)
-    values (#{tsid,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR})
+    values (#{tsid}, #{title})
   </insert>
-  <insert id="insertSelective" parameterType="com.yootk.oa.vo.TaskState">
+  <insert id="insertSelective" parameterType="TaskState">
     insert into task_state
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="tsid != null">
@@ -34,25 +34,25 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="tsid != null">
-        #{tsid,jdbcType=INTEGER},
+        #{tsid},
       </if>
       <if test="title != null">
-        #{title,jdbcType=VARCHAR},
+        #{title},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yootk.oa.vo.TaskState">
+  <update id="updateByPrimaryKeySelective" parameterType="TaskState">
     update task_state
     <set>
       <if test="title != null">
-        title = #{title,jdbcType=VARCHAR},
+        title = #{title},
       </if>
     </set>
-    where tsid = #{tsid,jdbcType=INTEGER}
+    where tsid = #{tsid}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yootk.oa.vo.TaskState">
+  <update id="updateByPrimaryKey" parameterType="TaskState">
     update task_state
-    set title = #{title,jdbcType=VARCHAR}
-    where tsid = #{tsid,jdbcType=INTEGER}
+    set title = #{title}
+    where tsid = #{tsid}
   </update>
 </mapper>

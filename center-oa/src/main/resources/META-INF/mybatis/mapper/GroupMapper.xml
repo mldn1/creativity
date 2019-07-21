@@ -1,32 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yootk.oa.dao.GroupMapper">
-  <resultMap id="BaseResultMap" type="com.yootk.dubbo.vo.Group">
+
+  <resultMap id="BaseResultMap" type="Group">
     <id column="gid" jdbcType="BIGINT" property="gid" />
     <result column="title" jdbcType="VARCHAR" property="title" />
     <result column="description" jdbcType="VARCHAR" property="description" />
   </resultMap>
+
   <sql id="Base_Column_List">
     gid, title, description
   </sql>
+
+  <select id="findSplit" parameterType="Map" resultType="com.yootk.dubbo.vo.Group">
+    select
+    <include refid="Base_Column_List"/>
+    from `group`
+    <if test="column != null and keyWord != null and column != &quot;&quot; and keyWord != &quot;&quot;">
+      <where>
+        ${column} like #{keyWord}
+      </where>
+    </if>
+    <if test="start != null and lineSize != null">
+      limit #{start}, #{lineSize}
+    </if>
+  </select>
+
+  <select id="getAllRecorders" resultType="long" parameterType="map">
+    select count(*) from `group`
+    <if test="column != null and keyword != null">
+      <where>
+        ${column} like #{keyword}
+      </where>
+    </if>
+  </select>
+
+  <select id="findByTitle" parameterType="String" resultType="Group">
+    select
+    <include refid="Base_Column_List"/>
+    from `group`
+    where title =#{title}
+  </select>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from group
-    where gid = #{gid,jdbcType=BIGINT}
+    where gid = #{gid}
   </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from group
-    where gid = #{gid,jdbcType=BIGINT}
+    delete from `group`
+    where gid = #{gid}
   </delete>
+
   <insert id="insert" parameterType="com.yootk.dubbo.vo.Group">
     insert into group (gid, title, description
       )
-    values (#{gid,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}
+    values (#{gid}, #{title}, #{description}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.yootk.dubbo.vo.Group">
-    insert into group
+
+  <insert id="doCreate" parameterType="com.yootk.dubbo.vo.Group">
+    insert into `group`
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="gid != null">
         gid,
@@ -40,13 +76,13 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="gid != null">
-        #{gid,jdbcType=BIGINT},
+        #{gid},
       </if>
       <if test="title != null">
-        #{title,jdbcType=VARCHAR},
+        #{title},
       </if>
       <if test="description != null">
-        #{description,jdbcType=VARCHAR},
+        #{description},
       </if>
     </trim>
   </insert>
@@ -54,18 +90,18 @@
     update group
     <set>
       <if test="title != null">
-        title = #{title,jdbcType=VARCHAR},
+        title = #{title},
       </if>
       <if test="description != null">
-        description = #{description,jdbcType=VARCHAR},
+        description = #{description},
       </if>
     </set>
-    where gid = #{gid,jdbcType=BIGINT}
+    where gid = #{gid}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.yootk.dubbo.vo.Group">
     update group
-    set title = #{title,jdbcType=VARCHAR},
-      description = #{description,jdbcType=VARCHAR}
-    where gid = #{gid,jdbcType=BIGINT}
+    set title = #{title},
+      description = #{description}
+    where gid = #{gid}
   </update>
 </mapper>

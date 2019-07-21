@@ -133,6 +133,7 @@ public class OrdersServiceImpl implements IOrdersService {
 
     @Override
     public boolean editOrder(Orders orders) {
+        orders.setEditdate(new Date());
         Boolean flag = false ;
         System.out.println("当前参数"+orders);
         Long num = this.ordersDAO.editOrderByOid(orders) ;
@@ -142,5 +143,14 @@ public class OrdersServiceImpl implements IOrdersService {
             System.err.println("修改结果布尔"+flag);
         }
         return flag;
+    }
+
+    @Override
+    public List<Orders_goods> listOrderGoodsName() {
+        List<Orders_goods> list = this.ordersDAO.findOGoodsName() ;
+
+        System.err.println("订单商品输出"+list);
+
+        return list;
     }
 }

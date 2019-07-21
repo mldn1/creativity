@@ -194,7 +194,7 @@
                     <td>订单时间</td>
                     <td>修改时间</td>
                     <td>用户备注</td>
-                    <td>操作人员</td>
+                    <%--<td>操作人员</td>--%>
                 </tr>
                 </thead>
                 <tbody>
@@ -206,6 +206,9 @@
                 <c:if test="${orders.channel==2}">
                     <td>微信</td>
                 </c:if>--%>
+
+                <%--数据测试${allOrdersGoodsName} <br>--%>
+
                 <c:forEach items="${allOrders}" var="orders" >
                 <tr>
                     <td><input name="id[]" type="checkbox" id="id[]" value="16550"/>&nbsp;&nbsp;<b><a
@@ -222,8 +225,16 @@
                         <span>微信</span>
                     </c:if>
                     </td>
-                    <td>商品：金猴献瑞儿童套碗&nbsp;|&nbsp;数量：1&nbsp;|&nbsp;单价：265.00&nbsp;|&nbsp;颜色：金&nbsp;|&nbsp;规格：付款后45天发货<br/>
+
+                    <td>
+                        <c:forEach items="${allOrdersGoodsName}" var="goodsName">
+                        <c:if test="${goodsName.oid==orders.oid}">
+                        商品：${goodsName.goodsname}|&nbsp;数量：${goodsName.count}&nbsp;|&nbsp;单价：${goodsName.price}<br/><%--&nbsp;|&nbsp;颜色：金&nbsp;|&nbsp;规格：付款后45天发货--%>
+                        </c:if>
+                        <%--<br/>--%>
+                        </c:forEach>
                     </td>
+
                     <%--订单状态--%>
                     <td>
                     <c:if test="${orders.state==0}">关闭</c:if>
@@ -255,7 +266,7 @@
                     <td>${orders.createdate}</td>
                     <td>${orders.editdate}</td>
                     <td>${orders.usernote}</td>
-                    <td>${orders.operator}</td>
+                    <%--<td>${orders.operator}</td>--%>
                 </tr>
                 </c:forEach>
                 </tbody>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 定义所有的SQL语句的映射， 对于本实体而言相关的所有的SQL代码都在此定义 -->
+<mapper namespace="com.yootk.admin.dao.ICategorysDAO">   <!-- SSM整合的时候，这个命名空间异常重要 -->
+    <sql id="selectBase">
+         SELECT cid,title,grade,icon,sort,stitle,sdescription,skeyword,state,eid FROM category
+    </sql>
+    <select id="findByGrade" parameterType="java.lang.Integer" resultType="Categorys">
+        <include refid="selectBase"/>
+        <where>
+            grade=#{grade}
+        </where>
+    </select>
+    <select id="findById" parameterType="java.lang.Long" resultType="Categorys">
+        <include refid="selectBase"/>
+        <where>
+            cid=#{cid}
+        </where>
+    </select>
+    <select id="findByTitle" parameterType="java.lang.String" resultType="Categorys">
+        <include refid="selectBase"/>
+        <where>
+            title=#{title}
+        </where>
+    </select>
+
+    <select id="findMaxId" parameterType="java.lang.Long" resultType="java.lang.Long">
+        SELECT MAX(cid) FROM category
+    </select>
+
+    <select id="findIdByParent" parameterType="java.lang.Long" resultType="java.lang.Long">
+        SELECT scid FROM category_relationship
+        <where>
+            pcid=#{pcid}
+        </where>
+    </select>
+    <select id="findParentId" parameterType="java.lang.Long" resultType="java.lang.Long">
+        SELECT pcid FROM category_relationship
+        <where>
+            scid=#{scid}
+        </where>
+    </select>
+    
+    <insert id="doCreate" parameterType="Categorys" keyProperty="cid" keyColumn="cid" useGeneratedKeys="true">
+        INSERT INTO category(title,grade,icon,sort,stitle,sdescription,skeyword,state,eid) VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="title == null">
+                null ,
+            </if>
+            <if test="title != null">
+                #{title},
+            </if>
+            <if test="grade == null">
+                null ,
+            </if>
+            <if test="grade != null">
+                #{grade},
+            </if>
+            <if test="icon == null">
+                null ,
+            </if>
+            <if test="icon != null">
+                #{icon},
+            </if>
+            <if test="sort == null">
+                null ,
+            </if>
+            <if test="sort != null">
+                #{sort},
+            </if>
+            <if test="stitle == null">
+                null,
+            </if>
+            <if test="stitle != null">
+                #{stitle},
+            </if>
+            <if test="sdescription == null">
+                null,
+            </if>
+            <if test="sdescription != null">
+                #{sdescription},
+            </if>
+            <if test="skeyword == null">
+                null,
+            </if>
+            <if test="skeyword != null">
+                #{skeyword},
+            </if>
+            <if test="state == null">
+                null,
+            </if>
+            <if test="state != null">
+                #{state} ,
+            </if>
+            <if test="eid == null">
+                null ,
+            </if>
+            <if test="eid != null">
+                #{eid},
+            </if>
+        </trim>
+    </insert>
+
+    <insert id="doCreateRelationship" parameterType="java.lang.Long">
+         INSERT INTO category_relationship(scid,pcid) VALUES (#{arg0},#{arg1})
+    </insert>
+
+    <update id="doEdit" parameterType="Categorys">
+        UPDATE category
+        <set>
+            title=#{title},
+            grade=#{grade},
+            icon=#{icon},
+            sort=#{sort},
+            stitle=#{stitle},
+            sdescription=#{sdescription},
+            sdescription=#{sdescription},
+            state=#{state},
+            eid=#{eid},
+        </set>
+        <where>
+            cid = #{cid}
+        </where>
+    </update>
+    <insert id="doEditRelationship" parameterType="java.lang.Long">
+         UPDATE  category_relationship
+         <set>
+             pcid=#{arg1}
+         </set>
+         <where>
+             scid=#{arg0}
+         </where>
+    </insert>
+
+    <delete id="doDeleteRelationship" parameterType="java.lang.Long">
+        DELETE FROM category_relationship
+        <where>
+            scid=#{scid}
+        </where>
+    </delete>
+    <delete id="doDeleteCategory" parameterType="java.lang.Long">
+        DELETE FROM category
+        <where>
+            cid=#{cid}
+        </where>
+    </delete>
+</mapper>

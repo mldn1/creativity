@@ -70,8 +70,18 @@
                 </tr>
                 <tr>
                     <td>商品信息</td>
-                    <td>商品：金猴献瑞儿童套碗&nbsp;|&nbsp;数量：1&nbsp;|&nbsp;单价：265.00&nbsp;|&nbsp;颜色：金&nbsp;|&nbsp;规格：付款后45天发货<br/>
+
+                    <%--${allOrdersGoodsName}--%>
+                    <td>
+                    <c:forEach items="${allOrdersGoodsName}" var="goodsName">
+                        <c:if test="${goodsName.oid==preEditOrder.oid}">
+                            商品：${goodsName.goodsname}|&nbsp;数量：${goodsName.count}&nbsp;|&nbsp;单价：${goodsName.price}<br/><%--&nbsp;|&nbsp;颜色：金&nbsp;|&nbsp;规格：付款后45天发货--%>
+                        </c:if>
+                        <%--<br/>--%>
+                    </c:forEach>
                     </td>
+                    <%--<td>商品：金猴献瑞儿童套碗&nbsp;|&nbsp;数量：1&nbsp;|&nbsp;单价：265.00&nbsp;|&nbsp;颜色：金&nbsp;|&nbsp;规格：付款后45天发货<br/>
+                    </td>--%>
                 </tr>
                 <tr>
                     <td>用户备注</td>

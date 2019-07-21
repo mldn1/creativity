@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yootk.oa.dao.AuthoritygroupMapper">
-  <resultMap id="BaseResultMap" type="com.yootk.dubbo.vo.Authoritygroup">
+  <resultMap id="BaseResultMap" type="Authoritygroup">
     <id column="authoid" jdbcType="BIGINT" property="authoid" />
     <result column="gid" jdbcType="BIGINT" property="gid" />
   </resultMap>
@@ -12,17 +12,17 @@
     select 
     <include refid="Base_Column_List" />
     from authority_group
-    where authoid = #{authoid,jdbcType=BIGINT}
+    where authoid = #{authoid}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from authority_group
-    where authoid = #{authoid,jdbcType=BIGINT}
+    where authoid = #{authoid}
   </delete>
-  <insert id="insert" parameterType="com.yootk.dubbo.vo.Authoritygroup">
+  <insert id="insert" parameterType="Authoritygroup">
     insert into authority_group (authoid, gid)
-    values (#{authoid,jdbcType=BIGINT}, #{gid,jdbcType=BIGINT})
+    values (#{authoid}, #{gid})
   </insert>
-  <insert id="insertSelective" parameterType="com.yootk.dubbo.vo.Authoritygroup">
+  <insert id="insertSelective" parameterType="Authoritygroup">
     insert into authority_group
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="authoid != null">
@@ -34,25 +34,25 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="authoid != null">
-        #{authoid,jdbcType=BIGINT},
+        #{authoid},
       </if>
       <if test="gid != null">
-        #{gid,jdbcType=BIGINT},
+        #{gid},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yootk.dubbo.vo.Authoritygroup">
+  <update id="updateByPrimaryKeySelective" parameterType="Authoritygroup">
     update authority_group
     <set>
       <if test="gid != null">
-        gid = #{gid,jdbcType=BIGINT},
+        gid = #{gid},
       </if>
     </set>
-    where authoid = #{authoid,jdbcType=BIGINT}
+    where authoid = #{authoid}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yootk.dubbo.vo.Authoritygroup">
+  <update id="updateByPrimaryKey" parameterType="Authoritygroup">
     update authority_group
-    set gid = #{gid,jdbcType=BIGINT}
-    where authoid = #{authoid,jdbcType=BIGINT}
+    set gid = #{gid}
+    where authoid = #{authoid}
   </update>
 </mapper>

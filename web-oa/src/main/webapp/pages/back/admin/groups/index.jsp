@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
@@ -28,7 +29,8 @@
       <h3> 组织管理     <jsp:include page="/pages/plugins/include_nav.jsp"/></h3>
       <ul class="breadcrumb pull-left">
         <li> <a href="/user/show/{{.LoginUserid}}"></a> </li>
-        <li> <a href="pages/back/admin/groups/index.jsp">组管理</a> </li>
+<%--        <li> <a href="pages/back/admin/groups/index.jsp">组管理</a> </li>--%>
+        <li> <a href="pages/back/admin/groups/group_list.action">组管理</a> </li>
         <li class="active"> 组权限 </li>
       </ul>
       <div class="pull-right"> <a href="pages/back/admin/groups/form.jsp" class="btn btn-success">+新增组</a> </div>
@@ -39,7 +41,7 @@
       <div class="row">
         <div class="col-sm-12">
           <section class="panel">
-            <header class="panel-heading"> 组管理 / 总数：</header>
+            <header class="panel-heading"> 组管理 / 总数：${allRecorders}</header>
             <div class="panel-body">
               <table class="table table-bordered table-striped table-condensed">
                 <thead>
@@ -50,28 +52,48 @@
                   </tr>
                 </thead>
                 <tbody>
-                
+                    <c:forEach items="${allGroups}" var="group">
+                        <tr>
+                            <td>&nbsp;${group.title} </td>
+                            <td class="hidden-phone hidden-xs">&nbsp;${group.description}</td>
+                            <td><div class="btn-group">
+                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 操作<span class="caret"></span> </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="pages/back/admin/groups/group-permission.jsp">权限</a></li>
+                                    <li role="separator" class="divider"></li>
+<%--                                    <li><a href="pages/back/admin/groups/user.jsp">成员</a></li>--%>
+                                    <li><a href="pages/back/admin/groups/group_user.action?gid=${group.gid}">成员</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="pages/back/admin/groups/user-form.jsp?gid=${group.gid}">编辑</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="javascript:confirm('确定要删除组吗！');" class="js-group-delete" data-op="delete" data-id="${group.gid}">删除</a></li>
+                                </ul>
+                            </div></td>
+                        </tr>
+                    </c:forEach>
       
-                <tr>
-                  <td>&nbsp; </td>
-                  <td class="hidden-phone hidden-xs">&nbsp;</td>
-                  <td><div class="btn-group">
-                      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 操作<span class="caret"></span> </button>
-                      <ul class="dropdown-menu">
-                        <li><a href="pages/back/admin/groups/group-permission.jsp">权限</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="pages/back/admin/groups/user.jsp">成员</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="pages/back/admin/groups/user-form.jsp">编辑</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="javascript:;" class="js-group-delete" data-op="delete" data-id="">删除</a></li>
-                      </ul>
-                    </div></td>
-                </tr>
+<%--                <tr>--%>
+<%--                  <td>&nbsp; </td>--%>
+<%--                  <td class="hidden-phone hidden-xs">&nbsp;</td>--%>
+<%--                  <td><div class="btn-group">--%>
+<%--                      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 操作<span class="caret"></span> </button>--%>
+<%--                      <ul class="dropdown-menu">--%>
+<%--                        <li><a href="pages/back/admin/groups/group-permission.jsp">权限</a></li>--%>
+<%--                        <li role="separator" class="divider"></li>--%>
+<%--                        <li><a href="pages/back/admin/groups/user.jsp">成员</a></li>--%>
+<%--                        <li role="separator" class="divider"></li>--%>
+<%--                        <li><a href="pages/back/admin/groups/user-form.jsp">编辑</a></li>--%>
+<%--                        <li role="separator" class="divider"></li>--%>
+<%--                        <li><a href="javascript:;" class="js-group-delete" data-op="delete" data-id="">删除</a></li>--%>
+<%--                      </ul>--%>
+<%--                    </div></td>--%>
+<%--                </tr>--%>
                 
-                <tr>
-                  <td colspan="7">你还没有添加组</td>
-                </tr>
+                <c:if test="${allGroups == null}">
+                    <tr>
+                        <td colspan="7">你还没有添加组</td>
+                    </tr>
+                </c:if>
                 
                 </tbody>
                 
@@ -89,4 +111,30 @@
 </section>
 <jsp:include page="/pages/plugins/include_foot.jsp"/>
 </body>
+
+<script>
+    $(function(){
+        $("a[data-id]").each(function(){
+            $(this).on("click",function(){
+                gid = $(this).attr("data-id")
+                console.log(gid) ;
+                $.getJSON("pages/back/admin/groups/group_delete.action", {"gid":gid}, function (data) {
+                    console.log("我被调用了**************")
+                    if (data==(true)) {
+                        // $("footer").append("组删除成功，5秒后自动刷新页面");
+                        // setTimeout(window.location.reload(),5);
+                        alert("组删除成功！");
+                        window.location.reload()
+                    }else {
+                        // $("footer").append("组删除失败！");
+                        alert("组删除失败！");
+                    }
+
+                });
+            }) ;
+        }) ;
+    })
+
+</script>
+
 </html>

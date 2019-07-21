@@ -24,12 +24,15 @@ public class SaleAction  {
         return mav ;
    }
 
+   //首页进入订单页的列表加载
     @GetMapping("order_list")
     public ModelAndView orderList() {
+        System.out.println("saleAction进入测试");
         ModelAndView mav = new ModelAndView("front/sale/order_list") ;
         PageUtil pu = new PageUtil("pages/front/sale/order_list.action");
         Map<String, Object> map = new HashMap<>();
         map = this.ordersService.orderPre(pu.getCurrentPage(),pu.getLineSize()) ;
+        map.put("allOrdersGoodsName",this.ordersService.listOGoodsName()) ; //将订单商品加入map集合
         Long count = (Long)map.get("allRecorders") ;
         //不传数据，查询全部
 

@@ -6,20 +6,21 @@
 --%>
 <%!
     public static final String PROFILE_URL = "pages/back/admin/users/profile.jsp";
-    public static final String PROJECT_URL = "pages/back/admin/projects/project.jsp";
-    public static final String CHECKWORKS_URL = "pages/back/admin/checkworks/index.jsp";
+    public static final String PROJECT_URL = "pages/back/admin/projects/project_list_pre.action";
+    public static final String CHECKWORKS_URL = "pages/back/admin/checkworks/checkork_list.action";
     public static final String APPROVAL_URL = "pages/back/admin/leaves/approval-index.jsp";
     public static final String KNOWLEDGES_URL = "pages/back/admin/knowledges/index.jsp";
     public static final String ALBUMS_URL = "pages/back/admin/albums/index.jsp";
-    public static final String RESUMES_URL = "pages/back/admin/resumes/index.jsp";
-    public static final String ORGANIZATION_URL = "pages/back/admin/groups/index.jsp";
+    public static final String RESUMES_URL = "pages/back/admin/resumes/resume_list.action";
+//    public static final String ORGANIZATION_URL = "pages/back/admin/groups/index.jsp";
+    public static final String ORGANIZATION_URL = "pages/back/admin/groups/group_list.action";
     public static final String SHOW_USER_URL = "pages/back/admin//user/show/";
     public static final String LOGOUT_URL = "logout";
 %>
 <div class="left-side sticky-left-side">
     <!--logo and iconic logo start-->
-    <div class="logo"><a href="/"><img src="static/img/logo-left.png" alt="管理系统"></a></div>
-    <div class="logo-icon text-center"><a href="/"><img src="static/img/logo_icon.png" style="width:40px;"
+    <div class="logo"><a href="/"><img src="${emp.photo}" alt="管理系统"></a></div>
+    <div class="logo-icon text-center"><a href="/"><img src="${emp.photo}" style="width:40px;"
                                                         alt="管理系统"></a></div>
     <!--logo and iconic logo end-->
     <div class="left-side-inner">
@@ -27,7 +28,7 @@
         <div class="visible-xs hidden-sm hidden-md hidden-lg">
             <div class="media logged-user"><img alt=" " src=" " class="media-object">
                 <div class="media-body">
-                    <h4><a href="/user/show/">用户1</a></h4>
+                    <h4><a href="/user/show/">${emp.name}</a></h4>
                     <span>系统</span></div>
             </div>
             <h5 class="left-nav-title">控制台</h5>

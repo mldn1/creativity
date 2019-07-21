@@ -5,7 +5,7 @@ import com.yootk.admin.dao.IChannelDAO;
 import com.yootk.admin.dao.IMemberDAO;
 import com.yootk.admin.dao.IMember_gradeDAO;
 import com.yootk.admin.dao.IStateDAO;
-import com.yootk.dubbo.service.IMemberService;
+import com.yootk.dubbo.service.IMemberServiceAdmin;
 import com.yootk.dubbo.vo.Channels;
 import com.yootk.dubbo.vo.Member;
 import com.yootk.dubbo.vo.Member_grade;
@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Service
-public class MemberServiceImpl implements IMemberService {
+public class MemberServiceImpl implements IMemberServiceAdmin {
     @Autowired
     private IChannelDAO channelDAO;
     @Autowired

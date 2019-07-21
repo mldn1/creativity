@@ -1,6 +1,7 @@
 package com.yootk.admin.service;
 
 import com.yootk.dubbo.vo.Orders;
+import com.yootk.dubbo.vo.Orders_goods;
 import com.yootk.dubbo.vo.PayState;
 
 import java.util.Date;
@@ -28,4 +29,7 @@ public interface IOrdersTransferService {
 
     //订单编辑
     public boolean editOrder(Orders orders) ;
+
+    //订单商品查询
+    public List<Orders_goods> listOGoodsName() ;
 }
