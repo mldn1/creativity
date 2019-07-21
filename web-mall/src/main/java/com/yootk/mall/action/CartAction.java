@@ -2,6 +2,7 @@ package com.yootk.mall.action;
 
 
 import com.yootk.mall.service.ICartTransferService;
+import com.yootk.mall.service.IOrderTransferService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +16,8 @@ import java.util.*;
 public class CartAction {
     @Autowired
     ICartTransferService cartTransferService ;
+    @Autowired
+    IOrderTransferService orderTransferService ;
     //购物车页面编辑商品数量、删除商品、选择下单商品、
     @RequestMapping("shopping_cart")
     public ModelAndView shoppingCar() throws Exception {
@@ -71,11 +74,16 @@ public class CartAction {
     }
 
     @RequestMapping("shopping_cart_3")
-    public ModelAndView shoppingCar3() throws Exception {   //下单成功页面
+    public ModelAndView shoppingCar3(String goodsIds, String addressId, String logistics, String goodsTotal, String payMoney, String fareTotal,String payway) throws Exception {   //下单成功页面
         ModelAndView mav = new ModelAndView() ;
         mav.setViewName("front/cart/shopping_cart_3");
         //向订单表中写入数据
-
+        String oid = this.orderTransferService.add(goodsIds,addressId,logistics,goodsTotal,payMoney,fareTotal,payway);
+        mav.addObject("orderId",oid);
+        System.err.println(payway.equalsIgnoreCase("alipay")?"支付宝":"微信");
+        System.err.println(payMoney);
+        mav.addObject("paywaycn",payway.equalsIgnoreCase("alipay")?"支付宝":"微信");
+        mav.addObject("payMoney",payMoney);
         return mav ;
     }
     @RequestMapping("shopping_cart_4")

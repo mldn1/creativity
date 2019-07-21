@@ -2,6 +2,7 @@ package com.yootk.mall.service.impl;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.yootk.dubbo.service.mall.IOrderService;
 import com.yootk.dubbo.vo.mall.Order;
+import com.yootk.dubbo.vo.mall.OrderGood;
 import com.yootk.mall.service.IOrderTransferService;
 import org.springframework.stereotype.Service;
 
@@ -21,15 +22,39 @@ public class OrderTransferServiceImpl  implements IOrderTransferService {
      * @return
      */
     @Override
-    public Map<String, Object> handleOrder() {
+    public Map<String, Object> list() {
         List<Order>  ordersList = new ArrayList<>() ;
-        Map<String,Object> map = null ;
-        Map<String,Object> parmaMap = new HashMap<>() ;
+        Map<String,Object> paramMap = new HashMap<>() ;
+        paramMap.put("mid","admin");
+        Map<String,Object> map = new HashMap<>();
         try {
-            map = this.orderService.list(parmaMap) ;
+            map = this.orderService.list(paramMap) ;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
+        return map;
+    }
+
+    @Override
+    public String add(String goodsIds, String addressId, String logistics, String allprice, String endprice, String fare,String payway) {
+        try {
+            //获取当前用户ID，唯一标识
+            String userid="admin" ;
+            String oid = this.orderService.add(userid,goodsIds,addressId,logistics,allprice,endprice,fare,payway);
+            return oid ;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "" ;
+        }
+    }
+    @Override
+    public Map<String,Object> get(String oid ){
+        Map<String,Object> map = new HashMap<>() ;
+        try {
+            map =  this.orderService.get(oid);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return map ;
     }
 }

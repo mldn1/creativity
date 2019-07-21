@@ -7,7 +7,7 @@
             <li><a id="homeLink" class="active" href="index.action">首页</a></li>
             <li><a id="taskLink" href="search.action">搜索</a></li>
             <li class="cd-cart-container empty">
-                <a id="messageLink" href="/WEB-INF/pages/front/cart/shopping_cart.action">购物车</a>
+                <a id="messageLink" href="pages/front/cart/shopping_cart.action">购物车</a>
 <%--                <span class="cd-cart-trigger"  >--%>
 <%--                    <ul class="count">--%>
 <%--                        <li>0</li>--%>

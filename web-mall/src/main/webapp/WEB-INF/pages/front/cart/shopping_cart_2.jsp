@@ -66,15 +66,30 @@ $(function(){
 function gotoNext() {
     $('.sh_Model_box').show()
     $("#msg").show().fadeOut(4000);
-    if($('.gouBtn_1').attr("paymethod")=='alipay'){
+    payway = $('.gouBtn_1').attr("paymethod") ;
+    if(payway=='alipay'){
         $("#payway").html("支付宝");
     }else{
         $("#payway").html("微信支付");
     }
+    fareTotal = $.getUrlParam('fareTotal');
+    payMoney = $.getUrlParam('payMoney');
+    goodsTotal = $.getUrlParam('goodsTotal');
+    goodsIds = $.getUrlParam('goodsIds');
+    logistics = $.getUrlParam('logistics');
+    addressId = $.getUrlParam('addressId');
     setTimeout(function () {
-        window.open('pages/front/cart/shopping_cart_3.action','_self');
+        window.open('pages/front/cart/shopping_cart_3.action?fareTotal='+fareTotal+"&payMoney="+payMoney+"&goodsTotal="+goodsTotal+"&goodsIds="+goodsIds+"&logistics="+logistics+"&addressId="+addressId+"&payway="+payway,'_self');
     },"2500");
 }
+
+(function ($) {
+    $.getUrlParam = function (name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+})(jQuery);
 </script>
 
 </body>

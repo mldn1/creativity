@@ -58,8 +58,8 @@ window.onresize = function(){
 	<div class="logistics">选择物流</div>
     <div class="mine_Check width_Choose">
        <div class="mine_Checked">
-           <input class="orange" type="radio" name="group4" data-value="20" checked>顺丰快递
-           <input class="orange" type="radio" name="group4" data-value="10">圆通快递
+           <input class="orange" type="radio" name="group4" data-value="20"  checked>顺丰快递
+           <input class="orange" type="radio" name="group4" data-value="10"  >圆通快递
        </div>
     </div>                                                  
 </div>
@@ -117,7 +117,12 @@ window.onresize = function(){
         $("#payMoney").html(result) ;
     })
 function order() {
-    window.open('pages/front/cart/shopping_cart_2.action?fareTotal='+$("#fareTotal").html()+"&payMoney="+$("#payMoney").html()+"&goodsTotal="+$("#goodsTotal").html()+"&goodsIds=${goodsIds}",'_self');
+    fareTotal = $("#fareTotal").html();
+    payMoney = $("#payMoney").html();
+    goodsTotal = $("#goodsTotal").html();
+    addressId = '1' ;
+    logistics = payMoney=="20"?"101":"102";
+    window.open('pages/front/cart/shopping_cart_2.action?fareTotal='+fareTotal+"&payMoney="+payMoney+"&goodsTotal="+goodsTotal+"&goodsIds=${goodsIds}"+"&logistics="+logistics+"&addressId="+addressId,'_self');
 }
 </script>
 

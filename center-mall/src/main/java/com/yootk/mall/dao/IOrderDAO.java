@@ -11,5 +11,9 @@ public interface IOrderDAO {
 
     public Order findByOid(String oid);
 
+    public boolean doCreate(Order order);
+
+    public List<Order> findAll();
+
     public List<Order> findAllCondition(Map<String,Object> map);
 }

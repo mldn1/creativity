@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page pageEncoding="UTF-8"%>
 <!DOCTYPE html> 
 <head>
@@ -38,114 +39,107 @@
 	</script>
 </head>
 <body>
-<div class="order_List">
-    <ul class="order_Tab">
-        <li class="cur">全部</li>
-        <li>待付款</li>
-        <li>待发货</li>
-        <li>待收货</li>
-        <li>已完成</li>
-    </ul>
-</div>
 <div class="order_Details on">
-	<div class="order_Statu1">
-    	<div class="order_StatuTit">
-        	<span>订单编号：1984579875472</span>
-            <span>取消订单</span>
-        </div>
-        <div class="order_StatuText">
-        	<div class="order_Img"><img src="images/GL_img_14.jpg"></div>
-            <div class="order_StatuFont">
-            	<h2>缠枝莲（一杯四盖）<span>×99</span></h2>
-                <p>红色</p>
+    <c:forEach items="${orderList}" var="order">
+        <div class="order_Statu1">
+            <div class="order_StatuTit">
+                <span>订单编号：${order.oid}</span>
             </div>
-            <div class="order_Nowstatu">
-            	<p>待付款</p>
+            <div class="order_StatuText">
+                <c:forEach items="${orderGoodList}" var="ordergood" >
+                    <c:if test="${ordergood.oid == order.oid}">
+                         <div class="order_Img"><img src="images/GL_img_14.jpg"></div>
+                    </c:if>
+                </c:forEach>
+                <div class="order_Nowstatu">
+                    <p>待付款</p>
+                </div>
             </div>
-        </div>
-        <div class="order_Pay">
-        	<span>应付：1,388.23元</span>
-            <input type="button" value="付款" name=""  onclick="javascrtpt:window.location.href='pages/front/order/order_details.jsp'">
-        </div>
-    </div>
-    <div class="order_Statu1">
-    	<div class="order_StatuTit">
-        	<span>订单编号：1984579875472</span>
-            <span>联系客服</span>
-        </div>
-        <div class="order_StatuText">
-        	<div class="order_Img"><img src="images/GL_img_14.jpg"></div>
-            <div class="order_StatuFont">
-            	<h2>缠枝莲（一杯四盖）<span>×99</span></h2>
-                <p>红色</p>
-            </div>
-            <div class="order_Nowstatu1">
-            	<p>出库中</p>
+            <div class="order_Pay">
+                <span>应付：${order.endprice}元</span>
+                <input type="button" value="付款" name=""  onclick="javascrtpt:window.location.href='pages/front/order/order_details.action?orderId='">
             </div>
         </div>
-        <div class="order_Pay1">
-        	<span>应付：1,388.23元</span>
-            <input type="button" value="取消订单" name="">
-        </div>
-    </div>
-    <div class="order_Statu1">
-    	<div class="order_StatuTit">
-        	<span>订单编号：1984579875472</span>
-            <span>联系客服</span>
-        </div>
-        <div class="order_StatuText">
-        	<div class="order_Img"><img src="images/GL_img_14.jpg"></div>
-            <div class="order_StatuFont">
-            	<h2>缠枝莲（一杯四盖）<span>×99</span></h2>
-                <p>红色</p>
-            </div>
-            <div class="order_Nowstatu1">
-            	<p>待收货</p>
-            </div>
-        </div>
-        <div class="order_Pay2">
-        	<span>应付：1,388.23元</span>
-            <input type="button" value="查看物流" name="">
-        </div>
-    </div>
-    <div class="order_Statu1">
-    	<div class="order_StatuTit">
-        	<span>订单编号：1984579875472</span>
-            <span class="order_Del">删除</span>
-        </div>
-        <div class="order_StatuText">
-        	<div class="order_Img"><img src="images/GL_img_14.jpg"></div>
-            <div class="order_StatuFont">
-            	<h2>缠枝莲（一杯四盖）<span>×99</span></h2>
-                <p>红色</p>
-            </div>
-            <div class="order_Nowstatu1">
-            	<p class="font_ColorWc">已完成</p>
-            </div>
-        </div>
-        <div class="order_Pay2">
-        	<span>应付：1,388.23元</span>
-        </div>
-    </div>
-    <div class="order_Statu1">
-    	<div class="order_StatuTit">
-        	<span>订单编号：1984579875472</span>
-            <span class="order_Del">删除</span>
-        </div>
-        <div class="order_StatuText">
-        	<div class="order_Img"><img src="images/GL_img_14.jpg"></div>
-            <div class="order_StatuFont">
-            	<h2>缠枝莲（一杯四盖）<span>×99</span></h2>
-                <p>红色</p>
-            </div>
-            <div class="order_Nowstatu1">
-            	<p class="font_ColorQx">已取消</p>
-            </div>
-        </div>
-        <div class="order_Pay2">
-        	<span>应付：1,388.23元</span>
-        </div>
-    </div>
+    </c:forEach>
+
+<%--    <div class="order_Statu1">--%>
+<%--    	<div class="order_StatuTit">--%>
+<%--        	<span>订单编号：1984579875472</span>--%>
+<%--            <span>联系客服</span>--%>
+<%--        </div>--%>
+<%--        <div class="order_StatuText">--%>
+<%--        	<div class="order_Img"><img src="images/GL_img_14.jpg"></div>--%>
+<%--            <div class="order_StatuFont">--%>
+<%--            	<h2>缠枝莲（一杯四盖）<span>×99</span></h2>--%>
+<%--                <p>红色</p>--%>
+<%--            </div>--%>
+<%--            <div class="order_Nowstatu1">--%>
+<%--            	<p>出库中</p>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--        <div class="order_Pay1">--%>
+<%--        	<span>应付：1,388.23元</span>--%>
+<%--            <input type="button" value="取消订单" name="" onclick="javascrtpt:window.location.href='pages/front/order/order_details.action?orderId='">--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--    <div class="order_Statu1">--%>
+<%--    	<div class="order_StatuTit">--%>
+<%--        	<span>订单编号：1984579875472</span>--%>
+<%--            <span>联系客服</span>--%>
+<%--        </div>--%>
+<%--        <div class="order_StatuText">--%>
+<%--        	<div class="order_Img"><img src="images/GL_img_14.jpg"></div>--%>
+<%--            <div class="order_StatuFont">--%>
+<%--            	<h2>缠枝莲（一杯四盖）<span>×99</span></h2>--%>
+<%--                <p>红色</p>--%>
+<%--            </div>--%>
+<%--            <div class="order_Nowstatu1">--%>
+<%--            	<p>待收货</p>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--        <div class="order_Pay2">--%>
+<%--        	<span>应付：1,388.23元</span>--%>
+<%--            <input type="button" value="查看物流" name="">--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--    <div class="order_Statu1">--%>
+<%--    	<div class="order_StatuTit">--%>
+<%--        	<span>订单编号：1984579875472</span>--%>
+<%--            <span class="order_Del">删除</span>--%>
+<%--        </div>--%>
+<%--        <div class="order_StatuText">--%>
+<%--        	<div class="order_Img"><img src="images/GL_img_14.jpg"></div>--%>
+<%--            <div class="order_StatuFont">--%>
+<%--            	<h2>缠枝莲（一杯四盖）<span>×99</span></h2>--%>
+<%--                <p>红色</p>--%>
+<%--            </div>--%>
+<%--            <div class="order_Nowstatu1">--%>
+<%--            	<p class="font_ColorWc">已完成</p>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--        <div class="order_Pay2">--%>
+<%--        	<span>应付：1,388.23元</span>--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--    <div class="order_Statu1">--%>
+<%--    	<div class="order_StatuTit">--%>
+<%--        	<span>订单编号：1984579875472</span>--%>
+<%--            <span class="order_Del">删除</span>--%>
+<%--        </div>--%>
+<%--        <div class="order_StatuText">--%>
+<%--        	<div class="order_Img"><img src="images/GL_img_14.jpg"></div>--%>
+<%--            <div class="order_StatuFont">--%>
+<%--            	<h2>缠枝莲（一杯四盖）<span>×99</span></h2>--%>
+<%--                <p>红色</p>--%>
+<%--            </div>--%>
+<%--            <div class="order_Nowstatu1">--%>
+<%--            	<p class="font_ColorQx">已取消</p>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--        <div class="order_Pay2">--%>
+<%--        	<span>应付：1,388.23元</span>--%>
+<%--        </div>--%>
+<%--    </div>--%>
 </div>
 <div class="order_Details">
 	<div class="gouConterText">

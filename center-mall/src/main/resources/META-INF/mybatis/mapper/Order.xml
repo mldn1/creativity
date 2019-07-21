@@ -4,21 +4,36 @@
 <!-- 定义所有的SQL语句的映射， 对于本实体而言相关的所有的SQL代码都在此定义 -->
 <mapper namespace="com.yootk.mall.dao.IOrderDAO">   <!-- SSM整合的时候，这个命名空间异常重要 -->
     <sql id="selectBase">
-         SELECT id,oid,mid,address FROM orders
+         SELECT id,oid,mid,address,allprice,endprice,fare,payment,paystate,payid,paydate,createdate FROM orders
     </sql>
+
+    <insert id="doCreate" parameterType="Order">
+        INSERT INTO orders   (oid,mid,address,allprice,endprice,fare,payment,paystate,payid,paydate,createdate)
+         VALUES (  #{oid},#{mid},#{address},#{allprice},#{endprice},#{fare},#{payment},#{paystate},#{payid},#{paydate},#{createdate}  )
+    </insert>
+
     <select id="findById" parameterType="java.lang.String" resultType="Order">
       <include refid="selectBase"/>
         where  id=#{id}
     </select>
+
     <select id="findByOid" parameterType="java.lang.String" resultType="Order">
         <include refid="selectBase"/>
         where  oid=#{oid}
     </select>
+
+    <select id="findAll" resultType="Order">
+        <include refid="selectBase"/>
+    </select>
+
     <select id="findAllCondition" parameterType="java.util.Map" resultType="Order">
         <include refid="selectBase"/>
          where 1=1
-        <if test="id = null and id != ''">
+        <if test="id != null and id != ''">
             and id=#{id}
+        </if>
+        <if test="mid != null and mid != ''">
+            and mid=#{mid}
         </if>
     </select>
 </mapper>
