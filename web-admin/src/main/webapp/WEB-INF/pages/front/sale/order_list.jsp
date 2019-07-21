@@ -160,7 +160,7 @@
                             type="button" name="fileout" id="fileout" value="导出" onClick="javascript:outXML();"
                             class="btn btn-info"/></td>
                 </tr>
-                <tr>
+                <%--<tr>
                     <td colspan="11" align="center" valign="middle"><span class="">首页</span>&nbsp;<span
                             class="">上一页</span>[<span class="">1</span>]
                         [<a href="/manage.jsp?action=main&exec=Marketing_orderss&page=2">2</a>]
@@ -171,9 +171,9 @@
                                 name="PB_Page_Select"
                                 onChange="window.location.href='/manage.jsp?action=main&exec=Marketing_orderss&page='+this.options[this.selectedIndex].value">
 
-                            <%--<C:forEach items="${allRecorders}" var="recorder">
+                            &lt;%&ndash;<C:forEach items="${allRecorders}" var="recorder">
                             <option value="${recorder}"></option>
-                            </C:forEach>--%>
+                            </C:forEach>&ndash;%&gt;
                             <option value="1" selected>1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -181,7 +181,7 @@
                             <option value="5">5</option>
                         </select>&nbsp;页&nbsp;共5页&nbsp;1537条
                     </td>
-                </tr>
+                </tr>--%>
                 <tr style="font-weight:bold;">
                     <td>id</td>
                     <td>支付订单号</td>
@@ -259,7 +259,7 @@
                 </tr>
                 </c:forEach>
                 </tbody>
-                <tr>
+                <%--<tr>
 
                     <td colspan="11" align="center" valign="middle"><span class="">首页</span>&nbsp;<span
                             class="">上一页</span>[<span class="">1</span>]
@@ -276,13 +276,13 @@
                             <option value="5">5</option>
                         </select>&nbsp;页&nbsp;共5页&nbsp;100条
                     </td>
-                </tr>
-                <tr>
+                </tr>--%>
+                <%--<tr>
                     <td colspan="11" align="center" valign="middle"><input type="checkbox"
                                                                            onClick="javascript:allcheckbox(this, 'id[]');">全选&nbsp;&nbsp;&nbsp;<input
                             type="button" name="out" id="out" value="导出" onClick="javascript:outXML();"
                             class="btn btn-info"/></td>
-                </tr>
+                </tr>--%>
             </table>
             <div class="panel-footer">
                 <jsp:include page="/WEB-INF/pages/plugins/split_page_bar_plugin.jsp"/>

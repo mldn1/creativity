@@ -80,11 +80,13 @@ public class OrderAction {
             boolean flag = pattern.matcher(uaddr).matches() ;
             if (flag) {
                 phone = uaddr ;
+                orders.setPhone(phone);
                 System.out.println("输出phone"+phone);
             }else {
                 column_name = "name" ;
                 keyword_name = "%"+uaddr+"%" ;
                 System.out.println("name值"+keyword_name);
+                orders.setName(keyword_name);
             }
         }
 
@@ -111,12 +113,4 @@ public class OrderAction {
         mav.addObject("allRecorders",count) ;
         return mav ;
     }
-
-    //测试用
-    /*@PostMapping("order_list_search")
-    public ModelAndView order_list_search(){
-        System.err.println("查询进入控制层测试************************************");
-        ModelAndView mav = new ModelAndView("front/sale/order_list") ;
-        return mav ;
-    }*/
 }

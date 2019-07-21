@@ -51,7 +51,7 @@ public class TestOrderService {
     @Test
     public void testPreOrder() throws InterruptedException {
         new Thread(()->{
-            System.err.println("订单进入时的分页"+this.ordersService.getAllOrders());
+            System.err.println("订单进入时的分页"+this.ordersService.getAllOrders(1L,1));
         }).start();
         TimeUnit.SECONDS.sleep(Long.MAX_VALUE);
     }
