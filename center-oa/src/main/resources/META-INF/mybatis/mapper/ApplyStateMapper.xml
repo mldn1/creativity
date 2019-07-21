@@ -12,15 +12,15 @@
     select 
     <include refid="Base_Column_List" />
     from apply_state
-    where asid = #{asid,jdbcType=BIGINT}
+    where asid = #{asid}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from apply_state
-    where asid = #{asid,jdbcType=BIGINT}
+    where asid = #{asid}
   </delete>
   <insert id="insert" parameterType="ApplyState">
     insert into apply_state (asid, state)
-    values (#{asid,jdbcType=BIGINT}, #{state,jdbcType=INTEGER})
+    values (#{asid}, #{state})
   </insert>
   <insert id="insertSelective" parameterType="ApplyState">
     insert into apply_state
@@ -34,10 +34,10 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="asid != null">
-        #{asid,jdbcType=BIGINT},
+        #{asid},
       </if>
       <if test="state != null">
-        #{state,jdbcType=INTEGER},
+        #{state},
       </if>
     </trim>
   </insert>
@@ -45,14 +45,14 @@
     update apply_state
     <set>
       <if test="state != null">
-        state = #{state,jdbcType=INTEGER},
+        state = #{state},
       </if>
     </set>
-    where asid = #{asid,jdbcType=BIGINT}
+    where asid = #{asid}
   </update>
   <update id="updateByPrimaryKey" parameterType="ApplyState">
     update apply_state
-    set state = #{state,jdbcType=INTEGER}
-    where asid = #{asid,jdbcType=BIGINT}
+    set state = #{state}
+    where asid = #{asid}
   </update>
 </mapper>

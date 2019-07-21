@@ -12,15 +12,15 @@
     select 
     <include refid="Base_Column_List" />
     from bug_state
-    where bsid = #{bsid,jdbcType=INTEGER}
+    where bsid = #{bsid}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from bug_state
-    where bsid = #{bsid,jdbcType=INTEGER}
+    where bsid = #{bsid}
   </delete>
   <insert id="insert" parameterType="BugState">
     insert into bug_state (bsid, title)
-    values (#{bsid,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR})
+    values (#{bsid}, #{title})
   </insert>
   <insert id="insertSelective" parameterType="BugState">
     insert into bug_state
@@ -34,10 +34,10 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="bsid != null">
-        #{bsid,jdbcType=INTEGER},
+        #{bsid},
       </if>
       <if test="title != null">
-        #{title,jdbcType=VARCHAR},
+        #{title},
       </if>
     </trim>
   </insert>
@@ -45,14 +45,14 @@
     update bug_state
     <set>
       <if test="title != null">
-        title = #{title,jdbcType=VARCHAR},
+        title = #{title},
       </if>
     </set>
-    where bsid = #{bsid,jdbcType=INTEGER}
+    where bsid = #{bsid}
   </update>
   <update id="updateByPrimaryKey" parameterType="BugState">
     update bug_state
-    set title = #{title,jdbcType=VARCHAR}
-    where bsid = #{bsid,jdbcType=INTEGER}
+    set title = #{title}
+    where bsid = #{bsid}
   </update>
 </mapper>

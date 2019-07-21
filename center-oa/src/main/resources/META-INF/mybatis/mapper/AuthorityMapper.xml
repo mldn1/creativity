@@ -16,17 +16,17 @@
     select 
     <include refid="Base_Column_List" />
     from authority
-    where authoid = #{authoid,jdbcType=BIGINT}
+    where authoid = #{authoid}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from authority
-    where authoid = #{authoid,jdbcType=BIGINT}
+    where authoid = #{authoid}
   </delete>
   <insert id="insert" parameterType="Authority">
     insert into authority (authoid, title, etitle, 
       show, style, sort)
-    values (#{authoid,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, #{etitle,jdbcType=INTEGER}, 
-      #{show,jdbcType=INTEGER}, #{style,jdbcType=VARCHAR}, #{sort,jdbcType=INTEGER})
+    values (#{authoid}, #{title}, #{etitle}, 
+      #{show}, #{style}, #{sort})
   </insert>
   <insert id="insertSelective" parameterType="Authority">
     insert into authority
@@ -52,22 +52,22 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="authoid != null">
-        #{authoid,jdbcType=BIGINT},
+        #{authoid},
       </if>
       <if test="title != null">
-        #{title,jdbcType=VARCHAR},
+        #{title},
       </if>
       <if test="etitle != null">
-        #{etitle,jdbcType=INTEGER},
+        #{etitle},
       </if>
       <if test="show != null">
-        #{show,jdbcType=INTEGER},
+        #{show},
       </if>
       <if test="style != null">
-        #{style,jdbcType=VARCHAR},
+        #{style},
       </if>
       <if test="sort != null">
-        #{sort,jdbcType=INTEGER},
+        #{sort},
       </if>
     </trim>
   </insert>
@@ -75,30 +75,30 @@
     update authority
     <set>
       <if test="title != null">
-        title = #{title,jdbcType=VARCHAR},
+        title = #{title},
       </if>
       <if test="etitle != null">
-        etitle = #{etitle,jdbcType=INTEGER},
+        etitle = #{etitle},
       </if>
       <if test="show != null">
-        show = #{show,jdbcType=INTEGER},
+        show = #{show},
       </if>
       <if test="style != null">
-        style = #{style,jdbcType=VARCHAR},
+        style = #{style},
       </if>
       <if test="sort != null">
-        sort = #{sort,jdbcType=INTEGER},
+        sort = #{sort},
       </if>
     </set>
-    where authoid = #{authoid,jdbcType=BIGINT}
+    where authoid = #{authoid}
   </update>
   <update id="updateByPrimaryKey" parameterType="Authority">
     update authority
-    set title = #{title,jdbcType=VARCHAR},
-      etitle = #{etitle,jdbcType=INTEGER},
-      show = #{show,jdbcType=INTEGER},
-      style = #{style,jdbcType=VARCHAR},
-      sort = #{sort,jdbcType=INTEGER}
-    where authoid = #{authoid,jdbcType=BIGINT}
+    set title = #{title},
+      etitle = #{etitle},
+      show = #{show},
+      style = #{style},
+      sort = #{sort}
+    where authoid = #{authoid}
   </update>
 </mapper>

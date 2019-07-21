@@ -14,17 +14,17 @@
     select 
     <include refid="Base_Column_List" />
     from team
-    where tid = #{tid,jdbcType=BIGINT}
+    where tid = #{tid}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from team
-    where tid = #{tid,jdbcType=BIGINT}
+    where tid = #{tid}
   </delete>
   <insert id="insert" parameterType="Team">
     insert into team (tid, proid, eid, 
       joindate)
-    values (#{tid,jdbcType=BIGINT}, #{proid,jdbcType=BIGINT}, #{eid,jdbcType=BIGINT}, 
-      #{joindate,jdbcType=TIMESTAMP})
+    values (#{tid}, #{proid}, #{eid}, 
+      #{joindate})
   </insert>
   <insert id="insertSelective" parameterType="Team">
     insert into team
@@ -44,16 +44,16 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="tid != null">
-        #{tid,jdbcType=BIGINT},
+        #{tid},
       </if>
       <if test="proid != null">
-        #{proid,jdbcType=BIGINT},
+        #{proid},
       </if>
       <if test="eid != null">
-        #{eid,jdbcType=BIGINT},
+        #{eid},
       </if>
       <if test="joindate != null">
-        #{joindate,jdbcType=TIMESTAMP},
+        #{joindate},
       </if>
     </trim>
   </insert>
@@ -61,22 +61,32 @@
     update team
     <set>
       <if test="proid != null">
-        proid = #{proid,jdbcType=BIGINT},
+        proid = #{proid},
       </if>
       <if test="eid != null">
-        eid = #{eid,jdbcType=BIGINT},
+        eid = #{eid},
       </if>
       <if test="joindate != null">
-        joindate = #{joindate,jdbcType=TIMESTAMP},
+        joindate = #{joindate},
       </if>
     </set>
-    where tid = #{tid,jdbcType=BIGINT}
+    where tid = #{tid}
   </update>
   <update id="updateByPrimaryKey" parameterType="Team">
     update team
-    set proid = #{proid,jdbcType=BIGINT},
-      eid = #{eid,jdbcType=BIGINT},
-      joindate = #{joindate,jdbcType=TIMESTAMP}
-    where tid = #{tid,jdbcType=BIGINT}
+    set proid = #{proid},
+      eid = #{eid},
+      joindate = #{joindate}
+    where tid = #{tid}
   </update>
+  <select id="findSplitByProid" parameterType="Map"  resultType="Team">
+    select tid,eid,joindate from team where proid=#{proid}
+    limit #{start},#{lineSize}
+  </select>
+  <select id="getTeamCount" parameterType="java.lang.Long" resultType="java.lang.Integer">
+    select COUNT(*) from team where proid=#{proid}
+  </select>
+  <select id="findEids" parameterType="java.lang.Long" resultType="java.lang.Long">
+    select eid from team where proid=#{proid}
+  </select>
 </mapper>

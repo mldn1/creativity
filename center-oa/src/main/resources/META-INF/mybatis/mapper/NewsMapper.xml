@@ -9,11 +9,11 @@
     select 
     <include refid="Base_Column_List" />
     from news
-    where nid = #{nid,jdbcType=BIGINT}
+    where nid = #{nid}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from news
-    where nid = #{nid,jdbcType=BIGINT}
+    where nid = #{nid}
   </delete>
   <insert id="insert" parameterType="News">
     insert into news (nid, title, shorttitle, 
@@ -21,11 +21,11 @@
       position, state, sort, 
       createdate, editdate, count, 
       eid)
-    values (#{nid,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, #{shorttitle,jdbcType=VARCHAR}, 
-      #{overview,jdbcType=VARCHAR}, #{context}, #{type,jdbcType=INTEGER}, 
-      #{position,jdbcType=INTEGER}, #{state,jdbcType=INTEGER}, #{sort,jdbcType=INTEGER}, 
-      #{createdate,jdbcType=TIMESTAMP}, #{editdate,jdbcType=TIMESTAMP}, #{count,jdbcType=BIGINT}, 
-      #{eid,jdbcType=BIGINT})
+    values (#{nid}, #{title}, #{shorttitle}, 
+      #{overview}, #{context}, #{type}, 
+      #{position}, #{state}, #{sort}, 
+      #{createdate}, #{editdate}, #{count}, 
+      #{eid})
   </insert>
   <insert id="insertSelective" parameterType="News">
     insert into news
@@ -72,43 +72,43 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="nid != null">
-        #{nid,jdbcType=BIGINT},
+        #{nid},
       </if>
       <if test="title != null">
-        #{title,jdbcType=VARCHAR},
+        #{title},
       </if>
       <if test="shorttitle != null">
-        #{shorttitle,jdbcType=VARCHAR},
+        #{shorttitle},
       </if>
       <if test="overview != null">
-        #{overview,jdbcType=VARCHAR},
+        #{overview},
       </if>
       <if test="context != null">
         #{context},
       </if>
       <if test="type != null">
-        #{type,jdbcType=INTEGER},
+        #{type},
       </if>
       <if test="position != null">
-        #{position,jdbcType=INTEGER},
+        #{position},
       </if>
       <if test="state != null">
-        #{state,jdbcType=INTEGER},
+        #{state},
       </if>
       <if test="sort != null">
-        #{sort,jdbcType=INTEGER},
+        #{sort},
       </if>
       <if test="createdate != null">
-        #{createdate,jdbcType=TIMESTAMP},
+        #{createdate},
       </if>
       <if test="editdate != null">
-        #{editdate,jdbcType=TIMESTAMP},
+        #{editdate},
       </if>
       <if test="count != null">
-        #{count,jdbcType=BIGINT},
+        #{count},
       </if>
       <if test="eid != null">
-        #{eid,jdbcType=BIGINT},
+        #{eid},
       </if>
     </trim>
   </insert>
@@ -116,58 +116,58 @@
     update news
     <set>
       <if test="title != null">
-        title = #{title,jdbcType=VARCHAR},
+        title = #{title},
       </if>
       <if test="shorttitle != null">
-        shorttitle = #{shorttitle,jdbcType=VARCHAR},
+        shorttitle = #{shorttitle},
       </if>
       <if test="overview != null">
-        overview = #{overview,jdbcType=VARCHAR},
+        overview = #{overview},
       </if>
       <if test="context != null">
         context = #{context},
       </if>
       <if test="type != null">
-        type = #{type,jdbcType=INTEGER},
+        type = #{type},
       </if>
       <if test="position != null">
-        position = #{position,jdbcType=INTEGER},
+        position = #{position},
       </if>
       <if test="state != null">
-        state = #{state,jdbcType=INTEGER},
+        state = #{state},
       </if>
       <if test="sort != null">
-        sort = #{sort,jdbcType=INTEGER},
+        sort = #{sort},
       </if>
       <if test="createdate != null">
-        createdate = #{createdate,jdbcType=TIMESTAMP},
+        createdate = #{createdate},
       </if>
       <if test="editdate != null">
-        editdate = #{editdate,jdbcType=TIMESTAMP},
+        editdate = #{editdate},
       </if>
       <if test="count != null">
-        count = #{count,jdbcType=BIGINT},
+        count = #{count},
       </if>
       <if test="eid != null">
-        eid = #{eid,jdbcType=BIGINT},
+        eid = #{eid},
       </if>
     </set>
-    where nid = #{nid,jdbcType=BIGINT}
+    where nid = #{nid}
   </update>
   <update id="updateByPrimaryKey" parameterType="News">
     update news
-    set title = #{title,jdbcType=VARCHAR},
-      shorttitle = #{shorttitle,jdbcType=VARCHAR},
-      overview = #{overview,jdbcType=VARCHAR},
+    set title = #{title},
+      shorttitle = #{shorttitle},
+      overview = #{overview},
       context = #{context},
-      type = #{type,jdbcType=INTEGER},
-      position = #{position,jdbcType=INTEGER},
-      state = #{state,jdbcType=INTEGER},
-      sort = #{sort,jdbcType=INTEGER},
-      createdate = #{createdate,jdbcType=TIMESTAMP},
-      editdate = #{editdate,jdbcType=TIMESTAMP},
-      count = #{count,jdbcType=BIGINT},
-      eid = #{eid,jdbcType=BIGINT}
-    where nid = #{nid,jdbcType=BIGINT}
+      type = #{type},
+      position = #{position},
+      state = #{state},
+      sort = #{sort},
+      createdate = #{createdate},
+      editdate = #{editdate},
+      count = #{count},
+      eid = #{eid}
+    where nid = #{nid}
   </update>
 </mapper>

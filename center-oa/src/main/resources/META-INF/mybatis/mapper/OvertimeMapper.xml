@@ -9,11 +9,11 @@
     select 
     <include refid="Base_Column_List" />
     from overtime
-    where otid = #{otid,jdbcType=BIGINT}
+    where otid = #{otid}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from overtime
-    where otid = #{otid,jdbcType=BIGINT}
+    where otid = #{otid}
   </delete>
   <insert id="insert" parameterType="Overtime">
     insert into overtime (otid, eid, startdate, 
@@ -21,10 +21,10 @@
       islegalholiday, reason, approver, 
       note, state, result, progress
       )
-    values (#{otid,jdbcType=BIGINT}, #{eid,jdbcType=BIGINT}, #{startdate,jdbcType=TIMESTAMP}, 
-      #{enddate,jdbcType=TIMESTAMP}, #{time,jdbcType=INTEGER}, #{method,jdbcType=INTEGER}, 
-      #{islegalholiday,jdbcType=INTEGER}, #{reason}, #{approver,jdbcType=BIGINT}, 
-      #{note}, #{state,jdbcType=INTEGER}, #{result,jdbcType=INTEGER}, #{progress,jdbcType=INTEGER}
+    values (#{otid}, #{eid}, #{startdate}, 
+      #{enddate}, #{time}, #{method}, 
+      #{islegalholiday}, #{reason}, #{approver}, 
+      #{note}, #{state}, #{result}, #{progress}
       )
   </insert>
   <insert id="insertSelective" parameterType="Overtime">
@@ -72,43 +72,43 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="otid != null">
-        #{otid,jdbcType=BIGINT},
+        #{otid},
       </if>
       <if test="eid != null">
-        #{eid,jdbcType=BIGINT},
+        #{eid},
       </if>
       <if test="startdate != null">
-        #{startdate,jdbcType=TIMESTAMP},
+        #{startdate},
       </if>
       <if test="enddate != null">
-        #{enddate,jdbcType=TIMESTAMP},
+        #{enddate},
       </if>
       <if test="time != null">
-        #{time,jdbcType=INTEGER},
+        #{time},
       </if>
       <if test="method != null">
-        #{method,jdbcType=INTEGER},
+        #{method},
       </if>
       <if test="islegalholiday != null">
-        #{islegalholiday,jdbcType=INTEGER},
+        #{islegalholiday},
       </if>
       <if test="reason != null">
         #{reason},
       </if>
       <if test="approver != null">
-        #{approver,jdbcType=BIGINT},
+        #{approver},
       </if>
       <if test="note != null">
         #{note},
       </if>
       <if test="state != null">
-        #{state,jdbcType=INTEGER},
+        #{state},
       </if>
       <if test="result != null">
-        #{result,jdbcType=INTEGER},
+        #{result},
       </if>
       <if test="progress != null">
-        #{progress,jdbcType=INTEGER},
+        #{progress},
       </if>
     </trim>
   </insert>
@@ -116,58 +116,58 @@
     update overtime
     <set>
       <if test="eid != null">
-        eid = #{eid,jdbcType=BIGINT},
+        eid = #{eid},
       </if>
       <if test="startdate != null">
-        startdate = #{startdate,jdbcType=TIMESTAMP},
+        startdate = #{startdate},
       </if>
       <if test="enddate != null">
-        enddate = #{enddate,jdbcType=TIMESTAMP},
+        enddate = #{enddate},
       </if>
       <if test="time != null">
-        time = #{time,jdbcType=INTEGER},
+        time = #{time},
       </if>
       <if test="method != null">
-        method = #{method,jdbcType=INTEGER},
+        method = #{method},
       </if>
       <if test="islegalholiday != null">
-        islegalholiday = #{islegalholiday,jdbcType=INTEGER},
+        islegalholiday = #{islegalholiday},
       </if>
       <if test="reason != null">
         reason = #{reason},
       </if>
       <if test="approver != null">
-        approver = #{approver,jdbcType=BIGINT},
+        approver = #{approver},
       </if>
       <if test="note != null">
         note = #{note},
       </if>
       <if test="state != null">
-        state = #{state,jdbcType=INTEGER},
+        state = #{state},
       </if>
       <if test="result != null">
-        result = #{result,jdbcType=INTEGER},
+        result = #{result},
       </if>
       <if test="progress != null">
-        progress = #{progress,jdbcType=INTEGER},
+        progress = #{progress},
       </if>
     </set>
-    where otid = #{otid,jdbcType=BIGINT}
+    where otid = #{otid}
   </update>
   <update id="updateByPrimaryKey" parameterType="Overtime">
     update overtime
-    set eid = #{eid,jdbcType=BIGINT},
-      startdate = #{startdate,jdbcType=TIMESTAMP},
-      enddate = #{enddate,jdbcType=TIMESTAMP},
-      time = #{time,jdbcType=INTEGER},
-      method = #{method,jdbcType=INTEGER},
-      islegalholiday = #{islegalholiday,jdbcType=INTEGER},
+    set eid = #{eid},
+      startdate = #{startdate},
+      enddate = #{enddate},
+      time = #{time},
+      method = #{method},
+      islegalholiday = #{islegalholiday},
       reason = #{reason},
-      approver = #{approver,jdbcType=BIGINT},
+      approver = #{approver},
       note = #{note},
-      state = #{state,jdbcType=INTEGER},
-      result = #{result,jdbcType=INTEGER},
-      progress = #{progress,jdbcType=INTEGER}
-    where otid = #{otid,jdbcType=BIGINT}
+      state = #{state},
+      result = #{result},
+      progress = #{progress}
+    where otid = #{otid}
   </update>
 </mapper>

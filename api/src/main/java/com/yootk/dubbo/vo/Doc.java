@@ -3,8 +3,8 @@ package com.yootk.dubbo.vo;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Text implements Serializable {
-    private Long textid;
+public class Doc implements Serializable {
+    private Long docid;
 
     private Long proid;
 
@@ -24,12 +24,12 @@ public class Text implements Serializable {
 
     private String appendix;
 
-    public Long getTextid() {
-        return textid;
+    public Long getDocid() {
+        return docid;
     }
 
-    public void setTextid(Long textid) {
-        this.textid = textid;
+    public void setDocid(Long docid) {
+        this.docid = docid;
     }
 
     public Long getProid() {
@@ -110,7 +110,7 @@ public class Text implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", textid=").append(textid);
+        sb.append(", docid=").append(docid);
         sb.append(", proid=").append(proid);
         sb.append(", title=").append(title);
         sb.append(", keyword=").append(keyword);

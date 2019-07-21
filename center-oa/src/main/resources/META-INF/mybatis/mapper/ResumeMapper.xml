@@ -37,21 +37,21 @@
     select 
     <include refid="Base_Column_List" />
     from resume
-    where resid = #{resid,jdbcType=BIGINT}
+    where resid = #{resid}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from resume
-    where resid = #{resid,jdbcType=BIGINT}
+    where resid = #{resid}
   </delete>
   <insert id="insert" parameterType="Resume">
     insert into resume (resid, name, sex, 
       phone, birthday, eduid, 
       wyid, note, appendix, 
       state, eid)
-    values (#{resid,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, 
-      #{phone,jdbcType=INTEGER}, #{birthday,jdbcType=DATE}, #{eduid,jdbcType=INTEGER}, 
-      #{wyid,jdbcType=INTEGER}, #{note}, #{appendix,jdbcType=VARCHAR}, 
-      #{state,jdbcType=INTEGER}, #{eid,jdbcType=BIGINT})
+    values (#{resid}, #{name}, #{sex}, 
+      #{phone}, #{birthday}, #{eduid}, 
+      #{wyid}, #{note}, #{appendix}, 
+      #{state}, #{eid})
   </insert>
   <insert id="insertSelective" parameterType="Resume">
     insert into resume
@@ -92,37 +92,37 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="resid != null">
-        #{resid,jdbcType=BIGINT},
+        #{resid},
       </if>
       <if test="name != null">
-        #{name,jdbcType=VARCHAR},
+        #{name},
       </if>
       <if test="sex != null">
-        #{sex,jdbcType=INTEGER},
+        #{sex},
       </if>
       <if test="phone != null">
-        #{phone,jdbcType=INTEGER},
+        #{phone},
       </if>
       <if test="birthday != null">
-        #{birthday,jdbcType=DATE},
+        #{birthday},
       </if>
       <if test="eduid != null">
-        #{eduid,jdbcType=INTEGER},
+        #{eduid},
       </if>
       <if test="wyid != null">
-        #{wyid,jdbcType=INTEGER},
+        #{wyid},
       </if>
       <if test="note != null">
         #{note},
       </if>
       <if test="appendix != null">
-        #{appendix,jdbcType=VARCHAR},
+        #{appendix},
       </if>
       <if test="state != null">
-        #{state,jdbcType=INTEGER},
+        #{state},
       </if>
       <if test="eid != null">
-        #{eid,jdbcType=BIGINT},
+        #{eid},
       </if>
     </trim>
   </insert>
@@ -130,50 +130,50 @@
     update resume
     <set>
       <if test="name != null">
-        name = #{name,jdbcType=VARCHAR},
+        name = #{name},
       </if>
       <if test="sex != null">
-        sex = #{sex,jdbcType=INTEGER},
+        sex = #{sex},
       </if>
       <if test="phone != null">
-        phone = #{phone,jdbcType=INTEGER},
+        phone = #{phone},
       </if>
       <if test="birthday != null">
-        birthday = #{birthday,jdbcType=DATE},
+        birthday = #{birthday},
       </if>
       <if test="eduid != null">
-        eduid = #{eduid,jdbcType=INTEGER},
+        eduid = #{eduid},
       </if>
       <if test="wyid != null">
-        wyid = #{wyid,jdbcType=INTEGER},
+        wyid = #{wyid},
       </if>
       <if test="note != null">
         note = #{note},
       </if>
       <if test="appendix != null">
-        appendix = #{appendix,jdbcType=VARCHAR},
+        appendix = #{appendix},
       </if>
       <if test="state != null">
-        state = #{state,jdbcType=INTEGER},
+        state = #{state},
       </if>
       <if test="eid != null">
-        eid = #{eid,jdbcType=BIGINT},
+        eid = #{eid},
       </if>
     </set>
-    where resid = #{resid,jdbcType=BIGINT}
+    where resid = #{resid}
   </update>
   <update id="updateByPrimaryKey" parameterType="Resume">
     update resume
-    set name = #{name,jdbcType=VARCHAR},
-      sex = #{sex,jdbcType=INTEGER},
-      phone = #{phone,jdbcType=INTEGER},
-      birthday = #{birthday,jdbcType=DATE},
-      eduid = #{eduid,jdbcType=INTEGER},
-      wyid = #{wyid,jdbcType=INTEGER},
+    set name = #{name},
+      sex = #{sex},
+      phone = #{phone},
+      birthday = #{birthday},
+      eduid = #{eduid},
+      wyid = #{wyid},
       note = #{note},
-      appendix = #{appendix,jdbcType=VARCHAR},
-      state = #{state,jdbcType=INTEGER},
-      eid = #{eid,jdbcType=BIGINT}
-    where resid = #{resid,jdbcType=BIGINT}
+      appendix = #{appendix},
+      state = #{state},
+      eid = #{eid}
+    where resid = #{resid}
   </update>
 </mapper>

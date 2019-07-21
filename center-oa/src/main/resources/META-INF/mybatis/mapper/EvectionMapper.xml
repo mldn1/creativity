@@ -9,11 +9,11 @@
     select 
     <include refid="Base_Column_List" />
     from evection
-    where eveid = #{eveid,jdbcType=BIGINT}
+    where eveid = #{eveid}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from evection
-    where eveid = #{eveid,jdbcType=BIGINT}
+    where eveid = #{eveid}
   </delete>
   <insert id="insert" parameterType="Evection">
     insert into evection (eveid, eid, aim, 
@@ -21,10 +21,10 @@
       reason, picture, approver, 
       note, state, result, progress
       )
-    values (#{eveid,jdbcType=BIGINT}, #{eid,jdbcType=BIGINT}, #{aim,jdbcType=VARCHAR}, 
-      #{startdate,jdbcType=TIMESTAMP}, #{endtime,jdbcType=TIMESTAMP}, #{days,jdbcType=INTEGER}, 
-      #{reason}, #{picture,jdbcType=VARCHAR}, #{approver,jdbcType=BIGINT}, 
-      #{note}, #{state,jdbcType=INTEGER}, #{result,jdbcType=INTEGER}, #{progress,jdbcType=INTEGER}
+    values (#{eveid}, #{eid}, #{aim}, 
+      #{startdate}, #{endtime}, #{days}, 
+      #{reason}, #{picture}, #{approver}, 
+      #{note}, #{state}, #{result}, #{progress}
       )
   </insert>
   <insert id="insertSelective" parameterType="Evection">
@@ -72,43 +72,43 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="eveid != null">
-        #{eveid,jdbcType=BIGINT},
+        #{eveid},
       </if>
       <if test="eid != null">
-        #{eid,jdbcType=BIGINT},
+        #{eid},
       </if>
       <if test="aim != null">
-        #{aim,jdbcType=VARCHAR},
+        #{aim},
       </if>
       <if test="startdate != null">
-        #{startdate,jdbcType=TIMESTAMP},
+        #{startdate},
       </if>
       <if test="endtime != null">
-        #{endtime,jdbcType=TIMESTAMP},
+        #{endtime},
       </if>
       <if test="days != null">
-        #{days,jdbcType=INTEGER},
+        #{days},
       </if>
       <if test="reason != null">
         #{reason},
       </if>
       <if test="picture != null">
-        #{picture,jdbcType=VARCHAR},
+        #{picture},
       </if>
       <if test="approver != null">
-        #{approver,jdbcType=BIGINT},
+        #{approver},
       </if>
       <if test="note != null">
         #{note},
       </if>
       <if test="state != null">
-        #{state,jdbcType=INTEGER},
+        #{state},
       </if>
       <if test="result != null">
-        #{result,jdbcType=INTEGER},
+        #{result},
       </if>
       <if test="progress != null">
-        #{progress,jdbcType=INTEGER},
+        #{progress},
       </if>
     </trim>
   </insert>
@@ -116,58 +116,58 @@
     update evection
     <set>
       <if test="eid != null">
-        eid = #{eid,jdbcType=BIGINT},
+        eid = #{eid},
       </if>
       <if test="aim != null">
-        aim = #{aim,jdbcType=VARCHAR},
+        aim = #{aim},
       </if>
       <if test="startdate != null">
-        startdate = #{startdate,jdbcType=TIMESTAMP},
+        startdate = #{startdate},
       </if>
       <if test="endtime != null">
-        endtime = #{endtime,jdbcType=TIMESTAMP},
+        endtime = #{endtime},
       </if>
       <if test="days != null">
-        days = #{days,jdbcType=INTEGER},
+        days = #{days},
       </if>
       <if test="reason != null">
         reason = #{reason},
       </if>
       <if test="picture != null">
-        picture = #{picture,jdbcType=VARCHAR},
+        picture = #{picture},
       </if>
       <if test="approver != null">
-        approver = #{approver,jdbcType=BIGINT},
+        approver = #{approver},
       </if>
       <if test="note != null">
         note = #{note},
       </if>
       <if test="state != null">
-        state = #{state,jdbcType=INTEGER},
+        state = #{state},
       </if>
       <if test="result != null">
-        result = #{result,jdbcType=INTEGER},
+        result = #{result},
       </if>
       <if test="progress != null">
-        progress = #{progress,jdbcType=INTEGER},
+        progress = #{progress},
       </if>
     </set>
-    where eveid = #{eveid,jdbcType=BIGINT}
+    where eveid = #{eveid}
   </update>
   <update id="updateByPrimaryKey" parameterType="Evection">
     update evection
-    set eid = #{eid,jdbcType=BIGINT},
-      aim = #{aim,jdbcType=VARCHAR},
-      startdate = #{startdate,jdbcType=TIMESTAMP},
-      endtime = #{endtime,jdbcType=TIMESTAMP},
-      days = #{days,jdbcType=INTEGER},
+    set eid = #{eid},
+      aim = #{aim},
+      startdate = #{startdate},
+      endtime = #{endtime},
+      days = #{days},
       reason = #{reason},
-      picture = #{picture,jdbcType=VARCHAR},
-      approver = #{approver,jdbcType=BIGINT},
+      picture = #{picture},
+      approver = #{approver},
       note = #{note},
-      state = #{state,jdbcType=INTEGER},
-      result = #{result,jdbcType=INTEGER},
-      progress = #{progress,jdbcType=INTEGER}
-    where eveid = #{eveid,jdbcType=BIGINT}
+      state = #{state},
+      result = #{result},
+      progress = #{progress}
+    where eveid = #{eveid}
   </update>
 </mapper>

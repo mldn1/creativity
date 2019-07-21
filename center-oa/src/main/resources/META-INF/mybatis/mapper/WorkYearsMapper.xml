@@ -15,15 +15,15 @@
     select 
     <include refid="Base_Column_List" />
     from work_years
-    where wyid = #{wyid,jdbcType=BIGINT}
+    where wyid = #{wyid}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from work_years
-    where wyid = #{wyid,jdbcType=BIGINT}
+    where wyid = #{wyid}
   </delete>
   <insert id="insert" parameterType="WorkYears">
     insert into work_years (wyid, title)
-    values (#{wyid,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR})
+    values (#{wyid}, #{title})
   </insert>
   <insert id="insertSelective" parameterType="WorkYears">
     insert into work_years
@@ -37,10 +37,10 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="wyid != null">
-        #{wyid,jdbcType=BIGINT},
+        #{wyid},
       </if>
       <if test="title != null">
-        #{title,jdbcType=VARCHAR},
+        #{title},
       </if>
     </trim>
   </insert>
@@ -48,14 +48,14 @@
     update work_years
     <set>
       <if test="title != null">
-        title = #{title,jdbcType=VARCHAR},
+        title = #{title},
       </if>
     </set>
-    where wyid = #{wyid,jdbcType=BIGINT}
+    where wyid = #{wyid}
   </update>
   <update id="updateByPrimaryKey" parameterType="WorkYears">
     update work_years
-    set title = #{title,jdbcType=VARCHAR}
-    where wyid = #{wyid,jdbcType=BIGINT}
+    set title = #{title}
+    where wyid = #{wyid}
   </update>
 </mapper>

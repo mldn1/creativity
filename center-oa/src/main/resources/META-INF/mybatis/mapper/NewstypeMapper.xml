@@ -12,15 +12,15 @@
     select 
     <include refid="Base_Column_List" />
     from news_type
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from news_type
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id}
   </delete>
   <insert id="insert" parameterType="Newstype">
     insert into news_type (id, title)
-    values (#{id,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR})
+    values (#{id}, #{title})
   </insert>
   <insert id="insertSelective" parameterType="Newstype">
     insert into news_type
@@ -34,10 +34,10 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
-        #{id,jdbcType=BIGINT},
+        #{id},
       </if>
       <if test="title != null">
-        #{title,jdbcType=VARCHAR},
+        #{title},
       </if>
     </trim>
   </insert>
@@ -45,14 +45,14 @@
     update news_type
     <set>
       <if test="title != null">
-        title = #{title,jdbcType=VARCHAR},
+        title = #{title},
       </if>
     </set>
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id}
   </update>
   <update id="updateByPrimaryKey" parameterType="Newstype">
     update news_type
-    set title = #{title,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=BIGINT}
+    set title = #{title}
+    where id = #{id}
   </update>
 </mapper>

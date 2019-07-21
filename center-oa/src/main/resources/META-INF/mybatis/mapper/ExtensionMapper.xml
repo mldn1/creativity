@@ -9,19 +9,19 @@
     select 
     <include refid="Base_Column_List" />
     from extension
-    where extid = #{extid,jdbcType=BIGINT}
+    where extid = #{extid}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from extension
-    where extid = #{extid,jdbcType=BIGINT}
+    where extid = #{extid}
   </delete>
   <insert id="insert" parameterType="Extension">
     insert into extension (extid, channelid, plane, 
       unit, keyword, code, link, 
       state, count, eid)
-    values (#{extid,jdbcType=BIGINT}, #{channelid,jdbcType=INTEGER}, #{plane,jdbcType=VARCHAR}, 
-      #{unit,jdbcType=VARCHAR}, #{keyword,jdbcType=VARCHAR}, #{code}, #{link,jdbcType=VARCHAR}, 
-      #{state,jdbcType=BIGINT}, #{count,jdbcType=INTEGER}, #{eid,jdbcType=BIGINT})
+    values (#{extid}, #{channelid}, #{plane}, 
+      #{unit}, #{keyword}, #{code}, #{link}, 
+      #{state}, #{count}, #{eid})
   </insert>
   <insert id="insertSelective" parameterType="Extension">
     insert into extension
@@ -59,34 +59,34 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="extid != null">
-        #{extid,jdbcType=BIGINT},
+        #{extid},
       </if>
       <if test="channelid != null">
-        #{channelid,jdbcType=INTEGER},
+        #{channelid},
       </if>
       <if test="plane != null">
-        #{plane,jdbcType=VARCHAR},
+        #{plane},
       </if>
       <if test="unit != null">
-        #{unit,jdbcType=VARCHAR},
+        #{unit},
       </if>
       <if test="keyword != null">
-        #{keyword,jdbcType=VARCHAR},
+        #{keyword},
       </if>
       <if test="code != null">
         #{code},
       </if>
       <if test="link != null">
-        #{link,jdbcType=VARCHAR},
+        #{link},
       </if>
       <if test="state != null">
-        #{state,jdbcType=BIGINT},
+        #{state},
       </if>
       <if test="count != null">
-        #{count,jdbcType=INTEGER},
+        #{count},
       </if>
       <if test="eid != null">
-        #{eid,jdbcType=BIGINT},
+        #{eid},
       </if>
     </trim>
   </insert>
@@ -94,46 +94,46 @@
     update extension
     <set>
       <if test="channelid != null">
-        channelid = #{channelid,jdbcType=INTEGER},
+        channelid = #{channelid},
       </if>
       <if test="plane != null">
-        plane = #{plane,jdbcType=VARCHAR},
+        plane = #{plane},
       </if>
       <if test="unit != null">
-        unit = #{unit,jdbcType=VARCHAR},
+        unit = #{unit},
       </if>
       <if test="keyword != null">
-        keyword = #{keyword,jdbcType=VARCHAR},
+        keyword = #{keyword},
       </if>
       <if test="code != null">
         code = #{code},
       </if>
       <if test="link != null">
-        link = #{link,jdbcType=VARCHAR},
+        link = #{link},
       </if>
       <if test="state != null">
-        state = #{state,jdbcType=BIGINT},
+        state = #{state},
       </if>
       <if test="count != null">
-        count = #{count,jdbcType=INTEGER},
+        count = #{count},
       </if>
       <if test="eid != null">
-        eid = #{eid,jdbcType=BIGINT},
+        eid = #{eid},
       </if>
     </set>
-    where extid = #{extid,jdbcType=BIGINT}
+    where extid = #{extid}
   </update>
   <update id="updateByPrimaryKey" parameterType="Extension">
     update extension
-    set channelid = #{channelid,jdbcType=INTEGER},
-      plane = #{plane,jdbcType=VARCHAR},
-      unit = #{unit,jdbcType=VARCHAR},
-      keyword = #{keyword,jdbcType=VARCHAR},
+    set channelid = #{channelid},
+      plane = #{plane},
+      unit = #{unit},
+      keyword = #{keyword},
       code = #{code},
-      link = #{link,jdbcType=VARCHAR},
-      state = #{state,jdbcType=BIGINT},
-      count = #{count,jdbcType=INTEGER},
-      eid = #{eid,jdbcType=BIGINT}
-    where extid = #{extid,jdbcType=BIGINT}
+      link = #{link},
+      state = #{state},
+      count = #{count},
+      eid = #{eid}
+    where extid = #{extid}
   </update>
 </mapper>

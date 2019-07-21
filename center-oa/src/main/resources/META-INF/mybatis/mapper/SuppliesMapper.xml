@@ -10,11 +10,11 @@
     select 
     <include refid="Base_Column_List" />
     from supplies
-    where supid = #{supid,jdbcType=BIGINT}
+    where supid = #{supid}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from supplies
-    where supid = #{supid,jdbcType=BIGINT}
+    where supid = #{supid}
   </delete>
   <insert id="insert" parameterType="Supplies">
     insert into supplies (supid, eid, purpose, 
@@ -22,10 +22,10 @@
       picture, approver, note, 
       state, result, progress
       )
-    values (#{supid,jdbcType=BIGINT}, #{eid,jdbcType=BIGINT}, #{purpose,jdbcType=VARCHAR}, 
-      #{name,jdbcType=VARCHAR}, #{count,jdbcType=INTEGER}, #{details}, 
-      #{picture,jdbcType=VARCHAR}, #{approver,jdbcType=BIGINT}, #{note}, 
-      #{state,jdbcType=INTEGER}, #{result,jdbcType=INTEGER}, #{progress,jdbcType=INTEGER}
+    values (#{supid}, #{eid}, #{purpose}, 
+      #{name}, #{count}, #{details}, 
+      #{picture}, #{approver}, #{note}, 
+      #{state}, #{result}, #{progress}
       )
   </insert>
   <insert id="insertSelective" parameterType="Supplies">
@@ -70,40 +70,40 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="supid != null">
-        #{supid,jdbcType=BIGINT},
+        #{supid},
       </if>
       <if test="eid != null">
-        #{eid,jdbcType=BIGINT},
+        #{eid},
       </if>
       <if test="purpose != null">
-        #{purpose,jdbcType=VARCHAR},
+        #{purpose},
       </if>
       <if test="name != null">
-        #{name,jdbcType=VARCHAR},
+        #{name},
       </if>
       <if test="count != null">
-        #{count,jdbcType=INTEGER},
+        #{count},
       </if>
       <if test="details != null">
         #{details},
       </if>
       <if test="picture != null">
-        #{picture,jdbcType=VARCHAR},
+        #{picture},
       </if>
       <if test="approver != null">
-        #{approver,jdbcType=BIGINT},
+        #{approver},
       </if>
       <if test="note != null">
         #{note},
       </if>
       <if test="state != null">
-        #{state,jdbcType=INTEGER},
+        #{state},
       </if>
       <if test="result != null">
-        #{result,jdbcType=INTEGER},
+        #{result},
       </if>
       <if test="progress != null">
-        #{progress,jdbcType=INTEGER},
+        #{progress},
       </if>
     </trim>
   </insert>
@@ -111,54 +111,54 @@
     update supplies
     <set>
       <if test="eid != null">
-        eid = #{eid,jdbcType=BIGINT},
+        eid = #{eid},
       </if>
       <if test="purpose != null">
-        purpose = #{purpose,jdbcType=VARCHAR},
+        purpose = #{purpose},
       </if>
       <if test="name != null">
-        name = #{name,jdbcType=VARCHAR},
+        name = #{name},
       </if>
       <if test="count != null">
-        count = #{count,jdbcType=INTEGER},
+        count = #{count},
       </if>
       <if test="details != null">
         details = #{details},
       </if>
       <if test="picture != null">
-        picture = #{picture,jdbcType=VARCHAR},
+        picture = #{picture},
       </if>
       <if test="approver != null">
-        approver = #{approver,jdbcType=BIGINT},
+        approver = #{approver},
       </if>
       <if test="note != null">
         note = #{note},
       </if>
       <if test="state != null">
-        state = #{state,jdbcType=INTEGER},
+        state = #{state},
       </if>
       <if test="result != null">
-        result = #{result,jdbcType=INTEGER},
+        result = #{result},
       </if>
       <if test="progress != null">
-        progress = #{progress,jdbcType=INTEGER},
+        progress = #{progress},
       </if>
     </set>
-    where supid = #{supid,jdbcType=BIGINT}
+    where supid = #{supid}
   </update>
   <update id="updateByPrimaryKey" parameterType="Supplies">
     update supplies
-    set eid = #{eid,jdbcType=BIGINT},
-      purpose = #{purpose,jdbcType=VARCHAR},
-      name = #{name,jdbcType=VARCHAR},
-      count = #{count,jdbcType=INTEGER},
+    set eid = #{eid},
+      purpose = #{purpose},
+      name = #{name},
+      count = #{count},
       details = #{details},
-      picture = #{picture,jdbcType=VARCHAR},
-      approver = #{approver,jdbcType=BIGINT},
+      picture = #{picture},
+      approver = #{approver},
       note = #{note},
-      state = #{state,jdbcType=INTEGER},
-      result = #{result,jdbcType=INTEGER},
-      progress = #{progress,jdbcType=INTEGER}
-    where supid = #{supid,jdbcType=BIGINT}
+      state = #{state},
+      result = #{result},
+      progress = #{progress}
+    where supid = #{supid}
   </update>
 </mapper>

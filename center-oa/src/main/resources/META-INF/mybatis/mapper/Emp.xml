@@ -30,6 +30,44 @@
             </where>
         </set>
     </update>
+    <select id="getNameByEid" parameterType="java.lang.Long" resultType="String">
+        SELECT name FROM emp
+        <where>
+            eid=#{eid}
+        </where>
+    </select>
+    <select id="getAlanAll" resultType="Emp">
+        SELECT eid,name FROM emp
+    </select>
+    <select id="getAlanEmp" parameterType="java.lang.Long" resultType="Emp">
+        select eid,name,job from emp where eid=#{eid}
+    </select>
+    <select id="getEidByUsername" parameterType="String" resultType="java.lang.Long">
+        select eid from emp where username=#{username}
+    </select>
+
+
+    <select id="findJobByEid" resultType="String" parameterType="java.util.List">
+        select job from emp
+        <where>
+            <if test="List != null">
+                eid IN
+                <foreach collection="List" open="(" close=")" separator="," item="ele">
+                    #{ele}
+                </foreach>
+            </if>
+        </where>
+    </select>
+    <select id="getJobCount" parameterType="Map" resultType="java.lang.Integer">
+        select count(*) from emp
+        where job=#{job}
+        <if test="eids != null">
+            and eid IN
+            <foreach collection="eids" open="(" close=")" separator="," item="ele">
+                #{ele}
+            </foreach>
+        </if>
+    </select>
     <update id="updateEmp" parameterType="com.yootk.dubbo.vo.Emp">
         UPDATE emp
         <set>

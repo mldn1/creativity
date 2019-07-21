@@ -18,9 +18,21 @@ public interface IEmpDAO {
      * @param phone 需要被修改的雇员手机号（ID）
      * @return
      */
-    public int updateByPassword(String password,String phone);
+    public int updateByPassword(String password, String phone);
 
-    public int updatePhoto(String photo,String phone);
+    public int updatePhoto(String photo, String phone);
+
+    String getNameByEid(Long eid);
+
+    List<String> findJobByEid(List<Long> eids);
+
+    List<Emp> getAlanAll();
+
+    Integer getJobCount(Map<String, Object> params);
+
+    Emp getAlanEmp(Long eid);
+
+    Long getEidByUsername(String username);
 
     List<Emp> findAllEmpsByIds(Map<String, Object> params) ;
 

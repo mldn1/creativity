@@ -13,16 +13,16 @@
     select 
     <include refid="Base_Column_List" />
     from album
-    where albid = #{albid,jdbcType=BIGINT}
+    where albid = #{albid}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from album
-    where albid = #{albid,jdbcType=BIGINT}
+    where albid = #{albid}
   </delete>
   <insert id="insert" parameterType="Album">
     insert into album (albid, eid, picture
       )
-    values (#{albid,jdbcType=BIGINT}, #{eid,jdbcType=BIGINT}, #{picture,jdbcType=VARCHAR}
+    values (#{albid}, #{eid}, #{picture}
       )
   </insert>
   <insert id="insertSelective" parameterType="Album">
@@ -40,13 +40,13 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="albid != null">
-        #{albid,jdbcType=BIGINT},
+        #{albid},
       </if>
       <if test="eid != null">
-        #{eid,jdbcType=BIGINT},
+        #{eid},
       </if>
       <if test="picture != null">
-        #{picture,jdbcType=VARCHAR},
+        #{picture},
       </if>
     </trim>
   </insert>
@@ -54,18 +54,18 @@
     update album
     <set>
       <if test="eid != null">
-        eid = #{eid,jdbcType=BIGINT},
+        eid = #{eid},
       </if>
       <if test="picture != null">
-        picture = #{picture,jdbcType=VARCHAR},
+        picture = #{picture},
       </if>
     </set>
-    where albid = #{albid,jdbcType=BIGINT}
+    where albid = #{albid}
   </update>
   <update id="updateByPrimaryKey" parameterType="Album">
     update album
-    set eid = #{eid,jdbcType=BIGINT},
-      picture = #{picture,jdbcType=VARCHAR}
-    where albid = #{albid,jdbcType=BIGINT}
+    set eid = #{eid},
+      picture = #{picture}
+    where albid = #{albid}
   </update>
 </mapper>

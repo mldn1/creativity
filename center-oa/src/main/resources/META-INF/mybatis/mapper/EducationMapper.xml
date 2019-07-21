@@ -15,15 +15,15 @@
     select 
     <include refid="Base_Column_List" />
     from education
-    where eduid = #{eduid,jdbcType=BIGINT}
+    where eduid = #{eduid}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from education
-    where eduid = #{eduid,jdbcType=BIGINT}
+    where eduid = #{eduid}
   </delete>
   <insert id="insert" parameterType="Education">
     insert into education (eduid, title)
-    values (#{eduid,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR})
+    values (#{eduid}, #{title})
   </insert>
   <insert id="insertSelective" parameterType="Education">
     insert into education
@@ -37,10 +37,10 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="eduid != null">
-        #{eduid,jdbcType=BIGINT},
+        #{eduid},
       </if>
       <if test="title != null">
-        #{title,jdbcType=VARCHAR},
+        #{title},
       </if>
     </trim>
   </insert>
@@ -48,14 +48,14 @@
     update education
     <set>
       <if test="title != null">
-        title = #{title,jdbcType=VARCHAR},
+        title = #{title},
       </if>
     </set>
-    where eduid = #{eduid,jdbcType=BIGINT}
+    where eduid = #{eduid}
   </update>
   <update id="updateByPrimaryKey" parameterType="Education">
     update education
-    set title = #{title,jdbcType=VARCHAR}
-    where eduid = #{eduid,jdbcType=BIGINT}
+    set title = #{title}
+    where eduid = #{eduid}
   </update>
 </mapper>

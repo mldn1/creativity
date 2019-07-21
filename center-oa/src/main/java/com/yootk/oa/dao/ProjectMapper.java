@@ -12,6 +12,8 @@ public interface ProjectMapper {
 
     int insertSelective(Project record);
 
+    int state(Project project);
+
     Project selectByPrimaryKey(Long proid);
 
     int updateByPrimaryKeySelective(Project record);
@@ -20,5 +22,9 @@ public interface ProjectMapper {
 
     List<Project> findSplit(Map<String, Object> params);
 
+    List<Project> findSearchSplit(Map<String, Object> params);
+
     Long getAllRecorders(Map<String, Object> params);
+
+    Long getAllSearchRecorders(Map<String, Object> params);
 }
