@@ -34,7 +34,11 @@ public class TestUserService {
         param.put("state","");
         param.put("source","");
         Map<String,Object> result = this.memberService.list(param);
+        while (result == null){
+            result = this.memberService.list(param);
+        }
         System.err.println("[param]" + param);
+        System.err.println("属性：" + this.memberService);
         System.err.println(result.get("allMembers") + "【allMembers】");
         System.err.println(result.get("allRecorders") + "【allRecorders】");
         System.err.println("【States】" + result.get("allStates"));

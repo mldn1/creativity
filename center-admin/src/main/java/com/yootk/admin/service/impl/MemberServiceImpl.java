@@ -6,7 +6,6 @@ import com.yootk.admin.dao.IMemberDAO;
 import com.yootk.admin.dao.IMember_gradeDAO;
 import com.yootk.admin.dao.IStateDAO;
 import com.yootk.dubbo.service.IMemberService;
-import com.yootk.dubbo.vo.Channels;
 import com.yootk.dubbo.vo.Member;
 import com.yootk.dubbo.vo.Member_grade;
 import com.yootk.dubbo.vo.State;

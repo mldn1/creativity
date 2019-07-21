@@ -57,6 +57,9 @@ public class UserAction{
         }
         mav.addObject("Channels",channels);
         Map<String,Object> result = this.memberService.list(param);
+        while (result == null){
+            result = this.memberService.list(param);
+        }
         mav.addObject("allMembers",result.get("allMembers"));
         mav.addObject("allRecorders",result.get("allRecorders"));
         mav.addObject("allStates",result.get("allStates"));
@@ -67,6 +70,9 @@ public class UserAction{
     public ModelAndView userUpdate(String phone){
         ModelAndView mav = new ModelAndView("front/user/user_modify");
         Map<String,Object> result = this.memberService.getByPhone(phone);
+        while (result == null){
+            result = this.memberService.getByPhone(phone);
+        }
         mav.addObject("member",result.get("member"));
         mav.addObject("allStates",result.get("allStates"));
         mav.addObject("allChannels",result.get("allChannels"));
@@ -76,10 +82,10 @@ public class UserAction{
     @RequestMapping("user_modify_do")
     public ModelAndView userUpdateDo(Member member){
         member.setPassword(EncryptUtil.encode(member.getPassword()));
-        if(this.memberService.edit(member)){
+        if (this.memberService.edit(member)){
             return this.userList("",null,null);
         }else{
-            return this.userUpdate(member.getPhone());
+            return this.userUpdateDo(member);
         }
     }
 }
