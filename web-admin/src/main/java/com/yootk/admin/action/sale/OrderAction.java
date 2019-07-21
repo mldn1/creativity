@@ -109,7 +109,7 @@ public class OrderAction {
         }
         Long count = (Long)map.get("allRecorders") ;
         mav.addObject("start",(pu.getCurrentPage()-1)*pu.getLineSize()) ;
-        mav.addObject("lineSize",pu.getLineSize()) ;  //默认为每页
+        mav.addObject("lineSize",pu.getLineSize()) ;
         mav.addObject("allRecorders",count) ;
         return mav ;
     }

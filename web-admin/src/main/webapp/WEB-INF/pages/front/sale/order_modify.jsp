@@ -169,14 +169,14 @@
                 <tr>
                     <td>送货信息</td>
                     <td>
-                        <div class="col-sm-5"><input name="name" type="text" id="name" size="50"
-                                                     value="收货人：${preEditOrder.name}" class="form-control"/>
+                        <div class="col-sm-5">收货人：<input name="name" type="text" id="name" size="50"
+                                                     value="${preEditOrder.name}" class="form-control"/>
                         </div>
-                        <div class="col-sm-5"><input name="phone" type="text" id="phone" size="50"
-                                                     value="收货电话：${preEditOrder.phone}" class="form-control"/>
+                        <div class="col-sm-5">收货电话：<input name="phone" type="text" id="phone" size="50"
+                                                     value="${preEditOrder.phone}" class="form-control"/>
                         </div>
-                        <div class="col-sm-5"><input name="addr" type="text" id="addr" size="50"
-                                                     value="收货地址：${preEditOrder.addr}" class="form-control"/>
+                        <div class="col-sm-5">收货地址：<input name="addr" type="text" id="addr" size="50"
+                                                     value="${preEditOrder.addr}" class="form-control"/>
                         </div>
                     </td>
                 </tr>
