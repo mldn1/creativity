@@ -63,10 +63,10 @@ public class SpringDataRedisConfig {
         return connectionFactory ;
     }
     @Bean("redisTemplate")
-    public RedisTemplate getRedisTempalate(
+    public RedisTemplate getRedisTempalate (
             @Autowired RedisConnectionFactory connectionFactory
     ) {
-        RedisTemplate<Object,Object> redisTemplate = new RedisTemplate<>() ;
+        RedisTemplate<Object,Object> redisTemplate = new RedisTemplate<>();
         redisTemplate.setConnectionFactory(connectionFactory);
         redisTemplate.setKeySerializer(new StringRedisSerializer()); // 数据的key通过字符串存储
         redisTemplate.setValueSerializer(new JdkSerializationRedisSerializer()); // 保存的value为对象

@@ -1,8 +1,6 @@
 package com.yootk.dubbo.service.mall;
 
 import com.yootk.dubbo.vo.mall.Good;
-import org.springframework.cache.annotation.CacheConfig;
-import org.springframework.cache.annotation.Cacheable;
 
 import java.util.List;
 
@@ -25,4 +23,13 @@ public interface IGoodService {
      * @return 查询结果保存在List集合中返回
      */
     List<Good> findCategoryGood(Long cid);
+
+    /**
+     * 模糊查询商品信息
+     * @param keyWord 要查询的关键字
+     * @return 查询结果以Good对象返回返回
+     */
+    List<Good> findSplitGood(String keyWord);
+
+
 }

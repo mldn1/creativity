@@ -27,4 +27,9 @@ public class GoodTransferServiceImpl implements IGoodTransferService {
     public List<Good> findCateGood(Long cid) {
         return goodsService.findCategoryGood(cid);
     }
+
+    @Override
+    public List<Good> findSplitGood(String keyWord) {
+        return goodsService.findSplitGood(keyWord);
+    }
 }

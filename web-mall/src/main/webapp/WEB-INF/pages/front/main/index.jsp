@@ -52,7 +52,7 @@
     <div class="swiper-wrapper">
 
         <c:forEach items="${showGoods}" var="goods">
-            <section class="swiper-slide swiper-slide1"><a href="shop_details.action?gid=${goods.gid}"><img data-src="http://49.234.26.219/${goods.showpicture}" class="swiper-lazy"></a><div class="swiper-lazy-preloader"></div></section>
+            <section class="swiper-slide swiper-slide1"><a href="shop_details.action?gid=${goods.gid}"><img data-src="http://192.168.28.132/${goods.showpicture}" class="swiper-lazy"></a><div class="swiper-lazy-preloader"></div></section>
         </c:forEach>
 
     </div>
