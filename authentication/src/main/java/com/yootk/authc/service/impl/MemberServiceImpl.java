@@ -33,4 +33,14 @@ public class MemberServiceImpl implements IMemberService {
     public Map<String, Object> list(Map<String, Object> param) {
         return null;
     }
+
+    @Override
+    public Map<String, Object> getByPhone(String phone) {
+        return null;
+    }
+
+    @Override
+    public boolean edit(Member member) {
+        return false;
+    }
 }
