@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@ page pageEncoding="UTF-8"%>
 <!DOCTYPE html>  
@@ -57,54 +58,35 @@ window.onresize = function(){
 	<div class="logistics">选择物流</div>
     <div class="mine_Check width_Choose">
        <div class="mine_Checked">
-           <input class="orange" type="radio" name="group4" checked>顺丰快递
-           <input class="orange" type="radio" name="group4">圆通快递
+           <input class="orange" type="radio" name="group4" data-value="20"  checked>顺丰快递
+           <input class="orange" type="radio" name="group4" data-value="10"  >圆通快递
        </div>
     </div>                                                  
 </div>
 <div class="shop_Product">
-	<div class="shop_Prolist">
-    	<div class="shop_ProImg"><img src="images/GL_img_02.jpg"></div>
-        <div class="shop_Protext">
-       	  <h2>缠枝莲缠枝莲缠枝莲缠枝莲缠枝莲缠</h2>
-           	<p>红色</p>
-            <span>1,380元/套</span>
+    <c:forEach items="${allGoods}" var="goods" >
+        <div class="shop_Prolist">
+            <div class="shop_ProImg"><img src="http://49.234.26.219/${goods.goodsUrl}"></div>
+            <div class="shop_Protext">
+              <h2>${goods.goodsName}</h2>
+                <span>${goods.price}元/套</span>
+            </div>
+            <div class="shop_Pronum">
+                <p>×${goods.count}</p>
+            </div>
         </div>
-        <div class="shop_Pronum">
-        	<p>×99</p>
-        </div>
-    </div>
-    <div class="shop_Prolist">
-    	<div class="shop_ProImg"><img src="images/GL_img_02.jpg"></div>
-        <div class="shop_Protext">
-       	  <h2>缠枝莲缠枝莲缠枝莲缠枝莲缠枝莲缠</h2>
-           	<p>红色</p>
-            <span>1,380元/套</span>
-        </div>
-        <div class="shop_Pronum">
-        	<p>×99</p>
-        </div>
-    </div>
+    </c:forEach>
 </div>
-<div class="shop_Invoice">
+<div class="shop_Invoice" style="display: none">
 	<!--<span><b class="gary"><img src="images/GL_icon_42.png"></b><i>我要开发票</i></span>-->
     <p class="gray"><img src="images/GL_icon_42.png"><a href="pages/front/cart/shopping_cart_6.jsp"><i>开发票</i></a></p>
     <span class="shop_InvoiceR"><a href="pages/front/cart/shopping_cart_6.jsp"><img src="images/GL_icon_19.png"></a></span>
 </div>
 <div class="shop_Details borderNone">
 	<ul>
-    	<li><span>商品总重量：</span>25.5kg</li>
-        <li><span>商品合计：</span>2,451,12元</li>
-        <li><span>运费：</span>15元</li>
-        <li><span>总计：</span>2,451,27元</li>
-        <li>
-        	<span>优惠金额：</span>
-            <ul class="quan_Colr">
-            	<li>-10元（口红抵扣券）</li>
-                <li>9.8折优惠券</li>
-                <li>满198减10元</li>
-            </ul>
-        </li>
+        <li><span>商品合计：</span><span id="goodsTotal">${goodsMoneyTotal}</span>元</li>
+        <li><span>运费：</span><span id="fareTotal">20</span>元</li>
+        <li><span>总计：</span><span id="moneyTotal">${moneyTotal}</span>元</li>
     </ul>
     <br class="clear">
 </div>
@@ -112,9 +94,9 @@ window.onresize = function(){
     <p class="gray"><img src="images/GL_icon_43.png"><span>我已同意<a href="#">《文化创意馆协议》</a></span></p>
 </div>
 <div class="shop_Pay">
-	<span>应付：<i>2,451,27元</i></span>
+	<span>应付：<i><span id="payMoney">${moneyTotal}</span>元</i></span>
 
-    <input type="button" name="" value="下单" onClick="window.open('pages/front/cart/shopping_cart_2.action','_self');">
+    <input type="button" name="" value="下单" onClick="order();">
 </div>
 <script src="js/jquery-1.11.0.min.js"></script>
 <script>
@@ -126,6 +108,22 @@ window.onresize = function(){
 			$(this).attr('src','images/GL_icon_42.png');
 		}
 	})
+
+    $('body').on('click','.orange',function(){
+        var price = $(this).attr('data-value');
+        result =  parseInt($("#goodsTotal").html())  + parseInt(price);
+        $("#fareTotal").html(price) ;
+        $("#moneyTotal").html(result) ;
+        $("#payMoney").html(result) ;
+    })
+function order() {
+    fareTotal = $("#fareTotal").html();
+    payMoney = $("#payMoney").html();
+    goodsTotal = $("#goodsTotal").html();
+    addressId = '1' ;
+    logistics = payMoney=="20"?"101":"102";
+    window.open('pages/front/cart/shopping_cart_2.action?fareTotal='+fareTotal+"&payMoney="+payMoney+"&goodsTotal="+goodsTotal+"&goodsIds=${goodsIds}"+"&logistics="+logistics+"&addressId="+addressId,'_self');
+}
 </script>
 
 </body>

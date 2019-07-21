@@ -21,11 +21,11 @@ jQuery(document).ready(function($){
 				detailBuy(id);
 			}
 		})
-		addToCartBtn1.on('click', function(event){
+		 addToCartBtn1.on('click', function(event){
 			event.preventDefault();
 			addToCart($(this));
-			cartTrigger.children('.count').css('display','block');
-		})
+			 // cartTrigger.children('.count').css('display','block');
+		 })
 		
 		//open/close cart
 		cartTrigger.on('click', function(event){
@@ -85,10 +85,11 @@ jQuery(document).ready(function($){
 		var cartIsEmpty = cartWrapperNum.hasClass('empty');
 		//update cart product list
 		//addProduct();
-		//update number of items 
-		updateCartCount(cartIsEmpty);
+		//update number of items
+		//debugger;
+		//updateCartCount(cartIsEmpty);
 		//update total price
-		updateCartTotal(trigger.data('price'), true);
+		//updateCartTotal(trigger.data('price'), true);
 		//show cart
 		cartWrapperNum.removeClass('empty');
 	}

@@ -42,7 +42,7 @@ window.onresize = function(){
         </div>
     </div>
         <div class="my_Order">
-    	  <a href="order_status.action">
+    	  <a href="pages/front/order/order_status.action">
             	<div class="Order_pic1"><img src="images/GL_icon_21.png"></div>
             	<p>我的订单</p>
             </a>

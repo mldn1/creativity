@@ -40,8 +40,8 @@ window.onresize = function(){
 	<h2>下单成功</h2>
     <p>感谢您光临文创文创馆</p>
     <div class="success_Btn">
-    	<input type="button" value="查看我的订单" name="" onClick="window.open('pages/front/order/order_details.action','_self');">
-        <input type="button" value="继续逛逛" name="" onClick="window.open('pages/front/main/index.main','_self');">
+    	<input type="button" value="查看我的订单" name="" onClick="window.open('pages/front/order/order_details.action?orderId=${orderId}','_self');">
+        <input type="button" value="继续逛逛" name="" onClick="window.open('/index.action','_self');">
     </div>
 </div>
 <div class="pay_Details">
@@ -50,8 +50,8 @@ window.onresize = function(){
         <p>北京市xxxxxxxxxxxxxx</p>
     </div>
     <div class="pay_Price">
-    	<h2><span>支付方式：</span>微信支付</h2>
-        <h2><span>金额：</span>2,541.12元</h2>
+    	<h2><span>支付方式：</span>${paywaycn}</h2>
+        <h2><span>金额：</span>${payMoney}元</h2>
     </div>
 </div>
 

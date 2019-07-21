@@ -27,9 +27,6 @@ public class CartServiceImpl implements ICartService {
         String HashKey = module + "-" + userId ; //模块+用户名称
         //3、获取商品ID，商品、数量
         Good goods = goodDAO.findById(goodsId) ;
-        System.err.println("----------------------");
-        System.out.println(goods);
-        System.err.println("----------------------");
         //4、向Redis里面 添加HSet数据，Key =模块 + 用户名   value=
         map.put("goodsId",goodsId) ;
         map.put("goodsName",goods.getTitle()) ;

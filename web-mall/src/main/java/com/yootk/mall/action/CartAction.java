@@ -2,17 +2,22 @@ package com.yootk.mall.action;
 
 
 import com.yootk.mall.service.ICartTransferService;
+import com.yootk.mall.service.IOrderTransferService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.*;
+
 @Controller
 @RequestMapping("/pages/front/cart/")
 public class CartAction {
     @Autowired
     ICartTransferService cartTransferService ;
+    @Autowired
+    IOrderTransferService orderTransferService ;
     //购物车页面编辑商品数量、删除商品、选择下单商品、
     @RequestMapping("shopping_cart")
     public ModelAndView shoppingCar() throws Exception {
@@ -32,24 +37,53 @@ public class CartAction {
     public boolean goodsRemove(String goodsId) throws Exception {
        return this.cartTransferService.handleGoodsRemove(goodsId);
     }
+
+    @ResponseBody
+    @RequestMapping("goodsAdd")
+    public boolean goodsAdd(String goodsId) throws Exception {
+        return this.cartTransferService.handleGoodsAdd(goodsId);
+    }
     @RequestMapping("shopping_cart_1")
-    public ModelAndView shoppingCar1() throws Exception {   //下单页面
+    public ModelAndView shoppingCar1(String goodsIds) throws Exception {   //下单页面
+        List<Object> list = new ArrayList<>() ;
+        String[] ids = goodsIds.split(";");
+        int moneyTotal = 0 ;
+        for (String id :ids){
+            Object object = this.cartTransferService.handleGoodsGet(id);
+            String count = ((Map<String,String>)object).get("count") ;
+            String price = ((Map<String,String>)object).get("price");
+            moneyTotal += Integer.parseInt(count) * Integer.parseInt(price) ;
+            list.add(object);
+        }
+        System.out.println(moneyTotal);
         ModelAndView mav = new ModelAndView() ;
         mav.setViewName("front/cart/shopping_cart_1");
+        mav.addObject("allGoods",list);
+        mav.addObject("goodsMoneyTotal",moneyTotal);
+        mav.addObject("moneyTotal",moneyTotal+20);
+        mav.addObject("goodsIds",goodsIds);
         return mav ;
     }
 
     @RequestMapping("shopping_cart_2")
-    public ModelAndView shoppingCar2() throws Exception {   //支付页面
+    public ModelAndView shoppingCar2(String payMoney) throws Exception {   //支付页面
         ModelAndView mav = new ModelAndView() ;
         mav.setViewName("front/cart/shopping_cart_2");
+        mav.addObject("payMoney",payMoney) ;
         return mav ;
     }
 
     @RequestMapping("shopping_cart_3")
-    public ModelAndView shoppingCar3() throws Exception {   //下单成功页面
+    public ModelAndView shoppingCar3(String goodsIds, String addressId, String logistics, String goodsTotal, String payMoney, String fareTotal,String payway) throws Exception {   //下单成功页面
         ModelAndView mav = new ModelAndView() ;
         mav.setViewName("front/cart/shopping_cart_3");
+        //向订单表中写入数据
+        String oid = this.orderTransferService.add(goodsIds,addressId,logistics,goodsTotal,payMoney,fareTotal,payway);
+        mav.addObject("orderId",oid);
+        System.err.println(payway.equalsIgnoreCase("alipay")?"支付宝":"微信");
+        System.err.println(payMoney);
+        mav.addObject("paywaycn",payway.equalsIgnoreCase("alipay")?"支付宝":"微信");
+        mav.addObject("payMoney",payMoney);
         return mav ;
     }
     @RequestMapping("shopping_cart_4")

@@ -52,4 +52,24 @@ public class CartTransferServiceImpl implements ICartTransferService {
             return false ;
         }
     }
+
+    @Override
+    public boolean handleGoodsAdd(String goodsId) {
+        try {
+            return this.cartService.add("cart","admin",goodsId,1);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    @Override
+    public Object handleGoodsGet(String goodsId) {
+        try {
+            return this.cartService.get("cart","admin",goodsId);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null ;
+        }
+    }
 }
