@@ -23,4 +23,13 @@ public interface IGoodDAO {
      * @return 查询结果保存在List集合中返回
      */
     List<Good> findCategoryGood(Long cid);
+
+    /**
+     * 模糊查询
+     * 查询goods表中的title、shortname、description、details字段
+     * @param keyWord 模糊查询关键字
+     * @return 查询结果保存在List集合中返回
+     */
+    List<Good> findSplits(String keyWord);
+
 }

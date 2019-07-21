@@ -6,27 +6,32 @@ import com.yootk.dubbo.vo.mall.Good;
 import com.yootk.mall.dao.IGoodDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 
-
 import java.util.List;
+
 
 @Service
 public class GoodServiceImpl implements IGoodService {
 
     @Autowired
-    private IGoodDAO goodsDAO;
+    private IGoodDAO goodDAO;
 
     @Override
     public List<Good> findShowGoodss() {
-        return goodsDAO.findShow();
+        return goodDAO.findShow();
     }
 
     @Override
     public Good findGoodsById(String gid) {
-        return goodsDAO.findById(gid);
+        return goodDAO.findById(gid);
     }
 
     @Override
     public List<Good> findCategoryGood(Long cid) {
-        return goodsDAO.findCategoryGood(cid);
+        return goodDAO.findCategoryGood(cid);
+    }
+
+    @Override
+    public List<Good> findSplitGood(String keyWord) {
+        return goodDAO.findSplits("%" + keyWord + "%");
     }
 }

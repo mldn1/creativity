@@ -49,9 +49,9 @@
 	<div class="return"><a href="active_page.action"><img src="images/GL_icon_34.png" border="0"></a></div>
     <div class="detaila_Link"><img src="images/GL_icon_16.png"></div>
     <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="http://49.234.26.219/${pictures[0]}"></div>
-        <div class="swiper-slide"><img src="http://49.234.26.219/${pictures[1]}"></div>
-        <div class="swiper-slide"><img src="http://49.234.26.219/${pictures[2]}"></div>
+        <div class="swiper-slide"><img src="http://192.168.28.132/${pictures[0]}"></div>
+        <div class="swiper-slide"><img src="http://192.168.28.132/${pictures[1]}"></div>
+        <div class="swiper-slide"><img src="http://192.168.28.132/${pictures[2]}"></div>
   </div>
     <div class="swiper-pagination"></div>
 </div>

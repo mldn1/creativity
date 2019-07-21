@@ -52,7 +52,7 @@ window.onresize = function(){
 
     <c:forEach items="${allCategoryGoods}" var="categoryGoods">
 	<div class="list_Child">
-    	<a href="shop_details.action?gid=${categoryGoods.gid}"><img src="http://49.234.26.219/${categoryGoods.focuspicture}"></a>
+    	<a href="shop_details.action?gid=${categoryGoods.gid}"><img src="http://192.168.28.132/${categoryGoods.focuspicture}"></a>
         <h2>${categoryGoods.title}</h2>
         <p>￥${categoryGoods.saleprice}</p>
     </div>

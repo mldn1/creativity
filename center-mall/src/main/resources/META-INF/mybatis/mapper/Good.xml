@@ -10,8 +10,9 @@
    </sql>
     <select id="findShow" resultType="Good">
         <include refid="Base_Column_List" />
-        order by createdate desc limit 0,5;
+        order by createdate desc limit 0,5
     </select>
+
     <select id="findById" parameterType="java.lang.String" resultType="Good">
         <include refid="Base_Column_List"/>
         where  gid=#{gid}
@@ -19,6 +20,13 @@
 
     <select id="findCategoryGood" parameterType="java.lang.Long" resultType="Good">
         <include refid="Base_Column_List"/>
-        where gid IN(SELECT gid FROM category_goods WHERE cid = #{cid});
+        where gid IN(SELECT gid FROM category_goods WHERE cid = #{cid})
+    </select>
+
+    <select id="findSplits" parameterType="string" resultType="Good">
+        <include refid="Base_Column_List"/>
+        <where>
+            title LIKE #{keyWord} OR shortname LIKE #{keyWord} OR description LIKE #{keyWord} OR details LIKE #{keyWord}
+        </where>
     </select>
 </mapper>

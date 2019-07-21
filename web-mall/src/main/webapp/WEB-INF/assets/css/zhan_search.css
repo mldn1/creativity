@@ -1,22 +1,30 @@
 .bar6 {
     background: #F9F0DA;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    padding-left: 15%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 15%;
 }
+
+.form {
+    width: 100%;
+}
+
 .bar6 input {
     border: 2px solid #c5464a;
     border-radius: 5px;
     background: transparent;
-    margin-left: 60px;
-    margin-top: 10px;
-
     height: 30px;
-    width:auto
+    width:50%;
 }
 .bar6 button {
     background: #c5464a;
     border-radius: 0 5px 5px 0;
-    width: 70px;
+    width: 85px;
     height:37px;
-    width:auto
 }
 .bar6 button:before {
     content: "搜索";

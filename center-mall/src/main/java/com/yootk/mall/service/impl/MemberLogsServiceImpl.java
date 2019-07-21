@@ -1,13 +1,14 @@
 package com.yootk.mall.service.impl;
 
+import com.alibaba.dubbo.config.annotation.Service;
 import com.yootk.dubbo.service.mall.IMemberLogsService;
 import com.yootk.dubbo.vo.MemberLogs;
 import com.yootk.mall.dao.IMemberLogsDAO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+
 
 @Service
-public class MemberLogsService implements IMemberLogsService {
+public class MemberLogsServiceImpl implements IMemberLogsService {
     @Autowired
     private IMemberLogsDAO memberLogsDAO;
     @Override

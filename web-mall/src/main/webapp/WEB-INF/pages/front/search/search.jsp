@@ -1,10 +1,11 @@
 
 <%@ page pageEncoding="UTF-8"%>
-<!DOCTYPE html>  
+<!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
  
 <head>
     <jsp:include page="/WEB-INF/pages/plugins/include_basepath.jsp"/>
-    	 <jsp:include page="/WEB-INF/pages/plugins/include_menu.jsp"/>
+    <jsp:include page="/WEB-INF/pages/plugins/include_menu.jsp"/>
 	<meta http-equiv="Pragma" content="no-cache">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
 	<meta name="format-detection" content="telephone=no"/>
@@ -38,34 +39,28 @@
 </head>
 <body class="sTop1">
         <div class="search bar6">
-            <form>
-                <input type="text" placeholder="请输入您要搜索的内容...">
+            <div class="form" id="myform">
+            <form action="search_end.action">
+                <input type="text" name="keyWord" id="keyWord" placeholder="请输入您要搜索的内容...">
                 <button type="submit"></button>
             </form>
+             </div>
         </div>
         <div class="search_Hot">
     	<h2>热门搜索</h2>
-        <a href="search_end.action" class="text_Red">铜器馆</a>
-        <a href="search_end.action" class="text_Red">丝绸</a>
-        <a href="search_end.action" class="text_Red">珠光宝气方巾</a>
-        <a href="search_end.action" class="text_Red">福至杯</a>
-        <a href="search_end.action">逐鹿顺意</a>
-        <a href="search_end.action">送礼首选</a>
-        <a href="search_end.action">文创出品</a>
-        <a href="search_end.action">福禄盖碗</a>
-        <a href="search_end.action">前程似锦领带</a>
+
+        <c:forEach items="${allRank}" var="rank">
+        <a href="search_end.action?keyWord=${rank}" class="text_Red">${rank}</a>
+        </c:forEach>
+
     </div>
     <div class="search_History">
     	<h2><span>历史搜索</span><a class="add_Del clearList" href="javascript:;"><img src="images/GL_icon_29.png"></a></h2>
-        <a href="#">铜器馆</a>
-        <a href="#">丝绸</a>
-        <a href="#">珠光宝气方巾</a>
-        <a href="#">福至杯</a>
-        <a href="#">逐鹿顺意</a>
-        <a href="#">送礼首选</a>
-        <a href="#">文创出品</a>
-        <a href="#">福禄盖碗</a>
-        <a href="#">前程似锦领带</a>        	
+
+        <c:forEach items="${allCookies}" var="Cookie">
+        <a href="search_end.action?keyWord=${Cookie}">${Cookie}</a>
+        </c:forEach>
+
     </div>
     <div class="clearModelBox">
 		<div class="clearBCont">
@@ -82,6 +77,18 @@
 	</div>
     <script src="js/jquery-1.11.0.min.js"></script>
 <script>
+	// 阻止表单提交
+	$(function() {
+		$("form").submit(function(){
+			if ($("#keyWord").val() == null || $("#keyWord").val() == "") {
+				return false;
+			} else {
+				return true;
+			}
+		});
+	})
+
+
     	// 确认删除
 	var $this  //获取被删除的元素
 	var	all=false;
