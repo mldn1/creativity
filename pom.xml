@@ -52,7 +52,7 @@
         <!-- 日志组件依赖本部 -->
         <logback.version>1.2.3</logback.version>
         <org.slf4j.version>1.7.26</org.slf4j.version>
-        <log4j.version>2.12.0</log4j.version>
+        <log4j.version>2.13.2</log4j.version>
         <!-- 测试组件依赖版本 -->
         <junit.version>4.12</junit.version>
         <!-- Spring及Web依赖版本 -->
