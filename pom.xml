@@ -45,7 +45,7 @@
         <sentinel.version>1.6.2</sentinel.version>
         <zkclient.version>0.11</zkclient.version>
         <curator.version>4.2.0</curator.version>
-        <mybatis.version>3.5.1</mybatis.version><!-- mybatis依赖 -->
+        <mybatis.version>3.5.6</mybatis.version><!-- mybatis依赖 -->
         <mybatis.spring.version>2.0.1</mybatis.spring.version>
         <mysql.version>5.1.47</mysql.version><!-- mysql驱动依赖 -->
         <druid.version>1.1.17</druid.version><!-- druid数据库连接池 -->
