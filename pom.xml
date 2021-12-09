@@ -75,7 +75,7 @@
         <commons.beanutils.version>1.9.3</commons.beanutils.version><!-- commons-beanutil开源库版本 -->
         <commons.lang3.version>3.6</commons.lang3.version>
         <!-- Json组件依赖版本 -->
-        <jackson.version>2.9.9</jackson.version>
+        <jackson.version>2.9.10.8</jackson.version>
         <!-- 上传组件版本 -->
         <commons-fileupload.version>1.4</commons-fileupload.version>
         <commons-io.version>2.6</commons-io.version>
