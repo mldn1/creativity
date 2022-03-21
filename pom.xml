@@ -37,7 +37,7 @@
         <java.dir>src/main/java</java.dir>   <!-- 定义java父路径 -->
         <!-- 定义所有使用的开发包的版本 -->
         <!-- Dubbo与Zookeeper依赖版本 -->
-        <dubbo.version>2.5.10</dubbo.version>
+        <dubbo.version>2.6.9</dubbo.version>
         <zookeeper.version>3.4.14</zookeeper.version>
         <netty.version>4.1.36.Final</netty.version>
         <jms-api.version>2.0.1</jms-api.version>
